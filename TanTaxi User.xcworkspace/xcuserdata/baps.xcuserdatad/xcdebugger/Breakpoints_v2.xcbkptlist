@@ -67,5 +67,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "574782341.957728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2079"
+            endingLineNumber = "2079"
+            landmarkName = "getPlaceFromLatLong()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "574782341.957798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2070"
+            endingLineNumber = "2070"
+            landmarkName = "getPlaceFromLatLong()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TanTaxi_User.HomeViewController.getPlaceFromLatLong() -&gt; ()"
+                  moduleName = "TanTaxi User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baps/Documents/Bhautik/Bit_Bucket_Projects/tantaxi-user/ViewControllers/HomeVC/HomeViewController.swift"
+                  timestampString = "574782342.369662"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2070"
+                  endingLineNumber = "2070"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.GMSPlaceLikelihoodList&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in TanTaxi_User.HomeViewController.getPlaceFromLatLong() -&gt; ()"
+                  moduleName = "TanTaxi User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baps/Documents/Bhautik/Bit_Bucket_Projects/tantaxi-user/ViewControllers/HomeVC/HomeViewController.swift"
+                  timestampString = "574782342.372586"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2071"
+                  endingLineNumber = "2071"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "574782709.511355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1016"
+            endingLineNumber = "1016"
+            landmarkName = "getAddressForLatLng(latitude:longitude:markerType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -2079,11 +2079,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place
                 if let place = place {
-                    self.strPickupLocation = place.formattedAddress!
+                    let SelectedCurrentLocation = "\(place.name), \(place.formattedAddress!)"
+                    self.strPickupLocation = SelectedCurrentLocation
+//                        place.formattedAddress!
                     self.doublePickupLat = place.coordinate.latitude
                     self.doublePickupLng = place.coordinate.longitude
-                    self.txtCurrentLocation.text = place.formattedAddress?.components(separatedBy: ", ")
-                        .joined(separator: "\n")
+                    self.txtCurrentLocation.text = SelectedCurrentLocation
+//                        place.formattedAddress?.components(separatedBy: ", ")
+//                        .joined(separator: "\n")
                     self.strLocationType = self.currentLocationMarkerText
                     
                 }
@@ -5074,9 +5077,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             self.ConstantViewCarListsHeight.constant = 0
             self.viewCarLists.isHidden = true
 //            self.viewShareRideView.isHidden = true
-            
-            txtCurrentLocation.text = place.formattedAddress
-            strPickupLocation = place.formattedAddress!
+            let SelectedFromLocation = "\(place.name), \(place.formattedAddress!)"
+            txtCurrentLocation.text = SelectedFromLocation
+//                place.formattedAddress
+            strPickupLocation = SelectedFromLocation
+//                place.formattedAddress!
             doublePickupLat = place.coordinate.latitude
             doublePickupLng = place.coordinate.longitude
             
@@ -5096,9 +5101,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             self.ConstantViewCarListsHeight.constant = 0
             self.viewCarLists.isHidden = true
 //            self.viewShareRideView.isHidden = true
-            
-            txtDestinationLocation.text = place.formattedAddress
-            strDropoffLocation = place.formattedAddress!
+            let SelectedDestinationLocation = "\(place.name), \(place.formattedAddress!)"
+            txtDestinationLocation.text = SelectedDestinationLocation
+            strDropoffLocation = SelectedDestinationLocation
+//            place.formattedAddress!
             doubleDropOffLat = place.coordinate.latitude
             doubleDropOffLng = place.coordinate.longitude
             

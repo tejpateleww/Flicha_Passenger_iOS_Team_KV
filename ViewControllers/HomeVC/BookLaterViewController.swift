@@ -667,15 +667,21 @@ var mapView : GMSMapView?
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         if BoolCurrentLocation {
-            txtPickupLocation.text = place.formattedAddress
-            strPickupLocation = place.formattedAddress!
+            let SelectedFromLocation = "\(place.name), \(place.formattedAddress!)"
+            txtPickupLocation.text = SelectedFromLocation
+//                place.formattedAddress
+            strPickupLocation = SelectedFromLocation
+//                place.formattedAddress!
             doublePickupLat = place.coordinate.latitude
             doublePickupLng = place.coordinate.longitude
             
         }
         else {
-            txtDropOffLocation.text = place.formattedAddress
-            strDropoffLocation = place.formattedAddress!
+            let SelectedDestinationLocation = "\(place.name), \(place.formattedAddress!)"
+            txtDropOffLocation.text = SelectedDestinationLocation
+//                place.formattedAddress
+            strDropoffLocation = SelectedDestinationLocation
+//                place.formattedAddress!
             doubleDropOffLat = place.coordinate.latitude
             doubleDropOffLng = place.coordinate.longitude
         }
@@ -726,11 +732,14 @@ var mapView : GMSMapView?
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place
                 if let place = place {
-                    self.strPickupLocation = place.formattedAddress!
+                    let SelectedFromLocation = "\(place.name), \(place.formattedAddress!)"
+                    self.strPickupLocation = SelectedFromLocation
+//                        place.formattedAddress!
                     self.doublePickupLat = place.coordinate.latitude
                     self.doublePickupLng = place.coordinate.longitude
-                    self.txtPickupLocation.text = place.formattedAddress?.components(separatedBy: ", ")
-                        .joined(separator: "\n")
+                    self.txtPickupLocation.text = SelectedFromLocation
+//                        place.formattedAddress?.components(separatedBy: ", ")
+//                        .joined(separator: "\n")
                 }
             }
         })
