@@ -11,6 +11,41 @@ import UIKit
 class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableViewDelegate
 {
     
+    
+    //-------------------------------------------------------------
+    // MARK: - Outlets
+    //-------------------------------------------------------------
+    
+    @IBOutlet weak var viewAvailableFunds: UIView!
+    @IBOutlet weak var lblAvailableFunds: UILabel!
+    @IBOutlet weak var lblAvailableFundsDesc: UILabel!
+    
+    
+    @IBOutlet weak var viewCenter: UIView!
+    
+    //    @IBOutlet weak var imgTopUp: UIImageView!
+    @IBOutlet weak var lblTopUp: UILabel!
+    
+    @IBOutlet weak var imgTansferToBank: UIImageView!
+    @IBOutlet weak var lblTransferToBank: UILabel!
+    
+    //    @IBOutlet weak var imgHistory: UIImageView!
+    @IBOutlet weak var lblHistory: UILabel!
+    
+    
+    @IBOutlet weak var viewBottom: UIView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet var viewTopUp: UIView!
+    @IBOutlet var viewTransfer: UIView!
+    @IBOutlet var viewHistory: UIView!
+    @IBOutlet var imgTopUp: UIImageView!
+    @IBOutlet var imgTransfer: UIImageView!
+    @IBOutlet var imgHistory: UIImageView!
+    
+    
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -27,13 +62,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         tableView.reloadData()
     }
     
-    @IBOutlet var viewTopUp: UIView!
-    @IBOutlet var viewTransfer: UIView!
-    @IBOutlet var viewHistory: UIView!
-    @IBOutlet var imgTopUp: UIImageView!
-    @IBOutlet var imgTransfer: UIImageView!
-    @IBOutlet var imgHistory: UIImageView!
-    
+   
     var aryData = [[String:AnyObject]]()
     var labelNoData = UILabel()
     
@@ -111,31 +140,6 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         lblNotAvailble.text = "Not Available".localized
         
     }
-    
-    //-------------------------------------------------------------
-    // MARK: - Outlets
-    //-------------------------------------------------------------
-    
-    @IBOutlet weak var viewAvailableFunds: UIView!
-    @IBOutlet weak var lblAvailableFunds: UILabel!
-    @IBOutlet weak var lblAvailableFundsDesc: UILabel!
-    
-    
-    @IBOutlet weak var viewCenter: UIView!
-    
-//    @IBOutlet weak var imgTopUp: UIImageView!
-    @IBOutlet weak var lblTopUp: UILabel!
-    
-    @IBOutlet weak var imgTansferToBank: UIImageView!
-    @IBOutlet weak var lblTransferToBank: UILabel!
-    
-//    @IBOutlet weak var imgHistory: UIImageView!
-    @IBOutlet weak var lblHistory: UILabel!
-    
-    
-    @IBOutlet weak var viewBottom: UIView!
-    
-    @IBOutlet weak var tableView: UITableView!
     
     
     //-------------------------------------------------------------

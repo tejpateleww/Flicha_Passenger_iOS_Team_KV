@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18546BD2225DE9BE009DF334 /* PesapalWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18546BD1225DE9BE009DF334 /* PesapalWebViewViewController.swift */; };
 		34E01A1D220EE898000D048E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E01A1F220EE898000D048E /* Main.storyboard */; };
 		34E01A25220EED13000D048E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E01A27220EED13000D048E /* LaunchScreen.storyboard */; };
 		34E01A2A220EEE2C000D048E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E01A28220EEE2C000D048E /* Localizable.strings */; };
@@ -173,6 +174,7 @@
 /* Begin PBXFileReference section */
 		008D222D1FA08DCF001223DF /* TanTaxi User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TanTaxi User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A61D4B1FA8AC5600E1BA84 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		18546BD1225DE9BE009DF334 /* PesapalWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PesapalWebViewViewController.swift; sourceTree = "<group>"; };
 		3419629621637561005A580E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		34E01A20220EE8B3000D048E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E01A24220EEC65000D048E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 		3A4072DC21B512270015C494 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18546BD1225DE9BE009DF334 /* PesapalWebViewViewController.swift */,
 				3A84BC9C21C264E800EDA3A2 /* MyRatingViewController */,
 				3A5DDCA521BA5C9200F9B5A3 /* TripInfoViewController */,
 				3A4072DD21B512270015C494 /* AppDelegate */,
@@ -1179,6 +1182,7 @@
 				3A4073B121B512280015C494 /* UpCommingVC.swift in Sources */,
 				3A40740F21B512280015C494 /* Extention+UIViewController.swift in Sources */,
 				3A4073FF21B512280015C494 /* MTRipple.swift in Sources */,
+				18546BD2225DE9BE009DF334 /* PesapalWebViewViewController.swift in Sources */,
 				3A4073DE21B512280015C494 /* TempDataOfWebservice.swift in Sources */,
 				3A4073A721B512280015C494 /* DriverInfoViewController.swift in Sources */,
 				3A4073A521B512280015C494 /* BookLaterViewController.swift in Sources */,
