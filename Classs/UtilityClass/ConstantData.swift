@@ -16,7 +16,7 @@ let themeGrayColor: UIColor = UIColor.init(red: 114/255, green: 114/255, blue: 1
 let themeGrayBGColor : UIColor = UIColor.init(hex: "DDDDDD")
 let themeGrayTextColor : UIColor = UIColor.init(hex: "7A7A7C")
 let currencySign = "TZS"
-let appName = "Tan Taxi"
+let appName = "TanTaxi"
 let helpLineNumber = "+255777115054"//"0772506506"
 let googleAnalyticsTrackId = "UA-122360832-1"
 
