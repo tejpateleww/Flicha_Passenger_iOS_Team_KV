@@ -112,18 +112,23 @@ class WalletTopUpVC: BaseViewController, SelectCardDelegate {
     }
     @IBAction func btnAddFunds(_ sender: ThemeButton) {
         
-        if strCardId == "" {
- 
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please reselect card") { (index, title) in
-            }
-        }
-        else if txtAmount.text == "" {
+//        if strCardId == "" {
+//
+//            UtilityClass.setCustomAlert(title: "Missing", message: "Please reselect card") { (index, title) in
+//            }
+//        }
+//        else
+        if txtAmount.text == "" {
      
             UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Amount") { (index, title) in
             }
         }
         else {
-            webserviceOFTopUp()
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "PesapalWebViewViewController") as! PesapalWebViewViewController
+            next.strUrl = "https://www.tantaxitanzania.com/pesapal/add_money/\(SingletonClass.sharedInstance.strPassengerID)/\(txtAmount.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: currencySign, with: ""))/passenger"
+            self.present(next, animated: true, completion: nil)
+            
+//            webserviceOFTopUp()
         }
         
     }
