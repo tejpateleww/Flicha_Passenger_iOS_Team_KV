@@ -242,7 +242,7 @@
 "Please enter flight number" = "Tafadhal Ingiza Namba Ya Ndege";
 "Please enter Account Holder Name" = "Tafadhali Ingiza Jina La Mwenye Akaunti";
 "Please enter Bank Name" = "Tafadhali Ingiza Jina La Benki";
-"Please enter BSB" = "Tafadhali Ingiza BSB";
+"Please enter Branch Code" = "Tafadhali Ingiza Number ya Tawi";
 "Please enter Bank Account Number" = "Tafadhali Ingiza Namba Ya Akaunti";
 "Please select Gender" = "Tafadhali Chagua Jinsia";
 "Please select card" = "Tafadhali Chagua Kadi";
@@ -312,7 +312,7 @@
 "Tuma Code Yako Ya Ukaribisho" = "Jina La Mwenye Akaunti";
 "Jina La Mwenye Akaunti" = "Jina La Benki";
 //"Jina La Benki
-"BSB" = "BSB";
+"Branch Code" = "Number ya Tawi";
 "Namba Ya Akaunti Ya Benki" = "Namba Ya Akaunti Ya Benki";
 "Mrejesho Zaidi (Sio Lazima)"  = "Mrejesho Zaidi (Sio Lazima)";
 "Maelezo"  = "Maelezo";
@@ -398,7 +398,7 @@
 
 "Account Holder Name" = "Jina La Mwenye Akaunti";
 "Bank Name" = "Jina La Benki";
-"BSB" = "BSB";
+"Branch Code" = "Number ya Tawi";
 "Bank Account No." = "Namba Ya Akaunti Ya Benki";
 
 //"EDIT PROFILE" = "PINDA MAFUNZO";
