@@ -236,7 +236,7 @@
 "Please enter flight number" = "Please enter flight number";
 "Please enter Account Holder Name" = "Please enter Account Holder Name";
 "Please enter Bank Name" = "Please enter Bank Name";
-"Please enter BSB" = "Please enter BSB";
+"Please enter Branch Code" = "Please enter Branch Code";
 "Please enter Bank Account Number" = "Please enter Bank Account Number";
 "GET RECEIPT" = "GET RECEIPT";
 "Please select Gender" = "Please select Gender";
@@ -318,7 +318,7 @@
 "Share Your Invite Code" = "Share Your Invite Code";
 "Account Holder Name" = "Account Holder Name";
 "Bank Name" = "Bank Name";
-"BSB" = "BSB";
+"Branch Code" = "Branch Code";
 "Bank Account No." = "Bank Account No.";
 "Any other feedback(Optional)" = "Any other feedback(Optional)";
 "Description" = "Description";

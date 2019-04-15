@@ -38,7 +38,7 @@ class EditAccountViewController: BaseViewController {
     {
         txtAccountHolderName.placeholder = "Account Holder Name".localized
         txtBankName.placeholder = "Bank Name".localized
-        txtBSB.placeholder = "BSB".localized
+        txtBSB.placeholder = "Branch Code".localized
         txtBankAccount.placeholder = "Bank Account No.".localized
         btnSubmit.setTitle("Submit".localized, for: .normal)
     }
@@ -121,7 +121,7 @@ class EditAccountViewController: BaseViewController {
             return false
         }
         else if (txtBSB.text!.count == 0) {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter BSB Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Branch Code") { (index, title) in
             }
             return false
         }
