@@ -89,9 +89,9 @@ class WalletViewController: BaseViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
 //         bPaySelected()
-        
+        setLocalization()
         self.lblCurrentBalance.text = "Balance \n \(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
-       setLocalization()
+       
     }
     
     

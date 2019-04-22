@@ -31,7 +31,7 @@ extension UIApplication {
 class BookLaterViewController: BaseViewController, GMSAutocompleteViewControllerDelegate, UINavigationControllerDelegate, WWCalendarTimeSelectorProtocol, UIPickerViewDelegate, UIPickerViewDataSource, isHaveCardFromBookLaterDelegate, UITextFieldDelegate,GMSMapViewDelegate {
    
     var delegateBookLater : deleagateForBookTaxiLater!
-var mapView : GMSMapView?
+    var mapView : GMSMapView?
     var pickerView = UIPickerView()
     var strModelId = String()
     var BoolCurrentLocation = Bool()
@@ -69,8 +69,8 @@ var mapView : GMSMapView?
         mapView = GMSMapView()
         mapView?.delegate = self
         txtDropOffLocation.delegate = self
-        txtSelectPaymentMethod.text = "Cash"
-        txtSelectPaymentMethod.isUserInteractionEnabled = false
+//        txtSelectPaymentMethod.text = "Cash"
+//        txtSelectPaymentMethod.isUserInteractionEnabled = false
         self.setNavBarWithBack(Title: "Book Later".localized, IsNeedRightButton: false)
 //        UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
          self.navigationItem.title = "Book Later".localized
@@ -616,7 +616,7 @@ var mapView : GMSMapView?
     @IBAction func btnSubmit(_ sender: ThemeButton) {
         
        
-        if txtFullName.text == "" || txtMobileNumber.text == "" || txtPickupLocation.text == "" || txtDropOffLocation.text == "" || txtDataAndTimeFromCalendar.text == "" || strPassengerType == "" || paymentType == "" {
+        if txtFullName.text == "" || txtMobileNumber.text == "" || txtPickupLocation.text == "" || txtDropOffLocation.text == "" || txtDataAndTimeFromCalendar.text == "" || strPassengerType == "" || paymentType == ""  {
             
            
             UtilityClass.setCustomAlert(title: "Missing", message: "All fields are required...".localized) { (index, title) in
@@ -897,12 +897,12 @@ var mapView : GMSMapView?
         imgPaymentOption.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
         txtSelectPaymentMethod.text = data["CardNum2"] as? String
         
-        if data["CardNum"] as! String == "Add a Card" {
-            
-            isAddCardSelected = true
-//            self.addNewCard()
-        }
-        
+//        if data["CardNum"] as! String == "Add a Card" {
+//
+//            isAddCardSelected = true
+////            self.addNewCard()
+//        }
+//
         let type = data["CardNum"] as! String
         
         if type  == "wallet" {
@@ -912,16 +912,16 @@ var mapView : GMSMapView?
             paymentType = "cash"
         }
         else {
-            paymentType = "card"
+            paymentType = "pesapal"
         }
         
         
-        if paymentType == "card" {
-            
-            if data["Id"] as? String != "" {
-                CardID = data["Id"] as! String
-            }
-        }
+//        if paymentType == "card" {
+//
+//            if data["Id"] as? String != "" {
+//                CardID = data["Id"] as! String
+//            }
+//        }
         
         // do something with selected row
     }
@@ -1140,14 +1140,19 @@ var mapView : GMSMapView?
                 dict["CardNum2"] = "cash" as AnyObject
                 dict["Type"] = "iconCashBlack" as AnyObject
                 
-//                var dict2 = [String:AnyObject]()
-//                dict2["CardNum"] = "wallet" as AnyObject
-//                dict2["CardNum2"] = "wallet" as AnyObject
-//                dict2["Type"] = "iconWalletBlack" as AnyObject
-//
-//
-//                self.aryCards.append(dict)
-//                self.aryCards.append(dict2)
+                var dict2 = [String:AnyObject]()
+                dict2["CardNum"] = "wallet" as AnyObject
+                dict2["CardNum2"] = "wallet" as AnyObject
+                dict2["Type"] = "iconWalletBlack" as AnyObject
+
+                var dict3 = [String:AnyObject]()
+                dict3["CardNum"] = "pesapal" as AnyObject
+                dict3["CardNum2"] = "pesapal" as AnyObject
+                dict3["Type"] = "icon_SelectedCard" as AnyObject
+                
+                self.aryCards.append(dict)
+                self.aryCards.append(dict2)
+                self.aryCards.append(dict3)
 //
 //                if self.aryCards.count == 2 {
 //                    var dict3 = [String:AnyObject]()
@@ -1160,29 +1165,29 @@ var mapView : GMSMapView?
 //                }
 //
 //                self.pickerView.selectedRow(inComponent: 0)
-//                let data = self.aryCards[0]
+                let data = self.aryCards[0]
 //
-//                self.imgPaymentOption.image = UIImage(named: self.setCardIcon(str: data["Type"] as! String))
-//                self.txtSelectPaymentMethod.text = data["CardNum2"] as? String
-//
-//                let type = data["CardNum"] as! String
-//
-//                if type  == "wallet" {
-//                    self.paymentType = "wallet"
-//                }
-//                else if type == "cash" {
-//                    self.paymentType = "cash"
-//                }
-//                else {
-//                    self.paymentType = "card"
-//                }
+                self.imgPaymentOption.image = UIImage(named: self.setCardIcon(str: data["Type"] as! String))
+                self.txtSelectPaymentMethod.text = data["CardNum2"] as? String
+
+                let type = data["CardNum"] as! String
+
+                if type  == "wallet" {
+                    self.paymentType = "wallet"
+                }
+                else if type == "cash" {
+                    self.paymentType = "cash"
+                }
+                else {
+                    self.paymentType = "pesapal"
+                }
 //                if self.paymentType == "card" {
 //
 //                    if data["Id"] as? String != "" {
 //                        self.CardID = data["Id"] as! String
 //                    }
 //                }
-                 self.paymentType = "cash"
+//                 self.paymentType = "cash"
                 self.pickerView.reloadAllComponents()
               
                 /*

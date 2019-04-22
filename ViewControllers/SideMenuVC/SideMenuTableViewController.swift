@@ -93,7 +93,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
         // self.clearsSelectionOnViewWillAppear = false
         
         
-        arrMenuIcons = ["icon_MyBookingUnselect","icon_MyReceiptUnselect","icon_UnSelectedWallet","icon_PaymentOptionsUnselect","icon_InviteFriendUnselect","icon_FavouriteUnselect","icon_Legal","icon_Support"]//,"icon_UnSelectedWallet",,"icon_PaymentOptionsUnselect"
+        arrMenuIcons = ["icon_MyBookingUnselect","icon_MyReceiptUnselect","icon_UnSelectedWallet","icon_InviteFriendUnselect","icon_FavouriteUnselect","icon_Legal","icon_Support"]//,"icon_PaymentOptionsUnselect","icon_UnSelectedWallet",,"icon_PaymentOptionsUnselect"
 //                        "iconSettings","iconMyBooking","iconPackageHistory","iconLogOut"]
         
 //        arrMenuTitle = ["My Booking","My Receipts","Invite Friends","My Ratings","Legal", "Support"]//"Favourites","Payment Options"
@@ -121,7 +121,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
 //                            }
 //                        }
 //                    }
-         arrMenuTitle = ["My Bookings","My Receipts","Wallet","Payment Options","Invite Friends","My Ratings","Legal", "Support"]
+         arrMenuTitle = ["My Bookings","My Receipts","Wallet","Invite Friends","My Ratings","Legal", "Support"]//,"Payment Options"
     
     }
     

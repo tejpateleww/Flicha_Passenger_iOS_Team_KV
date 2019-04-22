@@ -27,7 +27,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         setLocalization()
         setData()
 
         self.setNavBarWithBack(Title: "TRANSFER TO BANK".localized, IsNeedRightButton: true)
@@ -41,10 +41,10 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         btnWithdrawFunds.layer.masksToBounds = true
         
       txtBankAccountNo.keyboardType = .numberPad
-        lblCurrentBalanceTitle.text = "\(SingletonClass.sharedInstance.strCurrentBalance)"
+        lblNotAvailable.text = "\(SingletonClass.sharedInstance.strCurrentBalance)"
         
         txtAmount.becomeFirstResponder()
-        
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +55,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
          
-         setLocalization()
+        
     }
     @IBOutlet weak var lblTZS: UILabel!
     func setLocalization()
@@ -398,7 +398,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
                 print(result)
                 
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
-                self.lblCurrentBalanceTitle.text = "\(SingletonClass.sharedInstance.strCurrentBalance)"
+                self.lblNotAvailable.text = "\(SingletonClass.sharedInstance.strCurrentBalance)"
                 
                 
                 SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]

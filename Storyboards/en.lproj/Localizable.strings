@@ -90,6 +90,7 @@
 "Add a Card" = "Add a Card";
 "Add New Card" = "Add New Card";
 "OK" = "OK";
+"Make Payment" = "Make Payment";
 "Not Available" = "Not Available";
 "Cancel" = "Cancel";
 "Done" = "Done";
@@ -184,6 +185,7 @@
 "Image" = "Image";
 "Cards" = "Cards";
 "Card" = "Card";
+"pesapal" = "pesapal";
 "Card :" = "Card :";
 "Transfer" = "Transfer";
 "Balance" = "Balance";

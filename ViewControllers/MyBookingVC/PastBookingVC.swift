@@ -8,7 +8,8 @@
 
 import UIKit
 
-class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegate,delegatePesapalWebView
+{
 
     
     var aryData = NSMutableArray()
@@ -204,7 +205,20 @@ class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //            let strTripFare = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "TripFare", isNotHave: strNotAvailable)
 //            let strNightFare = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "NightFare", isNotHave: strNotAvailable)
             
+            cell.lblTripStatus.text = currentData.object(forKey: "Status") as! String
             
+            cell.btnPaymentOrReceipt.isHidden = true
+             if let paymentURL = currentData.object(forKey: "payment_url") as? String
+             {
+                if !UtilityClass.isEmpty(str: paymentURL)
+                {
+                    cell.btnPaymentOrReceipt.isHidden = false
+                    cell.btnPaymentOrReceipt.setTitle("Make Payment".localized, for: .normal)
+                }
+            }
+        
+            
+            cell.btnPaymentOrReceipt.addTarget(self, action: #selector(btnCellPaymentReceiptClicked(_:)), for: .touchUpInside)
             
             let waitingTime = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "WaitingTime", isNotHave: strNotAvailable)
             
@@ -487,8 +501,36 @@ class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-
+    @IBAction func btnCellPaymentReceiptClicked(_ sender: UIButton)
+    {
+        let btnTag = sender.tag
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PesapalWebViewViewController") as! PesapalWebViewViewController
+        next.delegate = self
+        let currentData = (aryData.object(at: btnTag) as! NSDictionary)
+        
+        let url = currentData.object(forKey: "payment_url") as! String //"https://www.tantaxitanzania.com/pesapal/add_money/\(SingletonClass.sharedInstance.strPassengerID)/\("\(Amount)")/passenger"
+        next.strUrl = url
+        //            self.present(next, animated: true, completion: nil)
+        
+        let navController = UINavigationController.init(rootViewController: next)
+        UIApplication.shared.keyWindow?.rootViewController?.present(navController, animated: true, completion: nil)
+    }
+    
+    func didOrderPesapalStatus(status: Bool)
+    {
+//        if status
+//        {
+            self.webserviceOfPastbookingpagination(index: 1)
+            
+//        }
+//        else
+//        {
+////            self.btnOK.setTitle("Make Payment", for: .normal)
+//        }
+    }
+    
 }
+
 
 
 extension NSMutableAttributedString {

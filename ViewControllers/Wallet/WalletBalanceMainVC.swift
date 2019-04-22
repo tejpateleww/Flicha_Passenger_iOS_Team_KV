@@ -88,7 +88,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         }
         else {
             aryData = SingletonClass.sharedInstance.walletHistoryData
-            self.lblAvailableFundsDesc.text = "\(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
+            self.lblNotAvailble.text = "\(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
         }
     }
     
@@ -287,7 +287,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
                 print(result)
                 
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
-                self.lblAvailableFundsDesc.text = "\(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
+                self.lblNotAvailble.text = "\(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
                 
                 
                 SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TripInfoViewController: UIViewController//,delegateRateGiven
+class TripInfoViewController: UIViewController,delegatePesapalWebView//,delegateRateGiven
 {
     
     //-------------------------------------------------------------
@@ -127,7 +127,14 @@ class TripInfoViewController: UIViewController//,delegateRateGiven
         lblPrompAppplied.text = "Promo Applied :".localized
         lblTotalAmount.text = "Total Amount :".localized
         lblTripStatusTitle.text = "Trip Status:".localized
+        if dictData.object(forKey: "PaymentType") as! String != "pesapal"
+        {
         btnOK.setTitle("OK".localized, for: .normal)
+        }
+        else
+        {
+            btnOK.setTitle("Make Payment".localized, for: .normal)
+        }
         lblPaymentTypeTitle.text = "Payment Type:".localized
         lblWaitingTimeTile.text = "Waiting Time".localized
     }
@@ -235,11 +242,41 @@ class TripInfoViewController: UIViewController//,delegateRateGiven
 //        }
 //        else
 //        {
-            self.delegate.delegateforGivingRate()
+//            self.delegate.delegateforGivingRate()
 
 //        }
 //         SingletonClass.sharedInstance.passengerType = ""
+        
+        if (btnOK.titleLabel?.text) != "Make Payment".localized//dictData.object(forKey: "PaymentType") as! String != "pesapal"
+        {
+            self.delegate.delegateforGivingRate()
+        }
+        else
+        {
+//            btnOK.setTitle("Make Payment".localized, for: .normal)
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "PesapalWebViewViewController") as! PesapalWebViewViewController
+            next.delegate = self
+            let Amount = String((lblGrandTotal.text)!.replacingOccurrences(of: currencySign, with: "").trimmingCharacters(in: .whitespacesAndNewlines))//(lblGrandTotal.text?.replacingOccurrences(of: currencySign, with: ""))?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let url = "https://www.tantaxitanzania.com/pesapal/add_money/\(SingletonClass.sharedInstance.strPassengerID)/\("\(Amount)")/passenger"
+            next.strUrl = url
+//            self.present(next, animated: true, completion: nil)
+self.navigationController?.pushViewController(next, animated: true)
+//            let navController = UINavigationController.init(rootViewController: next)
+//            UIApplication.shared.keyWindow?.rootViewController?.present(navController, animated: true, completion: nil)
+        }
 
     }
-    
+    func didOrderPesapalStatus(status: Bool)
+    {
+        if status
+        {
+            self.btnOK.setTitle("OK", for: .normal)
+            self.delegate.delegateforGivingRate()
+        }
+        else
+        {
+            self.btnOK.setTitle("Make Payment", for: .normal)
+        }
+    }
 }

@@ -597,6 +597,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         btnRequest.setTitle("Cancel Request".localized, for: .normal)
         btnDriverInfo.setTitle("Driver Info".localized, for: .normal)
         txtHavePromocode.placeholder = "Enter Promocode".localized
+        btnPesaPal.setTitle("pesapal".localized, for: .normal)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -2280,7 +2281,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var PayCardView: UIView!
     @IBOutlet weak var CardLogo: UIImageView!
-    @IBOutlet weak var btnCard: UIButton!
+    @IBOutlet weak var btnPesaPal: UIButton!
     
     
     
@@ -2292,6 +2293,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             
         case self.btnWallet:
             self.SetPaymentOption(SelectionIndex: 1)
+            
+        case self.btnPesaPal:
+            self.SetPaymentOption(SelectionIndex: 2)
+            
         default:
             break
         }
@@ -2299,51 +2304,55 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     }
     
+    @IBAction func btnPesaPalOptionClicked(_ sender: UIButton)
+    {
+        
+    }
     func SetPaymentOption(SelectionIndex:Int) {
         
-//        self.CashLogo.image = UIImage(named: "icon_CashUnselected")
-//        self.WalletLogo.image = UIImage(named: "icon_UnSelectedWallet")
-//        self.CardLogo.image = UIImage(named: "icon_UnselectedCard")
-//
-//        self.btnCash.isSelected = false
-//        self.btnWallet.isSelected = false
-//        self.btnCard.isSelected = false
-//
-//        self.PayCashView.backgroundColor = UIColor.init(hex: "E5E5E5")
-//        self.PayWalletView.backgroundColor = UIColor.init(hex: "E5E5E5")
-//        self.PayCardView.backgroundColor = UIColor.init(hex: "E5E5E5")
-//
-//
-//        if SelectionIndex == 0 {
-//            self.CashLogo.image = UIImage(named: "icon_SelectedCash")
-//            self.btnCash.isSelected = true
-//            self.PayCashView.backgroundColor = UIColor.black
-//            paymentType = "cash"
-//
-//        } else if SelectionIndex == 1 {
-//            self.WalletLogo.image = UIImage(named: "icon_SelectedWallet")
-//            self.btnWallet.isSelected = true
-//            self.PayWalletView.backgroundColor = UIColor.black
-//            paymentType = "wallet"
-//        } else if SelectionIndex == 2 {
-//            self.CardLogo.image = UIImage(named: "icon_SelectedCard")
-//            self.btnCard.isSelected = true
-//            self.PayCardView.backgroundColor = UIColor.black
-//            paymentType = "card"
-//        }
+        self.CashLogo.image = UIImage(named: "icon_CashUnselected")
+        self.WalletLogo.image = UIImage(named: "icon_UnSelectedWallet")
+        self.CardLogo.image = UIImage(named: "icon_UnselectedCard")
+
+        self.btnCash.isSelected = false
+        self.btnWallet.isSelected = false
+        self.btnPesaPal.isSelected = false
+
+        self.PayCashView.backgroundColor = UIColor.init(hex: "E5E5E5")
+        self.PayWalletView.backgroundColor = UIColor.init(hex: "E5E5E5")
+        self.PayCardView.backgroundColor = UIColor.init(hex: "E5E5E5")
+
+
+        if SelectionIndex == 0 {
+            self.CashLogo.image = UIImage(named: "icon_SelectedCash")
+            self.btnCash.isSelected = true
+            self.PayCashView.backgroundColor = UIColor.black
+            paymentType = "cash"
+
+        } else if SelectionIndex == 1 {
+            self.WalletLogo.image = UIImage(named: "icon_SelectedWallet")
+            self.btnWallet.isSelected = true
+            self.PayWalletView.backgroundColor = UIColor.black
+            paymentType = "wallet"
+        } else if SelectionIndex == 2 {
+            self.CardLogo.image = UIImage(named: "icon_SelectedCard")
+            self.btnPesaPal.isSelected = true
+            self.PayCardView.backgroundColor = UIColor.black
+            paymentType = "pesapal"//"card"
+        }
         
         
         
-        paymentType = "cash"
+//        paymentType = "cash"
     }
     
     
     @IBAction func btnAddCard(_ sender: Any) {
         
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
-        SingletonClass.sharedInstance.isFromTopUP = true
-        next.delegateForTopUp = self
-        self.navigationController?.pushViewController(next, animated: true)
+//        let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
+//        SingletonClass.sharedInstance.isFromTopUP = true
+//        next.delegateForTopUp = self
+//        self.navigationController?.pushViewController(next, animated: true)
         
         
 //        let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
@@ -2370,48 +2379,48 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     func paymentOptions()
     {
         
-//        if SingletonClass.sharedInstance.CardsVCHaveAryData.count != 0 {
-//
-//            cardData = SingletonClass.sharedInstance.CardsVCHaveAryData
-//
-//            for i in 0..<aryCardsListForBookNow.count {
-//                cardData.append(aryCardsListForBookNow[i])
-//            }
-//
-//            if self.aryCardsListForBookNow.count != 0 {
-//                cardData = self.aryCardsListForBookNow
-//            }
-//
-//        }
-//        else {
-//            cardData.removeAll()
-//
-//            for i in 0..<aryCardsListForBookNow.count {
-//                cardData.append(aryCardsListForBookNow[i])
-//            }
-//        }
-//        self.pickerView.reloadAllComponents()
-//
-//        let data = cardData[0]
+        if SingletonClass.sharedInstance.CardsVCHaveAryData.count != 0 {
+
+            cardData = SingletonClass.sharedInstance.CardsVCHaveAryData
+
+            for i in 0..<aryCardsListForBookNow.count {
+                cardData.append(aryCardsListForBookNow[i])
+            }
+
+            if self.aryCardsListForBookNow.count != 0 {
+                cardData = self.aryCardsListForBookNow
+            }
+
+        }
+        else {
+            cardData.removeAll()
+
+            for i in 0..<aryCardsListForBookNow.count {
+                cardData.append(aryCardsListForBookNow[i])
+            }
+        }
+        self.pickerView.reloadAllComponents()
+
+        let data = cardData[0]
         
 //        imgPaymentType.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
 //        txtSelectPaymentOption.text = data["CardNum2"] as? String
 //
-//        let type = data["CardNum"] as! String
-//
-//        if type  == "wallet" {
-//            paymentType = "wallet"
-//        }
-//        else if type == "cash" {
-//            paymentType = "cash"
-//        }
-//        else {
-//            paymentType = "card"
-//        }
-//
-//        if paymentType == "card" {
-//            CardID = data["Id"] as! String
-//        }
+        let type = data["CardNum"] as! String
+
+        if type  == "wallet" {
+            paymentType = "wallet"
+        }
+        else if type == "cash" {
+            paymentType = "cash"
+        }
+        else {
+            paymentType = "pesapal"//"card"
+        }
+
+        if paymentType == "card" {
+            CardID = data["Id"] as! String
+        }
         
 //        self.SetPaymentOption(SelectionIndex: 0)
         viewBookNow.isHidden = false

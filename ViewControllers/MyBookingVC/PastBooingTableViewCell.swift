@@ -95,5 +95,5 @@ class PastBooingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var stackViewTotalCost: UIStackView!
   
-    
+    @IBOutlet weak var btnPaymentOrReceipt: ThemeButton!
 }

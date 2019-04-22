@@ -14,7 +14,7 @@ import UIKit
     func didSelectCard(dictData: [String:AnyObject])
 }
 
-class WalletTopUpVC: BaseViewController, SelectCardDelegate {
+class WalletTopUpVC: BaseViewController, SelectCardDelegate,delegatePesapalWebView {
 
     
     @IBOutlet var viewCardNumber: UIView!
@@ -126,7 +126,11 @@ class WalletTopUpVC: BaseViewController, SelectCardDelegate {
         else {
             let next = self.storyboard?.instantiateViewController(withIdentifier: "PesapalWebViewViewController") as! PesapalWebViewViewController
             next.strUrl = "https://www.tantaxitanzania.com/pesapal/add_money/\(SingletonClass.sharedInstance.strPassengerID)/\(txtAmount.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: currencySign, with: ""))/passenger"
-            self.present(next, animated: true, completion: nil)
+//            self.present(next, animated: true, completion: nil)
+            next.delegate = self
+            self.navigationController?.pushViewController(next, animated: true)
+//            let navController = UINavigationController.init(rootViewController: next)
+//            UIApplication.shared.keyWindow?.rootViewController?.present(navController, animated: true, completion: nil)
             
 //            webserviceOFTopUp()
         }
@@ -218,7 +222,16 @@ class WalletTopUpVC: BaseViewController, SelectCardDelegate {
         strCardId = dictData["Id"] as! String
         
     }
-    
+    func didOrderPesapalStatus(status: Bool)
+    {
+        if status
+        {
+            self.navigationController?.popViewController(animated: true)
+        }
+        else
+        {
+        }
+    }
     //-------------------------------------------------------------
     // MARK: - Webservice Methods For TOP UP
     //-------------------------------------------------------------

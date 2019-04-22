@@ -15,7 +15,8 @@ protocol delegatePesapalWebView {
 //    @objc optional func didOrderFailed()
 }
 
-class PesapalWebViewViewController: UIViewController {
+class PesapalWebViewViewController: BaseViewController
+{
     
 
     // ----------------------------------------------------
@@ -44,7 +45,15 @@ class PesapalWebViewViewController: UIViewController {
     // ----------------------------------------------------
     // MARK: - Base Methods
     // ----------------------------------------------------
-    override func loadView() {
+    override func loadView()
+    {
+       
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        self.view.backgroundColor = UIColor.blue
         let webConfiguration = WKWebViewConfiguration()
         
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -53,18 +62,18 @@ class PesapalWebViewViewController: UIViewController {
         webView.backgroundColor = UIColor.blue
         self.view = webView!
         self.viewForWebView = webView!
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blue
-        self.viewForWebView = webView!
+//        self.viewForWebView = webView!
         
-        let url = URL(string: strUrl)!
-        webView.load(URLRequest(url: url))
+//        let url = URL(string: strUrl)!
+        let URLTemp = URL.init(string: strUrl)
+        webView.load(URLRequest.init(url: URLTemp!))//load(URLRequest(url: URLTemp))
         webView.allowsBackForwardNavigationGestures = true
         setProgressView()
+        self.setNavBarWithBack(Title: "Payment".localized, IsNeedRightButton: false)
+//        self.navigationItem.title = Title.uppercased().localizedUppercase
+        self.navigationController?.navigationBar.barTintColor = themeYellowColor;
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -108,6 +117,7 @@ extension PesapalWebViewViewController: WKUIDelegate, WKNavigationDelegate {
         
        self.showProgressView()
         print("didStartProvisionalNavigation: \(String(describing: webView.url?.absoluteString))")
+        //"https://www.tantaxitanzania.com/pesapal/add_money_pesapal_ipn?pesapal_transaction_tracking_id=347bb386-84b4-4340-913a-9799e372d2a3&pesapal_merchant_reference=455"
         if (webView.url?.absoluteString == "https://www.tantaxitanzania.com/pesapal/add_money_success") {
            
             let alert = UIAlertController(title: appName.localized, message: "Payment Success", preferredStyle: .alert)
