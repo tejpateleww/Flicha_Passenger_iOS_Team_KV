@@ -73,7 +73,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavBarWithBack(Title: "BALANCE".localized, IsNeedRightButton: true)
+        self.setNavBarWithBack(Title: "Balance".localized, IsNeedRightButton: true)
         
         tableView.dataSource = self
         tableView.delegate = self

@@ -90,7 +90,7 @@ class WalletViewController: BaseViewController, UIScrollViewDelegate {
         
 //         bPaySelected()
         setLocalization()
-        self.lblCurrentBalance.text = "Balance \n \(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
+        self.lblCurrentBalance.text = "\("Balance".localized) \n \(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
        
     }
     
@@ -244,7 +244,7 @@ class WalletViewController: BaseViewController, UIScrollViewDelegate {
                 print(result)
                 
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
-                self.lblCurrentBalance.text = "Balance \n\(SingletonClass.sharedInstance.strCurrentBalance)  \(currencySign)"
+                self.lblCurrentBalance.text = "\("Balance".localized) \n\(SingletonClass.sharedInstance.strCurrentBalance)  \(currencySign)"
 
                 
                 SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]

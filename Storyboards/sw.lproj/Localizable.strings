@@ -56,7 +56,7 @@
 "Need Camera Permission" = "Unahitaji Ruhusa Ya Camera";
 "This app needs camera permission." = "Programu hii inahitaji kibali cha kamera";
 "All Notifications" = "Arifa zote";
-"Balance" = "Mizani";
+"Balance" = "Salio";//"Mizani";
 "Transfer"  = "Uhamisho";
 "Add Card" = "Ongeza Kadi";
 "Utilities" = "Huduma";
@@ -256,7 +256,8 @@
 "Car model not found" = "Modeli Ya Gari Haipo";
 "Info Message" = "Ujumbe Wa Taarifa";
 "Not Available" = "Haipatikani";
-"TRANSFER TO BANK" = "FINDA BANKA";
+"TRANSFER TO BANK" = "HAMISHA KWENDA BENKI";//"FINDA BANKA";
+"Transfer To Bank" = "HAMISHA";//"FINDA BANKA";
 "No Routes Found Please Try again later" = "Hakuna Ruti. Tafadhali Jaribu Tena Baadae";
 // Your profile updated successfully = "Ujumbe Wa Taarifa";
 "You can send request after 30 second."  = "Huwezi Kutuma Ombi Baada Ya Sekunde 30";
@@ -399,7 +400,7 @@
 "Tip Alert" = "Tahadhari ya Tip";
 
 "Account Holder Name" = "Jina La Mwenye Akaunti";
-"Bank Name" = "Jina La Benki";
+"Bank Account Name" = "Jina la Mwenye Akaunti";
 "Branch Code" = "Number ya Tawi";
 "Bank Account No." = "Namba Ya Akaunti Ya Benki";
 
@@ -414,3 +415,8 @@
 "Please Select Car" = "Tafadhali chagua gari";
 "Enter Promocode" = "Ingiza Promocode";
 "Apply Promocode" = "Tumia Promocode";
+
+
+"BSB" = "Namba ya Tawi";
+"Bank Account Name" = "Jina la Mwenye Akaunti";
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "Ukisitisha Safari Utalipia. Bado Unasitisha?";

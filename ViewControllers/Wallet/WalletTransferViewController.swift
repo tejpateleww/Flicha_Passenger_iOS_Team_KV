@@ -429,11 +429,52 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
     
     @IBAction func btnOpenCameraForQRCode(_ sender: UIBarButtonItem) {
         
-        startStopClick()
         
-        if SingletonClass.sharedInstance.isSendMoneySuccessFully {
+//        ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+//        switch (status) {
+//        case ALAuthorizationStatusNotDetermined: {
+//            // not determined
+//            break;
+//            }
+//        case ALAuthorizationStatusRestricted: {
+//            // restricted
+//            break;
+//            }
+//        case ALAuthorizationStatusDenied: {
+//            // denied
+//            break;
+//            }
+//        case ALAuthorizationStatusAuthorized: {
+//            // authorized
+//            break;
+//            }
+//        default: {
+//            break;
+//            }
+//        }
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch authStatus {
+        case .authorized:
+            print("")
+            startStopClick()
             
+            if SingletonClass.sharedInstance.isSendMoneySuccessFully {
+                
+            }
+
+        case .denied:
+            print("")
+            
+            UtilityClass.showAlert(appName, message: "Please allow Tantaxi application to use your camera from settings for scanning QR code.", vc: self)
+        default:
+            // Not determined fill fall here - after first use, when is't neither authorized, nor denied
+            // we try to use camera, because system will ask itself for camera permissions
+            print("")
         }
+//        let status : ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus
+        
+        
     }
     
     

@@ -64,10 +64,10 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         lblNotAvailable.text = "Not Available".localized
         lblTZS.text = "TZS".localized
         txtAccountHolderName.placeholder = "Account Holder Name".localized
-        txtBankName.text = "Bank Name".localized
-        txtBankAccountNo.text = "Bank Account No.".localized
-        txtBSB.text = "Branch Code".localized
-        btnWithdrawFunds.setTitle("TRANSFER TO BANK".localized, for: .normal)
+        txtBankName.placeholder = "Bank Account Name".localized
+        txtBankAccountNo.placeholder = "Bank Account No.".localized
+        txtBSB.placeholder = "BSB".localized
+        btnWithdrawFunds.setTitle("Transfer To Bank".localized, for: .normal)
     }
     @IBOutlet weak var lblNotAvailable: UILabel!
     

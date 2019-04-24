@@ -10411,9 +10411,9 @@ Hours</string>
                         <outlet property="txtABN" destination="fwG-w4-Esk" id="vKS-Xp-EXf"/>
                         <outlet property="txtAccountHolderName" destination="vrv-f2-Kkh" id="KoK-bn-R6s"/>
                         <outlet property="txtAmount" destination="UD7-xD-sCC" id="hvy-GN-kOF"/>
-                        <outlet property="txtBSB" destination="mg8-ut-CB2" id="AUv-fh-qpH"/>
-                        <outlet property="txtBankAccountNo" destination="22d-82-gmy" id="FWz-C7-KgR"/>
-                        <outlet property="txtBankName" destination="v20-cG-2fo" id="gI6-9x-4Zh"/>
+                        <outlet property="txtBSB" destination="mg8-ut-CB2" id="8GP-jS-0W1"/>
+                        <outlet property="txtBankAccountNo" destination="22d-82-gmy" id="zKj-fo-ALG"/>
+                        <outlet property="txtBankName" destination="v20-cG-2fo" id="Jeb-Ua-cah"/>
                         <outlet property="viewMain" destination="PGC-BC-wlR" id="L0K-lC-uwZ"/>
                     </connections>
                 </viewController>
@@ -11883,7 +11883,7 @@ Hours</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asx-OO-c2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="4694"/>
+            <point key="canvasLocation" x="1067" y="4692"/>
         </scene>
         <!--Wallet Transfer Recieve-->
         <scene sceneID="wim-b4-KTK">

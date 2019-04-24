@@ -106,12 +106,12 @@
                   moduleName = "TanTaxi User"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577086567.829535"
+                  timestampString = "577607712.769295"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1071"
                   endingLineNumber = "1071"
-                  offsetFromSymbolStart = "7185">
+                  offsetFromSymbolStart = "5872">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +121,12 @@
                   moduleName = "TanTaxi User"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577086567.8313659"
+                  timestampString = "577607712.770967"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1073"
                   endingLineNumber = "1073"
-                  offsetFromSymbolStart = "68">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -160,6 +160,54 @@
             startingLineNumber = "511"
             endingLineNumber = "511"
             landmarkName = "btnCellPaymentReceiptClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
+            timestampString = "577608575.333396"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
+            landmarkName = "startStopClick()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
+            timestampString = "577608575.333825"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "btnOpenCameraForQRCode(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
+            timestampString = "577608575.3340909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
+            landmarkName = "btnOpenCameraForQRCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

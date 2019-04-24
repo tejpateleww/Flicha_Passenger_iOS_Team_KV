@@ -319,7 +319,7 @@
 "Old Password" = "Old Password";
 "Share Your Invite Code" = "Share Your Invite Code";
 "Account Holder Name" = "Account Holder Name";
-"Bank Name" = "Bank Name";
+"Bank Account Name" = "Bank Account Name";
 "Branch Code" = "Branch Code";
 "Bank Account No." = "Bank Account No.";
 "Any other feedback(Optional)" = "Any other feedback(Optional)";
@@ -433,3 +433,8 @@
 "Please Select Car" = "Please Select Car";
 "Enter Promocode" = "Enter Promocode";
 "Apply Promocode" = "Apply Promocode";
+
+
+"BSB" = "BSB";
+"Bank Account Name" = "Bank Account Name";
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
