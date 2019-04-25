@@ -159,7 +159,7 @@ class UpCommingVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
          let bookingID = sender.tag
         
-        RMUniversalAlert.show(in: self, withTitle:appName, message: "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Yes", "No"], tap: {(alert, buttonIndex) in
+        RMUniversalAlert.show(in: self, withTitle:appName, message: "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["YES".localized, "NO".localized], tap: {(alert, buttonIndex) in
             if (buttonIndex == 2)
             {
                

@@ -164,6 +164,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         let dictData = aryData[indexPath.row]
           cell.lblTransferTitle.text = "Transfer".localized
         cell.lblStatus.text = "hali".localized
+  
         cell.lblTransferTitle.text = dictData["Description"] as? String
         cell.lblTransferDateAndTime.text = dictData["UpdatedDate"] as? String
         

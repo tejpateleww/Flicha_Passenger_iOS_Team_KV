@@ -11876,6 +11876,7 @@ Hours</string>
                         <outlet property="lblFullName" destination="0Y3-Jv-qeA" id="sb8-Yw-AHg"/>
                         <outlet property="lblMobileNumber" destination="cgL-MI-Y4i" id="02M-b0-HGD"/>
                         <outlet property="lblQRScanner" destination="sxZ-pV-lBm" id="EYe-MG-Hlj"/>
+                        <outlet property="lblSendMoneyTitle" destination="AOM-vu-Zu3" id="nzA-oN-IYW"/>
                         <outlet property="txtSendMoney" destination="xRS-gv-cbn" id="Pya-uS-Ijc"/>
                         <outlet property="viewBG" destination="NGd-ab-ztm" id="bpR-yy-bYa"/>
                         <outlet property="viewQRCodeScanner" destination="G2O-Jm-Fg6" id="2V8-GT-xrG"/>

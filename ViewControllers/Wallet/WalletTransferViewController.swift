@@ -220,6 +220,9 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
         lblFullName.isHidden = true
         lblMobileNumber.isHidden = true
         
+        self.lblQRScanner.text = "Tap to activate scanner".localized
+        
+        self.lblSendMoneyTitle.text = "Send Money".localized
         
         viewBG.layer.borderWidth = 1.0
         viewBG.layer.borderColor = UIColor.clear.cgColor
@@ -422,6 +425,7 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
 
     
     
+    @IBOutlet weak var lblSendMoneyTitle: UILabel!
     
     //-------------------------------------------------------------
     // MARK: - Action

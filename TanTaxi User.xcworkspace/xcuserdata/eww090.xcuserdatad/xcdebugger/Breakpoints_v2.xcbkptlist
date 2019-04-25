@@ -106,12 +106,12 @@
                   moduleName = "TanTaxi User"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577607712.769295"
+                  timestampString = "577869475.777506"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1071"
                   endingLineNumber = "1071"
-                  offsetFromSymbolStart = "5872">
+                  offsetFromSymbolStart = "7185">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +121,12 @@
                   moduleName = "TanTaxi User"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577607712.770967"
+                  timestampString = "577869475.779265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1073"
                   endingLineNumber = "1073"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577608575.333396"
+            timestampString = "577870806.183614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "startStopClick()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577608575.333825"
+            timestampString = "577870806.183998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "btnOpenCameraForQRCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577608575.3340909"
+            timestampString = "577870806.184258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "btnOpenCameraForQRCode(_:)"
             landmarkType = "7">
          </BreakpointContent>

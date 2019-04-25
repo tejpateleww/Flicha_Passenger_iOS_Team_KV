@@ -71,7 +71,7 @@
 "Utilities" = "Utilities";
 "Water" = "Water";
 "Gas" = "Gas";
-"Electricity" = "Electricity";
+"Electricity" = "Salio Lililopo";
 "Myki" = "Myki";
 "Movies" = "Movies";
 "Travel" = "Travel";
@@ -244,6 +244,9 @@
 "Please select Gender" = "Please select Gender";
 "Please select card" = "Please select card";
 "Please enter amount" = "Please enter amount";
+
+"Your profile updated successfully" = "Your profile updated successfully";
+
 "Okay" = "Okay";
 "Something went wrong please try again later" = "Something went wrong please try again later";
 "Please select 30 minutes greater time from current time" = "Please select 30 minutes greater time from current time";
@@ -410,7 +413,7 @@
 "Your request status pending..." = "Your request status pending...";
 "Cancel Request" = "Cancel Request";
 "Driver Info" = "Driver Info";
-
+"Your Email Id is not configured from settings. Please configure it from Settings -> Mail" = "Your Email Id is not configured from settings. Please configure it from Settings -> Mail";
 "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
 "NO" = "NO";
 "YES" = "YES";
@@ -438,3 +441,6 @@
 "BSB" = "BSB";
 "Bank Account Name" = "Bank Account Name";
 "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
+"Tap to activate scanner" = "Tap to activate scanner";
+"Send Money" = "Send Money";
+"TOP UP" = "TOP UP";

@@ -256,7 +256,7 @@ class MyReceiptsViewController: BaseViewController, UITableViewDataSource, UITab
             
             present(mail, animated: true)
         } else {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Your Email Id is not configured from settings. Please configure it from Settings -> Mail") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Your Email Id is not configured from settings. Please configure it from Settings -> Mail".localized) { (index, title) in
             }
         }
         

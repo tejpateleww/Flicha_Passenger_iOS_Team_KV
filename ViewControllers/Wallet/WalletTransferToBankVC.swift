@@ -66,7 +66,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         txtAccountHolderName.placeholder = "Account Holder Name".localized
         txtBankName.placeholder = "Bank Account Name".localized
         txtBankAccountNo.placeholder = "Bank Account No.".localized
-        txtBSB.placeholder = "BSB".localized
+        txtBSB.placeholder = "Branch Code".localized
         btnWithdrawFunds.setTitle("Transfer To Bank".localized, for: .normal)
     }
     @IBOutlet weak var lblNotAvailable: UILabel!
@@ -287,31 +287,36 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
 //        }
         if txtAmount.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Amount") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter amount".localized) { (index, title) in
             }
             return false
         }
         else if txtAccountHolderName.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Account Holder Name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Account Holder Name".localized) { (index, title) in
             }
             return false
         }
             
+        
+        
+        
+        
+            
         else if txtBankName.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Bank Name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Bank Name".localized) { (index, title) in
             }
             return false
         }
         else if txtBankAccountNo.text!.count == 0 {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Bank Account Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Bank Account Number".localized) { (index, title) in
             }
             return false
         }
          else if txtBSB.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter BSB Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Branch Code".localized) { (index, title) in
             }
             return false
         }

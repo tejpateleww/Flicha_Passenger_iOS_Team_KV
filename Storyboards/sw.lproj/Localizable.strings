@@ -68,7 +68,8 @@
 "Travel" = "Gas";
 "Transfer Status" = "Hali ya Uhamisho";
 "Available Funds" = "Electricity";
-"Top Up" = "Juu hadi";
+"Top Up" = "Jaza";
+"TOP UP" = "JAZA";
 "Transfer To Bank" = "Uhamisho kwa Benki";
 "Transfer To Bank Account" = "Uhamisho kwa Akaunti ya Benki";
 "History" = "Historia";
@@ -368,7 +369,7 @@
 
 "OnGoing" = "Yasasa";
 "Past Booking" = "Ya Nyuma";
-
+"Your profile updated successfully" = "Ukurasa Wako Umeboreshwa";
 
 
 //HOME
@@ -420,3 +421,6 @@
 "BSB" = "Namba ya Tawi";
 "Bank Account Name" = "Jina la Mwenye Akaunti";
 "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "Ukisitisha Safari Utalipia. Bado Unasitisha?";
+"Your Email Id is not configured from settings. Please configure it from Settings -> Mail" = "Email yako haijawekwa sawa kwenye settings. Tafadhali iweke sawa, Settings -> Mail";
+"Tap to activate scanner" = "Gusa kuiamsha scanner";
+"Send Money" = "Tuma pesa";

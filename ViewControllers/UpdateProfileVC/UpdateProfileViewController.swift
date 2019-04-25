@@ -362,7 +362,7 @@ class UpdateProfileViewController: BaseViewController, UIImagePickerControllerDe
                 UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
                 
                
-                UtilityClass.setCustomAlert(title: "Done", message: "Update Profile Successfully") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Done", message: "Your profile updated successfully".localized) { (index, title) in
                     self.navigationController?.popViewController(animated: true)
                 }
                 
