@@ -229,6 +229,7 @@
 "Driver Info" = "Driver Info";
 "Track Your Trip" = "Track Your Trip";
 "Please select car model" = "Please select car model";
+"No Driver Available Right Now." = "No Driver Available Right Now.";
 "Please enter a valid drop off location" = "Please enter a valid drop off location";
 "Please enter a valid pickup location" = "Please enter a valid pickup location";
 "Please enter Name" = "Please enter Name";
@@ -393,7 +394,7 @@
 "PAYMENT TYPE:" = "PAYMENT TYPE :";
 "TOTAL COST:" = "TOTAL COST :";
 "DROP LOCATION:" = "DROP LOCATION :";
-"TRANFER" = "TRANFER";
+"TRANSFER" = "TRANSFER";
 "WALLET" = "WALLET";
 "Terms & Conditions" = "Terms & Conditions";
 "Privacy Policy" = "Privacy Policy";
@@ -444,3 +445,6 @@
 "Tap to activate scanner" = "Tap to activate scanner";
 "Send Money" = "Send Money";
 "TOP UP" = "TOP UP";
+"Account Updated Successfully." = "Account Updated Successfully.";
+"has invited you to become a TanTaxi Passenger" = "has invited you to become a TanTaxi Passenger";
+"Your invite code is:" = "Your invite code is:";

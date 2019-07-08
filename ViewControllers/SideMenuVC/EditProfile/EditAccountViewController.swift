@@ -180,7 +180,7 @@ class EditAccountViewController: BaseViewController {
                     
 //                    (result as! NSDictionary).object(forKey: "profile") as! NSMutableDictionary
                 
-                UtilityClass.setCustomAlert(title: "Profile", message: "Update Successfully.") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Profile", message: "Account Updated Successfully.".localized) { (index, title) in
                     
                     self.navigationController?.popViewController(animated: true)
                 }

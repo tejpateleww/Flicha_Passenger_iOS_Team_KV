@@ -157,7 +157,25 @@ class OnGoingVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.lblBookingCharge.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "BookingCharge") as? String
             cell.lblTax.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Tax") as? String
             cell.lblDiscount.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Discount") as? String
-            cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+//            cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+
+
+      
+            
+            if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                if SelectedLanguage == "en"
+                {
+                    cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+                    
+                }
+                else if SelectedLanguage == "sw"
+                {
+//                    cell.lblPaymentType.text = aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "swahili_PaymentType") as? String
+                    cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "swahili_PaymentType") as? String
+                }
+            }
+
+
             cell.lblTotalCost.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "GrandTotal") as? String
             
             cell.btnTrackYourTrip.tag = indexPath.row

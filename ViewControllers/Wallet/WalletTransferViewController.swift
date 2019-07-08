@@ -33,7 +33,7 @@ class WalletTransferViewController: BaseViewController, UITextFieldDelegate {
 //        CustomCameraVC = imagePicker
 //        viewQRCodeScanner = imagePicker.view
 
-        self.setNavBarWithBack(Title: "TRANFER".localized, IsNeedRightButton: true)
+        self.setNavBarWithBack(Title: "TRANSFER".localized, IsNeedRightButton: true)
         scrollObj.isScrollEnabled = false
         
         btnSubmitMoney.layer.cornerRadius = 5
@@ -431,7 +431,7 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
     // MARK: - Action
     //-------------------------------------------------------------
     
-    @IBAction func btnOpenCameraForQRCode(_ sender: UIBarButtonItem) {
+    @IBAction func btnOpenCameraForQRCode(_ sender: UIButton) {
         
         
 //        ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
@@ -475,6 +475,28 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
             // Not determined fill fall here - after first use, when is't neither authorized, nor denied
             // we try to use camera, because system will ask itself for camera permissions
             print("")
+//            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+//                if(granted){ // Access has been granted ..do something
+//
+//                } else { // Access denied ..do something
+//
+//                }
+//                }];
+            
+            AVCaptureDevice.requestAccess(for: .video) { (Granted) in
+                if Granted
+                {
+                    self.startStopClick()
+                    
+                    if SingletonClass.sharedInstance.isSendMoneySuccessFully {
+                        
+                    }
+                }
+                else
+                {
+                    
+                }
+            }
         }
 //        let status : ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus
         
@@ -504,34 +526,40 @@ class WalletTransferSend: UIViewController, AVCaptureMetadataOutputObjectsDelega
     func startReading() -> Bool {
 //        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         let captureDevice = AVCaptureDevice.default(for: .video)
-        
-//        let captureDevice = AVCaptureDevice.default(for: .video)
-        
-        do {
-            let input = try AVCaptureDeviceInput(device: captureDevice!)
-            captureSession = AVCaptureSession()
-            captureSession?.addInput(input)
-            // Do the rest of your work...
-        } catch let error as NSError {
-            // Handle any errors
-            print(error)
+        if captureDevice == nil
+        {
+            UtilityClass.showAlert(appName, message: "You don't have camera in your device.", vc: self)
             return false
         }
-        
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPreviewLayer.frame = viewQRCodeScanner.layer.bounds
-        viewQRCodeScanner.layer.addSublayer(videoPreviewLayer)
-        
-        /* Check for metadata */
-        let captureMetadataOutput = AVCaptureMetadataOutput()
-        captureSession?.addOutput(captureMetadataOutput)
-        captureMetadataOutput.metadataObjectTypes = captureMetadataOutput.availableMetadataObjectTypes
-        print(captureMetadataOutput.availableMetadataObjectTypes)
-        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        captureSession?.startRunning()
-        
-        return true
+        else{
+            //        let captureDevice = AVCaptureDevice.default(for: .video)
+            
+            do {
+                let input = try AVCaptureDeviceInput(device: captureDevice!)
+                captureSession = AVCaptureSession()
+                captureSession?.addInput(input)
+                // Do the rest of your work...
+            } catch let error as NSError {
+                // Handle any errors
+                print(error)
+                return false
+            }
+            
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            videoPreviewLayer.frame = viewQRCodeScanner.layer.bounds
+            viewQRCodeScanner.layer.addSublayer(videoPreviewLayer)
+            
+            /* Check for metadata */
+            let captureMetadataOutput = AVCaptureMetadataOutput()
+            captureSession?.addOutput(captureMetadataOutput)
+            captureMetadataOutput.metadataObjectTypes = captureMetadataOutput.availableMetadataObjectTypes
+            print(captureMetadataOutput.availableMetadataObjectTypes)
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            captureSession?.startRunning()
+            
+            return true
+        }
     }
     
     @objc func stopReading() {

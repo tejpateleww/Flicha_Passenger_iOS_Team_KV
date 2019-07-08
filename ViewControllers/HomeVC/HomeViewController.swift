@@ -526,7 +526,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             
             if strCarModelID == "" {
                 
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+//                UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+//                }
+                UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
                 }
             }
             else if strDestinationLocationForBookLater != "" {
@@ -2161,7 +2163,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
                 else if strModelId == ""
                 {
                     
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                }
+                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
                     }
                     //                    UtilityClass.setCustomAlert(title: appName, message: "There are no cars available. Do you want to pay extra chareges?") { (index, title) in
                     //                    }
@@ -2447,7 +2451,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
                 if strCarModelID == ""
                 {
                     
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                }
+                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
                     }
                 }
                 else
@@ -2477,7 +2483,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             else {
                 
                 if strCarModelID == "" && strCarModelIDIfZero == ""{
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                UtilityClass.setCustomAlert(title: "Missing", message: "Please Select Car".localized) { (index, title) in
+                    //                }
+                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
                     }
                 }
                 else {

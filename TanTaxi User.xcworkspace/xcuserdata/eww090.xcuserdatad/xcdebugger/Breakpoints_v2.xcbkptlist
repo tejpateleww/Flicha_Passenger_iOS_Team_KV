@@ -6,143 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
-            timestampString = "577259588.956926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1570"
-            endingLineNumber = "1570"
-            landmarkName = "btnRequestNow(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
-            timestampString = "577259588.9569941"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1426"
-            endingLineNumber = "1426"
-            landmarkName = "webserviceCallForBookingCar()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TanTaxi_User.HomeViewController.webserviceCallForBookingCar() -&gt; ()"
-                  moduleName = "TanTaxi User"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/HomeViewController.swift"
-                  timestampString = "577002810.519416"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1425"
-                  endingLineNumber = "1425"
-                  offsetFromSymbolStart = "5588">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.AnyObject, Swift.Bool) -&gt; () in TanTaxi_User.HomeViewController.webserviceCallForBookingCar() -&gt; ()"
-                  moduleName = "TanTaxi User"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/HomeViewController.swift"
-                  timestampString = "577002810.521114"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1427"
-                  endingLineNumber = "1427"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/TripInfoViewController/TripInfoViewController.swift"
-            timestampString = "577087302.982653"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "btnOK(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/HomeVC/BookLaterViewController.swift"
-            timestampString = "577021489.616061"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1071"
-            endingLineNumber = "1071"
-            landmarkName = "webserviceOFBookLater()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TanTaxi_User.BookLaterViewController.webserviceOFBookLater() -&gt; ()"
-                  moduleName = "TanTaxi User"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577869475.777506"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1071"
-                  endingLineNumber = "1071"
-                  offsetFromSymbolStart = "7185">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.AnyObject, Swift.Bool) -&gt; () in TanTaxi_User.BookLaterViewController.webserviceOFBookLater() -&gt; ()"
-                  moduleName = "TanTaxi User"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/HomeVC/BookLaterViewController.swift"
-                  timestampString = "577869475.779265"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1073"
-                  endingLineNumber = "1073"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/MyBookingVC/PastBookingVC.swift"
-            timestampString = "577021489.616119"
+            timestampString = "577967080.27415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -153,40 +25,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewControllers/MyBookingVC/PastBookingVC.swift"
-            timestampString = "577021489.6164221"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "btnCellPaymentReceiptClicked(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577870806.183614"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
-            landmarkName = "startStopClick()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577870806.183998"
+            timestampString = "577967080.274457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "459"
@@ -202,12 +42,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewControllers/Wallet/WalletTransferViewController.swift"
-            timestampString = "577870806.184258"
+            timestampString = "577967080.274996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "btnOpenCameraForQRCode(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TanTaxi_User.WalletTransferSend.btnOpenCameraForQRCode(__C.UIButton) -&gt; ()"
+                  moduleName = "TanTaxi User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/Wallet/WalletTransferViewController.swift"
+                  timestampString = "578208792.64268"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "486"
+                  endingLineNumber = "486"
+                  offsetFromSymbolStart = "1118">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in TanTaxi_User.WalletTransferSend.btnOpenCameraForQRCode(__C.UIButton) -&gt; ()"
+                  moduleName = "TanTaxi User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/TanTaxi/TanTaxi%20User/ViewControllers/Wallet/WalletTransferViewController.swift"
+                  timestampString = "578208792.644303"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "487"
+                  endingLineNumber = "487"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "578830072.741414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2871"
+            endingLineNumber = "2871"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "578830072.741479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2869"
+            endingLineNumber = "2869"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "578830072.741542"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2874"
+            endingLineNumber = "2874"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            timestampString = "578830072.74159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2955"
+            endingLineNumber = "2955"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

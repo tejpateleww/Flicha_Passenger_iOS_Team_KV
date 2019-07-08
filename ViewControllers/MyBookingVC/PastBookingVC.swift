@@ -205,7 +205,19 @@ class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //            let strTripFare = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "TripFare", isNotHave: strNotAvailable)
 //            let strNightFare = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "NightFare", isNotHave: strNotAvailable)
             
-            cell.lblTripStatus.text = currentData.object(forKey: "Status") as! String
+            if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                if SelectedLanguage == "en"
+                {
+                    cell.lblTripStatus.text = currentData.object(forKey: "Status") as! String
+                    
+                }
+                else if SelectedLanguage == "sw"
+                {
+                   cell.lblTripStatus.text = currentData.object(forKey: "swahili_BookingStatus") as! String
+                }
+            }
+            
+            
             
             cell.btnPaymentOrReceipt.isHidden = true
              if let paymentURL = currentData.object(forKey: "payment_url") as? String
@@ -265,8 +277,19 @@ class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             cell.lblBookingFee.text = "\(strBookingFee) \(currencySign)" //(aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "BookingCharge") as? String
             cell.lblPromoCode.text = "\(strPromoCode) \(currencySign)"// (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Discount") as? String
-            cell.lblPaymentType.text = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "PaymentType", isNotHave: strNotAvailable)//(aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+           
             cell.lblTotalAmount.text = "\(strTotalAmount) \(currencySign)"
+            if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                if SelectedLanguage == "en"
+                {
+                     cell.lblPaymentType.text = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "PaymentType", isNotHave: strNotAvailable)//(aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+                    
+                }
+                else if SelectedLanguage == "sw"
+                {
+                     cell.lblPaymentType.text = checkDictionaryHaveValue(dictData: currentData as! [String : AnyObject], didHaveValue: "swahili_PaymentType", isNotHave: strNotAvailable)//(aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+                }
+            }
             
 //            cell.lblNightFare.text = strNightFare
 //

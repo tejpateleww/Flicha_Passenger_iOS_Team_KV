@@ -67,7 +67,7 @@
 "Movies" = "Filamu";
 "Travel" = "Gas";
 "Transfer Status" = "Hali ya Uhamisho";
-"Available Funds" = "Electricity";
+"Available Funds" = "Pesa lliyopo";//"Electricity";//Pesa lliyopo
 "Top Up" = "Jaza";
 "TOP UP" = "JAZA";
 "Transfer To Bank" = "Uhamisho kwa Benki";
@@ -131,7 +131,7 @@
 "Sign In" = "Ingia";
 "Trip Status :" = "Hali ya Safari:";
 "PickupDate" = "tarehe ya kupakua";
-"Sign Up" = "Toka";
+"Sign Up" = "Jisajili";
 "Don't have an account?" = "Huna Akaunti?";
 "Enter OTP" = "Kanuni ya OTP";
 "Verify" = "Thibitisha";
@@ -145,7 +145,7 @@
 "ttl_home" = "Nyumbani";
 "Select Payment Method" = "Chagua Njia Ya Kulipa";
 "Cash" = "Taslimu";
-"(incl tax)" = "(kodi ya pamoja)";
+"(incl tax)" = "(pamoja na kodi)";
 "Total Amount :" = "Jumla :";
 "Booking Confirmed" = "Uhifadhi umehakikishiwa";
 "Booking Fee:" = "Gharama Za Booking";
@@ -171,7 +171,7 @@
 "Balance" = "Salio";
 "Current Balance" = "Salio Lililopo";
 "Send Money" = "Tuma Pesa";
-"When a friend register with your code, you will recieve referal amount." = "Rafiki Akitumia Code Yako, Utapata Kiasi Cha Referral";
+"When a friend register with your code, you will recieve referal amount." = "Rafiki Akitumia Code Yako, Utapata Kiasi Cha Pointi";
 "Share Receipt" = "Tumianeni Risiti";
 "Account" = "Akaunti";
 "Edit Profile" = "Rekebisha Ukurasa Wako";
@@ -358,7 +358,7 @@
 "BALANCE" = "BALANCE";
 "Card List" = "Orodha ya Kadi";
 "HISTORY" = "HISTORY";
-"TRANFER" = "UHAMISHO";
+"TRANSFER" = "UHAMISHO";
 "WALLET" = "WALLET";
 "Terms & Conditions" = "Masharti & Masharti";
 "Privacy Policy" = "Sera ya Faragha";
@@ -371,6 +371,7 @@
 "Past Booking" = "Ya Nyuma";
 "Your profile updated successfully" = "Ukurasa Wako Umeboreshwa";
 
+"No Driver Available Right Now." = "Hakuna dereva kwa sasa.";
 
 //HOME
 
@@ -424,3 +425,6 @@
 "Your Email Id is not configured from settings. Please configure it from Settings -> Mail" = "Email yako haijawekwa sawa kwenye settings. Tafadhali iweke sawa, Settings -> Mail";
 "Tap to activate scanner" = "Gusa kuiamsha scanner";
 "Send Money" = "Tuma pesa";
+"Account Updated Successfully." = "Akaunti Yako Imeboreshwa.";
+"has invited you to become a TanTaxi Passenger" = "amekualika kuwa Abiria wa TanTaxi!";
+"Your invite code is:" = "Msimbo wako wa kukaribisha ni:";

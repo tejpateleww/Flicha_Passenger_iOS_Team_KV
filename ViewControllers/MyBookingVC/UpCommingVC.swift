@@ -99,17 +99,42 @@ class UpCommingVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
 //            let myAttribute = [ NSAttributedStringKey.foregroundColor: UIColor.black, .underlineStyle: NSUnderlineStyle.styleSingle.rawValue] as [NSAttributedStringKey : Any]
 //            let myAttrString = NSAttributedString(string: myString!, attributes: myAttribute)
             cell.lblDriverName.text = myString
-            cell.lblPaymentType.text = "Cash"
+//            cell.lblPaymentType.text = "Cash".lo
             cell.lblVehicleType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Model") as? String
-            cell.lblTripStatus.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Status") as? String
+//            cell.lblTripStatus.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Status") as? String
             cell.lblPickupAddress.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PickupLocation") as? String // PickupLocation
             cell.lblDropoffAddress.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "DropoffLocation") as? String //  DropoffLocation
             var time = ((aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "CreatedDate") as? String)
             time!.removeLast(3)
             
             cell.lblDateAndTime.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "CreatedDate") as? String
-            cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+//            cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
   
+            
+            if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                if SelectedLanguage == "en"
+                {
+                    cell.lblTripStatus.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Status") as? String
+                    
+                }
+                else if SelectedLanguage == "sw"
+                {
+                    cell.lblTripStatus.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "swahili_BookingStatus") as? String
+                }
+            }
+            
+            if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                if SelectedLanguage == "en"
+                {
+                    cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String//(aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "PaymentType") as? String
+                    
+                }
+                else if SelectedLanguage == "sw"
+                {
+                    cell.lblPaymentType.text = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "swahili_PaymentType") as? String
+                }
+            }
+            
             if let bookingID = (aryData.object(at: indexPath.row) as! NSDictionary).object(forKey: "Id") as? String {
                 cell.btnCancelRequest.tag = Int(bookingID)!
             }

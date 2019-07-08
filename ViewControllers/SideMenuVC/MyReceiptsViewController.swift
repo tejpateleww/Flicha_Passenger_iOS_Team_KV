@@ -173,14 +173,40 @@ class MyReceiptsViewController: BaseViewController, UITableViewDataSource, UITab
                 cell.lblPickUpLocationDescription.text = dictData.object(forKey: "PickupLocation") as? String
                 cell.lblVehicleType.text = dictData.object(forKey: "Model") as? String
                 
-                cell.lblPaymentType.text = dictData.object(forKey: "PaymentType") as? String
+//                cell.lblPaymentType.text = dictData.object(forKey: "PaymentType") as? String
                 cell.lblBookingFee.text = "\(dictData.object(forKey: "BookingCharge") as! String) \(currencySign)"
                 cell.lblTripFare.text = "\(dictData.object(forKey: "TripFare") as! String) \(currencySign)"
                 cell.lblWaitingCost.text = "\(dictData.object(forKey: "WaitingTimeCost") as! String) \(currencySign)"
                 cell.lblWaitingTime.text = dictData.object(forKey: "WaitingTime") as? String
                 cell.lblPromoCode.text = "\(dictData.object(forKey: "PromoCode") as! String) \(currencySign)"
                 cell.lblTotalAmount.text = "\(dictData.object(forKey: "GrandTotal") as! String) \(currencySign)"
-                cell.lblTripStatus.text = dictData.object(forKey: "Status") as? String
+//                cell.lblTripStatus.text = dictData.object(forKey: "Status") as? String
+                
+                if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                    if SelectedLanguage == "en"
+                    {
+                        cell.lblTripStatus.text = dictData.object(forKey: "Status") as? String
+                        
+                    }
+                    else if SelectedLanguage == "sw"
+                    {
+                        cell.lblTripStatus.text = dictData.object(forKey: "swahili_BookingStatus") as? String
+                    }
+                }
+                
+                if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                    if SelectedLanguage == "en"
+                    {
+                        cell.lblPaymentType.text = dictData.object(forKey: "PaymentType") as? String
+                        
+                    }
+                    else if SelectedLanguage == "sw"
+                    {
+                        cell.lblPaymentType.text = dictData.object(forKey: "swahili_PaymentType") as? String
+                    }
+                }
+                
+                
 //                cell.lblDistanceTravelled.text = dictData.object(forKey: "TripDistance") as? String
 //                cell.lblTolllFee.text = dictData.object(forKey: "TollFee") as? String
 //                cell.lblFareTotal.text = dictData.object(forKey: "TripFare") as? String
