@@ -159,7 +159,15 @@ class WalletHistoryViewController: BaseViewController, UITableViewDataSource, UI
             if (status) {
 //                print(result)
                 
-                self.aryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+//                self.aryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        self.aryData = aryHistory
+                    }
+                }
                 
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
                 

@@ -453,8 +453,18 @@ class PastBookingVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         webserviceForPastBookingList(driverId as AnyObject, PageNumber: index as AnyObject) { (result, status) in
             if (status) {
                 DispatchQueue.main.async {
+
+
                     
-                    let tempPastData = ((result as! NSDictionary).object(forKey: "history") as! NSArray)
+                    var tempPastData = NSArray()
+
+                    if let dictData = result as? [String:AnyObject]
+                    {
+                        if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                        {
+                            tempPastData = aryHistory as NSArray
+                        }
+                    }
                     
                     for i in 0..<tempPastData.count {
                         

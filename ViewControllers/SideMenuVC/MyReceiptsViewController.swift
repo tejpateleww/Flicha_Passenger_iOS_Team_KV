@@ -374,7 +374,15 @@ class MyReceiptsViewController: BaseViewController, UITableViewDataSource, UITab
             if (status) {
                 print(result)
                 
-                self.aryData = (result as! NSDictionary).object(forKey: "history") as! NSArray
+//                self.aryData = (result as! NSDictionary).object(forKey: "history") as! NSArray
+
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        self.aryData = aryHistory as NSArray
+                    }
+                }
                 
                 self.counts = 0
                 self.newAryData = NSMutableArray()

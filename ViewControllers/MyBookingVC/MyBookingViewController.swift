@@ -285,9 +285,17 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
         webserviceForBookingHistory(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
             
             if (status) {
-                
-                self.aryHistory = (result as! NSDictionary).object(forKey: "history") as! NSArray
-                
+
+
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        self.aryHistory = aryHistory as NSArray
+                    }
+                }
+//                self.aryHistory = (result as! NSDictionary).object(forKey: "history") as! NSArray
+
 //                print(self.aryHistory)
                 
                 SingletonClass.sharedInstance.aryHistory = self.aryHistory

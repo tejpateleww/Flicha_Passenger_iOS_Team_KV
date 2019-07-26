@@ -167,7 +167,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         let profileData = SingletonClass.sharedInstance.dictProfile
 //        txtNote.text = profileData.object(forKey: "Description") as? String
 //        txtABN.text = profileData.object(forKey: "ABN") as? String
-        txtBSB.text = profileData.object(forKey: "BSB") as? String
+//        txtBSB.text = profileData.object(forKey: "BSB") as? String
         txtBankName.text = profileData.object(forKey: "BankName") as? String
         txtBankAccountNo.text = profileData.object(forKey: "BankAccountNo") as? String
         txtAccountHolderName.text = profileData.object(forKey: "CompanyName") as? String
@@ -314,14 +314,14 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
             }
             return false
         }
-         else if txtBSB.text!.count == 0 {
-            
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Branch Code".localized) { (index, title) in
-            }
-            return false
-        }
-        
-       
+//         else if txtBSB.text!.count == 0 {
+//
+//            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Branch Code".localized) { (index, title) in
+//            }
+//            return false
+//        }
+//
+
         else if Double(strAmt)! > SingletonClass.sharedInstance.strCurrentBalance {
 
             UtilityClass.setCustomAlert(title: "Missing", message: "Entered amout is more than current balance") { (index, title) in
@@ -349,7 +349,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         param["HolderName"] = txtAccountHolderName.text as AnyObject
         param["ABN"] = txtABN.text as AnyObject
         param["BankName"] = txtBankName.text as AnyObject
-        param["BSB"] = txtBSB.text as AnyObject
+//        param["BSB"] = txtBSB.text as AnyObject
         param["AccountNo"] = txtBankAccountNo.text as AnyObject
 
         
@@ -406,7 +406,15 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
                 self.lblNotAvailable.text = "\(SingletonClass.sharedInstance.strCurrentBalance)"
                 
                 
-                SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+//                SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        SingletonClass.sharedInstance.walletHistoryData = aryHistory
+                    }
+                }
                 
                 
             }
