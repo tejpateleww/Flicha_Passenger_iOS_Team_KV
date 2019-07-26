@@ -645,7 +645,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkz-So-1im">
-                                                <rect key="frame" x="0.0" y="0.0" width="26" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="40"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.51000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="iconRightArraw"/>
                                                 <connections>
@@ -7442,7 +7442,7 @@ Hours</string>
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RQ9-F4-giN">
-                                        <rect key="frame" x="20" y="30" width="280" height="230"/>
+                                        <rect key="frame" x="20" y="30" width="280" height="170"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-za-RU0">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
@@ -7529,11 +7529,11 @@ Hours</string>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RAe-oZ-glF">
-                                                <rect key="frame" x="0.0" y="120" width="280" height="50"/>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RAe-oZ-glF">
+                                                <rect key="frame" x="0.0" y="115" width="280" height="0.0"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BSB" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b4c-vP-9AM" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="0.0"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -7561,7 +7561,7 @@ Hours</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KUF-k7-nfy">
-                                                <rect key="frame" x="0.0" y="180" width="280" height="50"/>
+                                                <rect key="frame" x="0.0" y="120" width="280" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bank Account No." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-lW-p29" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
@@ -7592,7 +7592,7 @@ Hours</string>
                                                 </subviews>
                                             </stackView>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Service Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82i-wA-xoL" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
-                                                <rect key="frame" x="0.0" y="230" width="280" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="170" width="280" height="0.0"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -7614,7 +7614,7 @@ Hours</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pn-fMa" customClass="ThemeButton" customModule="TanTaxi_User" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="290" width="280" height="50"/>
+                                        <rect key="frame" x="20" y="230" width="280" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Mly-N8-m5u"/>
@@ -10162,7 +10162,7 @@ Hours</string>
                                         <rect key="frame" x="27" y="161.5" width="266" height="306.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aev-Ty-8td">
-                                                <rect key="frame" x="0.0" y="10" width="266" height="245"/>
+                                                <rect key="frame" x="0.0" y="10" width="266" height="180"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="udh-32-2FA">
                                                         <rect key="frame" x="0.0" y="0.0" width="266" height="50"/>
@@ -10305,8 +10305,8 @@ Hours</string>
                                                             </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="U1M-i6-ROv">
-                                                        <rect key="frame" x="0.0" y="195" width="266" height="50"/>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="U1M-i6-ROv">
+                                                        <rect key="frame" x="0.0" y="180" width="266" height="0.0"/>
                                                         <subviews>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuJ-hC-T1X">
                                                                 <rect key="frame" x="0.0" y="0.0" width="266" height="1"/>
@@ -10325,7 +10325,7 @@ Hours</string>
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BSB" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mg8-ut-CB2" customClass="ACFloatingTextfield" customModule="ACFloatingTextfield_Swift">
-                                                                <rect key="frame" x="0.0" y="0.0" width="266" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="266" height="0.0"/>
                                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="tintColor" red="1" green="0.67450980390000004" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="textColor"/>
@@ -16406,17 +16406,17 @@ Hours</string>
         <image name="iconDummyCard" width="42" height="26"/>
         <image name="iconDummyProfilePic" width="170" height="170"/>
         <image name="iconEditProfile" width="64" height="64"/>
-        <image name="iconEmail" width="64" height="64"/>
-        <image name="iconFB" width="64" height="64"/>
+        <image name="iconEmail" width="128" height="128"/>
+        <image name="iconFB" width="128" height="128"/>
         <image name="iconGPS" width="38" height="38"/>
         <image name="iconHome" width="42" height="42"/>
         <image name="iconLineCenterSide" width="386" height="1"/>
         <image name="iconLineLeftSide" width="390" height="1"/>
-        <image name="iconLock" width="64" height="64"/>
-        <image name="iconLockBack" width="64" height="64"/>
-        <image name="iconLockStar" width="64" height="64"/>
+        <image name="iconLock" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="iconLockBack" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="iconLockStar" width="128" height="128"/>
         <image name="iconLogoWithoutText" width="266" height="266"/>
-        <image name="iconMainStar" width="64" height="64"/>
+        <image name="iconMainStar" width="128" height="128"/>
         <image name="iconMapPin" width="26" height="26"/>
         <image name="iconNab" width="133" height="133"/>
         <image name="iconNewLogo" width="150" height="150"/>
@@ -16429,19 +16429,19 @@ Hours</string>
         <image name="iconReceiveMoneyUnselected" width="50" height="50"/>
         <image name="iconRedSelectedStar" width="21" height="21"/>
         <image name="iconRedUnSelectedStar" width="21" height="21"/>
-        <image name="iconRightArraw" width="26" height="26"/>
+        <image name="iconRightArraw" width="52" height="52"/>
         <image name="iconSMS" width="42" height="42"/>
         <image name="iconSave" width="42" height="42"/>
         <image name="iconSendMoneyUnselected" width="50" height="50"/>
         <image name="iconTNZUnselected" width="50" height="50"/>
         <image name="iconTransfer" width="85" height="85"/>
         <image name="iconTransferBankUnselected" width="50" height="50"/>
-        <image name="iconTwitter" width="64" height="64"/>
+        <image name="iconTwitter" width="128" height="128"/>
         <image name="iconUser" width="85" height="85"/>
         <image name="iconWalletHistoryUnselected" width="50" height="50"/>
-        <image name="iconWhatsApp" width="64" height="64"/>
+        <image name="iconWhatsApp" width="128" height="128"/>
         <image name="icon_Address" width="30" height="30"/>
-        <image name="icon_Back" width="52" height="52"/>
+        <image name="icon_Back" width="84" height="84"/>
         <image name="icon_Call" width="26" height="26"/>
         <image name="icon_Cancel" width="30" height="30"/>
         <image name="icon_CashUnselected" width="30" height="30"/>
@@ -16452,7 +16452,7 @@ Hours</string>
         <image name="icon_InviteCode" width="30" height="30"/>
         <image name="icon_Lock" width="30" height="30"/>
         <image name="icon_Mobile" width="30" height="30"/>
-        <image name="icon_Plus" width="31" height="31"/>
+        <image name="icon_Plus" width="50.400001525878906" height="50.400001525878906"/>
         <image name="icon_PostCode" width="30" height="30"/>
         <image name="icon_SwapLocation" width="24" height="24"/>
         <image name="icon_UnSelectedWallet" width="30" height="30"/>

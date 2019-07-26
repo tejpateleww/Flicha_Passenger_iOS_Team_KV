@@ -188,7 +188,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         // ----------------------------------------------------------------------
         // ----------------------------------------------------------------------
         
-        if dictData["Status"] as! String == "failed" {
+        if dictData["Status"] as? String == "failed" {
             
             cell.lblPrice.text = "-\(dictData["Amount"] as! String) \(currencySign)"//\(dictData["Type"] as! String)
             cell.lblPrice.textColor = themeYellowColor//UIColor.init(red: 204/255, green: 3/255, blue: 0, alpha: 1.0)
@@ -198,7 +198,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
             cell.lblStatus.text = "Transaction Failed"
             cell.lblStatus.textColor = themeYellowColor//UIColor.init(red: 204/255, green: 3/255, blue: 0, alpha: 1.0)
         }
-        else if dictData["Status"] as! String == "pending" {
+        else if dictData["Status"] as? String == "pending" {
             cell.lblPrice.text = "-\(dictData["Amount"] as! String) \(currencySign)"//\(dictData["Type"] as! String)
             cell.lblPrice.textColor = themeYellowColor//UIColor.init(red: 204/255, green: 3/255, blue: 0, alpha: 1.0)
             
@@ -209,7 +209,7 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
         }
         else {
             
-            if dictData["Type"] as! String == "-" {
+            if dictData["Type"] as? String == "-" {
                 cell.statusHeight.constant = 0
                 cell.lblStatus.isHidden = true
                 
@@ -290,11 +290,19 @@ class WalletBalanceMainVC: BaseViewController, UITableViewDataSource, UITableVie
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
                 self.lblNotAvailble.text = "\(SingletonClass.sharedInstance.strCurrentBalance) \(currencySign)"
                 
-                
-                SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
-                
-                self.aryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
-                
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        SingletonClass.sharedInstance.walletHistoryData = aryHistory
+
+                        self.aryData = aryHistory
+                    }
+                }
+//                SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+
+//               self.aryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+
                 self.tableView.reloadData()
                 
                 self.refreshControl.endRefreshing()

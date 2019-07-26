@@ -120,11 +120,11 @@ class EditAccountViewController: BaseViewController {
             }
             return false
         }
-        else if (txtBSB.text!.count == 0) {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Branch Code") { (index, title) in
-            }
-            return false
-        }
+//        else if (txtBSB.text!.count == 0) {
+//            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Branch Code") { (index, title) in
+//            }
+//            return false
+//        }
         else if (txtBankAccount.text!.count == 0) {
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter Bank Account Number") { (index, title) in
             }
@@ -142,7 +142,7 @@ class EditAccountViewController: BaseViewController {
         let profileData = SingletonClass.sharedInstance.dictProfile
 //        txtNote.text = profileData.object(forKey: "Description") as? String
 //        txtABN.text = profileData.object(forKey: "ABN") as? String
-        txtBSB.text = profileData.object(forKey: "BSB") as? String
+//        txtBSB.text = profileData.object(forKey: "BSB") as? String
         txtBankName.text = profileData.object(forKey: "BankName") as? String
         txtBankAccount.text = profileData.object(forKey: "BankAccountNo") as? String
         txtAccountHolderName.text = profileData.object(forKey: "CompanyName") as? String
@@ -161,7 +161,7 @@ class EditAccountViewController: BaseViewController {
         param["AccountHolderName"] = txtAccountHolderName.text as AnyObject
 //        param["ABN"] = txtABN.text as AnyObject
         param["BankName"] = txtBankName.text as AnyObject
-        param["BSB"] = txtBSB.text as AnyObject
+//        param["BSB"] = txtBSB.text as AnyObject
         param["BankAccountNo"] = txtBankAccount.text as AnyObject
 //        param["Description"] = txtNote.text as AnyObject
         

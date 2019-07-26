@@ -246,8 +246,14 @@ class WalletViewController: BaseViewController, UIScrollViewDelegate {
                 SingletonClass.sharedInstance.strCurrentBalance = ((result as! NSDictionary).object(forKey: "walletBalance") as AnyObject).doubleValue
                 self.lblCurrentBalance.text = "\("Balance".localized) \n\(SingletonClass.sharedInstance.strCurrentBalance)  \(currencySign)"
 
-                
-                SingletonClass.sharedInstance.walletHistoryData = (result as! NSDictionary).object(forKey: "history") as! [[String:AnyObject]]
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        SingletonClass.sharedInstance.walletHistoryData = aryHistory
+                    }
+                }
+
                 
                 self.webserviceOFGetAllCards()
                 
