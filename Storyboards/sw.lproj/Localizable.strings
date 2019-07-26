@@ -386,7 +386,7 @@
 "Your request status pending..." = "Ombi Lako Linasubirishwa";
 "Cancel Request" = "Sitisha Safari";
 "Driver Info" = "Taarifa Za Dereva";
-"Cancel" = "Futa";
+"Cancel" = "Sitisha";
 "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "Ukisitisha Safari Utalipia Bado Unassitisha?";
 "NO" = "HAPANA";
 "YES" = "NDIYO";
@@ -408,7 +408,7 @@
 
 //"EDIT PROFILE" = "PINDA MAFUNZO";
 "DropoffTime" = "Muda Wa Kushusha";
-"Are you sure you want to logout?" = "Una uhakika unataka kuingia?";
+"Are you sure you want to logout?" = "Una uhakika unataka kutoka?";
 "Please enter drop off location" = "Tafadhali ingiza kuacha mahali";
 "Please enter pick up location" = "Tafadhali ingiza eneo la kupakua";
 "Please fill all details" = "Tafadhali jaza maelezo yote";

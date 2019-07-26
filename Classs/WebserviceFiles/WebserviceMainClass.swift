@@ -27,7 +27,7 @@ func postData(_ dictParams: AnyObject, nsURL: String, completion: @escaping (_ r
     let url = WebserviceURLs.kBaseURL + nsURL
 
     UtilityClass.showACProgressHUD()
-    
+     print("webservice is : \(url)")
     Alamofire.request(url, method: .post, parameters: dictParams as? [String : AnyObject], encoding: URLEncoding.default, headers: header)
         .validate()
         .responseJSON
@@ -334,7 +334,6 @@ func ShoppingListOfGoogle(_ dictParams: AnyObject, Location: String, Type: Strin
                 {
                     completion(JSON as! NSDictionary, false)
                     UtilityClass.hideACProgressHUD()
-                    
                 }
             }
             else
