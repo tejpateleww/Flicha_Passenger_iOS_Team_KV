@@ -24,7 +24,7 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
     var isFromPushNotification = Bool()
     var bookingType = String()
     
-    var selectedBackgroundColor = UIColor.black
+    var selectedBackgroundColor = themeBlackColor
     var unselectedBackgroundColor = UIColor.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
     
     

@@ -38,7 +38,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     let baseUrlForGetAddress = "https://maps.googleapis.com/maps/api/geocode/json?"
     let baseUrlForAutocompleteAddress = "https://maps.googleapis.com/maps/api/place/autocomplete/json?"
     
-    let apikey = googlPlacesApiKey //"AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"
+    let apikey = googlApiKey//googlPlacesApiKey //"AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"
     
     let socket = SocketIOClient(socketURL: URL(string: SocketData.kBaseURL)!, config: [.log(false), .compress])
     
@@ -2082,7 +2082,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place
                 if let place = place {
-                    let SelectedCurrentLocation = "\(place.name), \(place.formattedAddress!)"
+                    let SelectedCurrentLocation = "\(place.name ?? ""), \(place.formattedAddress ?? "")"
                     self.strPickupLocation = SelectedCurrentLocation
 //                        place.formattedAddress!
                     self.doublePickupLat = place.coordinate.latitude
@@ -5094,7 +5094,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             self.ConstantViewCarListsHeight.constant = 0
             self.viewCarLists.isHidden = true
 //            self.viewShareRideView.isHidden = true
-            let SelectedFromLocation = "\(place.name), \(place.formattedAddress!)"
+            let SelectedFromLocation = "\(place.name ?? ""), \(place.formattedAddress ?? "")"
             txtCurrentLocation.text = SelectedFromLocation
 //                place.formattedAddress
             strPickupLocation = SelectedFromLocation
@@ -5118,7 +5118,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             self.ConstantViewCarListsHeight.constant = 0
             self.viewCarLists.isHidden = true
 //            self.viewShareRideView.isHidden = true
-            let SelectedDestinationLocation = "\(place.name), \(place.formattedAddress!)"
+            let SelectedDestinationLocation = "\(place.name ?? ""), \(place.formattedAddress ?? "")"
             txtDestinationLocation.text = SelectedDestinationLocation
             strDropoffLocation = SelectedDestinationLocation
 //            place.formattedAddress!

@@ -51,7 +51,7 @@ class WalletTransferViewController: BaseViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         viewEnterMoney.isHidden = false
-        self.viewSendMoney.backgroundColor = UIColor.black
+        self.viewSendMoney.backgroundColor = themeBlackColor
         self.imgSendMoney.image = UIImage.init(named: "iconSendMoneySelected")
         self.lblSendMoney.textColor = themeYellowColor
         
@@ -105,7 +105,7 @@ class WalletTransferViewController: BaseViewController, UITextFieldDelegate {
         
         viewEnterMoney.isHidden = false
         
-        self.viewSendMoney.backgroundColor = UIColor.black
+        self.viewSendMoney.backgroundColor = themeBlackColor
         self.imgSendMoney.image = UIImage.init(named: "iconSendMoneySelected")
         self.lblSendMoney.textColor = themeYellowColor
         scrollObj.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -123,7 +123,7 @@ class WalletTransferViewController: BaseViewController, UITextFieldDelegate {
         viewEnterMoney.isHidden = true
         
         
-        self.viewReceiveMoney.backgroundColor = UIColor.black
+        self.viewReceiveMoney.backgroundColor = themeBlackColor
         self.imgReceiveMoney.image = UIImage.init(named: "iconReceiveMoneySelected")
         self.lblReceiveMoney.textColor = themeYellowColor
         
@@ -140,7 +140,7 @@ class WalletTransferViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func btnSendBankAccount(_ sender: UIButton) {
         
         
-        self.viewTransferToBank.backgroundColor = UIColor.black
+        self.viewTransferToBank.backgroundColor = themeBlackColor
         self.imgTransferToBank.image = UIImage.init(named: "iconSendMoneySelected")
         self.lblTransferToBank.textColor = themeYellowColor
         

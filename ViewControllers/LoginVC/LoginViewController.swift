@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
             }
         }
         
-//        webserviceOfAppSetting()
+        webserviceOfAppSetting()
         manager.delegate = self
         manager.requestAlwaysAuthorization()
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
@@ -89,29 +89,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
         }
         manager.startUpdatingLocation()
         
-//        locationManager.requestAlwaysAuthorization()
-//
-//        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
-//            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
-//
-//            if locationManager.responds(to: #selector(CLLocationManager.requestWhenInUseAuthorization))
-//            {
-//                if locationManager.location != nil
-//                {
-//                    locationManager.startUpdatingLocation()
-//                    locationManager.delegate = self
-//
-//                }
-//
-//                //                manager.startUpdatingLocation()
-//            }
+//        if(SingletonClass.sharedInstance.isUserLoggedIN)
+//        {
+//            //                            self.webserviceForAllDrivers()
+//            self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
 //        }
-        
-        if(SingletonClass.sharedInstance.isUserLoggedIN)
-        {
-            //                            self.webserviceForAllDrivers()
-            self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-        }
     }
     
     override func viewDidLoad() {
@@ -206,12 +188,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
                 DispatchQueue.main.async(execute: { () -> Void in
                     UtilityClass.hideACProgressHUD()
                         SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
+//                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
                         SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
                         SingletonClass.sharedInstance.isUserLoggedIN = true
                         UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-                    
+//                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
+
                         self.webserviceForAllDrivers()
                         
                 })
@@ -528,12 +510,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
                 let dictData = result as! [String : AnyObject]
                 UtilityClass.hideACProgressHUD()
                 SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
+//                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
                 SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
                 SingletonClass.sharedInstance.isUserLoggedIN = true
                 UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-                UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-                
+//                UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
+
                 self.webserviceForAllDrivers()
 //                let dict = dictData["profile"] as! [String : AnyObject]
 //                let tempID = dict["Id"] as? String
@@ -616,6 +598,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
             
             if (status) {
                 print("result is : \(result)")
+                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
 
 //                self.viewMain.isHidden = false
                 
@@ -624,7 +607,9 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
                     let alert = UIAlertController(title: nil, message: (result as! NSDictionary).object(forKey: "message") as? String, preferredStyle: .alert)
                     let UPDATE = UIAlertAction(title: "UPDATE", style: .default, handler: { ACTION in
                         
-                        UIApplication.shared.openURL(NSURL(string: "https://itunes.apple.com/us/app/TANTAXI/id1445179460?mt=8")! as URL)
+                        UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+
+                        })
                     })
                     let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
                         
@@ -655,7 +640,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
 
                         UtilityClass.showAlertWithCompletion("", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self, completionHandler: { ACTION in
                             
-                            UIApplication.shared.open((NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL), options: [:], completionHandler: { (status) in
+                            UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
                                 
                             })//openURL(NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL)
                         })
@@ -665,7 +650,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
                          UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                             if (index == 0)
                             {
-                                UIApplication.shared.open((NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL), options: [:], completionHandler: { (status) in
+                                UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
                                     
                                 })
                             }

@@ -1,0 +1,6 @@
+framework module Pods_Flicha_User {
+  umbrella header "Pods-Flicha User-umbrella.h"
+
+  export *
+  module * { export * }
+}
