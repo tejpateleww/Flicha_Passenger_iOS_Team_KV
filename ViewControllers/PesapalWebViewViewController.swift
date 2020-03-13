@@ -45,8 +45,7 @@ class PesapalWebViewViewController: BaseViewController
     // ----------------------------------------------------
     // MARK: - Base Methods
     // ----------------------------------------------------
-    override func loadView()
-    {
+    override func loadView() {
        
     }
     

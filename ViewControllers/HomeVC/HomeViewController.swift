@@ -3321,8 +3321,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     //MARK:- Side Menu Navigation
     @objc func GotoProfilePage() {
+        /* Raj Changes
         let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
-        self.navigationController?.pushViewController(NextPage, animated: true)
+        self.navigationController?.pushViewController(NextPage, animated: true) */
+        
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateProfileViewController") as? UpdateProfileViewController        
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
     @objc func GotoHomePage()

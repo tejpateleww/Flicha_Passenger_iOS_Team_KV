@@ -39,7 +39,7 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
     @IBOutlet weak var txtRafarralCode: ThemeTextField!
     
     @IBOutlet weak var txtPostCode: ThemeTextField!
-    
+    @IBOutlet weak var txtDOB: ThemeTextField!
     @IBOutlet weak var imgProfile: UIImageView!
 
     @IBOutlet weak var lblFirstStep: UILabel!
@@ -58,13 +58,13 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
         super.viewWillAppear(true)
         setLocalization()
     }
-    func setLocalization()
-    {
+    func setLocalization() {
         txtFullName.placeholder  =  "Full Name".localized
         txtAddress.placeholder = "Address".localized
         txtRafarralCode.placeholder  =  "Invite Code".localized
         txtPostCode.placeholder = "Post Code".localized
         txtDateOfBirth.placeholder = "Date Of Birth".localized
+        txtDOB.placeholder = "Date Of Birth".localized
         btnSignUp.setTitle("Sign Up".localized , for: .normal)
         btnmale.setTitle("Male".localized, for: .normal)
         btnFemail.setTitle("Female".localized, for: .normal)
@@ -190,8 +190,8 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
     {
         let dateFormaterView = DateFormatter()
         dateFormaterView.dateFormat = "yyyy-MM-dd"
-        txtDateOfBirth.text = dateFormaterView.string(from: sender.date)
-        strDateOfBirth = txtDateOfBirth.text!
+        txtDOB.text = dateFormaterView.string(from: sender.date)
+        strDateOfBirth = txtDOB.text!
         
     }
 
@@ -217,6 +217,12 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
             }
             return false
         }
+        else if imgProfile.image!.isEqualToImage(image: UIImage(named: "icon_UserImage")!) {
+            
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please choose profile picture") { (index, title) in
+            }
+            return false
+        }
 //        else if (txtLastName.text?.count == 0)
 //        {
 //
@@ -237,7 +243,7 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
 //            }
 //            return false
 //        }
-        else if (txtAddress.text?.count == 0){
+        else if (txtAddress.text?.count == 0) {
             
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter Address") { (index, title) in
             }
@@ -248,13 +254,13 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
             }
             return false
         }
-        else if (txtPostCode.text?.count == 0)
-        {
-            
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Post Code") { (index, title) in
-            }
-            return false
-        }
+//        else if (txtPostCode.text?.count == 0)
+//        {
+//
+//            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Post Code") { (index, title) in
+//            }
+//            return false
+//        }
         return true
     }
     
@@ -398,6 +404,16 @@ extension RegistrationNewViewController {
         self.radioButtonsController.delegate = self //class should implement AKRadioButtonsControllerDelegate
 
         
+    }
+    
+}
+extension UIImage {
+    
+    func isEqualToImage(image: UIImage) -> Bool {
+        let data1: NSData = UIImagePNGRepresentation(self)! as NSData
+        let data2: NSData = UIImagePNGRepresentation(image)! as NSData
+        
+        return data1.isEqual(data2)
     }
     
 }

@@ -135,7 +135,7 @@ class SettingPasscodeVC: BaseViewController, checkSwitchIsOnOrOff {
     
     
     @IBAction func btnChangePasscode(_ sender: UIButton) {
-        
+        //Terms and condition
 //        if SingletonClass.sharedInstance.setPasscode == "" {
 //            let next = self.storyboard?.instantiateViewController(withIdentifier: "SetPasscodeViewController") as! SetPasscodeViewController
 //            self.navigationController?.pushViewController(next, animated: true)
@@ -147,6 +147,9 @@ class SettingPasscodeVC: BaseViewController, checkSwitchIsOnOrOff {
 //            self.navigationController?.pushViewController(next, animated: true)
 ////        }
 //
+        UtilityClass.setCustomAlert(title: "Info Message".localized, message: "This feature is coming soon") { (index, title) in
+        }
+        return
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "webViewVC") as! webViewVC
         next.headerName = "\(appName)"
@@ -155,9 +158,14 @@ class SettingPasscodeVC: BaseViewController, checkSwitchIsOnOrOff {
     }
     
     @IBAction func btnProfile(_ sender: UIButton) {
-        
+        //Privacy Policy
 //        let next = self.storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
 //        self.navigationController?.pushViewController(next, animated: true)
+        
+        UtilityClass.setCustomAlert(title: "Info Message".localized, message: "This feature is coming soon") { (index, title) in
+        }
+        return
+        
         let next = self.storyboard?.instantiateViewController(withIdentifier: "webViewVC") as! webViewVC
         next.headerName = "\(appName)"
         next.strURL = "https://www.tantaxitanzania.com/front/privacypolicy"

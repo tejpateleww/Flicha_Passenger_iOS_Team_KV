@@ -34,9 +34,9 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         
         if IsNeedRightButton == true {
-            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem = rightNavBarButton
+//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
+//            self.navigationItem.rightBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = rightNavBarButton
         } else {
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -60,9 +60,9 @@ class BaseViewController: UIViewController {
         
         
         if IsNeedRightButton == true {
-            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem = rightNavBarButton
+//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
+//            self.navigationItem.rightBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = rightNavBarButton
         } else {
             self.navigationItem.rightBarButtonItem = nil
         }

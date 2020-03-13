@@ -162,9 +162,6 @@ class EditProfileViewController: BaseViewController {
         })
         
         
-        
-        
-        
     }
     @IBAction func btnEditProfile(_ sender: UIButton) {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateProfileViewController") as? UpdateProfileViewController

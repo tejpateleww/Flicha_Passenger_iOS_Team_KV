@@ -233,18 +233,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 
                 let datas = (result as! [String:AnyObject])
                 
-                
-               
                 if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-                    if SelectedLanguage == "en"
-                    {
+                    if SelectedLanguage == "en" {
                         
                         UtilityClass.showAlertWithCompletion("OTP Code", message: datas["message"] as! String, vc: self, completionHandler: { ACTION in
                             
                             if let otp = datas["otp"] as? String {
                                 SingletonClass.sharedInstance.otpCode = otp
-                            }
-                            else if let otp = datas["otp"] as? Int {
+                            }else if let otp = datas["otp"] as? Int {
                                 SingletonClass.sharedInstance.otpCode = "\(otp)"
                             }
                             

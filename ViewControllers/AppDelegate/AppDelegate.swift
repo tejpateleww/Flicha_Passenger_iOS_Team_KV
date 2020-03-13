@@ -20,8 +20,8 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 
-let googlApiKey = "AIzaSyDeLFTr-pqAWNHp-XLdUb-4UZve6g0IpN8"//"AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" //"AIzaSyBpHWct2Dal71hBjPis6R1CU0OHZNfMgCw"         // AIzaSyB08IH_NbumyQIAUCxbpgPCuZtFzIT5WQo
-let googlPlacesApiKey = "AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
+let googlApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8"//"AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" //"AIzaSyBpHWct2Dal71hBjPis6R1CU0OHZNfMgCw"         // AIzaSyB08IH_NbumyQIAUCxbpgPCuZtFzIT5WQo
+let googlPlacesApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
 
 
 
@@ -268,7 +268,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
             SingletonClass.sharedInstance.deviceToken = fcmToken!
             UserDefaults.standard.set(SingletonClass.sharedInstance.deviceToken, forKey: "Token")
         }
-        
         
         print("SingletonClass.sharedInstance.deviceToken : \(SingletonClass.sharedInstance.deviceToken)")
     }

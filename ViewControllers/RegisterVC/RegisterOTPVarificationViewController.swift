@@ -45,7 +45,7 @@ class RegisterOTPVarificationViewController: UIViewController {
 
     func  setLocalization()
     {
-        txtOTP.placeholder = "OTP Code".localized
+        txtOTP.placeholder = "Enter OTP".localized
 //        lblFirstStep.text = "".localized
 //        lblSecondStep.text = "".localized
         btnResendOTP.setTitle("Resend OTP".localized, for: .normal)

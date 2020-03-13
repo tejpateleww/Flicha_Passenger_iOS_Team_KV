@@ -29,6 +29,15 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     
     @IBOutlet weak var btnSignout: ThemeButton!
     
+    @IBOutlet weak var btnSignOut1: UIButton! {
+        didSet {
+            btnSignOut1.layer.borderColor = themeRedColor.cgColor
+            btnSignOut1.layer.borderWidth = 1.0
+            btnSignOut1.setTitleColor(themeRedColor, for: .normal)
+            btnSignOut1.layer.cornerRadius = 20
+            btnSignOut1.setTitle("Sign out".localized, for: .normal)
+        }
+    }
     @IBOutlet weak var CollectionHeight: NSLayoutConstraint!
     
     var ProfileData = NSDictionary()
@@ -92,8 +101,10 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+         arrMenuIcons = ["icon_MyBookingUnselect","icon_FavouriteUnselect","icon_Legal","icon_Support"]
+//        arrMenuIcons = ["icon_MyBookingUnselect","icon_MyReceiptUnselect","icon_UnSelectedWallet","icon_InviteFriendUnselect","icon_FavouriteUnselect","icon_Legal","icon_Support"]
         
-        arrMenuIcons = ["icon_MyBookingUnselect","icon_MyReceiptUnselect","icon_UnSelectedWallet","icon_InviteFriendUnselect","icon_FavouriteUnselect","icon_Legal","icon_Support"]//,"icon_PaymentOptionsUnselect","icon_UnSelectedWallet",,"icon_PaymentOptionsUnselect"
+        //,"icon_PaymentOptionsUnselect","icon_UnSelectedWallet",,"icon_PaymentOptionsUnselect"
 //                        "iconSettings","iconMyBooking","iconPackageHistory","iconLogOut"]
         
 //        arrMenuTitle = ["My Booking","My Receipts","Invite Friends","My Ratings","Legal", "Support"]//"Favourites","Payment Options"
@@ -121,7 +132,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
 //                            }
 //                        }
 //                    }
-         arrMenuTitle = ["My Bookings","My Receipts","Wallet","Invite Friends","My Ratings","Legal", "Support"]//,"Payment Options"
+         arrMenuTitle = ["My Bookings","My Ratings","Legal", "Support"]//,"Payment Options"
     
     }
     
@@ -209,7 +220,41 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     
     // MARK:- IBAction Methods
     
-    @IBAction func btnLogoutAction(_ sender: ThemeButton) {
+    @IBAction func btnLogoutAction(_ sender: UIButton) {
+        RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Sign out".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
+            if (buttonIndex == 2) {
+                
+                let socket = (UIApplication.shared.delegate as! AppDelegate).SocketManager
+                
+                
+                socket.off(SocketData.kReceiveGetEstimateFare)
+                socket.off(SocketData.kNearByDriverList)
+                socket.off(SocketData.kAskForTipsToPassengerForBookLater)
+                socket.off(SocketData.kAskForTipsToPassenger)
+                socket.off(SocketData.kAcceptBookingRequestNotification)
+                socket.off(SocketData.kRejectBookingRequestNotification)
+                socket.off(SocketData.kCancelTripByDriverNotficication)
+                socket.off(SocketData.kPickupPassengerNotification)
+                socket.off(SocketData.kBookingCompletedNotification)
+                socket.off(SocketData.kAcceptAdvancedBookingRequestNotification)
+                socket.off(SocketData.kRejectAdvancedBookingRequestNotification)
+                socket.off(SocketData.kAdvancedBookingPickupPassengerNotification)
+                socket.off(SocketData.kReceiveHoldingNotificationToPassenger)
+                socket.off(SocketData.kAdvancedBookingTripHoldNotification)
+                socket.off(SocketData.kReceiveDriverLocationToPassenger)
+                socket.off(SocketData.kAdvancedBookingDetails)
+                socket.off(SocketData.kInformPassengerForAdvancedTrip)
+                socket.off(SocketData.kAcceptAdvancedBookingRequestNotify)
+                //                Singletons.sharedInstance.isPasscodeON = false
+                socket.disconnect()
+                
+                
+                //                self.navigationController?.popToRootViewController(animated: true)
+                
+                (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+            }
+        })
+
         /*
         
         let socket = (UIApplication.shared.delegate as! AppDelegate).SocketManager
@@ -619,8 +664,13 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
             sideMenuController?.toggle()
         }
         else if arrMenuTitle[indexPath.row] == "Support" {
+            UtilityClass.setCustomAlert(title: "Info Message".localized, message: "This feature is coming soon") { (index, title) in
+            }
+            return
+            /* Rj Change
             NotificationCenter.default.post(name: OpenSupport, object: nil)
             sideMenuController?.toggle()
+             */
         }
     }
     

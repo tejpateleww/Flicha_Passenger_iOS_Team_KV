@@ -11,6 +11,7 @@ import Foundation
 
 let themeYellowColor: UIColor =  UIColor.init(hex: "ef4036")
 let themeBlackColor: UIColor =  UIColor.init(hex: "231f20")
+let themeRedColor: UIColor = UIColor.init(hex: "EF4036")
 //    UIColor.init(red: 255/255, green: 163/255, blue: 0, alpha: 1.0)
 let themeGrayColor: UIColor = UIColor.init(red: 114/255, green: 114/255, blue: 114/255, alpha: 1.0)
 //let ThemeYellowColor : UIColor = UIColor.init(hex: "ffa300")
@@ -60,11 +61,11 @@ let screenWidthDeveloper : Double = 320
 
 
 struct WebserviceURLs {
-    static let kBaseURL                                  = "https://www.tantaxitanzania.com/Passenger_Api/" // "http://54.169.67.226/web/Passenger_Api/" // "https://pickngolk.info/web/Passenger_Api/" "http://54.169.67.226/web/Passenger_Api/" //
+    static let kBaseURL                                  = "http://3.6.224.0/Passenger_Api/" //"https://www.tantaxitanzania.com/Passenger_Api/" // "http://54.169.67.226/web/Passenger_Api/" // "https://pickngolk.info/web/Passenger_Api/" "http://54.169.67.226/web/Passenger_Api/" //
     static let kDriverRegister                          = "Register"
     static let kDriverLogin                             = "Login"
     static let kChangePassword                          = "ChangePassword"
-        static let kSocialLogin                             = "SocialLogin"
+    static let kSocialLogin                             = "SocialLogin"
     static let kUpdateProfile                           = "UpdateProfile"
     static let kForgotPassword                          = "ForgotPassword"
     static let kGetCarList                              = "GetCarClass"
@@ -75,7 +76,7 @@ struct WebserviceURLs {
     
     static let kPastBooking                             = "PastBooking"
     static let kGetEstimateFare                         = "GetEstimateFare"
-    static let kImageBaseURL                            = "https://www.tantaxitanzania.com/" // "https://pickngolk.info/web/" "http://54.169.67.226/web/" //
+    static let kImageBaseURL                            = "http://3.6.224.0/"//"https://www.tantaxitanzania.com/" // "https://pickngolk.info/web/" "http://54.169.67.226/web/" //
     static let kFeedbackList                            = "FeedbackList/"
     static let kCardsList                               = "Cards/"
     static let kPackageBookingHistory                   = "PackageBookingHistory"
@@ -113,7 +114,7 @@ struct WebserviceURLs {
 
 struct SocketData {
     
-    static let kBaseURL                                     = "https://www.tantaxitanzania.com:8081"//"http://3.120.161.225:8080"
+    static let kBaseURL                                     = "http://3.6.224.0:8080"//"https://www.tantaxitanzania.com:8081"//"http://3.120.161.225:8080"
     // "http://54.255.222.125:8080/" // "https://pickngolk.info:8081" "http://54.169.67.226:8080" //
     static let kNearByDriverList                            = "NearByDriverListIOS"
     static let kUpdatePassengerLatLong                      = "UpdatePassengerLatLong"
