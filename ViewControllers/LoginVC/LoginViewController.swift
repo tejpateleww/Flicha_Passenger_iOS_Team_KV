@@ -21,7 +21,7 @@ import CoreLocation
 
 
 
-class LoginViewController: UIViewController, CLLocationManagerDelegate, alertViewMethodsDelegates, GIDSignInDelegate,GIDSignInUIDelegate
+class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegate, alertViewMethodsDelegates, GIDSignInDelegate,GIDSignInUIDelegate
 {
     
     
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
     
     override func loadView() {
         super.loadView()
-        
+        self.setTitle(Title: "Welcome", Description: "Sign in to continue! Sign in to continue! Sign in to continue!")
         if Connectivity.isConnectedToInternet() {
             print("Yes! internet is available.")
             // do some tasks..
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
             }
         }
         
-        webserviceOfAppSetting()
+//        webserviceOfAppSetting()
         manager.delegate = self
         manager.requestAlwaysAuthorization()
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
@@ -106,13 +106,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, alertVie
         UserDefaults.standard.set("en", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
         
-        if UIDevice.current.name == "Bhavesh iPhone" || UIDevice.current.name == "Excellent Web's iPhone 5s" || UIDevice.current.name == "Rahul's iPhone" {
-            
-            txtMobile.text = "9904439228"
-            txtPassword.text = "12345678"
-        }
-        txtMobile.text = "1122334456"
-        txtPassword.text = "12345678"
+//        if UIDevice.current.name == "Bhavesh iPhone" || UIDevice.current.name == "Excellent Web's iPhone 5s" || UIDevice.current.name == "Rahul's iPhone" {
+//
+//            txtMobile.text = "9904439228"
+//            txtPassword.text = "12345678"
+//        }
+//        txtMobile.text = "1122334456"
+//        txtPassword.text = "12345678"
         
         lblLaungageName.layer.cornerRadius = 5
         lblLaungageName.backgroundColor = themeYellowColor

@@ -168,6 +168,8 @@
 		3A84BC9B21C23CFC00EDA3A2 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9A21C23CFC00EDA3A2 /* RadioButton.m */; };
 		3A84BC9F21C264E900EDA3A2 /* MyRatingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9D21C264E800EDA3A2 /* MyRatingViewCell.swift */; };
 		3A84BCA021C264E900EDA3A2 /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9E21C264E800EDA3A2 /* MyRatingViewController.swift */; };
+		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
+		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
 		A9BCE9B78D3B1A0712C8CED8 /* Pods_Flicha_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78D733F6B056CE09A5ADDD9 /* Pods_Flicha_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -355,6 +357,8 @@
 		5C887A7607BF7D1623FC535A /* Pods-TanTaxi User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TanTaxi User.release.xcconfig"; path = "Pods/Target Support Files/Pods-TanTaxi User/Pods-TanTaxi User.release.xcconfig"; sourceTree = "<group>"; };
 		626E9D33B8993B5928C11526 /* Pods_TanTaxi_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TanTaxi_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
+		7A1D8A742434AD2800ABCC6E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		8AB9D1AFC2E46418F626C956 /* Pods-TickTok User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TickTok User.release.xcconfig"; path = "Pods/Target Support Files/Pods-TickTok User/Pods-TickTok User.release.xcconfig"; sourceTree = "<group>"; };
 		BD32F68E712FA8642AFBDA39 /* Pods-TanTaxi User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TanTaxi User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TanTaxi User/Pods-TanTaxi User.debug.xcconfig"; sourceTree = "<group>"; };
 		CF165D60C84FABB3D6B3E841 /* Pods-PickNGo User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickNGo User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickNGo User/Pods-PickNGo User.debug.xcconfig"; sourceTree = "<group>"; };
@@ -487,6 +491,7 @@
 				3A40733021B512270015C494 /* TripDetailsVC */,
 				3A40733321B512270015C494 /* UpdateProfileVC */,
 				3A40733621B512270015C494 /* Wallet */,
+				7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				3A4072F121B512270015C494 /* LoginViewController.swift */,
+				7A1D8A742434AD2800ABCC6E /* SplashVC.swift */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";
@@ -1239,6 +1245,7 @@
 				3A4073B521B512280015C494 /* PackageHistoryListTableViewCell.swift in Sources */,
 				3A4073BB21B512280015C494 /* RegistrationNewViewController.swift in Sources */,
 				3A4073BE21B512280015C494 /* BookTableViewController.swift in Sources */,
+				7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */,
 				3A4073F221B512280015C494 /* ACProgressView.swift in Sources */,
 				3A40739E21B512280015C494 /* CommingSoonViewController.swift in Sources */,
 				3A84BC9521C22B2E00EDA3A2 /* UIActionSheet+Blocks.m in Sources */,
@@ -1278,6 +1285,7 @@
 				3A84BC9321C22B2E00EDA3A2 /* RMPopoverPresentationController.m in Sources */,
 				3A4073B321B512280015C494 /* PackageCarListCollectionViewCell.swift in Sources */,
 				3A40740C21B512280015C494 /* ButtonUtility.swift in Sources */,
+				7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */,
 				3A4073D821B512280015C494 /* MyRecepitTableViewCell.swift in Sources */,
 				3A4073C621B512280015C494 /* InviteDriverViewController.swift in Sources */,
 				3A4073A421B512280015C494 /* AllDriversOnMapViewController.swift in Sources */,
