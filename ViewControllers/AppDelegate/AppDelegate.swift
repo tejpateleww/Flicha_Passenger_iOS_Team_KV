@@ -72,9 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         Fabric.with([Crashlytics.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
-        GIDSignIn.sharedInstance().delegate = self
-        googleAnalyticsTracking()
+//        GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
+//        GIDSignIn.sharedInstance().delegate = self
+//        googleAnalyticsTracking()
         
         // TODO: Move this to where you establish a user session
         //   self.logUser()

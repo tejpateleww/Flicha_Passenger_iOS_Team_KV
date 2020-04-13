@@ -17,52 +17,49 @@ import GoogleSignIn
 import NVActivityIndicatorView
 import CoreLocation
 
-
-
-
-
 class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegate, alertViewMethodsDelegates, GIDSignInDelegate,GIDSignInUIDelegate
 {
-    
-    
     //-------------------------------------------------------------
     // MARK: - Outlets
     //-------------------------------------------------------------
     @IBOutlet weak var viewMain: UIView!
+    @IBOutlet weak var lblTitle: ThemeTitleLabel!
+    @IBOutlet weak var lblSubTitle: ThemeDescriptionsLabel!
     
     @IBOutlet weak var txtPassword: ThemeTextField!
     @IBOutlet weak var txtMobile: ThemeTextField!
-    
     @IBOutlet weak var btnLogin: ThemeButton!
-    
-    @IBOutlet weak var btnSignup: UIButton!
-    
+//    @IBOutlet weak var btnSignup: UIButton!
     @IBOutlet weak var btnForgotPass: UIButton!
-    
     @IBOutlet weak var lblDontAc: UILabel!
-    
-    @IBOutlet weak var lblOr: UILabel!
-    
+//    @IBOutlet weak var lblOr: UILabel!
     @IBOutlet weak var btnFB: UIButton!
+//    @IBOutlet weak var btnGoogle: UIButton!
+//    @IBOutlet var lblLaungageName: UILabel!
     
-    @IBOutlet weak var btnGoogle: UIButton!
-     @IBOutlet var lblLaungageName: UILabel!
     var manager = CLLocationManager()
-
     var strURLForSocialImage = String()
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
     
-    override func loadView() {
+    override func loadView()
+    {
         super.loadView()
-        self.setTitle(Title: "Welcome", Description: "Sign in to continue! Sign in to continue! Sign in to continue!")
-        if Connectivity.isConnectedToInternet() {
+      
+        //self.setTitle(Title: "Welcome", Description: "Sign in to continue! Sign in to continue! Sign in to continue!")
+        self.lblTitle.text = "Welcome"
+        self.lblSubTitle.text = "Sign in to continue!"
+        self.btnFB.imageView?.contentMode = .scaleAspectFill
+        
+        
+        if Connectivity.isConnectedToInternet()
+        {
             print("Yes! internet is available.")
             // do some tasks..
         }
-        else {
-
+        else
+        {
             UtilityClass.setCustomAlert(title: "Connection Error".localized, message: "Internet connection not available".localized) { (index, title) in
             }
         }
@@ -81,7 +78,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
                     manager.desiredAccuracy = kCLLocationAccuracyBest
                     manager.activityType = .automotiveNavigation
                     manager.startMonitoringSignificantLocationChanges()
-//                    manager.allowsBackgroundLocationUpdates = true
+                    //                    manager.allowsBackgroundLocationUpdates = true
                     //                    manager.distanceFilter = //
                 }
                 
@@ -102,7 +99,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         
 //        txtMobile.lineColor = UIColor.white
 //        txtPassword.lineColor = UIColor.white
-        lblLaungageName.text = "SW"
+//        lblLaungageName.text = "SW"
         UserDefaults.standard.set("en", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
         
@@ -114,10 +111,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
 //        txtMobile.text = "1122334456"
 //        txtPassword.text = "12345678"
         
-        lblLaungageName.layer.cornerRadius = 5
-        lblLaungageName.backgroundColor = themeYellowColor
-        lblLaungageName.layer.borderColor = UIColor.black.cgColor
-        lblLaungageName.layer.borderWidth = 0.5
+//        lblLaungageName.layer.cornerRadius = 5
+//        lblLaungageName.backgroundColor = themeYellowColor
+//        lblLaungageName.layer.borderColor = UIColor.black.cgColor
+//        lblLaungageName.layer.borderWidth = 0.5
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,16 +123,21 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     }
     
    func setLocalization()
-    {
+   {
         txtMobile.placeholder = "Phone Number".localized
         txtPassword.placeholder = "Password".localized
-        lblDontAc.text = "Don't have an account?".localized
-//       lblOr.text = "OR".localized
+    
+        lblDontAc.textColor = .black
+        lblDontAc.attributedText =  "OR \n\n \("Don't have an account?".localized) SIGN UP".underLineWordsIn(highlightedWords: "SIGN UP", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+    
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignupClickAction(_:)))
+        lblDontAc.isUserInteractionEnabled = true
+        lblDontAc.addGestureRecognizer(tapGesture)
+    
+        //  lblOr.text = "OR".localized
         btnForgotPass.setTitle("Forgot Password?".localized, for: .normal)
         btnLogin.setTitle("Sign In".localized, for: .normal)
-        btnSignup.setTitle("Sign Up".localized, for: .normal)
-        
-        
+        //btnSignup.setTitle("Sign Up".localized, for: .normal)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -148,30 +150,26 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     {
         if (txtMobile.text?.count == 0)
         {
-
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter Mobile Number") { (index, title) in
             }
             
-             // txtMobile.showErrorWithText(errorText: "Enter Email")
+            // txtMobile.showErrorWithText(errorText: "Enter Email")
             return false
         }
         else if (txtPassword.text?.count == 0)
         {
-
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter Password") { (index, title) in
             }
-
+            
             return false
         }
         return true
     }
     
-    
     //MARK: - Webservice Call for Login
     
     func webserviceCallForLogin()
     {
-       
         let dictparam = NSMutableDictionary()
         dictparam.setObject(txtMobile.text!, forKey: "Username" as NSCopying)
         dictparam.setObject(txtPassword.text!, forKey: "Password" as NSCopying)
@@ -187,71 +185,73 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             {
                 DispatchQueue.main.async(execute: { () -> Void in
                     UtilityClass.hideACProgressHUD()
-                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-//                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-                        SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
-                        SingletonClass.sharedInstance.isUserLoggedIN = true
-                        UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-//                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-
-                        self.webserviceForAllDrivers()
-                        
+                    SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
+                    //                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
+                    SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
+                    SingletonClass.sharedInstance.isUserLoggedIN = true
+                    UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
+                    //                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
+                    
+                    self.webserviceForAllDrivers()
+                    
                 })
-            } else {
+                
+            } else
+            {
                 UtilityClass.hideACProgressHUD()
                 UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                 }
             }
         }
     }
-    
-   
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "segueToHomeVC") {
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "segueToHomeVC")
+        {
        
         }
     }
-
     
     var aryAllDrivers = NSArray()
     func webserviceForAllDrivers()
     {
         webserviceForAllDriversList { (result, status) in
             
-            if (status) {
-                
+            if (status)
+            {
                 self.aryAllDrivers = ((result as! NSDictionary).object(forKey: "drivers") as! NSArray)
                 
                 SingletonClass.sharedInstance.allDiverShowOnBirdView = self.aryAllDrivers
                 
                 (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                 
-//                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-//                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
-//                let navController = UINavigationController(rootViewController: viewHomeController!)
-//                self.sideMenuController?.embed(centerViewController: navController)
+                //                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
+                //                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
+                //                let navController = UINavigationController(rootViewController: viewHomeController!)
+                //                self.sideMenuController?.embed(centerViewController: navController)
             }
-            else {
+            else
+            {
                 print(result)
             }
         }
     }
+    
     @IBAction func btnFBClicked(_ sender: UIButton)
     {
         sender.isSelected = !sender.isSelected
         
-//        if self.btnFB.isSelected
-//        {
-//            self.btnGoogle.isSelected = false
-//        }
+        //        if self.btnFB.isSelected
+        //        {
+        //            self.btnGoogle.isSelected = false
+        //        }
         let login = FBSDKLoginManager()
         
         login.loginBehavior = FBSDKLoginBehavior.browser
         UIApplication.shared.statusBarStyle = .default
         login.logOut()
         login.logIn(withReadPermissions: ["public_profile","email"], from: self) { (result, error) in
-            
             
             if error != nil
             {
@@ -275,10 +275,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             }
         }
     }
+    
     //function is fetching the user data
     func getFBUserData()
     {
-        
         //        Utilities.showActivityIndicator()
         
         var parameters = [AnyHashable: Any]()
@@ -375,26 +375,28 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         webserviceForForgotPassword(dictparam) { (result, status) in
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-
-            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1) {
-  
-                 UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+            
+            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
+            {
+                UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                 }
             }
-            else {
-
-                 UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+            else
+            {
+                
+                UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                 }
             }
         }
     }
+    
     @IBAction func btnGoogleClicked(_ sender: UIButton)
     {
         sender.isSelected = !sender.isSelected
-//        if self.btnGoogle.isSelected
-//        {
-//            self.btnFB.isSelected = false
-//        }
+        //        if self.btnGoogle.isSelected
+        //        {
+        //            self.btnFB.isSelected = false
+        //        }
         
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self as GIDSignInUIDelegate
@@ -694,11 +696,22 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     
     }
     
-    @IBAction func btnSignup(_ sender: Any) {
+    @objc func btnSignupClickAction(_ recognizer: UITapGestureRecognizer)
+    {
+        guard let text = self.lblDontAc.attributedText?.string else {
+            return
+        }
         
-    
+        if let range = text.range(of: "SIGN UP"),
+            recognizer.didTapAttributedTextInLabel(label: self.lblDontAc, inRange: NSRange(range, in: text))
+        {
+            print("Sign up click")
+            
+            let storyboard = UIStoryboard(name: "Login&Register", bundle: nil)
+            let registerVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+            self.navigationController?.pushViewController(registerVC, animated: true)
+        }
     }
-    
     
     @IBAction func btnForgotPassword(_ sender: UIButton) {
         
@@ -743,20 +756,20 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     }
     @IBAction func btnLaungageClicked(_ sender: Any)
     {
-        
-        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-            if SelectedLanguage == "en" {
+        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String
+        {
+            if SelectedLanguage == "en"
+            {
                 setLayoutForswahilLanguage()
-                lblLaungageName.text = "EN"
-            } else if SelectedLanguage == "sw" {
+                //lblLaungageName.text = "EN"
+                
+            } else if SelectedLanguage == "sw"
+            {
                 setLayoutForenglishLanguage()
-                lblLaungageName.text = "SW"
+                //lblLaungageName.text = "SW"
             }
             
             self.navigationController?.loadViewIfNeeded()
-            
-    
-            
             self.setLocalization()
         }
         
@@ -842,14 +855,15 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         print("Error: \(error)")
     }
     
-    func didOKButtonPressed() {
+    func didOKButtonPressed()
+    {
         
     }
     
-    func didCancelButtonPressed() {
+    func didCancelButtonPressed()
+    {
         
     }
-    
     
     func setCustomAlert(title: String, message: String) {
         AJAlertController.initialization().showAlertWithOkButton(aStrTitle: title, aStrMessage: message) { (index,title) in

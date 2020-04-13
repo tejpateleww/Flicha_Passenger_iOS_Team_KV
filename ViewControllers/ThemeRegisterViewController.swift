@@ -12,11 +12,13 @@ class ThemeRegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setTopImage()
+       
+        //self.setTopImage()
         // Do any additional setup after loading the view.
     }
         
-    func setTopImage() {
+    func setTopImage()
+    {
 //        let TopView = UIView()
 //        TopView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 200.0)
         
@@ -35,6 +37,7 @@ class ThemeRegisterViewController: UIViewController {
     }
     
     func setTitle(Title:String, Description:String) {
+        
         let labelWidth =  UIScreen.main.bounds.size.width * 0.75
         let lblTopTitle = UILabel(frame: CGRect(x: 30, y: 160, width: labelWidth - 30,height: 25))
         lblTopTitle.font = UIFont.bold(ofSize: 25.0)

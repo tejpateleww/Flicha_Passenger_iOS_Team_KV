@@ -10,8 +10,17 @@ import UIKit
 import FormTextField
 
 class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, UIPickerViewDelegate, CardIOPaymentViewControllerDelegate {
+ 
+    @IBOutlet weak var lblNameTitle: UILabel!
+    @IBOutlet weak var lblCardTitle: UILabel!
+    @IBOutlet weak var lblExpiresTitle: UILabel!
+    @IBOutlet weak var lblCVVTitle: UILabel!
     
-    
+    @IBOutlet weak var nameContainerView: UIView!
+    @IBOutlet weak var cardNumberContainerView: UIView!
+    @IBOutlet weak var expiryContainerView: UIView!
+    @IBOutlet weak var cVVContainerView: UIView!
+
     var aryMonth = [String]()
     var aryYear = [String]()
     
@@ -49,7 +58,8 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            self.setNavBarWithBack(Title: "ADD CARD".localized, IsNeedRightButton: true)
+            
+            //self.setNavBarWithBack(Title: "ADD CARD".localized, IsNeedRightButton: true)
             setDesignView()
       
         
@@ -72,14 +82,41 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
+        self.addCustomNavigationBar(title: "Add Card")
         cardNum()
         cardExpiry()
         cardCVV()
         setLocaliztion()
-        
+        self.setupContainerLayout()
     }
+    
+    
+    func setupContainerLayout()
+    {
+        nameContainerView.backgroundColor = .white
+        nameContainerView.layer.cornerRadius = nameContainerView.frame.size.height / 2
+        nameContainerView.layer.borderWidth = 0.25
+        nameContainerView.layer.borderColor = themeBlueLightColor.cgColor
+        
+        cardNumberContainerView.backgroundColor = .white
+        cardNumberContainerView.layer.cornerRadius = cardNumberContainerView.frame.size.height / 2
+        cardNumberContainerView.layer.borderWidth = 0.25
+        cardNumberContainerView.layer.borderColor = themeBlueLightColor.cgColor
+        
+        expiryContainerView.backgroundColor = .white
+        expiryContainerView.layer.cornerRadius = expiryContainerView.frame.size.height / 2
+        expiryContainerView.layer.borderWidth = 0.25
+        expiryContainerView.layer.borderColor = themeBlueLightColor.cgColor
+        
+        cVVContainerView.backgroundColor = .white
+        cVVContainerView.layer.cornerRadius = cVVContainerView.frame.size.height / 2
+        cVVContainerView.layer.borderWidth = 0.25
+        cVVContainerView.layer.borderColor = themeBlueLightColor.cgColor
+    }
+    
     
     func setLocaliztion()
     {
@@ -91,10 +128,11 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
     }
     
     @IBOutlet weak var btnScanCard: UIButton!
-    func setDesignView() {
-        txtCardNumber.leftMargin = 0
-        txtCVVNumber.leftMargin = 0
-        txtValidThrough.leftMargin = 0
+    func setDesignView()
+    {
+//        txtCardNumber.leftMargin = 0
+//        txtCVVNumber.leftMargin = 0
+//        txtValidThrough.leftMargin = 0
     }
     
     //-------------------------------------------------------------
@@ -102,11 +140,11 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
     //-------------------------------------------------------------
     
     @IBOutlet weak var btnAddPaymentMethods: ThemeButton!
-    
+    @IBOutlet weak var txtCardName: FormTextField!
     @IBOutlet weak var txtCardNumber: FormTextField!
     @IBOutlet weak var txtValidThrough: FormTextField!
     @IBOutlet weak var txtCVVNumber: FormTextField!
-    @IBOutlet weak var imgCard: UIImageView!
+//    @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var txtAlies: UITextField!
     
 //    @IBOutlet weak var viewScanCard: UIView!
@@ -114,12 +152,14 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
     // MARK: - PicketView Methods
     //-------------------------------------------------------------
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
         return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
+        if component == 0
+        {
             return aryMonth.count
         }
         else {
@@ -127,20 +167,24 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        if component == 0
+        {
             return aryMonth[row]
         }
-        else {
+        else
+        {
             return aryYear[row]
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if component == 1 {
-            if currentYear == aryYear[row] {
-                
+        if component == 1
+        {
+            if currentYear == aryYear[row]
+            {
                 aryYear.removeFirst(row)
                 for i in 0..<aryMonth.count {
                     if currentMonth == aryMonth[i] {
@@ -190,14 +234,25 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
     // MARK: - Base Methods
     //-------------------------------------------------------------
     
-    func cardNum() {
+    func cardNum()
+    {
+        self.lblNameTitle.text = kName
+        self.lblCardTitle.text = kCreditCard
+        self.lblExpiresTitle.text = kExpires
+        self.lblCVVTitle.text = kCVV
+        
+        txtCardName.inputType = .name
+        txtCardName.placeholder = "Name"
+        txtCardName.font = UIFont.regular(ofSize: 13.0)
+        txtCardName.textColor = UIColor.black
+
         txtCardNumber.inputType = .integer
         txtCardNumber.formatter = CardNumberFormatter()
         txtCardNumber.setValue(UIColor.black , forKeyPath: "placeholderLabel.textColor")
         txtCardNumber.placeholder = "Card Number"
         txtCardNumber.font = UIFont.regular(ofSize: 13.0)
         txtCardNumber.textColor = UIColor.black
-        txtCardNumber.leftMargin = 0
+        //txtCardNumber.leftMargin = 0
         txtCardNumber.layer.cornerRadius = 5
         validation.maximumLength = 19
         validation.minimumLength = 14
@@ -271,7 +326,7 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
         if let number = sender.text {
             if number.isEmpty {
                 isCreditCardValid = false
-                imgCard.image = UIImage(named: "iconDummyCard")
+                //imgCard.image = UIImage(named: "iconDummyCard")
             } else {
                 validateCardNumber(number: number)
                 detectCardNumberType(number: number)
@@ -292,7 +347,7 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
             isCreditCardValid = true
         } else {
             isCreditCardValid = false
-            imgCard.image = UIImage(named: "iconDummyCard")
+//            imgCard.image = UIImage(named: "iconDummyCard")
         }
     }
     
@@ -305,12 +360,12 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
             
             print(type.name)
             
-            imgCard.image = UIImage(named: type.name)
+//            imgCard.image = UIImage(named: type.name)
             
             self.cardCVV()
         } else {
             
-            imgCard.image = UIImage(named: "iconDummyCard")
+//            imgCard.image = UIImage(named: "iconDummyCard")
             
             isCreditCardValid = false
             self.cardTypeLabel = "Undefined"

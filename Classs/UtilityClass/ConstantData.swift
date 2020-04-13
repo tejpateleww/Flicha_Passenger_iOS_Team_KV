@@ -9,7 +9,11 @@
 import UIKit
 import Foundation
 
-let themeYellowColor: UIColor =  UIColor.init(hex: "ef4036")
+let themeYellowColor: UIColor =  UIColor.init(red: 249/255, green: 189/255, blue: 60/255, alpha: 1.0)
+let themeBlueColor: UIColor =  UIColor.init(red: 34/255, green: 44/255, blue: 68/255, alpha: 1.0)
+let themeBlueLightColor: UIColor =  UIColor.init(red: 50/255, green: 58/255, blue: 81/255, alpha: 1.0)
+
+//let themeYellowColor: UIColor =  UIColor.init(hex: "ef4036")
 let themeBlackColor: UIColor =  UIColor.init(hex: "231f20")
 let themeRedColor: UIColor = UIColor.init(hex: "EF4036")
 //    UIColor.init(red: 255/255, green: 163/255, blue: 0, alpha: 1.0)

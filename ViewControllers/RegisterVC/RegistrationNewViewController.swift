@@ -212,7 +212,6 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
     {
         if (txtFullName.text?.count == 0)
         {
-
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter User Name") { (index, title) in
             }
             return false
@@ -297,13 +296,15 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
         var FirstName:String = ""
         var LastName:String = ""
         
-        if FullName.contains(" ") {
+        if FullName.contains(" ")
+        {
             let arrNames = FullName.components(separatedBy: " ")
             FirstName = arrNames[0]
             if arrNames.count > 1 {
                 LastName = arrNames[1]
             }
-        } else {
+        } else
+        {
             FirstName = FullName
         }
         

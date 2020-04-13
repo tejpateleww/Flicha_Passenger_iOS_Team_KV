@@ -8,12 +8,22 @@
 
 import UIKit
 //import NVActivityIndicatorView
+import SideMenuController
 
 class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
 
     
+    // MARK: - Outlets
+  
+    @IBOutlet weak var lbltitile: UILabel!
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnOnGoing: UIButton!
+    @IBOutlet weak var btnUpComming: UIButton!
+    @IBOutlet weak var btnPastBooking: UIButton!
+    @IBOutlet weak var scrollObject: UIScrollView!
+    @IBOutlet weak var btnCall: UIButton!
+
     var aryHistory = NSArray()
-    
     let bottomBorderOnGoing = CALayer()
     let bottomBorderUpComming = CALayer()
     let bottomBorderPastBooking = CALayer()
@@ -26,102 +36,81 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
     
     var selectedBackgroundColor = themeBlackColor
     var unselectedBackgroundColor = UIColor.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-    
-    
-    
+        
     var selectedTextColor = themeYellowColor //UIColor.init(red: 48/255, green: 48/255, blue: 48/255, alpha: 1.0)
     var unselectedTextColor = UIColor.init(red: 167/255, green: 167/255, blue: 167/255, alpha: 1.0)
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
+       
         heightOfLayer = 2.0
         heighMinusFromY = 2.0
         
-        
         self.setNavBarWithBack(Title: "My Bookings".localized, IsNeedRightButton: true)
-
-
-
         webserviceOfBookingHistory()
-     
+      
         scrollObject.isUserInteractionEnabled = true
-        
         scrollObject.delegate = self
         scrollObject.layoutIfNeeded()
         scrollObject.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         
-        if (isFromPushNotification) {
-            
-            if bookingType == "accept" {
+        if (isFromPushNotification)
+        {
+            if bookingType == "accept"
+            {
                 Upcomming()
             }
-            else if bookingType == "reject" {
+            else if bookingType == "reject"
+            {
                 PastBooking()
             }
-            
         }
-        else {
+        else
+        {
             PastBooking()
         }
         
         // Do any additional setup after loading the view.
     }
-
-    @IBOutlet weak var lbltitile: UILabel!
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override func viewWillAppear(_ animated: Bool) {
+     override func viewWillAppear(_ animated: Bool)
+     {
         super.viewWillAppear(animated)
-         setLocalization()
-         
-    }
-    func setLocalization()
-    {
-        lbltitile.text = "My Bookings".localized
-        btnOnGoing.setTitle("OnGoing".localized, for: .normal)
-        btnUpComming.setTitle("UpComing".localized, for: .normal)
-        btnPastBooking.setTitle("Past Booking".localized, for: .normal)
-        
+        setLocalization()
     }
     
-    //-------------------------------------------------------------
-    // MARK: - Outlets
-    //-------------------------------------------------------------
-    @IBOutlet weak var btnBack: UIButton!
-    
-    @IBOutlet weak var btnOnGoing: UIButton!
-    @IBOutlet weak var btnUpComming: UIButton!
-    @IBOutlet weak var btnPastBooking: UIButton!
-    
-    @IBOutlet weak var scrollObject: UIScrollView!
-    
-    
+       func setLocalization()
+       {
+           lbltitile.text = "My Bookings".localized
+           btnOnGoing.setTitle("OnGoing".localized, for: .normal)
+           btnUpComming.setTitle("UpComing".localized, for: .normal)
+           btnPastBooking.setTitle("Past Booking".localized, for: .normal)
+       }
+       
+
     //-------------------------------------------------------------
     // MARK: - Actions
     //-------------------------------------------------------------
     
-    @IBAction func btnBack(_ sender: UIButton) {
-      
-        if isModal() {
-            self.dismiss(animated: true, completion: {
-            })
+    @IBAction func btnBack(_ sender: UIButton)
+    {
+        if isModal()
+        {
+            self.dismiss(animated: true, completion: nil)
         }
-        else {
+        else
+        {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    @IBOutlet weak var btnCall: UIButton!
+    
     @IBAction func btCallClicked(_ sender: UIButton)
     {
-        
         let contactNumber = helpLineNumber
         
-        if contactNumber == "" {
-            
+        if contactNumber == ""
+        {
             UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
             }
         }
@@ -131,10 +120,10 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
         }
     }
     
-    private func callNumber(phoneNumber:String) {
-        
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-            
+    private func callNumber(phoneNumber:String)
+    {
+        if let phoneCallURL = URL(string: "tel://\(phoneNumber)")
+        {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
@@ -144,16 +133,16 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
     
     @IBAction func lblOnGoing(_ sender: UIButton) {
         OnGoing()
-        
     }
     
     @IBAction func btnUpComming(_ sender: UIButton) {
         Upcomming()
-       
     }
     
-    func isModal() -> Bool {
-        if (presentingViewController != nil) {
+    func isModal() -> Bool
+    {
+        if (presentingViewController != nil)
+        {
             return true
         }
         if navigationController?.presentingViewController?.presentedViewController == navigationController {
@@ -186,9 +175,8 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
         scrollObject.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
-    func Upcomming() {
-       
-        
+    func Upcomming()
+    {
         btnUpComming.backgroundColor = selectedBackgroundColor
         btnPastBooking.backgroundColor = unselectedBackgroundColor
         btnOnGoing.backgroundColor = unselectedBackgroundColor
@@ -216,7 +204,6 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
 //        btnUpComming.setTitleColor(UIColor.black, for: .normal)
 //        btnPastBooking.setTitleColor(UIColor.black, for: .normal)
         
-      
         scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
     }
     
@@ -253,9 +240,7 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     @IBAction func btnPastBooking(_ sender: UIButton) {
-       
         PastBooking()
-        
     }
     
     //-------------------------------------------------------------
@@ -265,7 +250,6 @@ class MyBookingViewController: BaseViewController, UIScrollViewDelegate {
     {
         let pageNo = CGFloat(scrollView.contentOffset.x / scrollView.frame.size.width)
         //        segmentController.selectItemAt(index: Int(pageNo), animated: true)
-        
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)

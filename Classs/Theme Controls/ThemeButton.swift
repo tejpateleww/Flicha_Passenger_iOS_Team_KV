@@ -13,25 +13,15 @@ class ThemeButton: UIButton {
     @IBInspectable public var isSubmitButton: Bool = false
     @IBInspectable public var NoNeedBackground: Bool = false
     
-    override func awakeFromNib() {
-        self.titleLabel?.font = UIFont.bold(ofSize: 15.0)
-        self.layer.cornerRadius = 3.0
+    override func awakeFromNib()
+    {
+        self.titleLabel?.font = UIFont.semiBold(ofSize: 15.0)
+//        self.backgroundColor = themeYellowColor
+        self.setBackgroundImage(UIImage(named: "yellowButton"), for: .normal)
+        self.imageView?.contentMode = .scaleAspectFit
+        setTitleColor(UIColor.black, for: .normal)
+        self.layer.cornerRadius = self.frame.size.height / 2
         self.layer.masksToBounds = true
-
-        if isSubmitButton == true {
-            self.backgroundColor = themeYellowColor
-            setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
-            self.backgroundColor = UIColor(red: 114.0/255.0, green: 114.0/255.0, blue: 114.0/255.0, alpha: 1.0)
-            setTitleColor(UIColor.white, for: .normal)
-        }
-        
-        if NoNeedBackground == true {
-            self.backgroundColor = UIColor.clear
-            setTitleColor(themeYellowColor, for: .normal)
-        }
-        
     }
     
     /*

@@ -12,5 +12,10 @@ class SideMenuCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgDetail: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
+
+    override func awakeFromNib() {
+        self.lblTitle.font = UIFont.regular(ofSize: 15)
+        self.lblTitle.textColor = themeGrayTextColor
+    }
     
 }

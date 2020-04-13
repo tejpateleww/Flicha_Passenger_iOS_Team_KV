@@ -29,6 +29,8 @@ class MyRatingViewController: BaseViewController,UITableViewDataSource, UITableV
         self.tblview.tableFooterView = UIView()
 //        SideMenuController.preferences.SideMenuController.preferences.interaction.swipingEnabled = false
 
+        SideMenuController.preferences.interaction.panningEnabled = false
+        SideMenuController.preferences.interaction.swipingEnabled = false
 
         labelNoData = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         self.labelNoData.text = "Loading..."

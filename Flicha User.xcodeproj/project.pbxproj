@@ -170,6 +170,12 @@
 		3A84BCA021C264E900EDA3A2 /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9E21C264E800EDA3A2 /* MyRatingViewController.swift */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
+		8187B7AA24419BA5003C7431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187B7A924419BA5003C7431 /* SignUpViewController.swift */; };
+		8187B7AC24422FAA003C7431 /* ConstantString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187B7AB24422FAA003C7431 /* ConstantString.swift */; };
+		8187B7AE24430521003C7431 /* ThemeFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187B7AD24430521003C7431 /* ThemeFormTextField.swift */; };
+		81A7D792244071D8006505C8 /* ThemeTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D791244071D8006505C8 /* ThemeTitleLabel.swift */; };
+		81A7D79424407397006505C8 /* ThemeDescriptionsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D79324407397006505C8 /* ThemeDescriptionsLabel.swift */; };
+		81A7D79624407592006505C8 /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A7D79524407592006505C8 /* Login&Register.storyboard */; };
 		A9BCE9B78D3B1A0712C8CED8 /* Pods_Flicha_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78D733F6B056CE09A5ADDD9 /* Pods_Flicha_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -359,6 +365,12 @@
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
 		7A1D8A742434AD2800ABCC6E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		8187B7A924419BA5003C7431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8187B7AB24422FAA003C7431 /* ConstantString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantString.swift; sourceTree = "<group>"; };
+		8187B7AD24430521003C7431 /* ThemeFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFormTextField.swift; sourceTree = "<group>"; };
+		81A7D791244071D8006505C8 /* ThemeTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTitleLabel.swift; sourceTree = "<group>"; };
+		81A7D79324407397006505C8 /* ThemeDescriptionsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDescriptionsLabel.swift; sourceTree = "<group>"; };
+		81A7D79524407592006505C8 /* Login&Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login&Register.storyboard"; sourceTree = "<group>"; };
 		8AB9D1AFC2E46418F626C956 /* Pods-TickTok User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TickTok User.release.xcconfig"; path = "Pods/Target Support Files/Pods-TickTok User/Pods-TickTok User.release.xcconfig"; sourceTree = "<group>"; };
 		BD32F68E712FA8642AFBDA39 /* Pods-TanTaxi User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TanTaxi User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TanTaxi User/Pods-TanTaxi User.debug.xcconfig"; sourceTree = "<group>"; };
 		CF165D60C84FABB3D6B3E841 /* Pods-PickNGo User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickNGo User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickNGo User/Pods-PickNGo User.debug.xcconfig"; sourceTree = "<group>"; };
@@ -580,6 +592,7 @@
 				3A40730321B512270015C494 /* RegisterViewController.swift */,
 				3A40730421B512270015C494 /* RegistrationContainerViewController.swift */,
 				3A40730521B512270015C494 /* RegistrationNewViewController.swift */,
+				8187B7A924419BA5003C7431 /* SignUpViewController.swift */,
 			);
 			path = RegisterVC;
 			sourceTree = "<group>";
@@ -739,6 +752,7 @@
 			isa = PBXGroup;
 			children = (
 				3A40734621B512280015C494 /* Extensions.swift */,
+				3A40737221B512280015C494 /* Extention+UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -748,6 +762,9 @@
 			children = (
 				3A40734821B512280015C494 /* ThemeButton.swift */,
 				3A40734921B512280015C494 /* ThemeTextField.swift */,
+				81A7D791244071D8006505C8 /* ThemeTitleLabel.swift */,
+				81A7D79324407397006505C8 /* ThemeDescriptionsLabel.swift */,
+				8187B7AD24430521003C7431 /* ThemeFormTextField.swift */,
 			);
 			path = "Theme Controls";
 			sourceTree = "<group>";
@@ -849,9 +866,9 @@
 				3A40736F21B512280015C494 /* ButtonUtility.swift */,
 				3A40737021B512280015C494 /* ConstantData.swift */,
 				3A40737121B512280015C494 /* CustomViewForShadow.swift */,
-				3A40737221B512280015C494 /* Extention+UIViewController.swift */,
 				3A40737321B512280015C494 /* SingletonClass.swift */,
 				3A40737421B512280015C494 /* UtilityClass.swift */,
+				8187B7AB24422FAA003C7431 /* ConstantString.swift */,
 			);
 			path = UtilityClass;
 			sourceTree = "<group>";
@@ -927,6 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				34E01A1F220EE898000D048E /* Main.storyboard */,
+				81A7D79524407592006505C8 /* Login&Register.storyboard */,
 				34E01A27220EED13000D048E /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -1010,6 +1028,7 @@
 				3A40738421B512280015C494 /* proxima-nova-condensed.otf in Resources */,
 				3A40738721B512280015C494 /* proxima-nova-light.otf in Resources */,
 				3A40740A21B512280015C494 /* WWCalendarTimeSelector.storyboard in Resources */,
+				81A7D79624407592006505C8 /* Login&Register.storyboard in Resources */,
 				3A40738821B512280015C494 /* proxima-nova-regular-italic.otf in Resources */,
 				3A4073F521B512280015C494 /* AJAlertController.xib in Resources */,
 				3A4073A221B512280015C494 /* HeaderView.xib in Resources */,
@@ -1200,6 +1219,7 @@
 				3A4073A721B512280015C494 /* DriverInfoViewController.swift in Sources */,
 				3A4073A521B512280015C494 /* BookLaterViewController.swift in Sources */,
 				3A4073BA21B512280015C494 /* RegistrationContainerViewController.swift in Sources */,
+				8187B7AE24430521003C7431 /* ThemeFormTextField.swift in Sources */,
 				3A40740621B512280015C494 /* NSCalendar+Timepiece.swift in Sources */,
 				3A4073DF21B512280015C494 /* TripDetailsTableViewCell.swift in Sources */,
 				3A4073E921B512280015C494 /* WalletTransferToBankVC.swift in Sources */,
@@ -1254,12 +1274,14 @@
 				3A4073C221B512280015C494 /* EditProfileViewController.swift in Sources */,
 				3A40740921B512280015C494 /* String+Timepiece.swift in Sources */,
 				3A40739F21B512280015C494 /* CustomAlertsViewController.swift in Sources */,
+				81A7D792244071D8006505C8 /* ThemeTitleLabel.swift in Sources */,
 				3A4073CD21B512280015C494 /* ShoppingViewController.swift in Sources */,
 				3A40740E21B512280015C494 /* CustomViewForShadow.swift in Sources */,
 				3A40739B21B512280015C494 /* AppDelegate.swift in Sources */,
 				3A4073C821B512280015C494 /* MyReceiptsViewController.swift in Sources */,
 				3A4073B921B512280015C494 /* RegisterViewController.swift in Sources */,
 				3A4073EC21B512280015C494 /* webViewVC.swift in Sources */,
+				8187B7AA24419BA5003C7431 /* SignUpViewController.swift in Sources */,
 				3A4073C721B512280015C494 /* MainHeaderTableViewCell.swift in Sources */,
 				3A4073F021B512280015C494 /* ACHUD+Animation.swift in Sources */,
 				3A4073C921B512280015C494 /* SetPasscodeViewController.swift in Sources */,
@@ -1272,6 +1294,7 @@
 				3A4073E821B512280015C494 /* WalletTopUpVC.swift in Sources */,
 				3A4073ED21B512280015C494 /* Extensions.swift in Sources */,
 				3A40740421B512280015C494 /* Duration.swift in Sources */,
+				8187B7AC24422FAA003C7431 /* ConstantString.swift in Sources */,
 				3A4073D521B512280015C494 /* BookTableSelectedDataTableViewCell.swift in Sources */,
 				3A4073A321B512280015C494 /* ParentViewController.swift in Sources */,
 				3A4073B621B512280015C494 /* PackageHistoryViewController.swift in Sources */,
@@ -1299,6 +1322,7 @@
 				3A4073D121B512280015C494 /* TickPayAlertViewController.swift in Sources */,
 				3A40741121B512280015C494 /* UtilityClass.swift in Sources */,
 				3A40740B21B512280015C494 /* WWCalendarTimeSelector.swift in Sources */,
+				81A7D79424407397006505C8 /* ThemeDescriptionsLabel.swift in Sources */,
 				3A40740D21B512280015C494 /* ConstantData.swift in Sources */,
 				3A84BC9621C22B2E00EDA3A2 /* UIAlertController+Blocks.m in Sources */,
 				3A40740721B512280015C494 /* NSDate+Timepiece.swift in Sources */,

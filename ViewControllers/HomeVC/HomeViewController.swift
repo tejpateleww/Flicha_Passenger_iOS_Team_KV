@@ -359,7 +359,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         self.viewBookNowLater.isHidden = true
         
         
-        webserviceOfCardList()
+       // webserviceOfCardList()
        
     
         
@@ -385,11 +385,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         mapView.delegate = self
         
         mapView.isHidden = true
-        self.perform(#selector(btnCurrentLocation(_:)), with: nil, afterDelay: 2.0)
+        //self.perform(#selector(btnCurrentLocation(_:)), with: nil, afterDelay: 2.0)
         self.setupGoogleMap()
-        sortCarListFirstTime()
-        webserviceOfCurrentBooking()
-        setPaymentType()
+//        sortCarListFirstTime()
+//        webserviceOfCurrentBooking()
+//        setPaymentType()
         
         viewMainFinalRating.isHidden = true
         btnDriverInfo.layer.cornerRadius = 5
@@ -434,7 +434,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         SingletonClass.sharedInstance.isFirstTimeDidupdateLocation = true;
 //        self.view.bringSubview(toFront: btnFavourite)
         
-        callToWebserviceOfCardListViewDidLoad()
+        //callToWebserviceOfCardListViewDidLoad()
         
         //
         //        // Do any additional setup after loading the view.
