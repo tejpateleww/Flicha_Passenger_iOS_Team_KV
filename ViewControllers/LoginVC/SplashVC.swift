@@ -17,7 +17,7 @@ class SplashVC: UIViewController {
         
 //        self.perform(#selector(self.GoFurther), with: nil, afterDelay: 1.0)
         self.GoFurther()
-//        self.webserviceOfAppSetting()
+       self.webserviceOfAppSetting()
         // Do any additional setup after loading the view.
     }
     

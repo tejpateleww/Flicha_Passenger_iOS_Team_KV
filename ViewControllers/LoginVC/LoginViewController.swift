@@ -184,16 +184,28 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
             {
                 DispatchQueue.main.async(execute: { () -> Void in
+                    
                     UtilityClass.hideACProgressHUD()
-                    SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-                    //                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-                    SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
-                    SingletonClass.sharedInstance.isUserLoggedIN = true
-                    UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-                    //                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-                    
-                    self.webserviceForAllDrivers()
-                    
+                   
+                    if let profileData = result.object(forKey: "profile") as? NSDictionary, profileData.count > 0
+                    {
+                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
+                       
+                        UserDefaults.standard.set(profileData, forKey: "profileData")
+                        
+                        if let passangerID = profileData.object(forKey: "Id")
+                        {
+                            SingletonClass.sharedInstance.strPassengerID = "\(passangerID)"
+                        }
+                        SingletonClass.sharedInstance.isUserLoggedIN = true
+                        self.webserviceForAllDrivers()
+                        
+                    }else
+                    {
+                        SingletonClass.sharedInstance.isUserLoggedIN = false
+                        SingletonClass.sharedInstance.strPassengerID = ""
+                        UserDefaults.standard.removeObject(forKey: "profileData")
+                    }
                 })
                 
             } else
@@ -824,9 +836,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             print("The location we are getting in background mode is \(location)")
         }
 //        defaultLocation = location
-        
-        
-        
+                
         SingletonClass.sharedInstance.latitude = location.coordinate.latitude
         SingletonClass.sharedInstance.longitude = location.coordinate.longitude
         

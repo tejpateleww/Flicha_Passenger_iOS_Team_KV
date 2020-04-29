@@ -60,6 +60,7 @@ class WalletAddCardsViewController: BaseViewController, UIPickerViewDataSource, 
         super.viewDidLoad()
             
             //self.setNavBarWithBack(Title: "ADD CARD".localized, IsNeedRightButton: true)
+            self.addCustomNavigationBar(title: "Add Card")
             setDesignView()
       
         

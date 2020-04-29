@@ -219,6 +219,41 @@ class UtilityClass: NSObject, alertViewMethodsDelegates {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
 
     }
+    
+    static func getCardImageNameFrom(type: String) -> String
+    {
+        var strType = String()
+        
+        if type == "visa"
+        {
+            strType = "Visa_Black"
+        }
+        else if type == "mastercard"
+        {
+            strType = "MasterCard_Black"
+        }
+        else if type == "amex"
+        {
+            strType = "Amex"
+        }
+        else if type == "diners"
+        {
+            strType = "Diners Club"
+        }
+        else if type == "discover"
+        {
+            strType = "Discover_Black"
+        }
+        else if type == "jcb"
+        {
+            strType = "JCB"
+        }
+        else
+        {
+            strType = "iconDummyCard"
+        }
+        return strType
+    }
 
 }
 

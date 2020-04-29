@@ -106,6 +106,35 @@ extension UIView {
         layer.mask = mask
         layer.masksToBounds = true
     }
+    
+    func dropShadow()
+    {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 5
+        layer.masksToBounds = false
+    }
+   
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+    
+    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+        
+        let border = CALayer()
+        border.backgroundColor = color
+        
+        switch side {
+        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+        }
+        
+        layer.addSublayer(border)
+        
+    }
 }
 
 extension UITapGestureRecognizer {
@@ -165,5 +194,66 @@ extension String {
     {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+    
+    func toCurrencyFormat() -> String {
+      
+        if let intValue = Int(self){
+            let numberFormatter = NumberFormatter()
+            numberFormatter.locale = Locale(identifier: "kab_DZ")
+            numberFormatter.numberStyle = NumberFormatter.Style.currencyAccounting
+            return numberFormatter.string(from: NSNumber(value: intValue)) ?? ""
+        }
+        return ""
+    }
+    
+    func convertStringToDate(dateFormat : String) -> Date{
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        guard let resultDate = formatter.date(from: self) else {
+            return Date()
+        }
+        return resultDate
+    }
+    
+}
+
+extension Date{
+    
+    func relativeDateFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = true
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        let time = "\(dateFormatter.string(from: self)), \(timeFormatter.string(from: self))"
+        return time
+    }
+}
+
+
+extension NSMutableAttributedString {
+   
+    @discardableResult func bold(_ text: String, _ fontSize: CGFloat) -> NSMutableAttributedString {
+        let attrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: fontSize)!]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+        let normal = NSAttributedString(string: text)
+        append(normal)
+        
+        return self
+    }
+}
+
+
+extension UILabel {
+    func setSizeFont (sizeFont: Double) {
+        self.font =  UIFont(name: self.font.fontName, size: CGFloat(sizeFont))!
+        self.sizeToFit()
     }
 }

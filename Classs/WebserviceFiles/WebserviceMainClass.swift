@@ -9,13 +9,9 @@
 import UIKit
 import Alamofire
 
-
-
 var request : Request!
-
-
-
 let header: [String:String] = ["key":"Flicha123*#*"]
+//let header: [String:String] = ["key":"Tantaxi123*"]
 
 
 //-------------------------------------------------------------
@@ -70,7 +66,6 @@ func getData(_ dictParams: AnyObject, nsURL: String,  completion: @escaping (_ r
             
             if let JSON = response.result.value
             {
-                
                 if (JSON as AnyObject).object(forKey:("status")) as! Bool == false
                 {
                     completion(JSON as AnyObject, false)
@@ -111,10 +106,8 @@ func sendImage(_ dictParams: [String:AnyObject], image1: UIImage, nsURL: String,
         
         for (key, value) in dictParams
         {
-            
             print(value)
             multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key )
-            
         }
     }, usingThreshold: 10 * 1024 * 1024, to: url, method: .post, headers: header) { (encodingResult) in
         switch encodingResult
@@ -196,7 +189,6 @@ func postTwoImageMethod(_ dictParams: [String:AnyObject], image1: UIImage, image
                         completion(JSON as AnyObject, true)
                         print("If JSON")
                         UtilityClass.hideACProgressHUD()
-                        
                     }
                     else
                     {
@@ -210,8 +202,6 @@ func postTwoImageMethod(_ dictParams: [String:AnyObject], image1: UIImage, image
                     print("ERROR")
                     UtilityClass.hideACProgressHUD()
                 }
-                
-                
             }
         case .failure( _):
             print("failure")

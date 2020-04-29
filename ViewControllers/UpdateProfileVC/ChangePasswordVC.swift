@@ -8,33 +8,21 @@
 
 import UIKit
 import NVActivityIndicatorView
-import ACFloatingTextfield_Swift
 
 class ChangePasswordVC: BaseViewController {
 
-    
-    @IBOutlet weak var lblChangePassWorld: UILabel!
-    //-------------------------------------------------------------
+    @IBOutlet weak var lblTitle: ThemeTitleLabel!
+    @IBOutlet weak var lblSubTitle: ThemeDescriptionsLabel!
+    @IBOutlet weak var txtOldPassword: ThemeTextField!
+    @IBOutlet weak var txtNewPassword: ThemeTextField!
+    @IBOutlet weak var btnSave: ThemeButton!
+    @IBOutlet weak var btnBackArrow: UIButton!
+
     // MARK: - Base Methods
-    //-------------------------------------------------------------
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        self.setNavBarWithBack(Title: "Change Password".localized, IsNeedRightButton: true)
-        
-        btnSubmit.layer.cornerRadius = 5
-        btnSubmit.layer.masksToBounds = true
-        
-       
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
          setLocalization()
@@ -42,126 +30,76 @@ class ChangePasswordVC: BaseViewController {
     
     func setLocalization()
     {
-        
-        lblChangePassWorld.text = "Change Password".localized
-        txtNewPassword.placeholder = "New Password".localized
-        txtConfirmPassword.placeholder = "Confirm Password".localized
-        btnSubmit.setTitle("Submit".localized, for: .normal)
-        
-        
-        
+        lblTitle.text = "Change Password".localized
+        lblSubTitle.text = "Enter you new password".localized
+        txtNewPassword.placeholder = "Old password".localized
+        txtOldPassword.placeholder = "New password".localized
+        btnSave.setTitle("Save".localized, for: .normal)
     }
     
+    @IBAction func btnSaveClick(_ sender: ThemeButton) {
+        
+        guard let oldPassword = txtOldPassword.text, oldPassword.count > 0 else {
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your current password".localized) { (index, title) in
+            }
+            return
+        }
+        
+        guard let newPassword = txtNewPassword.text, newPassword.count > 0 else {
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your new password".localized) { (index, title) in
+            }
+            return
+        }
+        
+        if newPassword.count >= 8
+        {
+            changePasswordService(newPassword: newPassword)
 
-    //-------------------------------------------------------------
-    // MARK: - Outlets
-    //-------------------------------------------------------------
-    
-    @IBOutlet weak var txtNewPassword: ACFloatingTextfield!
-    @IBOutlet weak var txtConfirmPassword: ACFloatingTextfield!
-    
-    
-    @IBOutlet weak var btnSubmit: ThemeButton!
-    
-    
-    @IBAction func btnSubmit(_ sender: ThemeButton) {
-            
-        let str = txtNewPassword.text
-        
-        if txtNewPassword.text == txtConfirmPassword.text {
-        
-            if str!.count >= 8  {
-                webserviceOfChangePassword()
-            }
-            else {
-                UtilityClass.setCustomAlert(title: "Missing", message: "Password must contain at least 8 characters".localized) { (index, title) in
-            }
+        }else
+        {
+            UtilityClass.setCustomAlert(title: "Missing", message: "New password must contain at least 8 characters".localized) { (index, title) in
             }
         }
-        else {
-            UtilityClass.setCustomAlert(title: "Password did not match", message: "Password and confirm password must be same".localized) { (index, title) in
-            }
-        }
-        
     }
     
-    
-    @IBAction func btnBack(_ sender: UIButton) {
+    @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    @IBOutlet weak var btnCall: UIButton!
-    @IBAction func btCallClicked(_ sender: UIButton)
+}
+
+// MARK: - Webservice Methods
+
+extension ChangePasswordVC
+{
+    func changePasswordService(newPassword : String)
     {
-        
-        let contactNumber = helpLineNumber
-        
-        if contactNumber == "" {
-            
-            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
-            }
-        }
-        else
-        {
-            callNumber(phoneNumber: contactNumber)
-        }
-    }
-    
-    private func callNumber(phoneNumber:String) {
-        
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-            
-            let application:UIApplication = UIApplication.shared
-            if (application.canOpenURL(phoneCallURL)) {
-                application.open(phoneCallURL, options: [:], completionHandler: nil)
-            }
-        }
-    }
-    //-------------------------------------------------------------
-    // MARK: - Webservice Methods
-    //-------------------------------------------------------------
-    
-    func webserviceOfChangePassword() {
-        
-    
+        self.txtNewPassword.text = ""
+        self.txtOldPassword.text = ""
+       
         var dictData = [String:AnyObject]()
-        
         dictData["PassengerId"] = SingletonClass.sharedInstance.strPassengerID as AnyObject
-        dictData["Password"] = txtNewPassword.text as AnyObject
+        dictData["Password"] = newPassword as AnyObject
         
         let activityData = ActivityData()
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         
         webserviceForChangePassword(dictData as AnyObject) { (result, status) in
             
-            if (status) {
+            if (status)
+            {
                 print(result)
                 
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-                
-                self.txtNewPassword.text = ""
-                self.txtConfirmPassword.text = ""
-                
                 UtilityClass.setCustomAlert(title: appName, message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                    
                     self.navigationController?.popViewController(animated: true)
+                }
             }
-                
-//                UtilityClass.showAlert("", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self)
-                
-                
-            }
-            else {
-                 print(result)
-                
-//                UtilityClass.setCustomAlert(title: <#T##String#>, message: <#T##String#>, completionHandler: { (<#Int#>, <#String#>) in
-//                    <#code#>
-//                })
-                
+            else
+            {
+                print(result)
             }
         }
         
     }
     
-
 }

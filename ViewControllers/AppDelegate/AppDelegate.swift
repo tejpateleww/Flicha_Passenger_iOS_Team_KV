@@ -72,9 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         Fabric.with([Crashlytics.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-//        GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
-//        GIDSignIn.sharedInstance().delegate = self
-//        googleAnalyticsTracking()
+        GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
+        GIDSignIn.sharedInstance().delegate = self
+        googleAnalyticsTracking()
         
         // TODO: Move this to where you establish a user session
         //   self.logUser()
@@ -89,18 +89,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         // ------------------------------------------------------------
         
-        if ((UserDefaults.standard.object(forKey: "profileData")) != nil)
+
+        if let profileData = UserDefaults.standard.object(forKey: "profileData") as? NSDictionary, profileData.count > 0
         {
-            SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: UserDefaults.standard.object(forKey: "profileData") as! NSDictionary)
-            SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)
-//            SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array:  UserDefaults.standard.object(forKey: "carLists") as! NSArray)
+            SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
+            if let passangerID = profileData.object(forKey: "Id")
+            {
+                SingletonClass.sharedInstance.strPassengerID = "\(passangerID)"
+            }
             SingletonClass.sharedInstance.isUserLoggedIN = true
-        }
-        else
+        }else
         {
             SingletonClass.sharedInstance.isUserLoggedIN = false
         }
-        
+    
         // For Passcode Set
         if UserDefaults.standard.object(forKey: "Passcode") as? String == nil || UserDefaults.standard.object(forKey: "Passcode") as? String == "" {
             SingletonClass.sharedInstance.setPasscode = ""
@@ -419,7 +421,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let navController = self.window?.rootViewController as? UINavigationController
-                let notificationController = navController?.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
+                let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
                 notificationController.bookingType = "accept"
                 notificationController.isFromPushNotification = true
                 
@@ -432,7 +434,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let navController = self.window?.rootViewController as? UINavigationController
-                let notificationController = navController?.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
+                let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
                 navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
@@ -444,7 +446,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let navController = self.window?.rootViewController as? UINavigationController
-                let notificationController = navController?.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
+                let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
                 notificationController.bookingType = "accept"
                 notificationController.isFromPushNotification = true
                 navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
@@ -456,7 +458,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let navController = self.window?.rootViewController as? UINavigationController
-                let notificationController = navController?.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
+                let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
                 navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
@@ -468,7 +470,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let navController = self.window?.rootViewController as? UINavigationController
-                let notificationController = navController?.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
+                let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
                 navController?.present(notificationController ?? UIViewController(), animated: true, completion: {

@@ -51,8 +51,11 @@ let TransferToBank = WebserviceURLs.kTransferToBank
 let UpdateBankAccountDetails = WebserviceURLs.kUpdateBankAccountDetails
 
 let OTPVerify = WebserviceURLs.kOtpForRegister
-
 let TrackRunningTrip = WebserviceURLs.kTrackRunningTrip
+let notificationsForPassanger = WebserviceURLs.kUpdateNotificationSetting
+let notificationList = WebserviceURLs.kNotificationList
+
+
 
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
@@ -434,9 +437,9 @@ func webserviceForRatingAndComment(_ dictParams: AnyObject, completion: @escapin
 // MARK: - Webservice For Tickpay Approval Status
 //-------------------------------------------------------------
 
-func webserviceForTickpayApprovalStatus(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+func webserviceForTickpayApprovalStatus(_ dictParams: String, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
 {
-    let url = GetTickpayApprovalStatus + (dictParams as! String)
+    let url = GetTickpayApprovalStatus + dictParams
     getData("" as AnyObject, nsURL: url, completion: completion)
 }
 
@@ -491,4 +494,13 @@ func webserviceForTrackRunningTrip(_ dictParams: AnyObject, completion: @escapin
     getData("" as AnyObject, nsURL: url, completion: completion)
 }
 
+//-------------------------------------------------------------
+// MARK: - Webservice For Notification & Internet adds for Passanger
+//-------------------------------------------------------------
+
+func webserviceForNotificationList(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = notificationList + "\(dictParams)"
+    getData("" as AnyObject, nsURL: url, completion: completion)
+}
 

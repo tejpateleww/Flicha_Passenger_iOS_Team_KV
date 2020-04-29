@@ -21,7 +21,7 @@ class ThemeDescriptionsLabel: UILabel {
     
     func setupTheme()
     {
-        self.font = UIFont.regular(ofSize: 17.0)
+        self.font = UIFont.regular(ofSize: 13.0)
         self.text = ""
         self.lineBreakMode = .byWordWrapping
         self.numberOfLines = 0

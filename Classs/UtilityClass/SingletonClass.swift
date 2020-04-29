@@ -24,10 +24,9 @@ class SingletonClass: NSObject {
     var currentLatitude = String()
     var currentLongitude = String()
     
-    var aryHistory = NSArray()
-    var aryOnGoing = NSArray()
-    var aryUpComming = NSArray()
-    var aryPastBooking = NSArray()
+    var aryCompletedRides = NSArray()
+    var aryUpCommingRides = NSArray()
+    var aryCancelRides = NSArray()
     
     var boolIsFromPrevious = Bool()
     

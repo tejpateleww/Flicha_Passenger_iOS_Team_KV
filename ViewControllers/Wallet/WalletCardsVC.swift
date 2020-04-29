@@ -27,7 +27,6 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
             #selector(self.handleRefresh(_:)),
                                  for: UIControlEvents.valueChanged)
         refreshControl.tintColor = themeYellowColor
-        
         return refreshControl
     }()
     
@@ -67,36 +66,22 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setNavBarWithBack(Title: "Card List".localized, IsNeedRightButton: true)
-        
+        self.addCustomNavigationBar(title: "Payment Method".localized)
+        //self.setNavBarWithBack(Title: "Card List".localized, IsNeedRightButton: true)
         self.tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        
         self.tableView.addSubview(self.refreshControl)
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         
-         
-        }
+        self.addCustomNavigationBar(title: "Payment Method".localized)
+    }
     
-   
     func setImageColorOfImage(name: String) -> UIImage {
-        
         var imageView = UIImageView()
-        
         let img = UIImage(named: name)
         imageView.image = img?.maskWithColor(color: UIColor.white)
-        
-        
         return imageView.image!
     }
     
@@ -129,17 +114,19 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalletCardsTableViewCell") as! WalletCardsTableViewCell
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "AddCard") as! WalletCardsTableViewCell
         
         cell.selectionStyle = .none
         cell2.selectionStyle = .none
-        cell.lblAddCard.text = "Add New Card".localized
-        if indexPath.section == 0 {
-                return cell2
-        } else {
+       
+        if indexPath.section == 0
+        {
+            return cell2
             
+        } else
+        {
+            cell.lblAddCard.text = "Add New Card".localized
             let dictData = aryData[indexPath.section - 1] as [String:AnyObject]
             let expiryDate = (dictData["Expiry"] as! String).split(separator: "/")
             let month = expiryDate.first
@@ -149,39 +136,32 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
             cell.viewCards.layoutIfNeeded()
             cell.viewCards.dropShadowToCardView(color: .gray, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
             cell.viewCards.layer.cornerRadius = 5
-            cell.viewCards.layer.masksToBounds = true
+            //cell.viewCards.layer.masksToBounds = true
             
-            let type = dictData["Type"] as! String
-            
-            cell.imgCardIcon.image = UIImage(named: setCreditCardImage(str: type))
-            cell.lblCardNumber.text = dictData["CardNum2"] as? String
-            
-            var colorTop:UIColor = UIColor()
-            var colorMiddle:UIColor = UIColor()
-            
-            if type == "visa" {
-                colorTop = UIColor(red: 253.0/255.0, green: 149.0/255.0, blue:47.0/255.0, alpha: 1.0)
-                colorMiddle =  UIColor(red: 251.0/255.0, green: 63.0/255.0, blue: 135.0/255.0, alpha: 1.0)
-            } else if type == "mastercard" {
-                colorTop = UIColor(red: 76.0/255.0, green: 210.0/255.0, blue:252.0/255.0, alpha: 1.0)
-                colorMiddle =  UIColor(red: 46.0/255.0, green: 167.0/255.0, blue: 252.0/255.0, alpha: 1.0)
-            } else if type == "discover" {
-                colorTop = UIColor(red: 199.0/255.0, green: 40.0/255.0, blue:135.0/255.0, alpha: 1.0)
-                colorMiddle =  UIColor(red: 237.0/255.0, green: 59.0/255.0, blue: 76.0/255.0, alpha: 1.0)
+            if let type = dictData["Type"] as? String
+            {
+                cell.imgCardIcon.image = UIImage(named: setCreditCardImage(str: type))
+                cell.lblCardNumber.text = dictData["CardNum2"] as? String
+                
+                var colorTop:UIColor = UIColor()
+                var colorMiddle:UIColor = UIColor()
+                
+                if type == "visa"
+                {
+                    colorTop = UIColor(red: 253.0/255.0, green: 149.0/255.0, blue:47.0/255.0, alpha: 1.0)
+                    colorMiddle =  UIColor(red: 251.0/255.0, green: 63.0/255.0, blue: 135.0/255.0, alpha: 1.0)
+                } else if type == "mastercard"
+                {
+                    colorTop = UIColor(red: 76.0/255.0, green: 210.0/255.0, blue:252.0/255.0, alpha: 1.0)
+                    colorMiddle =  UIColor(red: 46.0/255.0, green: 167.0/255.0, blue: 252.0/255.0, alpha: 1.0)
+                } else if type == "discover"
+                {
+                    colorTop = UIColor(red: 199.0/255.0, green: 40.0/255.0, blue:135.0/255.0, alpha: 1.0)
+                    colorMiddle =  UIColor(red: 237.0/255.0, green: 59.0/255.0, blue: 76.0/255.0, alpha: 1.0)
+                }
+                
+                cell.imgCard.setGradientLayer(LeftColor: colorTop.cgColor, RightColor: colorMiddle.cgColor, BoundFrame: self.view.bounds)
             }
-            
-            
-            cell.imgCard.setGradientLayer(LeftColor: colorTop.cgColor, RightColor: colorMiddle.cgColor, BoundFrame: self.view.bounds)
-            
-//            if type == "discover" || type == "mastercard" {
-//                // orange
-//            }
-//            else if type == "diners" {
-//                // gray
-//            }
-//            else {
-//                //
-//            }
             
             return cell
         }
@@ -397,7 +377,6 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     func webserviceForRemoveCardFromWallet(cardId : String) {
       
-        
         var params = String()
         params = "\(SingletonClass.sharedInstance.strPassengerID)/\(cardId)"
 

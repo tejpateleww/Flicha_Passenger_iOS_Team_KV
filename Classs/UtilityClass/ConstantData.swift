@@ -64,8 +64,9 @@ let appDel = (UIApplication.shared.delegate as! AppDelegate)
 
 //let appCurrentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
 
-
+//"https://www.tantaxitanzania.com/Passenger_Api/"
 struct WebserviceURLs {
+    
     static let kBaseURL                                  = "http://3.6.224.0/Passenger_Api/" //"https://www.tantaxitanzania.com/Passenger_Api/" // "http://54.169.67.226/web/Passenger_Api/" // "https://pickngolk.info/web/Passenger_Api/" "http://54.169.67.226/web/Passenger_Api/" //
     static let kDriverRegister                          = "Register"
     static let kDriverLogin                             = "Login"
@@ -110,6 +111,9 @@ struct WebserviceURLs {
     static let kGetPackages                             = "Packages"
     static let kMissBokkingRequest                      = "BookingMissRequest"
     static let kTrackRunningTrip                        = "TrackRunningTrip/"
+    static let kUpdateNotificationSetting               = "UpdateNotificationSetting"
+    static let kNotificationList                        = "NotificationList/"
+
     
 
 //    https://pickngolk.info/web/Passenger_Api/OtpForRegister
@@ -185,40 +189,29 @@ struct SubmitBookingRequest {
 }
 
 struct NotificationCenterName {
-    
     // Define identifier
-    static let keyForOnGoing   = "keyForOnGoing"
-    static let keyForUpComming = "keyForUpComming"
-    static let keyForPastBooking = "keyForPastBooking"
-    
-
+    static let keyForCompletedRides  = "keyForCompletedRides"
+    static let keyForUpCommingRides = "keyForUpCommingRides"
+    static let keyForCanceledRides = "keyForCanceled"
 }
 
 struct PassengerDataKeys {
     static let kPassengerID = "PassengerId"
-    
 }
 
 struct setAllDevices {
-    
     static let allDevicesStatusBarHeight = 20
     static let allDevicesNavigationBarHeight = 44
     static let allDevicesNavigationBarTop = 20
 }
 
 struct setiPhoneX {
-    
     static let iPhoneXStatusBarHeight = 44
     static let iPhoneXNavigationBarHeight = 40
     static let iPhoneXNavigationBarTop = 44
-    
-    
 }
 
-
-
 let NotificationKeyFroAllDriver =  NSNotification.Name("NotificationKeyFroAllDriver")
-
 let NotificationBookNow = NSNotification.Name("NotificationBookNow")
 let NotificationBookLater = NSNotification.Name("NotificationBookLater")
 

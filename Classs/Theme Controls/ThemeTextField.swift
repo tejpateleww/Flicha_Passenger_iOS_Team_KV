@@ -31,7 +31,6 @@ class ThemeTextField: UITextField {
         self.textColor = UIColor.black
         self.borderStyle = .none
         self.background = UIImage(named: "bgRoundCorner")
-        self.contentMode = .scaleAspectFit
         
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: self.frame.height))

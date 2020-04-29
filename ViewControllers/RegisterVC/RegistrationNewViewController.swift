@@ -335,54 +335,32 @@ class RegistrationNewViewController: UIViewController,AKRadioButtonsControllerDe
                 
                 DispatchQueue.main.async(execute: { () -> Void in
                 UtilityClass.hideACProgressHUD()
-//                    self.btnSignUp.stopAnimation(animationStyle: .normal, completion: {
                     
-                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)   
-                        SingletonClass.sharedInstance.isUserLoggedIN = true
-                        SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)
-//                        SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-//                        UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-
-                        UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
+                    if let profileData = UserDefaults.standard.object(forKey: "profile") as? NSDictionary, profileData.count > 0
+                    {
+                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
+                       
+                        UserDefaults.standard.set(profileData, forKey: "profileData")
+                        
+                        if let passangerID = profileData.object(forKey: "Id")
+                        {
+                            SingletonClass.sharedInstance.strPassengerID = "\(passangerID)"
+                        }
                         self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                   
-//                    let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")as? HomeViewController
-//                    let navController = UINavigationController(rootViewController: viewHomeController!)
-//                    self.sideMenuController?.embed(centerViewController: navController)
-                    
-//                    })
+
+                    }
                 })
                 
             }
             else
             {
-//                self.btnSignUp.stopAnimation(animationStyle: .shake, revertAfterDelay: 0, completion: {
-                    UtilityClass.hideACProgressHUD()
-                    UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                    }
-                    
-//                })
+                UtilityClass.hideACProgressHUD()
+                UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                }
             }
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-
 
 //-------------------------------------------------------------
 // MARK: - Custom Methods
@@ -403,8 +381,6 @@ extension RegistrationNewViewController {
         self.radioButtonsController.endGradColorForSelected = themeYellowColor
         self.radioButtonsController.selectedIndex = 2
         self.radioButtonsController.delegate = self //class should implement AKRadioButtonsControllerDelegate
-
-        
     }
     
 }

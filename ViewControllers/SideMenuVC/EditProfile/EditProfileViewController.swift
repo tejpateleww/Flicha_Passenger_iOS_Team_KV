@@ -164,8 +164,7 @@ class EditProfileViewController: BaseViewController {
         
     }
     @IBAction func btnEditProfile(_ sender: UIButton) {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateProfileViewController") as? UpdateProfileViewController
-
+        let viewController = LoginAndRegisterStoryboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as? UpdateProfileViewController
         self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
