@@ -41,10 +41,14 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         super.viewWillAppear(animated)
         setProfileData()
         // self.setNavBarWithBack(Title: "Profile".localized, IsNeedRightButton: true)
-        self.addCustomNavigationBarWithRightButton(title: "My Profile", imageName: "edit-icon", handler: (target: self, action: #selector(self.handleSaveProfile)))
+        
+        let rightButton = UIButton(type: .custom)
+        rightButton.setImage(UIImage.init(named: "edit-icon"), for: .normal)
+        rightButton.contentMode = .scaleAspectFit
+        rightButton.addTarget(self, action: #selector(self.handleSaveProfile), for: .touchUpInside)
+        self.addCustomNavigationBarWithRightButton(title: "My Profile", rightBarButton: rightButton, handler: (target: self, action: #selector(self.handleSaveProfile)))
     }
     
-   
     func setupView() {
         lblHeaderTitle.font = UIFont.semiBold(ofSize: 20)
         lblFirstName.text = "First Name".localized
@@ -62,22 +66,20 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         btnProfile.layer.borderColor = themeYellowColor.cgColor
         btnProfile.layer.masksToBounds = true
     }
-
    
     // MARK: - Actions
 
-    @objc func handleSaveProfile()
-    {
-      if isEditMode
-      {
-         self.webserviceOfUpdateProfile()
+    @objc func handleSaveProfile(){
         
-      }else
-      {
-        isEditMode = true
-        setInputMode(enable: true)
-      }
-        
+        if isEditMode
+        {
+            self.webserviceOfUpdateProfile()
+            
+        }else
+        {
+            isEditMode = true
+            setInputMode(enable: true)
+        }
     }
        
     @IBAction func btnChangePassword(_ sender: UIButton) {

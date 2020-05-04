@@ -123,6 +123,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     var strSpecialRequestFareCharge = String()
     var strPickUpLatitude = String()
     var strPickUpLongitude = String()
+    var strValidPromoCode = String()
+
        
     var loadingView: NVActivityIndicatorView!
     //---------------
@@ -196,7 +198,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         super.viewDidLoad()
         
         self.viewBookNowLater.isHidden = true
-        self.setNavBarWithMenu(Title: "Home", IsNeedRightButton: true)
+        //self.setNavBarWithMenu(Title: "Home", IsNeedRightButton: true)
         self.setupView()
         webserviceOfCardList()
         
@@ -287,7 +289,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.setLocalization()
         self.btnDoneForLocationSelected.isHidden = true
         
-        self.setNavBarWithMenu(Title: "Home".localized, IsNeedRightButton: true)
+        //self.setNavBarWithMenu(Title: "Home".localized, IsNeedRightButton: true)
         //        setupGoogleMap()
         
         //        viewTripActions.isHidden = true
@@ -380,11 +382,16 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.lblTimeTitle.font = UIFont.regular(ofSize: 12)
         self.lblPriceTitle.text = "PRICE"
         self.lblPriceTitle.font = UIFont.regular(ofSize: 12)
-      
+        self.txtPromodeCode.delegate = self
         self.viewDriverDetails.roundCorners(with: [.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 15)
         self.viewTripActions.roundCorners(with: [.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 15)
         self.viewDriverDetails.backgroundColor = UIColor.groupTableViewBackground
     }
+    
+    @IBAction func btnMenuClickAction(_ sender: Any) {
+        sideMenuController?.toggle()
+    }
+    
     
     func setLocalization()
     {
@@ -493,13 +500,15 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         self.btnDoneForLocationSelected.isHidden = true
         self.viewBookNowLater.isHidden = true
-        
-//        self.btnclo.isHidden = true
-//        self.btnCloseDropoffAddress.isHidden = true
+        self.readyToBookRideView.isHidden = true
+        self.defaultModeView.isHidden = false
+        currentLocationAction()
+
+        //        SingletonClass.sharedInstance.strPassengerID = ""
+        //        self.btnclo.isHidden = true
+        //        self.btnCloseDropoffAddress.isHidden = true
         //        self.dropoffLat = 0
         //        self.doublePickupLng = 0
-        self.btnCurrentLocation(self.btnCurrentLocation)
-        //        SingletonClass.sharedInstance.strPassengerID = ""
         
     }
 
@@ -570,7 +579,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     
     // MARK: - Button Actions
     @IBAction func btnApplyPromocodeClickAction(_ sender: Any) {
-        
+        self.webServiceCallForApplyPromoCode()
     }
     
     @objc func tapGestureLocationEdit(_ sender: UITapGestureRecognizer) {
@@ -1285,25 +1294,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         defaultModeView.isHidden = status
     }
     
-    //Mark - Webservice Call For Miss Booking Request
-    func webserviceCallForMissBookingRequest()
-    {
-        var dictParam = [String:AnyObject]()
-        dictParam["PassengerId"] = SingletonClass.sharedInstance.strPassengerID as AnyObject
-        dictParam["ModelId"] = strCarModelIDIfZero as AnyObject
-        dictParam["PickupLocation"] = self.strPickupLocation as AnyObject
-        dictParam["DropoffLocation"] = self.strDropoffLocation as AnyObject
-        dictParam["PickupLat"] = doublePickupLat as AnyObject
-        dictParam["PickupLng"] = doublePickupLng as AnyObject
-        dictParam["DropOffLat"] = doubleDropOffLat as AnyObject
-        dictParam["DropOffLon"] = doubleDropOffLng as AnyObject
-        dictParam["Notes"] = "" as AnyObject
-        
-        webserviceForMissBookingRequest(dictParam as AnyObject) { (result, status) in
-            
-        }
-    }
-    
+
     //-------------------------------------------------------------
     // MARK: - View Book Now
     //-------------------------------------------------------------
@@ -1958,7 +1949,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                     next.strModelId = strCarModelID
                     next.strCarModelURL = strNavigateCarModel
                     next.strCarName = strCarModelClass
-                    
+                    next.strPromoCode = strValidPromoCode
                     next.strFullname = profileData.object(forKey: "Fullname") as! String
                     next.strMobileNumber = profileData.object(forKey: "MobileNo") as! String
                     
@@ -2042,12 +2033,13 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             self.clearDataAfteCompleteTrip()
             self.getPlaceFromLatLong()
             self.viewTripActions.isHidden = true
-            self.viewCarLists.isHidden = false
-            self.ConstantViewCarListsHeight.constant = 150
+//            self.viewCarLists.isHidden = false
+//            self.ConstantViewCarListsHeight.constant = 150
         })
         let Cancel = UIAlertAction(title: "NO".localized, style: .destructive, handler: { ACTION in
             //            self.paymentOptions()
         })
+        
         alert.addAction(OK)
         alert.addAction(Cancel)
         self.present(alert, animated: true, completion: nil)
@@ -2457,7 +2449,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
 //        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
 //        self.navigationController?.pushViewController(NextPage, animated: true)
         self.setLocalization()
-        self.setNavBarWithMenu(Title: "Home".localized, IsNeedRightButton: true)
+        //self.setNavBarWithMenu(Title: "Home".localized, IsNeedRightButton: true)
     }
     
     @objc func GotoMyBookingPage() {
@@ -2893,6 +2885,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.viewTripActions.isHidden = false
         self.ConstantViewCarListsHeight.constant = 0
         self.viewCarLists.isHidden = true
+        self.readyToBookRideView.isHidden = true
+        self.defaultModeView.isHidden = true
         
         self.viewActivity.stopAnimating()
         self.viewMainActivityIndicator.isHidden = true
@@ -2905,7 +2899,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         var DriverInfo: NSDictionary = NSDictionary()
         var carInfo: NSDictionary = NSDictionary()
         var details: NSDictionary = NSDictionary()
-
         
         if let dicDriverDetails = (self.aryRequestAcceptedData.object(at: 0) as? NSDictionary)?.object(forKey: "DriverInfo") as? NSDictionary
         {
@@ -2958,7 +2951,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         }
         
         self.displayOnGoingRideDetails(bookingInfo: bookingInfo, driverInfo: DriverInfo, carInfo: carInfo, details: details)
-
+        
         if let passengerType = bookingInfo.object(forKey: "PassengerType") as? String {
             
             if passengerType == "other" || passengerType == "others" {
@@ -2994,7 +2987,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         }
         
         self.displayOnGoingRideDetails(bookingInfo: bookingInfo, driverInfo: driverInfo, carInfo: carInfo, details: details)
-                
+        
         let PickupLat = bookingInfo.object(forKey: "PickupLat") as! String
         let PickupLng =  bookingInfo.object(forKey: "PickupLng") as! String
         
@@ -3022,10 +3015,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.getDirectionsAcceptRequest(origin: originalLoc, destination: destiantionLoc, waypoints: ["\(waypointLatitude),\(waypointSetLongitude)"], travelMode: nil) { (index, title) in
         }
         
-//        updatePolyLineToMapFromDriverLocation()
-        
-//        NotificationCenter.default.post(name: NotificationForAddNewBooingOnSideMenu, object: nil)
-        
+        //        updatePolyLineToMapFromDriverLocation()
+        //        NotificationCenter.default.post(name: NotificationForAddNewBooingOnSideMenu, object: nil)
     }
     
     func methodAfterStartTrip(tripData: NSArray) {
@@ -6175,6 +6166,16 @@ extension HomeViewController : CompleterTripInfoDelegate
     }
 }
 
+extension HomeViewController : UITextFieldDelegate{
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == txtPromodeCode{
+            self.strValidPromoCode = ""
+            self.txtPromodeCode.text = ""
+        }
+        return true
+    }
+}
 //MARK:- Webservices Method List
 
 extension HomeViewController {
@@ -6468,7 +6469,6 @@ extension HomeViewController {
                 
                 self.strBookingType = "BookNow"
                 self.viewBookNow.isHidden = true
-                self.readyToBookRideView.isHidden = true
                 self.viewActivity.startAnimating()
             }
             else
@@ -6499,4 +6499,93 @@ extension HomeViewController {
             }
         }
     }
+    
+    //Mark:- Webservice Call For Miss Booking Request
+   
+    func webserviceCallForMissBookingRequest()
+    {
+        var dictParam = [String:AnyObject]()
+        dictParam["PassengerId"] = SingletonClass.sharedInstance.strPassengerID as AnyObject
+        dictParam["ModelId"] = strCarModelIDIfZero as AnyObject
+        dictParam["PickupLocation"] = self.strPickupLocation as AnyObject
+        dictParam["DropoffLocation"] = self.strDropoffLocation as AnyObject
+        dictParam["PickupLat"] = doublePickupLat as AnyObject
+        dictParam["PickupLng"] = doublePickupLng as AnyObject
+        dictParam["DropOffLat"] = doubleDropOffLat as AnyObject
+        dictParam["DropOffLon"] = doubleDropOffLng as AnyObject
+        dictParam["Notes"] = "" as AnyObject
+        
+        webserviceForMissBookingRequest(dictParam as AnyObject) { (result, status) in
+            
+        }
+    }
+    
+    func webServiceCallForApplyPromoCode() {
+
+        if !(UtilityClass.isEmpty(str: txtPromodeCode.text))
+        {
+            var dictData = [String : AnyObject]()
+            dictData["PromoCode"] = txtPromodeCode.text as AnyObject
+            webserviceForValidPromocode(dictData as AnyObject, showHUD: true) { (result, status) in
+                
+                print(result)
+                
+                if status
+                {
+                    self.strValidPromoCode = self.txtPromodeCode.text ?? ""
+                }
+                else
+                {
+                    self.txtPromodeCode.text = ""
+
+                    if let res = result as? String
+                    {
+                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                            if SelectedLanguage == "en"
+                            {
+                                UtilityClass.showAlert("Error", message: res, vc: self)
+                                
+                            }
+                            else if SelectedLanguage == "sw"
+                            {
+                                UtilityClass.showAlert("Error", message: res, vc: self)
+                            }
+                        }
+                    }
+                    else if let resDict = result as? NSDictionary
+                    {
+                        
+                        
+                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                            if SelectedLanguage == "en"
+                            {
+                                UtilityClass.showAlert("Error", message: resDict.object(forKey: "message") as! String, vc: self)
+                                
+                            }
+                            else if SelectedLanguage == "sw"
+                            {
+                                UtilityClass.showAlert("Error", message: resDict.object(forKey: "swahili_message") as! String, vc: self)
+                            }
+                        }
+                    }
+                    else if let resAry = result as? NSArray
+                    {
+                        
+                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
+                            if SelectedLanguage == "en"
+                            {
+                                UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
+                                
+                            }
+                            else if SelectedLanguage == "sw"
+                            {
+                                UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "swahili_message") as! String, vc: self)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

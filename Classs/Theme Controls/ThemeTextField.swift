@@ -11,8 +11,15 @@ import UIKit
 class ThemeTextField: UITextField {
 
     @IBInspectable public var isLeftViewNeeded: Bool = false
+    @IBInspectable public var isRightViewNeeded: Bool = false
     @IBInspectable public var isBorderNeeded: Bool = false
     @IBInspectable public var LeftImage: UIImage = UIImage()
+    @IBInspectable public var RightImage: UIImage = UIImage()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupTheme()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,13 +38,17 @@ class ThemeTextField: UITextField {
         self.textColor = UIColor.black
         self.borderStyle = .none
         self.background = UIImage(named: "bgRoundCorner")
-        
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: self.frame.height))
         self.leftView = paddingView
         self.leftViewMode = UITextFieldViewMode.always
-        self.rightView = paddingView
-        self.rightViewMode = UITextFieldViewMode.always
+        
+        if isRightViewNeeded {
+            self.SetRightViewImage(Image: RightImage)
+        }else{
+            self.rightView = paddingView
+            self.rightViewMode = UITextFieldViewMode.always
+        }
         
 //
 //        //To apply corner radius
@@ -107,5 +118,19 @@ extension UITextField {
         
         self.leftView = LeftView
         self.leftViewMode = .always
+    }
+    
+    func SetRightViewImage(Image:UIImage) {
+        
+        let RightView = UIView(frame: CGRect(x: 0, y: 0, width: 50.0, height: self.frame.size.height))
+        RightView.backgroundColor = UIColor.clear
+        let imageView = UIImageView(frame: CGRect(x: 0, y: (self.frame.size.height/2) - 10, width: 20.0, height: 20.0));
+        imageView.backgroundColor = UIColor.clear
+        imageView.image = Image
+        imageView.contentMode = .scaleAspectFit
+        RightView.addSubview(imageView)
+        
+        self.rightViewMode = .always
+        self.rightView = RightView
     }
 }

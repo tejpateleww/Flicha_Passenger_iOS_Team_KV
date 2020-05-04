@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+                
 //        UINavigationBar.appearance().barTintColor = themeYellowColor
 //        UINavigationBar.appearance().tintColor = UIColor.white
 //        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         // ------------------------------------------------------------
         
-        SideMenuController.preferences.drawing.menuButtonImage = UIImage(named: "menu")
+        //SideMenuController.preferences.drawing.menuButtonImage = UIImage(named: "menu")
         SideMenuController.preferences.drawing.sidePanelPosition = .overCenterPanelLeft
         SideMenuController.preferences.drawing.sidePanelWidth = (window?.frame.width)! * 0.85//(((window?.frame.width)! / 2) + ((window?.frame.width)! / 4))
         SideMenuController.preferences.drawing.centerPanelShadow = true
@@ -123,8 +123,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
             UserDefaults.standard.set(SingletonClass.sharedInstance.isPasscodeON, forKey: "isPasscodeON")
         }
         
-
-        
         
         // Push Notification Code
         registerForPushNotification()
@@ -155,6 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
   
         return true
     }
+    
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
     {
         
@@ -174,6 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         }
         return false
     }
+    
     func googleAnalyticsTracking() {
         guard let gai = GAI.sharedInstance() else {
             assert(false, "Google Analytics not configured correctly")

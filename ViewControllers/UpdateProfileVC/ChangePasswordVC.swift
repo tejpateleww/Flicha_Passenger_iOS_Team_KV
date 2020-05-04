@@ -21,6 +21,7 @@ class ChangePasswordVC: BaseViewController {
     // MARK: - Base Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateStatusBarBackgroundColor()
     }
 
     override func viewWillAppear(_ animated: Bool) {

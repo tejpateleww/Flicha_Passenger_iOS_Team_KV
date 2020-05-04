@@ -21,7 +21,7 @@ let themeGrayColor: UIColor = UIColor.init(red: 114/255, green: 114/255, blue: 1
 //let ThemeYellowColor : UIColor = UIColor.init(hex: "ffa300")
 let themeGrayBGColor : UIColor = UIColor.init(hex: "DDDDDD")
 let themeGrayTextColor : UIColor = UIColor.init(hex: "7A7A7C")
-let currencySign = "TZS"
+let currencySign = "DA"
 let appName = "Flicha"
 let helpLineNumber = "+255777115054"//"0772506506"
 let googleAnalyticsTrackId = "UA-122360832-1"
@@ -32,7 +32,7 @@ let AppSemiboldFont:String = "ProximaNova-Semibold"
 let dictanceType : String = " "
 let windowHeight: CGFloat = CGFloat(UIScreen.main.bounds.size.height)
 let screenHeightDeveloper : Double = 568
-let screenWidthDeveloper : Double = 320
+let screenWidthDeveloper : Double = Double(UIScreen.main.bounds.size.width)
 let appDel = (UIApplication.shared.delegate as! AppDelegate)
 
 /* App Font Names

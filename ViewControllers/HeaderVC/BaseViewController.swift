@@ -85,8 +85,34 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func updateStatusBarBackgroundColor() {
+        if #available(iOS 13.0, *) {
+            let app = UIApplication.shared
+            let statusBarHeight: CGFloat = app.statusBarFrame.size.height
+            
+            let statusbarView = UIView()
+            statusbarView.backgroundColor = themeBlueColor
+            view.addSubview(statusbarView)
+            
+            statusbarView.translatesAutoresizingMaskIntoConstraints = false
+            statusbarView.heightAnchor
+                .constraint(equalToConstant: statusBarHeight).isActive = true
+            statusbarView.widthAnchor
+                .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+            statusbarView.topAnchor
+                .constraint(equalTo: view.topAnchor).isActive = true
+            statusbarView.centerXAnchor
+                .constraint(equalTo: view.centerXAnchor).isActive = true
+            
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = themeBlueColor
+        }
+    }
+    
     func addCustomNavigationBar(title : String)
     {
+        self.updateStatusBarBackgroundColor()
         let containerView = UIView()
         containerView.backgroundColor = themeBlueColor
         self.view.addSubview(containerView)
@@ -122,22 +148,107 @@ class BaseViewController: UIViewController {
         lblTitle.textAlignment = .center
         lblTitle.textColor = .white
         lblTitle.text = title
-        lblTitle.font = UIFont.semiBold(ofSize: 14)
+        lblTitle.font = UIFont.bold(ofSize: 14)
         centerView.addSubview(lblTitle)
         
         var heightConstant : NSLayoutConstraint!
         
         if self.hasTopNotch
         {
-            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100+20)
+            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 80)
         }else
         {
-            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 80)
         }
         
         NSLayoutConstraint.activate([
             
-            containerView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            containerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            containerView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            containerView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            heightConstant,
+            
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5),
+            stackView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 64),
+            
+            leftView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.2),
+            leftBarButton.centerXAnchor.constraintEqualToSystemSpacingAfter(leftView.centerXAnchor, multiplier: 0.1),
+            leftBarButton.centerYAnchor.constraintEqualToSystemSpacingBelow(leftView.centerYAnchor, multiplier: 1),
+            leftBarButton.heightAnchor.constraint(equalTo: leftView.heightAnchor, constant: 0),
+            leftBarButton.widthAnchor.constraint(equalTo: leftView.heightAnchor, constant: 0),
+            
+            rightView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.2),
+            
+            lblTitle.leftAnchor.constraint(equalTo: centerView.leftAnchor,constant: 2),
+            lblTitle.rightAnchor.constraint(equalTo: centerView.rightAnchor, constant: -2),
+            lblTitle.centerYAnchor.constraintEqualToSystemSpacingBelow(centerView.centerYAnchor, multiplier: 1)
+        ])
+        
+        containerView.layoutIfNeeded()
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    
+    func addCustomNavigationBarWithRightButton(title : String, rightBarButton : UIButton, handler: (target: Any, action: Selector))
+    {
+        self.updateStatusBarBackgroundColor()
+        let containerView = UIView()
+        containerView.backgroundColor = themeBlueColor
+        self.view.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.roundCorners(with: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 25)
+        
+        let leftView = UIView()
+        //leftView.backgroundColor = .red
+        leftView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let leftBarButton = UIButton(type: .custom)
+        leftBarButton.translatesAutoresizingMaskIntoConstraints = false
+        leftBarButton.setImage(UIImage.init(named: "iconBack"), for: .normal)
+        leftBarButton.imageView?.contentMode = .scaleAspectFit
+        leftBarButton.contentMode = .scaleAspectFit
+        leftBarButton.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+        leftView.addSubview(leftBarButton)
+        
+        let centerView = UIView()
+        //centerView.backgroundColor = .green
+        centerView.translatesAutoresizingMaskIntoConstraints = false
+       
+        let lblTitle = UILabel()
+        lblTitle.translatesAutoresizingMaskIntoConstraints = false
+        lblTitle.numberOfLines = 0
+        lblTitle.textAlignment = .center
+        lblTitle.textColor = .white
+        lblTitle.text = title
+        lblTitle.font = UIFont.bold(ofSize: 14)
+        centerView.addSubview(lblTitle)
+        
+        //rightView.backgroundColor = .yellow
+        rightBarButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let rightView = UIView()
+        rightView.translatesAutoresizingMaskIntoConstraints = false
+        rightView.addSubview(rightBarButton)
+        
+        let stackView = UIStackView(arrangedSubviews: [leftView,centerView,rightView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(stackView)
+        
+        var heightConstant : NSLayoutConstraint!
+        
+        if self.hasTopNotch
+        {
+            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 80)
+        }else
+        {
+            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 80)
+        }
+        
+        NSLayoutConstraint.activate([
+            
+            containerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             containerView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             containerView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             heightConstant,
@@ -154,101 +265,14 @@ class BaseViewController: UIViewController {
             leftBarButton.heightAnchor.constraint(equalTo: leftView.widthAnchor, constant: 0),
             
             rightView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.2),
-            
-            lblTitle.leftAnchor.constraint(equalTo: centerView.leftAnchor,constant: 2),
-            lblTitle.rightAnchor.constraint(equalTo: centerView.rightAnchor, constant: -2),
-            lblTitle.centerYAnchor.constraintEqualToSystemSpacingBelow(centerView.centerYAnchor, multiplier: 1)
-        ])
-        
-        containerView.layoutIfNeeded()
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    func addCustomNavigationBarWithRightButton(title : String, imageName : String, handler: (target: Any, action: Selector))
-    {
-        let containerView = UIView()
-        containerView.backgroundColor = themeBlueColor
-        self.view.addSubview(containerView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.roundCorners(with: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 25)
-        
-        let leftView = UIView()
-        //leftView.backgroundColor = .red
-        leftView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let leftBarButton = UIButton(type: .custom)
-        leftBarButton.translatesAutoresizingMaskIntoConstraints = false
-        leftBarButton.setImage(UIImage.init(named: "iconBack"), for: .normal)
-        leftBarButton.contentMode = .scaleAspectFit
-        leftBarButton.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
-        leftView.addSubview(leftBarButton)
-        
-        let centerView = UIView()
-        //centerView.backgroundColor = .green
-        centerView.translatesAutoresizingMaskIntoConstraints = false
-       
-        let lblTitle = UILabel()
-        lblTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblTitle.numberOfLines = 0
-        lblTitle.textAlignment = .center
-        lblTitle.textColor = .white
-        lblTitle.text = title
-        lblTitle.font = UIFont.semiBold(ofSize: 14)
-        centerView.addSubview(lblTitle)
-        
-        let rightView = UIView()
-        //rightView.backgroundColor = .yellow
-        rightView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let rightBarButton = UIButton(type: .custom)
-        rightBarButton.translatesAutoresizingMaskIntoConstraints = false
-        rightBarButton.setImage(UIImage.init(named: imageName), for: .normal)
-        rightBarButton.contentMode = .scaleAspectFit
-        rightBarButton.addTarget(handler.target , action: handler.action, for: .touchUpInside)
-        rightView.addSubview(rightBarButton)
-        
-        let stackView = UIStackView(arrangedSubviews: [leftView,centerView,rightView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(stackView)
-    
-        
-        var heightConstant : NSLayoutConstraint!
-        
-        if self.hasTopNotch
-        {
-            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100+20)
-        }else
-        {
-            heightConstant = NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
-        }
-        
-        NSLayoutConstraint.activate([
-            
-            containerView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            containerView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            containerView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            heightConstant,
-            
-            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5),
-            stackView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 64),
-            
-            leftView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.2),
-        leftBarButton.centerXAnchor.constraintEqualToSystemSpacingAfter(leftView.centerXAnchor, multiplier: 0.1),
-        leftBarButton.centerYAnchor.constraintEqualToSystemSpacingBelow(leftView.centerYAnchor, multiplier: 1),
-            leftBarButton.heightAnchor.constraint(equalTo: leftView.heightAnchor, constant: 0),
-            leftBarButton.heightAnchor.constraint(equalTo: leftView.widthAnchor, constant: 0),
-            
-            rightView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.2),
-        rightBarButton.centerXAnchor.constraintEqualToSystemSpacingAfter(rightView.centerXAnchor, multiplier: 0.1),
-        rightBarButton.centerYAnchor.constraintEqualToSystemSpacingBelow(rightView.centerYAnchor, multiplier: 1),
+            rightBarButton.centerXAnchor.constraintEqualToSystemSpacingAfter(rightView.centerXAnchor, multiplier: 0.1),
+            rightBarButton.centerYAnchor.constraintEqualToSystemSpacingBelow(rightView.centerYAnchor, multiplier: 1),
             rightBarButton.heightAnchor.constraint(equalTo: rightView.heightAnchor, constant: 0),
             rightBarButton.heightAnchor.constraint(equalTo: rightView.widthAnchor, constant: 0),
             
             lblTitle.leftAnchor.constraint(equalTo: centerView.leftAnchor,constant: 2),
             lblTitle.rightAnchor.constraint(equalTo: centerView.rightAnchor, constant: -2),
-         lblTitle.centerYAnchor.constraintEqualToSystemSpacingBelow(centerView.centerYAnchor, multiplier: 1)
+            lblTitle.centerYAnchor.constraintEqualToSystemSpacingBelow(centerView.centerYAnchor, multiplier: 1)
         ])
         
         containerView.layoutIfNeeded()

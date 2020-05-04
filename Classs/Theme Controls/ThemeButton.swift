@@ -16,11 +16,13 @@ class ThemeButton: UIButton {
     override func awakeFromNib()
     {
         self.titleLabel?.font = UIFont.semiBold(ofSize: 12.0)
-//        self.backgroundColor = themeYellowColor
-        self.setBackgroundImage(UIImage(named: "yellowButton"), for: .normal)
+        self.backgroundColor = themeYellowColor
         self.imageView?.contentMode = .scaleAspectFit
         self.setTitleColor(UIColor.black, for: .normal)
         self.layer.cornerRadius = self.frame.size.height / 2
+        self.clipsToBounds = false
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.layer.masksToBounds = true
     }
 }
