@@ -276,4 +276,19 @@ extension UILabel {
         self.font =  UIFont(name: self.font.fontName, size: CGFloat(sizeFont))!
         self.sizeToFit()
     }
+    
+    func applyCustomTheme(title : String, textColor : UIColor, fontStyle: UIFont) {
+        self.text = title
+        self.textColor = textColor
+        self.font = fontStyle
+    }
+}
+
+extension UIButton {
+    
+    func applyCustomTheme(title : String, textColor : UIColor, fontStyle: UIFont) {
+        self.setTitle(title, for: .normal)
+        self.titleLabel?.textColor = textColor
+        self.titleLabel?.font = fontStyle
+    }
 }

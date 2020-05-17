@@ -20,14 +20,8 @@ class GiveRatingViewController: UIViewController, FloatRatingViewDelegate {
     @IBOutlet weak var viewMainFinalRating: UIView!
     @IBOutlet weak var viewSubFinalRating: UIView!
     @IBOutlet weak var txtFeedbackFinal: UITextField!
-    
     @IBOutlet weak var giveRating: FloatRatingView!
-    
-    
-    
     @IBOutlet weak var btnSubmit: ThemeButton!
-    
-    
     @IBOutlet weak var lblMessageToShow: UILabel!
     var ProfileData = NSDictionary()
     

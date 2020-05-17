@@ -168,6 +168,7 @@
 		3A84BC9B21C23CFC00EDA3A2 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9A21C23CFC00EDA3A2 /* RadioButton.m */; };
 		3A84BC9F21C264E900EDA3A2 /* MyRatingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9D21C264E800EDA3A2 /* MyRatingViewCell.swift */; };
 		3A84BCA021C264E900EDA3A2 /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9E21C264E800EDA3A2 /* MyRatingViewController.swift */; };
+		64930B9924609BD9003D8E74 /* RatingAndReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64930B9824609BD9003D8E74 /* RatingAndReviewViewController.swift */; };
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
@@ -374,6 +375,7 @@
 		5B8CD5DE691145A01FDF1181 /* Pods-Flicha User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicha User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flicha User/Pods-Flicha User.debug.xcconfig"; sourceTree = "<group>"; };
 		5C887A7607BF7D1623FC535A /* Pods-TanTaxi User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TanTaxi User.release.xcconfig"; path = "Pods/Target Support Files/Pods-TanTaxi User/Pods-TanTaxi User.release.xcconfig"; sourceTree = "<group>"; };
 		626E9D33B8993B5928C11526 /* Pods_TanTaxi_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TanTaxi_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64930B9824609BD9003D8E74 /* RatingAndReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAndReviewViewController.swift; sourceTree = "<group>"; };
 		64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 			children = (
 				3A84BC9D21C264E800EDA3A2 /* MyRatingViewCell.swift */,
 				3A84BC9E21C264E800EDA3A2 /* MyRatingViewController.swift */,
+				64930B9824609BD9003D8E74 /* RatingAndReviewViewController.swift */,
 			);
 			path = MyRatingViewController;
 			sourceTree = "<group>";
@@ -1356,6 +1359,7 @@
 				3A4073C521B512280015C494 /* HotelReservationViewController.swift in Sources */,
 				3A4073AE21B512280015C494 /* PastBooingTableViewCell.swift in Sources */,
 				3A4073BF21B512280015C494 /* ContentTableViewCell.swift in Sources */,
+				64930B9924609BD9003D8E74 /* RatingAndReviewViewController.swift in Sources */,
 				3A4073EB21B512280015C494 /* WalletViewController.swift in Sources */,
 				3A4073DC21B512280015C494 /* WalletHistoryTableViewCell.swift in Sources */,
 				3A4073EA21B512280015C494 /* WalletTransferViewController.swift in Sources */,

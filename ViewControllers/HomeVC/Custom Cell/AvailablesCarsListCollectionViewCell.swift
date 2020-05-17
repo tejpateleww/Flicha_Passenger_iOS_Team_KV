@@ -17,7 +17,12 @@ class AvailablesCarsListCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.setupView()
+    }
+
+    func setupView() {
+        self.lblCategoryType.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 11))
+        self.lblRate.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
     }
 
     override func layoutSubviews() {
