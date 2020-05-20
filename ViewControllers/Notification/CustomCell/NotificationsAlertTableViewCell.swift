@@ -17,23 +17,19 @@ class NotificationsAlertTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.lblTitle.font = UIFont.semiBold(ofSize: 15)
         self.lblDescriptions.font = UIFont.regular(ofSize: 12)
     }
     
     override func layoutSubviews() {
-        super.layoutIfNeeded()
+        super.layoutSubviews()
         self.imageViewContainer.backgroundColor = themeGrayBGColor
         self.imageViewContainer.layer.cornerRadius = self.imageViewContainer.frame.size.width / 2
         self.imageViewContainer.layer.masksToBounds = true
     }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-
     }
     
 }

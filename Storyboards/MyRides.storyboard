@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uN6-tf-xO7" userLabel="Segment View">
-                                <rect key="frame" x="0.0" y="100" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="DJl-Nt-LVl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
@@ -88,28 +88,28 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-gr-dFc" userLabel="Parent View">
-                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="537"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-HK-GAn">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="537"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnb-4q-ILY">
-                                                <rect key="frame" x="0.0" y="0.0" width="1125" height="517"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1125" height="537"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3z-Be-aEh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="537"/>
                                                         <connections>
                                                             <segue destination="KuC-5a-9KA" kind="embed" id="8hB-6X-wU1"/>
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-7d-7JJ">
-                                                        <rect key="frame" x="375" y="0.0" width="375" height="517"/>
+                                                        <rect key="frame" x="375" y="0.0" width="375" height="537"/>
                                                         <connections>
                                                             <segue destination="rFk-hU-DiY" kind="embed" id="ENZ-Br-wMI"/>
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdS-GC-INc">
-                                                        <rect key="frame" x="750" y="0.0" width="375" height="517"/>
+                                                        <rect key="frame" x="750" y="0.0" width="375" height="537"/>
                                                         <connections>
                                                             <segue destination="Hnh-Ib-KfI" kind="embed" id="f6b-Rd-nGy"/>
                                                         </connections>
@@ -159,7 +159,7 @@
                             <constraint firstItem="7rn-gr-dFc" firstAttribute="top" secondItem="uN6-tf-xO7" secondAttribute="bottom" constant="10" id="PD1-v4-U0b"/>
                             <constraint firstItem="7rn-gr-dFc" firstAttribute="leading" secondItem="Vwy-0K-vs1" secondAttribute="leading" id="Vc1-hy-U7M"/>
                             <constraint firstAttribute="trailing" secondItem="uN6-tf-xO7" secondAttribute="trailing" id="XP4-6R-dGb"/>
-                            <constraint firstItem="uN6-tf-xO7" firstAttribute="top" secondItem="GpE-Te-YYa" secondAttribute="bottom" constant="100" id="e2U-OA-80R"/>
+                            <constraint firstItem="uN6-tf-xO7" firstAttribute="top" secondItem="GpE-Te-YYa" secondAttribute="bottom" constant="80" id="e2U-OA-80R"/>
                             <constraint firstItem="SdS-GC-INc" firstAttribute="width" secondItem="Vwy-0K-vs1" secondAttribute="width" id="izQ-SB-egU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X1e-xn-SeC"/>
@@ -233,7 +233,7 @@
                     <viewLayoutGuide key="safeArea" id="MDg-2R-tqg"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-1464.8" y="2634.3328335832084"/>
+            <point key="canvasLocation" x="-1698" y="2637"/>
         </scene>
         <!--Up Comming RidesVC-->
         <scene sceneID="PfB-Tt-J85">

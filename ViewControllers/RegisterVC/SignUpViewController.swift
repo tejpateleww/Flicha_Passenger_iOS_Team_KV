@@ -24,6 +24,30 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            let app = UIApplication.shared
+            let statusBarHeight: CGFloat = app.statusBarFrame.size.height
+            
+            let statusbarView = UIView()
+            statusbarView.backgroundColor = themeBlueColor
+            view.addSubview(statusbarView)
+            
+            statusbarView.translatesAutoresizingMaskIntoConstraints = false
+            statusbarView.heightAnchor
+                .constraint(equalToConstant: statusBarHeight).isActive = true
+            statusbarView.widthAnchor
+                .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+            statusbarView.topAnchor
+                .constraint(equalTo: view.topAnchor).isActive = true
+            statusbarView.centerXAnchor
+                .constraint(equalTo: view.centerXAnchor).isActive = true
+            
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = themeBlueColor
+        }
+        
         self.setupView()
     }
     
@@ -123,12 +147,12 @@ extension SignUpViewController
             }
             return false
         }
-        else if imgProfile.image!.isEqualToImage(image: UIImage(named: "icon_UserImage")!) {
-            
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please choose profile picture") { (index, title) in
-            }
-            return false
-        }
+//        else if imgProfile.image!.isEqualToImage(image: UIImage(named: "icon_UserImage")!) {
+//
+//            UtilityClass.setCustomAlert(title: "Missing", message: "Please choose profile picture") { (index, title) in
+//            }
+//            return false
+//        }
         return true
     }
     

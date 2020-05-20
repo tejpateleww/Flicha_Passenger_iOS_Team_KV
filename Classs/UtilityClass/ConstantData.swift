@@ -21,7 +21,8 @@ let themeGrayColor: UIColor = UIColor.init(red: 114/255, green: 114/255, blue: 1
 //let ThemeYellowColor : UIColor = UIColor.init(hex: "ffa300")
 let themeGrayBGColor : UIColor = UIColor.init(hex: "DDDDDD")
 let themeGrayTextColor : UIColor = UIColor.init(hex: "7A7A7C")
-let themeDarkGrayTextColor : UIColor = UIColor.darkGray
+let themeLightGreyColor: UIColor =  UIColor.init(red: 134/255, green: 144/255, blue: 161/255, alpha: 1.0)
+
 
 let currencySign = "DA"
 let appName = "Flicha"

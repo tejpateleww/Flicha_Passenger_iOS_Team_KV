@@ -46,7 +46,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         rightButton.setImage(UIImage.init(named: "edit-icon"), for: .normal)
         rightButton.contentMode = .scaleAspectFit
         rightButton.addTarget(self, action: #selector(self.handleSaveProfile), for: .touchUpInside)
-        self.addCustomNavigationBarWithRightButton(title: "My Profile", rightBarButton: rightButton, handler: (target: self, action: #selector(self.handleSaveProfile)))
+        self.addCustomNavigationBarWithRightButton(title: "My Profile", rightBarButton: rightButton)
     }
     
     func setupView() {

@@ -21,22 +21,31 @@ protocol isHaveCardFromBookLaterDelegate {
 
 class BookLaterViewController: BaseViewController, UINavigationControllerDelegate, isHaveCardFromBookLaterDelegate {
    
-    //-------------------------------------------------------------
     // MARK: - Outlets
-    //-------------------------------------------------------------
-    @IBOutlet weak var btnSubmit: ThemeButton!
-    @IBOutlet weak var lblCareModelClass: UILabel!
-    @IBOutlet weak var imgCareModel: UIImageView!
-    @IBOutlet weak var txtFullName: ThemeTextField!
-    @IBOutlet weak var txtMobileNumber: FormTextField!
-    @IBOutlet weak var txtDataAndTimeFromCalendar: ThemeTextField!
-    @IBOutlet weak var txtDescription: UITextView!
-    @IBOutlet var lblNotes: UILabel!
+    
     @IBOutlet weak var fromLocationView: UIStackView!
     @IBOutlet weak var toLocationView: UIStackView!
+    
     @IBOutlet weak var lblUserFromAddress: UILabel!
     @IBOutlet weak var lblUserToAddress: UILabel!
     
+    @IBOutlet weak var imgCareModel: UIImageView!
+    @IBOutlet weak var lblCareModelClass: UILabel!
+
+    @IBOutlet weak var lblFullNameTitle: UILabel!
+    @IBOutlet weak var txtFullName: ThemeTextField!
+    
+    @IBOutlet weak var lblMobileNumTitle: UILabel!
+    @IBOutlet weak var txtMobileNumber: FormTextField!
+    
+    @IBOutlet weak var lblDateAndTimeTitle: UILabel!
+    @IBOutlet weak var txtDataAndTimeFromCalendar: ThemeTextField!
+
+    @IBOutlet weak var lblNotesTitle: UILabel!
+    @IBOutlet weak var txtDescription: UITextView!
+   
+    @IBOutlet weak var btnSubmit: ThemeButton!
+
     var BackView = UIView()
     
     var delegateBookLater : deleagateForBookTaxiLater!
@@ -70,7 +79,6 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
     var doubleDropOffLat = Double()
     var doubleDropOffLng = Double()
     
-    
     var validationsMobileNumber = Validation()
     var inputValidatorMobileNumber = InputValidator()
     var aryCards = [[String:AnyObject]]()
@@ -94,24 +102,14 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         mapView?.delegate = self
         selector.delegate = self
 
-        //        webserviceOfCardList()
-//        pickerView.delegate = self
+       
+
         aryOfPaymentOptionsNames = [""]
         aryOfPaymentOptionsImages = [""]
         
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
-        imgCareModel.sd_setImage(with: URL(string: strCarModelURL), completed: nil)
-        let strCardLoca = "Car Model:".localized
-        lblCareModelClass.text = "\(strCardLoca): \(strCarName)"
-        
-        txtFullName.text = strFullname
-        txtMobileNumber.text = strMobileNumber
-        lblUserFromAddress.text = strPickupLocation
-        lblUserToAddress.text = strDropoffLocation
-        checkMobileNumber()
-
         let tapGestureFromLocation = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureLocationEdit(_:)))
         fromLocationView.tag = 101
         fromLocationView.addGestureRecognizer(tapGestureFromLocation)
@@ -120,6 +118,23 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         toLocationView.tag = 102
         toLocationView.addGestureRecognizer(tapGestureToLocation)
         
+        imgCareModel.sd_setImage(with: URL(string: strCarModelURL), completed: nil)
+        let strCardLoca = "Car Model:".localized
+        lblCareModelClass.text = "\(strCardLoca) \(strCarName)"
+         
+        lblUserFromAddress.applyCustomTheme(title: strPickupLocation, textColor: themeBlackColor, fontStyle: UIFont.semiBold(ofSize: 13))
+        lblUserToAddress.applyCustomTheme(title: strDropoffLocation, textColor: themeBlackColor, fontStyle: UIFont.semiBold(ofSize: 13))
+       
+        lblFullNameTitle.applyCustomTheme(title: "Full Name".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
+        txtFullName.text = strFullname
+        
+        lblMobileNumTitle.applyCustomTheme(title: "Phone Number".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
+        txtMobileNumber.text = strMobileNumber
+        checkMobileNumber()
+        
+        lblDateAndTimeTitle.applyCustomTheme(title: "Select Date & Time".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
+        lblNotesTitle.applyCustomTheme(title: "Message Here (Optional)".localized, textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
+
         txtDescription.layer.cornerRadius = 10
         txtDescription.clipsToBounds = false
         txtDescription.layer.shadowOpacity = 0.2
@@ -128,18 +143,15 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         txtDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
         txtDescription.isScrollEnabled = false
 
-        paymentType = "cash"
         txtFullName.placeholder = "Full Name".localized
         txtMobileNumber.placeholder = "Phone Number".localized
         txtDataAndTimeFromCalendar.placeholder = "Click calendar icon to select pickup time".localized
-        
-        lblNotes.text = "Notes (Optional)".localized
         //txtDescription.placeholder = "Notes (Optional)".localized
         btnSubmit.setTitle("Book Later".localized, for: .normal)
-            
-        strPassengerType = "myself"
       
-        
+        strPassengerType = "myself"
+        paymentType = "cash"
+
     }
 
     @objc func tapGestureLocationEdit(_ sender: UITapGestureRecognizer) {

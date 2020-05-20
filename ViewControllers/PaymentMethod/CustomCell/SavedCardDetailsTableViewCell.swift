@@ -18,7 +18,7 @@ class SavedCardDetailsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.lblTitle.font = UIFont.regular(ofSize: 17)
-        self.lblDescriptions.font = UIFont.regular(ofSize: 14)
+        self.lblDescriptions.font = UIFont.regular(ofSize: 12)
         self.lblDescriptions.textColor = themeGrayTextColor
         self.btnSelectedMethod.setImage(UIImage.init(named: "square-check-mark"), for: .normal)
         self.btnSelectedMethod.imageView?.contentMode = .scaleAspectFit
@@ -33,14 +33,5 @@ class SavedCardDetailsTableViewCell: UITableViewCell {
         self.containerView.dropShadow()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-       
-        super.setSelected(selected, animated: animated)
-        if selected
-        {
-            self.containerView.borderColor = UIColor.red
-            self.containerView.borderWidth = 1
-        }
-    }
-    
+   
 }

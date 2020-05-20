@@ -33,8 +33,8 @@ class ChangePasswordVC: BaseViewController {
     {
         lblTitle.text = "Change Password".localized
         lblSubTitle.text = "Enter you new password".localized
-        txtNewPassword.placeholder = "Old password".localized
-        txtOldPassword.placeholder = "New password".localized
+        txtOldPassword.placeholder = "Old password".localized
+        txtNewPassword.placeholder = "New password".localized
         btnSave.setTitle("Save".localized, for: .normal)
     }
     

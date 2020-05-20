@@ -65,10 +65,6 @@
 		3A4073B521B512280015C494 /* PackageHistoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4072FE21B512270015C494 /* PackageHistoryListTableViewCell.swift */; };
 		3A4073B621B512280015C494 /* PackageHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4072FF21B512270015C494 /* PackageHistoryViewController.swift */; };
 		3A4073B721B512280015C494 /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730021B512270015C494 /* PackageViewController.swift */; };
-		3A4073B821B512280015C494 /* RegisterOTPVarificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730221B512270015C494 /* RegisterOTPVarificationViewController.swift */; };
-		3A4073B921B512280015C494 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730321B512270015C494 /* RegisterViewController.swift */; };
-		3A4073BA21B512280015C494 /* RegistrationContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730421B512270015C494 /* RegistrationContainerViewController.swift */; };
-		3A4073BB21B512280015C494 /* RegistrationNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730521B512270015C494 /* RegistrationNewViewController.swift */; };
 		3A4073BC21B512280015C494 /* BarsAndClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730721B512270015C494 /* BarsAndClubsViewController.swift */; };
 		3A4073BD21B512280015C494 /* BookTableSelectedDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730821B512270015C494 /* BookTableSelectedDataViewController.swift */; };
 		3A4073BE21B512280015C494 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40730921B512270015C494 /* BookTableViewController.swift */; };
@@ -169,6 +165,9 @@
 		3A84BC9F21C264E900EDA3A2 /* MyRatingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9D21C264E800EDA3A2 /* MyRatingViewCell.swift */; };
 		3A84BCA021C264E900EDA3A2 /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC9E21C264E800EDA3A2 /* MyRatingViewController.swift */; };
 		64930B9924609BD9003D8E74 /* RatingAndReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64930B9824609BD9003D8E74 /* RatingAndReviewViewController.swift */; };
+		64BD5AB72475203800C17B4D /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD5AB62475203800C17B4D /* ForgotPasswordVC.swift */; };
+		64BD5AB9247579C100C17B4D /* UniversalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD5AB8247579C100C17B4D /* UniversalHeaderView.swift */; };
+		64BD5ABB247579D300C17B4D /* UniversalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */; };
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
@@ -260,10 +259,6 @@
 		3A4072FE21B512270015C494 /* PackageHistoryListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageHistoryListTableViewCell.swift; sourceTree = "<group>"; };
 		3A4072FF21B512270015C494 /* PackageHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageHistoryViewController.swift; sourceTree = "<group>"; };
 		3A40730021B512270015C494 /* PackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
-		3A40730221B512270015C494 /* RegisterOTPVarificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterOTPVarificationViewController.swift; sourceTree = "<group>"; };
-		3A40730321B512270015C494 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		3A40730421B512270015C494 /* RegistrationContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationContainerViewController.swift; sourceTree = "<group>"; };
-		3A40730521B512270015C494 /* RegistrationNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNewViewController.swift; sourceTree = "<group>"; };
 		3A40730721B512270015C494 /* BarsAndClubsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarsAndClubsViewController.swift; sourceTree = "<group>"; };
 		3A40730821B512270015C494 /* BookTableSelectedDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableSelectedDataViewController.swift; sourceTree = "<group>"; };
 		3A40730921B512270015C494 /* BookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +371,9 @@
 		5C887A7607BF7D1623FC535A /* Pods-TanTaxi User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TanTaxi User.release.xcconfig"; path = "Pods/Target Support Files/Pods-TanTaxi User/Pods-TanTaxi User.release.xcconfig"; sourceTree = "<group>"; };
 		626E9D33B8993B5928C11526 /* Pods_TanTaxi_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TanTaxi_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64930B9824609BD9003D8E74 /* RatingAndReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAndReviewViewController.swift; sourceTree = "<group>"; };
+		64BD5AB62475203800C17B4D /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		64BD5AB8247579C100C17B4D /* UniversalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalHeaderView.swift; sourceTree = "<group>"; };
+		64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UniversalHeaderView.xib; sourceTree = "<group>"; };
 		64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
@@ -583,6 +581,7 @@
 			children = (
 				3A4072F121B512270015C494 /* LoginViewController.swift */,
 				7A1D8A742434AD2800ABCC6E /* SplashVC.swift */,
+				64BD5AB62475203800C17B4D /* ForgotPasswordVC.swift */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";
@@ -612,10 +611,6 @@
 		3A40730121B512270015C494 /* RegisterVC */ = {
 			isa = PBXGroup;
 			children = (
-				3A40730221B512270015C494 /* RegisterOTPVarificationViewController.swift */,
-				3A40730321B512270015C494 /* RegisterViewController.swift */,
-				3A40730421B512270015C494 /* RegistrationContainerViewController.swift */,
-				3A40730521B512270015C494 /* RegistrationNewViewController.swift */,
 				8187B7A924419BA5003C7431 /* SignUpViewController.swift */,
 			);
 			path = RegisterVC;
@@ -729,7 +724,6 @@
 		3A40733621B512270015C494 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				3A40733721B512270015C494 /* WalletAddCardsViewController.swift */,
 				3A40733821B512270015C494 /* WalletBalanceMainVC.swift */,
 				3A40733921B512270015C494 /* WalletCardsVC.swift */,
 				3A40733A21B512270015C494 /* WalletCollectionViewCell.swift */,
@@ -1005,6 +999,8 @@
 			children = (
 				8187B7B62444D1C9003C7431 /* SavedCardDetailsTableViewCell.swift */,
 				8187B7B72444D1C9003C7431 /* SavedCardDetailsTableViewCell.xib */,
+				64BD5AB8247579C100C17B4D /* UniversalHeaderView.swift */,
+				64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1013,6 +1009,7 @@
 			isa = PBXGroup;
 			children = (
 				64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */,
+				3A40733721B512270015C494 /* WalletAddCardsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1167,6 +1164,7 @@
 				3A40737821B512280015C494 /* Assets.xcassets in Resources */,
 				3A40738A21B512280015C494 /* proxima-nova-semibold.otf in Resources */,
 				3A40740321B512280015C494 /* round70.png in Resources */,
+				64BD5ABB247579D300C17B4D /* UniversalHeaderView.xib in Resources */,
 				3A40739321B512280015C494 /* woolworths.jpg in Resources */,
 				3A40738921B512280015C494 /* proxima-nova-semibold-italic.otf in Resources */,
 				3A40737D21B512280015C494 /* proxima-nova-bold-italic.otf in Resources */,
@@ -1336,7 +1334,6 @@
 				3A4073DE21B512280015C494 /* TempDataOfWebservice.swift in Sources */,
 				3A4073A721B512280015C494 /* DriverInfoViewController.swift in Sources */,
 				3A4073A521B512280015C494 /* BookLaterViewController.swift in Sources */,
-				3A4073BA21B512280015C494 /* RegistrationContainerViewController.swift in Sources */,
 				8187B7AE24430521003C7431 /* ThemeFormTextField.swift in Sources */,
 				3A40740621B512280015C494 /* NSCalendar+Timepiece.swift in Sources */,
 				3A4073DF21B512280015C494 /* TripDetailsTableViewCell.swift in Sources */,
@@ -1351,7 +1348,6 @@
 				3A4073EE21B512280015C494 /* ThemeButton.swift in Sources */,
 				3A4073CC21B512280015C494 /* ShoppingDetailsVC.swift in Sources */,
 				3A40739C21B512280015C494 /* BookTableCollectionViewCell.swift in Sources */,
-				3A4073B821B512280015C494 /* RegisterOTPVarificationViewController.swift in Sources */,
 				3A4073DB21B512280015C494 /* WalletCardsTableViewCell.swift in Sources */,
 				8187B7BC24463EB1003C7431 /* NotificationsViewController.swift in Sources */,
 				819C1806244B22BC00730552 /* RideDetailsTableViewCell.swift in Sources */,
@@ -1384,7 +1380,6 @@
 				3A4073E721B512280015C494 /* WalletHistoryViewController.swift in Sources */,
 				3A4073EF21B512280015C494 /* ThemeTextField.swift in Sources */,
 				3A4073B521B512280015C494 /* PackageHistoryListTableViewCell.swift in Sources */,
-				3A4073BB21B512280015C494 /* RegistrationNewViewController.swift in Sources */,
 				3A4073BE21B512280015C494 /* BookTableViewController.swift in Sources */,
 				7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */,
 				3A4073F221B512280015C494 /* ACProgressView.swift in Sources */,
@@ -1400,7 +1395,6 @@
 				3A40740E21B512280015C494 /* CustomViewForShadow.swift in Sources */,
 				3A40739B21B512280015C494 /* AppDelegate.swift in Sources */,
 				3A4073C821B512280015C494 /* MyReceiptsViewController.swift in Sources */,
-				3A4073B921B512280015C494 /* RegisterViewController.swift in Sources */,
 				3A4073EC21B512280015C494 /* webViewVC.swift in Sources */,
 				64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */,
 				8187B7AA24419BA5003C7431 /* SignUpViewController.swift in Sources */,
@@ -1416,6 +1410,7 @@
 				3A84BC9421C22B2E00EDA3A2 /* RMUniversalAlert.m in Sources */,
 				3A4073A021B512280015C494 /* BaseViewController.swift in Sources */,
 				3A4073E821B512280015C494 /* WalletTopUpVC.swift in Sources */,
+				64BD5AB72475203800C17B4D /* ForgotPasswordVC.swift in Sources */,
 				3A4073ED21B512280015C494 /* Extensions.swift in Sources */,
 				3A40740421B512280015C494 /* Duration.swift in Sources */,
 				8187B7AC24422FAA003C7431 /* ConstantString.swift in Sources */,
@@ -1444,6 +1439,7 @@
 				3A5DDCA721BA5C9200F9B5A3 /* TripInfoViewController.swift in Sources */,
 				3A4073DD21B512280015C494 /* TempData.swift in Sources */,
 				3A4073D121B512280015C494 /* TickPayAlertViewController.swift in Sources */,
+				64BD5AB9247579C100C17B4D /* UniversalHeaderView.swift in Sources */,
 				3A40741121B512280015C494 /* UtilityClass.swift in Sources */,
 				3A40740B21B512280015C494 /* WWCalendarTimeSelector.swift in Sources */,
 				81A7D79424407397006505C8 /* ThemeDescriptionsLabel.swift in Sources */,

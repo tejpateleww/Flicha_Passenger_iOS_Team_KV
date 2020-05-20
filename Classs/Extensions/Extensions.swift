@@ -221,7 +221,7 @@ extension String {
         if let intValue = Int(self){
             let numberFormatter = NumberFormatter()
             numberFormatter.locale = Locale(identifier: "kab_DZ")
-            numberFormatter.numberStyle = NumberFormatter.Style.currencyAccounting
+            numberFormatter.numberStyle = NumberFormatter.Style.currency
             return numberFormatter.string(from: NSNumber(value: intValue)) ?? ""
         }
         return ""

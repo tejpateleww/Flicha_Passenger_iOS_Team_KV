@@ -191,7 +191,7 @@ class BaseViewController: UIViewController {
     }
     
     
-    func addCustomNavigationBarWithRightButton(title : String, rightBarButton : UIButton, handler: (target: Any, action: Selector))
+    func addCustomNavigationBarWithRightButton(title : String, rightBarButton : UIButton)
     {
         self.updateStatusBarBackgroundColor()
         let containerView = UIView()

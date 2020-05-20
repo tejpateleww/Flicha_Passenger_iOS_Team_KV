@@ -17,7 +17,7 @@ import GoogleSignIn
 import NVActivityIndicatorView
 import CoreLocation
 
-class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegate, alertViewMethodsDelegates, GIDSignInDelegate,GIDSignInUIDelegate
+class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegate, alertViewMethodsDelegates
 {
     //-------------------------------------------------------------
     // MARK: - Outlets
@@ -25,20 +25,17 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var lblTitle: ThemeTitleLabel!
     @IBOutlet weak var lblSubTitle: ThemeDescriptionsLabel!
-    
     @IBOutlet weak var txtPassword: ThemeTextField!
     @IBOutlet weak var txtMobile: ThemeTextField!
     @IBOutlet weak var btnLogin: ThemeButton!
-//    @IBOutlet weak var btnSignup: UIButton!
     @IBOutlet weak var btnForgotPass: UIButton!
     @IBOutlet weak var lblDontAc: UILabel!
-//    @IBOutlet weak var lblOr: UILabel!
     @IBOutlet weak var btnFB: UIButton!
-//    @IBOutlet weak var btnGoogle: UIButton!
-//    @IBOutlet var lblLaungageName: UILabel!
-    
+   
     var manager = CLLocationManager()
     var strURLForSocialImage = String()
+    var aryAllDrivers = NSArray()
+
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -50,8 +47,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //self.setTitle(Title: "Welcome", Description: "Sign in to continue! Sign in to continue! Sign in to continue!")
         self.lblTitle.text = "Welcome"
         self.lblSubTitle.text = "Sign in to continue!"
-        self.btnFB.imageView?.contentMode = .scaleAspectFill
-        
+        self.btnFB.imageView?.contentMode = .scaleAspectFit
         
         if Connectivity.isConnectedToInternet()
         {
@@ -64,7 +60,6 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             }
         }
         
-//        webserviceOfAppSetting()
         manager.delegate = self
         manager.requestAlwaysAuthorization()
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
@@ -84,6 +79,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
                 
             }
         }
+        
         manager.startUpdatingLocation()
         
 //        if(SingletonClass.sharedInstance.isUserLoggedIN)
@@ -165,9 +161,9 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //btnSignup.setTitle("Sign Up".localized, for: .normal)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
 
     //MARK: - Validation
     
@@ -190,91 +186,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         }
         return true
     }
-    
-    //MARK: - Webservice Call for Login
-    
-    func webserviceCallForLogin()
-    {
-        let dictparam = NSMutableDictionary()
-        dictparam.setObject(txtMobile.text!, forKey: "Username" as NSCopying)
-        dictparam.setObject(txtPassword.text!, forKey: "Password" as NSCopying)
-        dictparam.setObject("1", forKey: "DeviceType" as NSCopying)
-        dictparam.setObject("6287346872364287", forKey: "Lat" as NSCopying)
-        dictparam.setObject("6287346872364287", forKey: "Lng" as NSCopying)
-        dictparam.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
-        UtilityClass.showACProgressHUD()
-        
-        webserviceForDriverLogin(dictparam) { (result, status) in
-            
-            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
-            {
-                DispatchQueue.main.async(execute: { () -> Void in
-                    
-                    UtilityClass.hideACProgressHUD()
-                   
-                    if let profileData = result.object(forKey: "profile") as? NSDictionary, profileData.count > 0
-                    {
-                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
-                       
-                        UserDefaults.standard.set(profileData, forKey: "profileData")
-                        
-                        if let passangerID = profileData.object(forKey: "Id")
-                        {
-                            SingletonClass.sharedInstance.strPassengerID = "\(passangerID)"
-                        }
-                        SingletonClass.sharedInstance.isUserLoggedIN = true
-                        self.webserviceForAllDrivers()
-                        
-                    }else
-                    {
-                        SingletonClass.sharedInstance.isUserLoggedIN = false
-                        SingletonClass.sharedInstance.strPassengerID = ""
-                        UserDefaults.standard.removeObject(forKey: "profileData")
-                    }
-                })
-                
-            } else
-            {
-                UtilityClass.hideACProgressHUD()
-                UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                }
-            }
-        }
-    }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if (segue.identifier == "segueToHomeVC")
-        {
-       
-        }
-    }
-    
-    var aryAllDrivers = NSArray()
-    func webserviceForAllDrivers()
-    {
-        webserviceForAllDriversList { (result, status) in
-            
-            if (status)
-            {
-                self.aryAllDrivers = ((result as! NSDictionary).object(forKey: "drivers") as! NSArray)
-                
-                SingletonClass.sharedInstance.allDiverShowOnBirdView = self.aryAllDrivers
-                
-                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-                
-                //                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                //                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
-                //                let navController = UINavigationController(rootViewController: viewHomeController!)
-                //                self.sideMenuController?.embed(centerViewController: navController)
-            }
-            else
-            {
-                print(result)
-            }
-        }
-    }
-    
+
     @IBAction func btnFBClicked(_ sender: UIButton)
     {
         sender.isSelected = !sender.isSelected
@@ -386,47 +298,13 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
                 
                 //
                 //            SocialId , SocialType(Facebook OR Google) , DeviceType (1 OR 2) , Token , Firstname, Lastname ,  Email (optional), MobileNo , Lat , Lng , Image(optional)
-                
                 //            GVUserDefaults.standard().userData =  NSMutableDictionary(dictionary: dictUserData)
-                self.webserviceForSocilLogin(dictUserData as AnyObject, ImgPic: image)
-                
-                //                GVUserDefaults.standard().userData =  NSMutableDictionary(dictionary: dictUserData)
-                //
+                self.SocialLogin(dictUserData as AnyObject, ImgPic: image)
                 SingletonClass.sharedInstance.isFromSocilaLogin = true
-                
-                //                self.APIcallforSocialMedia(dictParam: dictUserData)
-                
-                //                let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
-                //                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
-    
-     //MARK: - Webservice Call for Forgot Password
-    
-    func webserviceCallForForgotPassword(strEmail : String)
-    {
-        let dictparam = NSMutableDictionary()
-        dictparam.setObject(strEmail, forKey: "MobileNo" as NSCopying)
-        let activityData = ActivityData()
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
-        webserviceForForgotPassword(dictparam) { (result, status) in
-            NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-            
-            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
-            {
-                UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                }
-            }
-            else
-            {
-                
-                UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                }
-            }
-        }
-    }
-    
+        
     @IBAction func btnGoogleClicked(_ sender: UIButton)
     {
         sender.isSelected = !sender.isSelected
@@ -439,298 +317,14 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         GIDSignIn.sharedInstance().uiDelegate = self as GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
     }
-    
-    //MARK: - Google SignIn Delegate -
-    
-    func signInWillDispatch(signIn: GIDSignIn!, error: Error!)
-    {
-        // myActivityIndicator.stopAnimating()
-    }
-    
-    // Present a view that prompts the user to sign in with Google
-    func sign(_ signIn: GIDSignIn!,
-              present viewController: UIViewController!) {
-        UIApplication.shared.statusBarStyle = .default
-        self.present(viewController, animated: true, completion: nil)
-    }
-    
-    // Dismiss the "Sign in with Google" view
-    func sign(_ signIn: GIDSignIn!,
-              dismiss viewController: UIViewController!)
-    {
-        UIApplication.shared.statusBarStyle = .lightContent
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
-    {
-        
-        if (error == nil)
-        {
-            // Perform any operations on signed in user here.
-            let userId : String = user.userID // For client-side use only!
-            let firstName : String  = user.profile.givenName
-            let lastName : String  = user.profile.familyName
-            let email : String = user.profile.email
-            
-            var dictUserData = [String: AnyObject]()
-            var image = UIImage()
-            if user.profile.hasImage
-            {
-                let pic = user.profile.imageURL(withDimension: 400)
-                let imgUrl: String = (pic?.absoluteString)!
-                print(imgUrl)
-                self.strURLForSocialImage = imgUrl
-                let url = URL(string: imgUrl as! String)
-                let data = try? Data(contentsOf: url!)
-                
-                if let imageData = data {
-                    image = UIImage(data: imageData)!
-                }else {
-                    image = UIImage(named: "iconUser")!
-                }
-                
-                //                dictUserData["image"] = strImage as AnyObject
-            }
-            
-            var strFullName = ""
-            
-            if !UtilityClass.isEmpty(str: firstName)
-            {
-                strFullName = strFullName + ("\(firstName)")
-            }
-            if !UtilityClass.isEmpty(str: strFullName) {
-                strFullName = strFullName + (" \(lastName)")
-            }
-//            SocialId,SocialType,DeviceType,Token,Firstname,Lastname,Lat,Lng
-            
-            //            dictUserData["profileimage"] = "" as AnyObject
-            dictUserData["Firstname"] = firstName as AnyObject
-            dictUserData["Lastname"] = lastName as AnyObject
-            dictUserData["Email"] = email as AnyObject
-            dictUserData["MobileNo"] = "" as AnyObject
-            dictUserData["Lat"] = "\(SingletonClass.sharedInstance.latitude)" as AnyObject
-            dictUserData["Lng"] = "\(SingletonClass.sharedInstance.longitude)" as AnyObject
-            dictUserData["SocialId"] = "\(userId)" as AnyObject
-            dictUserData["SocialType"] = "Google" as AnyObject
-            dictUserData["Token"] = SingletonClass.sharedInstance.deviceToken as AnyObject
-            dictUserData["DeviceType"] = "1" as AnyObject
-            
-            //
-            //            SocialId , SocialType(Facebook OR Google) , DeviceType (1 OR 2) , Token , Firstname, Lastname ,  Email (optional), MobileNo , Lat , Lng , Image(optional)
-            
-            //            GVUserDefaults.standard().userData =  NSMutableDictionary(dictionary: dictUserData)
-            self.webserviceForSocilLogin(dictUserData as AnyObject, ImgPic: image)
-                        SingletonClass.sharedInstance.isFromSocilaLogin = true
-            
-            
-            //                let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
-            //                self.navigationController?.pushViewController(viewController, animated: true)
-        }
-        else
-        {
-            print("\(error.localizedDescription)")
-        }
-        
-    }
-    
-    //MARK: - Webservice methods -
-    func webserviceForSocilLogin(_ dictData : AnyObject, ImgPic : UIImage)
-    {
-        webserviceForSocialLogin(dictData as AnyObject, image1: ImgPic, showHUD: true) { (result, status) in
-            if(status)
-            {
-//                Utilities.hideActivityIndicator()
-                print(result)
-//                SingletonClass.sharedInstance.isFromSocilaLogin = true
-//                Utilities.hideActivityIndicator()
-                print(result)
-                
-                let dictData = result as! [String : AnyObject]
-                UtilityClass.hideACProgressHUD()
-                SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-//                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-                SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
-                SingletonClass.sharedInstance.isUserLoggedIN = true
-                UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-//                UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
 
-                self.webserviceForAllDrivers()
-//                let dict = dictData["profile"] as! [String : AnyObject]
-//                let tempID = dict["Id"] as? String
-//                SingletonClass.sharedInstance.strPassengerID = String(tempID!)
-//                UserDefaults.standard.set(true, forKey: kIsLogin)
-//                Utilities.encodeDatafromDictionary(KEY: kLoginData, Param: dictData["profile"] as! [String : AnyObject])
-//
-//                SingletonClass.sharedInstance.dictPassengerProfile = NSMutableDictionary(dictionary: (result as! NSDictionary)) as! [String : AnyObject]
-//                SingletonClass.sharedInstance.isPassengerLoggedIN = true
-//
-//                UserDefaults.standard.set(SingletonClass.sharedInstance.dictPassengerProfile, forKey: passengerProfileKeys.kKeyPassengerProfile)
-//                UserDefaults.standard.set(true, forKey: passengerProfileKeys.kKeyIsPassengerLoggedIN)
-                
-                //                SingletonClass.sharedInstance.strPassengerID = ((SingletonClass.sharedInstance.dictPassengerProfile.object(forKey: "profile") as! NSDictionary).object(forKey: "Vehicle") as! NSDictionary).object(forKey: "PassengerId") as! String
-                
-                //                SingletonClass.sharedInstance.driverDuty = ((SingletonClass.sharedInstance.dictDriverProfile.object(forKey: "profile") as! NSDictionary).object(forKey: "DriverDuty") as! String)
-                //                    Singletons.sharedInstance.showTickPayRegistrationSceeen =
-                
-//                let profileData = SingletonClass.sharedInstance.dictPassengerProfile
-                
-                //                if let currentBalance = (profileData?.object(forKey: "profile") as! NSDictionary).object(forKey: "Balance") as? Double
-                //                {
-                //                    SingletonClass.sharedInstance.strCurrentBalance = currentBalance
-                //                }
-                
-                
-                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-                
-                
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setprofiledata"), object: nil, userInfo: nil)
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "profiledata"), object: nil)
-//                let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-//                //        self.navigationController?.pushViewController(viewController!, animated: true)
-//                //                self.sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController!)
-//                //                self.sideMenuViewController?.hideMenuViewController()
-//
-//                self.sideMenuViewController?.contentViewController = homeVC //UINavigationController(rootViewController: viewController!)
-//                self.sideMenuViewController?.hideMenuViewController()
-//                UIApplication.shared.keyWindow?.rootViewController = Appdelegate.sideMenu
-            }
-            else
-            {
-//                Utilities.hideActivityIndicator()
-                print(result)
-                if let res = result as? String
-                {
-                    UtilityClass.showAlert(appName, message: res, vc: self)
-                }
-                else if let resDict = result as? NSDictionary
-                {
-                    //                    Utilities.showAlert(appName, message: resDict.object(forKey: "message") as! String, vc: self)
-                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationContainerViewController") as? RegistrationContainerViewController
-                    
-                    SingletonClass.sharedInstance.strSocialEmail = dictData["Email"] as! String
-                    SingletonClass.sharedInstance.strSocialFullName = "\(dictData["Firstname"] as! String) \(dictData["Lastname"] as! String)"
-                    SingletonClass.sharedInstance.strSocialImage = self.strURLForSocialImage
-                    
-                    
-                    self.navigationController?.pushViewController(viewController!, animated: true)
-                    
-                }
-                else if let resAry = result as? NSArray
-                {
-                    UtilityClass.showAlert(appName, message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
-                }
-            }
-        }
-    }
-    func webserviceOfAppSetting() {
-//        version : 1.0.0 , (app_type : AndroidPassenger , AndroidDriver , IOSPassenger , IOSDriver)
-
-        let nsObject: AnyObject? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as AnyObject
-        let version = nsObject as! String
-        
-        print("Vewsion : \(version)")
-        
-        var param = String()
-        param = version + "/" + "IOSPassenger"
-        webserviceForAppSetting(param as AnyObject) { (result, status) in
-            
-            if (status) {
-                print("result is : \(result)")
-                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-
-//                self.viewMain.isHidden = false
-                
-                if ((result as! NSDictionary).object(forKey: "update") as? Bool) != nil {
-                    
-                    let alert = UIAlertController(title: nil, message: (result as! NSDictionary).object(forKey: "message") as? String, preferredStyle: .alert)
-                    let UPDATE = UIAlertAction(title: "UPDATE", style: .default, handler: { ACTION in
-                        
-                        UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
-
-                        })
-                    })
-                    let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
-                        
-                        if(SingletonClass.sharedInstance.isUserLoggedIN)
-                        {
-//                            self.webserviceForAllDrivers()
-                            self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                        }
-                    })
-                    alert.addAction(UPDATE)
-                    alert.addAction(Cancel)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                else {
-                    
-                    if(SingletonClass.sharedInstance.isUserLoggedIN) {
-
-                        self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                    }
-                }
-            }
-            else {
-                print(result)
-
-                if let update = (result as! NSDictionary).object(forKey: "update") as? Bool {
-                    
-                    if (update) {
-
-                        UtilityClass.showAlertWithCompletion("", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self, completionHandler: { ACTION in
-                            
-                            UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
-                                
-                            })//openURL(NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL)
-                        })
-                    }
-                    else {
-
-                         UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                            if (index == 0)
-                            {
-                                UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
-                                    
-                                })
-                            }
-                        }
-
-                    }
-                    
-                }
-/*
-                if let res = result as? String {
-                     UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
-            }
-                }
-                else if let resDict = result as? NSDictionary {
-
-                     UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
-            }
-                }
-                else if let resAry = result as? NSArray {
-
-                     UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-            }
-                }
- */
-            }
-        }
-    }
     
     //MARK: - IBActions
     
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
-    }
-    
-    
-    
     @IBAction func btnLogin(_ sender: Any) {
-        
         if (checkValidation()) {
             self.webserviceCallForLogin()
         }
-    
     }
     
     @objc func btnSignupClickAction(_ recognizer: UITapGestureRecognizer)
@@ -752,31 +346,8 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     
     @IBAction func btnForgotPassword(_ sender: UIButton) {
         
-        //1. Create the alert controller.
-        let alert = UIAlertController(title: "Forgot Password?".localized, message: "", preferredStyle: .alert)
-        
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            
-            textField.placeholder = "Email".localized
-        }
-        
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(String(describing: textField?.text))")
-            
-            if (textField?.text?.count != 0)
-            {
-                self.webserviceCallForForgotPassword(strEmail: (textField?.text)!)
-            }
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (_) in
-        }))
-        
-        // 4. Present the alert.
-        self.present(alert, animated: true, completion: nil)
+        let forgotPasswordVC = LoginAndRegisterStoryboard.instantiateViewController(withIdentifier: "ForgotPasswordVC") as! ForgotPasswordVC
+         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }
     func setLayoutForswahilLanguage()
     {
@@ -915,4 +486,303 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     }
    
     
+}
+
+//MARK: - Google SignIn Delegate
+
+extension LoginViewController : GIDSignInDelegate,GIDSignInUIDelegate
+{
+    func signInWillDispatch(signIn: GIDSignIn!, error: Error!)
+    {
+        // myActivityIndicator.stopAnimating()
+    }
+    
+    // Present a view that prompts the user to sign in with Google
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        UIApplication.shared.statusBarStyle = .default
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!)
+    {
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
+    {
+        if (error == nil)
+        {
+            // Perform any operations on signed in user here.
+            let userId : String = user.userID // For client-side use only!
+            let firstName : String  = user.profile.givenName
+            let lastName : String  = user.profile.familyName
+            let email : String = user.profile.email
+            
+            var dictUserData = [String: AnyObject]()
+            var image = UIImage()
+            if user.profile.hasImage
+            {
+                let pic = user.profile.imageURL(withDimension: 400)
+                let imgUrl: String = (pic?.absoluteString)!
+                print(imgUrl)
+                self.strURLForSocialImage = imgUrl
+                let url = URL(string: imgUrl as! String)
+                let data = try? Data(contentsOf: url!)
+                
+                if let imageData = data {
+                    image = UIImage(data: imageData)!
+                }else {
+                    image = UIImage(named: "iconUser")!
+                }
+                
+                //                dictUserData["image"] = strImage as AnyObject
+            }
+            
+            var strFullName = ""
+            
+            if !UtilityClass.isEmpty(str: firstName)
+            {
+                strFullName = strFullName + ("\(firstName)")
+            }
+            if !UtilityClass.isEmpty(str: strFullName) {
+                strFullName = strFullName + (" \(lastName)")
+            }
+            //            SocialId,SocialType,DeviceType,Token,Firstname,Lastname,Lat,Lng
+            
+            //            dictUserData["profileimage"] = "" as AnyObject
+            dictUserData["Firstname"] = firstName as AnyObject
+            dictUserData["Lastname"] = lastName as AnyObject
+            dictUserData["Email"] = email as AnyObject
+            dictUserData["MobileNo"] = "" as AnyObject
+            dictUserData["Lat"] = "\(SingletonClass.sharedInstance.latitude ?? 0.0)" as AnyObject
+            dictUserData["Lng"] = "\(SingletonClass.sharedInstance.longitude ?? 0.0)" as AnyObject
+            dictUserData["SocialId"] = "\(userId)" as AnyObject
+            dictUserData["SocialType"] = "Google" as AnyObject
+            dictUserData["Token"] = SingletonClass.sharedInstance.deviceToken as AnyObject
+            dictUserData["DeviceType"] = "1" as AnyObject
+            
+            //
+            //            SocialId , SocialType(Facebook OR Google) , DeviceType (1 OR 2) , Token , Firstname, Lastname ,  Email (optional), MobileNo , Lat , Lng , Image(optional)
+            
+            //            GVUserDefaults.standard().userData =  NSMutableDictionary(dictionary: dictUserData)
+            
+            SingletonClass.sharedInstance.isFromSocilaLogin = true
+            self.SocialLogin(dictUserData as AnyObject, ImgPic: image)
+        }
+        else
+        {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
+    
+}
+
+//MARK: - Webservices Section
+
+extension LoginViewController
+{
+    //MARK:- Primary Login
+
+    func webserviceCallForLogin()
+    {
+        let dictparam = NSMutableDictionary()
+        dictparam.setObject(txtMobile.text!, forKey: "Username" as NSCopying)
+        dictparam.setObject(txtPassword.text!, forKey: "Password" as NSCopying)
+        dictparam.setObject("1", forKey: "DeviceType" as NSCopying)
+        dictparam.setObject("6287346872364287", forKey: "Lat" as NSCopying)
+        dictparam.setObject("6287346872364287", forKey: "Lng" as NSCopying)
+        dictparam.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
+        UtilityClass.showACProgressHUD()
+        
+        webserviceForDriverLogin(dictparam) { (result, status) in
+            
+            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
+            {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    
+                    UtilityClass.hideACProgressHUD()
+                    
+                    if let profileData = result.object(forKey: "profile") as? NSDictionary, profileData.count > 0
+                    {
+                        SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
+                        
+                        UserDefaults.standard.set(profileData, forKey: "profileData")
+                        
+                        if let passangerID = profileData.object(forKey: "Id")
+                        {
+                            SingletonClass.sharedInstance.strPassengerID = "\(passangerID)"
+                        }
+                        SingletonClass.sharedInstance.isUserLoggedIN = true
+                        self.webserviceForAllDrivers()
+                        
+                    }else
+                    {
+                        SingletonClass.sharedInstance.isUserLoggedIN = false
+                        SingletonClass.sharedInstance.strPassengerID = ""
+                        UserDefaults.standard.removeObject(forKey: "profileData")
+                    }
+                })
+                
+            } else
+            {
+                UtilityClass.hideACProgressHUD()
+                UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                }
+            }
+        }
+    }
+    
+    //MARK: - Social Login
+
+    func SocialLogin(_ dictData : AnyObject, ImgPic : UIImage)
+    {
+        webserviceForSocialLogin(dictData as AnyObject, image1: ImgPic, showHUD: true) { (result, status) in
+            
+            print(result)
+            
+            if(status)
+            {
+                let dictData = result as! [String : AnyObject]
+                UtilityClass.hideACProgressHUD()
+                SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
+                SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
+                SingletonClass.sharedInstance.isUserLoggedIN = true
+                UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
+                self.webserviceForAllDrivers()
+                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                
+            }
+            else
+            {
+                if let res = result as? String
+                {
+                    UtilityClass.showAlert(appName, message: res, vc: self)
+                }
+                else if let resDict = result as? NSDictionary
+                {
+                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
+                    SingletonClass.sharedInstance.strSocialEmail = dictData["Email"] as! String
+                    SingletonClass.sharedInstance.strSocialFullName = "\(dictData["Firstname"] as! String) \(dictData["Lastname"] as! String)"
+                    SingletonClass.sharedInstance.strSocialImage = self.strURLForSocialImage
+                    self.navigationController?.pushViewController(viewController!, animated: true)
+                }
+                else if let resAry = result as? NSArray
+                {
+                    UtilityClass.showAlert(appName, message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
+                }
+            }
+        }
+    }
+    
+    //MARK: - All Drivers
+
+    func webserviceForAllDrivers()
+    {
+        webserviceForAllDriversList { (result, status) in
+            
+            if (status)
+            {
+                self.aryAllDrivers = ((result as! NSDictionary).object(forKey: "drivers") as! NSArray)
+                
+                SingletonClass.sharedInstance.allDiverShowOnBirdView = self.aryAllDrivers
+                
+                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                
+                //                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
+                //                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
+                //                let navController = UINavigationController(rootViewController: viewHomeController!)
+                //                self.sideMenuController?.embed(centerViewController: navController)
+            }
+            else
+            {
+                print(result)
+            }
+        }
+    }
+    
+    //MARK: - App Settings
+    
+    func webserviceOfAppSetting() {
+        //        version : 1.0.0 , (app_type : AndroidPassenger , AndroidDriver , IOSPassenger , IOSDriver)
+        
+        let nsObject: AnyObject? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as AnyObject
+        let version = nsObject as! String
+        
+        print("Vewsion : \(version)")
+        
+        var param = String()
+        param = version + "/" + "IOSPassenger"
+        webserviceForAppSetting(param as AnyObject) { (result, status) in
+            
+            if (status) {
+                print("result is : \(result)")
+                SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
+                
+                //                self.viewMain.isHidden = false
+                
+                if ((result as! NSDictionary).object(forKey: "update") as? Bool) != nil {
+                    
+                    let alert = UIAlertController(title: nil, message: (result as! NSDictionary).object(forKey: "message") as? String, preferredStyle: .alert)
+                    let UPDATE = UIAlertAction(title: "UPDATE", style: .default, handler: { ACTION in
+                        
+                        UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                            
+                        })
+                    })
+                    let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
+                        
+                        if(SingletonClass.sharedInstance.isUserLoggedIN)
+                        {
+                            //                            self.webserviceForAllDrivers()
+                            self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
+                        }
+                    })
+                    alert.addAction(UPDATE)
+                    alert.addAction(Cancel)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                else {
+                    
+                    if(SingletonClass.sharedInstance.isUserLoggedIN) {
+                        
+                        self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
+                    }
+                }
+            }
+            else {
+                print(result)
+                
+                if let update = (result as! NSDictionary).object(forKey: "update") as? Bool {
+                    
+                    if (update) {
+                        
+                        UtilityClass.showAlertWithCompletion("", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self, completionHandler: { ACTION in
+                            
+                            UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                                
+                            })//openURL(NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL)
+                        })
+                    }
+                    else {
+                        
+                        UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                            if (index == 0)
+                            {
+                                UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                                    
+                                })
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
 }

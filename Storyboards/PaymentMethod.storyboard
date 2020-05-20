@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hCB-gB-Zo9">
-                                <rect key="frame" x="0.0" y="36" width="375" height="521"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="487"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="DR1-ie-cM9" id="GjW-b8-y4c"/>
@@ -30,9 +30,9 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-5F-rQi" customClass="ThemeButton" customModule="Flicha_User" customModuleProvider="target">
-                                <rect key="frame" x="20" y="577" width="335" height="70"/>
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="dAG-B8-HO2"/>
+                                    <constraint firstAttribute="height" constant="50" id="dAG-B8-HO2"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -43,7 +43,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Oeo-5F-rQi" firstAttribute="leading" secondItem="4SE-Kp-mLB" secondAttribute="leading" constant="20" id="6Hl-Th-WoH"/>
-                            <constraint firstItem="hCB-gB-Zo9" firstAttribute="top" secondItem="4SE-Kp-mLB" secondAttribute="top" constant="36" id="Dx0-St-8C5"/>
+                            <constraint firstItem="hCB-gB-Zo9" firstAttribute="top" secondItem="4SE-Kp-mLB" secondAttribute="top" constant="90" id="Dx0-St-8C5"/>
                             <constraint firstItem="4SE-Kp-mLB" firstAttribute="bottom" secondItem="Oeo-5F-rQi" secondAttribute="bottom" constant="20" id="RNj-uy-ZoF"/>
                             <constraint firstItem="4SE-Kp-mLB" firstAttribute="trailing" secondItem="hCB-gB-Zo9" secondAttribute="trailing" id="VgL-Vj-Nrr"/>
                             <constraint firstItem="hCB-gB-Zo9" firstAttribute="leading" secondItem="4SE-Kp-mLB" secondAttribute="leading" id="XoY-T3-tDH"/>
@@ -238,9 +238,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AW6-8J-ACc" customClass="ThemeButton" customModule="Flicha_User" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="391" width="343" height="70"/>
+                                        <rect key="frame" x="16" y="411" width="343" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="ibj-F4-zuf"/>
+                                            <constraint firstAttribute="height" constant="50" id="ibj-F4-zuf"/>
                                         </constraints>
                                         <state key="normal" title="Add Card">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

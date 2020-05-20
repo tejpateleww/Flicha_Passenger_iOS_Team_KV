@@ -387,13 +387,34 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     func handleMenuIcon(isSelected : Bool) {
         if isSelected{
             self.btnMenuIcon.setImage(UIImage(named: "menu_back"), for: .normal)
+            self.btnMenuIcon.isSelected = true
         }else{
             self.btnMenuIcon.setImage(UIImage(named: "menu"), for: .normal)
+             self.btnMenuIcon.isSelected = false
         }
     }
     
     @IBAction func btnMenuClickAction(_ sender: Any) {
-        sideMenuController?.toggle()
+       
+        if btnMenuIcon.isSelected
+        {
+            if self.readyToBookRideView.isHidden == false
+            {
+                self.defaultModeView.isHidden = false
+                self.readyToBookRideView.isHidden = true
+                self.handleMenuIcon(isSelected: false)
+                
+            }else if viewDriverDetails.isHidden == false
+            {
+                viewDriverDetails.isHidden = true
+                self.readyToBookRideView.isHidden = false
+                self.handleMenuIcon(isSelected: false)
+            }
+            
+        }else
+        {
+            sideMenuController?.toggle()
+        }
     }
     
     @IBAction func btnCallDriverClickAction(_ sender: Any) {
@@ -420,7 +441,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.arrTotalNumberOfCars = NSMutableArray(array: SingletonClass.sharedInstance.arrCarLists)
         //        self.setupGoogleMap()
     }
-    
 
     func btnRequestLater()
     {
@@ -2323,21 +2343,23 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     
     @objc func GotoPaymentPage() {
         
-        if SingletonClass.sharedInstance.CardsVCHaveAryData.count > 0
-        {
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
-            self.navigationController?.pushViewController(next, animated: true)
-        }
-        else
-        {
-            //let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
-            
-            let paymentMethodsVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "PaymentMethodsViewController") as! PaymentMethodsViewController
-            self.navigationController?.pushViewController(paymentMethodsVC, animated: true)
-        }
+        let paymentMethodsVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "PaymentMethodsViewController") as! PaymentMethodsViewController
+        self.navigationController?.pushViewController(paymentMethodsVC, animated: true)
+
+        ///if SingletonClass.sharedInstance.CardsVCHaveAryData.count > 0
+        //{
+          //  let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
+          //  self.navigationController?.pushViewController(next, animated: true)
+        //}
+       // else
+       // {
+         //   let paymentMethodsVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "PaymentMethodsViewController") as! PaymentMethodsViewController
+         //   self.navigationController?.pushViewController(paymentMethodsVC, animated: true)
+       // }
     }
     
-    @objc func GotoWalletPage() {
+    @objc func GotoWalletPage()
+    {
         if (SingletonClass.sharedInstance.isPasscodeON) {
             
             if SingletonClass.sharedInstance.setPasscode == "" {
@@ -5447,7 +5469,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 
         }
         
-        
 
 //        else if (self.arrNumberOfOnlineCars.count != 0 && indexPath.row < self.arrNumberOfOnlineCars.count)
 //        {
@@ -5807,7 +5828,8 @@ extension HomeViewController : GMSAutocompleteViewControllerDelegate
         self.MarkerCurrntLocation.isHidden = false
         self.btnDoneForLocationSelected.isHidden = false
         self.viewBookNowLater.isHidden = true
-        self.btnMenuIcon.isSelected = true
+        self.handleMenuIcon(isSelected: true)
+        
         let selectedLocation = "\(place.name ?? ""), \(place.formattedAddress ?? "")"
 
         if BoolCurrentLocation

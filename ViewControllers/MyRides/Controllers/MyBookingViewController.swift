@@ -34,8 +34,6 @@ class MyBookingViewController: BaseViewController {
     var isFromPushNotification = Bool()
     var bookingType = String()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
