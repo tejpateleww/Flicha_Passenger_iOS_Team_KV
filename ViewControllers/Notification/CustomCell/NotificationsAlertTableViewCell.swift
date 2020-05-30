@@ -19,6 +19,7 @@ class NotificationsAlertTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.lblTitle.font = UIFont.semiBold(ofSize: 15)
         self.lblDescriptions.font = UIFont.regular(ofSize: 12)
+        self.imgIcon.contentMode = .scaleToFill
     }
     
     override func layoutSubviews() {

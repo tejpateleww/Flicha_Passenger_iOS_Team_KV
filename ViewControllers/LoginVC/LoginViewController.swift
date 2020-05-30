@@ -337,9 +337,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             recognizer.didTapAttributedTextInLabel(label: self.lblDontAc, inRange: NSRange(range, in: text))
         {
             print("Sign up click")
-            
-            let storyboard = UIStoryboard(name: "Login&Register", bundle: nil)
-            let registerVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+            let registerVC = LoginAndRegisterStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
             self.navigationController?.pushViewController(registerVC, animated: true)
         }
     }
@@ -411,10 +409,6 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //        }
         //
         //        lblLaungageName.text = strSelectedLaungage
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //-------------------------------------------------------------

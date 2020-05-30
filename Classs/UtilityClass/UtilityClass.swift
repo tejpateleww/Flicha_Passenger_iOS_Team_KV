@@ -248,7 +248,10 @@ class UtilityClass: NSObject, alertViewMethodsDelegates {
         {
             strType = "JCB"
         }
-        else
+        else if type == "cash"
+        {
+            strType = "cash"
+        }else
         {
             strType = "iconDummyCard"
         }

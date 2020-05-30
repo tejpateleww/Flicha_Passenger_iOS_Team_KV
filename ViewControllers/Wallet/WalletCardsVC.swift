@@ -9,13 +9,13 @@
 import UIKit
 
 @objc protocol AddCadsDelegate {
-    
     func didAddCard(cards: NSArray)
 }
 
 class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDelegate, AddCadsDelegate {
 
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnAddCards: UIButton!
     weak var delegateForTopUp: SelectCardDelegate!
     weak var delegateForTransferToBank: SelectBankCardDelegate!
     
@@ -29,45 +29,29 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
         refreshControl.tintColor = themeYellowColor
         return refreshControl
     }()
-    
+       
    
-    
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
     
-    override func loadView() {
+    override func loadView()
+    {
         super.loadView()
         
-        if SingletonClass.sharedInstance.isCardsVCFirstTimeLoad {
-//            webserviceOFGetAllCards()
-            
-            if SingletonClass.sharedInstance.CardsVCHaveAryData.count != 0 {
-                aryData = SingletonClass.sharedInstance.CardsVCHaveAryData
-            }
-            else {
-                
-                webserviceOFGetAllCards()
-                
-            }
+        if SingletonClass.sharedInstance.CardsVCHaveAryData.count == 0
+        {
+            webserviceOFGetAllCards()
         }
-        else {
-            if SingletonClass.sharedInstance.CardsVCHaveAryData.count != 0 {
-                aryData = SingletonClass.sharedInstance.CardsVCHaveAryData
-            }
-            else {
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
-                next.delegateAddCard = self
-                self.navigationController?.pushViewController(next, animated: true)
-            }
+        else
+        {
+            aryData = SingletonClass.sharedInstance.CardsVCHaveAryData
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addCustomNavigationBar(title: "Payment Method".localized)
-        //self.setNavBarWithBack(Title: "Card List".localized, IsNeedRightButton: true)
         self.tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         self.tableView.addSubview(self.refreshControl)
@@ -77,25 +61,6 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
         super.viewWillAppear(animated)
         self.addCustomNavigationBar(title: "Payment Method".localized)
     }
-    
-    func setImageColorOfImage(name: String) -> UIImage {
-        var imageView = UIImageView()
-        let img = UIImage(named: name)
-        imageView.image = img?.maskWithColor(color: UIColor.white)
-        return imageView.image!
-    }
-    
-    //-------------------------------------------------------------
-    // MARK: - Outlets
-    //-------------------------------------------------------------
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var btnAddCards: UIButton!
-    
-    //-------------------------------------------------------------
-    // MARK: - TableView Methods
-    //-------------------------------------------------------------
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return aryData.count + 1
@@ -169,7 +134,6 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         if indexPath.section == 0 {
             let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
@@ -327,16 +291,12 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
  
         webserviceForCardList(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
         
-       
-            if (status) {
+            if (status)
+            {
                 print(result)
                 
                 self.aryData = (result as! NSDictionary).object(forKey: "cards") as! [[String:AnyObject]]
-                
                 SingletonClass.sharedInstance.CardsVCHaveAryData = self.aryData
-                
-                SingletonClass.sharedInstance.isCardsVCFirstTimeLoad = false
-                
                 self.tableView.reloadData()
                 
                 if SingletonClass.sharedInstance.CardsVCHaveAryData.count == 0 {
@@ -388,10 +348,6 @@ class WalletCardsVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
                 self.aryData = (result as! NSDictionary).object(forKey: "cards") as! [[String:AnyObject]]
                 
                 SingletonClass.sharedInstance.CardsVCHaveAryData = self.aryData
-                
-                SingletonClass.sharedInstance.isCardsVCFirstTimeLoad = false
-                
-                
                 // Post notification
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CardListReload"), object: nil)
 

@@ -42,14 +42,12 @@ class MyBookingViewController: BaseViewController {
     {
         super.viewWillAppear(animated)
         self.setupView()
-        
     }
     
-    func setupView(){
-        
-        getRideBookingHistory()
-        
+    func setupView()
+    {
         self.addCustomNavigationBar(title: kMyRidePageTitle)
+
         lbltitile.text = kMyRidePageTitle
         
         btnUpComming.setTitle(kSegmentUpcomingTitle, for: .normal)
@@ -112,6 +110,7 @@ class MyBookingViewController: BaseViewController {
             self.btnComplete.isSelected = false
             self.btnCanceled.isSelected = false
             scrollObject.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            self.getRideBookingHistory(bookingType: tabIndex)
             
         }else if tabIndex == .Completed
         {
@@ -119,6 +118,7 @@ class MyBookingViewController: BaseViewController {
             self.btnComplete.isSelected = true
             self.btnCanceled.isSelected = false
             scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
+            self.getRideBookingHistory(bookingType: tabIndex)
 
         }else if tabIndex == .Canceled
         {
@@ -126,6 +126,7 @@ class MyBookingViewController: BaseViewController {
             self.btnComplete.isSelected = false
             self.btnCanceled.isSelected = true
             scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width * 2, y: 0), animated: true)
+            self.getRideBookingHistory(bookingType: tabIndex)
         }
         
         let currentXPosition = (scrollObject.frame.size.width / (scrollObject.contentSize.width/scrollObject.contentOffset.x))
@@ -214,46 +215,39 @@ extension MyBookingViewController : UIScrollViewDelegate
 
 extension MyBookingViewController
 {
-    func getRideBookingHistory()
+    func getRideBookingHistory(bookingType : Enum_MyBookingSegmentTabs)
     {
-        webserviceForBookingHistory(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
-            
-            if (status) {
-                
-                if let dictData = result as? [String:AnyObject]
+        if bookingType == .Upcoming
+        {
+            if let upcomingRidesVC = self.childViewControllers[0] as? UpCommingRidesVC
+            {
+                if upcomingRidesVC.aryUpcomingRidesData == nil || upcomingRidesVC.aryUpcomingRidesData?.count == 0
                 {
-                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
-                    {
-                        // Upcoming
-                        if let resultsUpcomingRides = aryHistory.filter({ $0["HistoryType"]?.lowercased == "Upcoming".lowercased()}) as [[String:AnyObject]]?
-                        {
-                            SingletonClass.sharedInstance.aryUpCommingRides = resultsUpcomingRides as NSArray
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.keyForUpCommingRides), object: nil)
-                        }
-                        
-                        //  Canceled
-                        if let resultsPastRides = aryHistory.filter({ ($0["HistoryType"]?.lowercased == "Past".lowercased()) && ($0["Status"]?.lowercased == "canceled".lowercased())}) as [[String:AnyObject]]?
-                        {
-                            SingletonClass.sharedInstance.aryCancelRides = resultsPastRides as NSArray
-                            // Post notification
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.keyForCanceledRides), object: nil)
-                        }
-                        
-                        //Completed
-                        if let resultsPastRides = aryHistory.filter({ ($0["HistoryType"]?.lowercased == "Past".lowercased()) && ($0["Status"]?.lowercased != "canceled".lowercased())}) as [[String:AnyObject]]?
-                        {
-                            SingletonClass.sharedInstance.aryCompletedRides = resultsPastRides as NSArray
-                            // Post notification
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.keyForCompletedRides), object: nil)
-                        }
-                    }
+                    upcomingRidesVC.getUpcomingRidesList()
                 }
             }
-            else
+            
+        }else if bookingType == .Completed
+        {
+            if let completedRidesVC = self.childViewControllers[1] as? CompletedRidesVC
             {
-                
+                if completedRidesVC.aryCompletedRidesData == nil || completedRidesVC.aryCompletedRidesData?.count == 0
+                {
+                    completedRidesVC.getCompletedRidesList()
+                }
             }
             
+        }else
+        {
+            if let cancelVC = self.childViewControllers[2] as? CanceledRidesVC
+            {
+                if cancelVC.aryCanceledRidesHistory == nil || cancelVC.aryCanceledRidesHistory?.count == 0
+                {
+                    cancelVC.getCanceledRidesList(pageIndex: 1)
+                }
+            }
         }
     }
+
 }
+

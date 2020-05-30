@@ -66,7 +66,7 @@ class TripInfoViewController: BaseViewController,delegatePesapalWebView//,delega
         self.lblBaseFareTitle.applyCustomTheme(title: "Base Fare".localized, textColor: themeBlackColor, fontStyle: regularFontSize)
         self.lblBaseFare.applyCustomTheme(title: "".localized, textColor: themeBlackColor, fontStyle: regularFontSize)
         
-        self.lblDiatnceFareTitle.applyCustomTheme(title: "Distance Fare:".localized, textColor: themeBlackColor, fontStyle: regularFontSize)
+        self.lblDiatnceFareTitle.applyCustomTheme(title: "Distance Fare".localized, textColor: themeBlackColor, fontStyle: regularFontSize)
         self.lblDiatnceFare.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: regularFontSize)
         
         self.lblWaitingTimeCostTitle.applyCustomTheme(title: "Waiting Cost".localized, textColor: themeBlackColor, fontStyle: regularFontSize)
@@ -90,7 +90,6 @@ class TripInfoViewController: BaseViewController,delegatePesapalWebView//,delega
             btnOK.setTitle("Make Payment".localized, for: .normal)
         }
         setData()
-        
     }
     
     override func viewDidLayoutSubviews(){
@@ -99,19 +98,59 @@ class TripInfoViewController: BaseViewController,delegatePesapalWebView//,delega
         btnViewCompleteTripData.layer.masksToBounds = true
     }
     
-    
     // MARK: - Custom Methods
-    
-    func setData() {
-        
-        lblTollFee.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "TollFee") as? String))) ? "\(String(describing: dictData.object(forKey: "TollFee") as! String)) \(currencySign)": "-"
+    func setData()
+    {
         lblPickupLocation.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "PickupLocation") as? String ))) ? (dictData.object(forKey: "PickupLocation") as? String ) : "-"
         lblDropOffLocation.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "DropoffLocation") as? String))) ?(dictData.object(forKey: "DropoffLocation") as? String): "-"
-        lblGrandTotal.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "GrandTotal") as? String))) ? "\(String(describing: dictData.object(forKey: "GrandTotal") as! String)) \(currencySign)": "-"
-        lblBaseFare.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "TripFare") as? String))) ? "\(String(describing: dictData.object(forKey: "TripFare") as! String)) \(currencySign)": "-"
-        lblWaitingTimeCost.text = "\(dictData.object(forKey: "WaitingTimeCost") as! String) \(currencySign)"
-        lblDiatnceFare.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "DistanceFare") as? String))) ? "\(String(describing: dictData.object(forKey: "DistanceFare") as! String)) \(currencySign)": "-"
-        lblTax.text = (!UtilityClass.isEmpty(str: (dictData.object(forKey: "Tax") as? String))) ? "\(dictData.object(forKey: "Tax") as! String) \(currencySign)": "-"
+        
+        if let strBaseFare = dictData.object(forKey: "TripFare") as? String, strBaseFare.count > 0
+        {
+            lblBaseFare.text = strBaseFare.currencyInputFormatting()
+        }else
+        {
+            lblBaseFare.text = "-"
+        }
+        
+        if let strDistanceFare = dictData.object(forKey: "DistanceFare") as? String, let amountValue = strDistanceFare.currencyInputFormatting() as String? , amountValue != ""
+        {
+            lblDiatnceFare.text = amountValue
+        }else
+        {
+            lblDiatnceFare.text = "-"
+        }
+        
+        if let strWaitingTimeCost = dictData.object(forKey: "WaitingTimeCost") as? String, let amountValue = strWaitingTimeCost.currencyInputFormatting() as String? , amountValue != ""
+        {
+            lblWaitingTimeCost.text = amountValue
+        }else
+        {
+            lblWaitingTimeCost.text = "-"
+        }
+        
+        if let strTollFee = dictData.object(forKey: "TollFee") as? String, let amountValue = strTollFee.currencyInputFormatting() as String? , amountValue != ""
+        {
+            lblTollFee.text = amountValue
+        }else
+        {
+            lblTollFee.text = "-"
+        }
+        
+        if let strTax = dictData.object(forKey: "Tax") as? String, let amountValue = strTax.currencyInputFormatting() as String? , amountValue != ""
+        {
+            lblTax.text = amountValue
+        }else
+        {
+            lblTax.text = "-"
+        }
+        
+        if let strGrandTotal = dictData.object(forKey: "GrandTotal") as? String, let amountValue = strGrandTotal.currencyInputFormatting() as String? , amountValue != ""
+        {
+            lblGrandTotal.text = amountValue
+        }else
+        {
+            lblGrandTotal.text = "-"
+        }
         
         if((!UtilityClass.isEmpty(str: (dictData.object(forKey: "PromoCode") as? String))))
         {

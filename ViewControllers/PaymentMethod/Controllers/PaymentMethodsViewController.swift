@@ -16,7 +16,6 @@ class PaymentMethodsViewController: BaseViewController {
     private var arrayCardList : [[String:AnyObject]]?
     private let CellID = "SavedCardDetailsTableViewCell"
     private let HeaderID = "UniversalHeaderView"
-
     private var selectedCardIndexPath : IndexPath?
     
     // MARK:- Life Cycle Methods
@@ -44,13 +43,28 @@ class PaymentMethodsViewController: BaseViewController {
         self.tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         getAllCards()
     }
     
-    @objc func handleSaveAsDefaulCard(){
-        
+    @objc func handleSaveAsDefaulCard()
+    {
+        if let indexPath = selectedCardIndexPath
+        {
+            if let currentSelectedCard = self.arrayCardList?[indexPath.row] as NSDictionary?
+            {
+                if currentSelectedCard.object(forKey: "Id") as? String == "-1"
+                {
+                    SingletonClass.removeCurrentPaymentDetails()
+                }else
+                {
+                    SingletonClass.setCurrentPaymentDetails(details: currentSelectedCard)
+                }
+            }
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnAddCardClickAction(_ sender: Any){
@@ -58,6 +72,15 @@ class PaymentMethodsViewController: BaseViewController {
         self.navigationController?.pushViewController(next, animated: true)
     }
     
+}
+
+extension PaymentMethodsViewController : AddCadsDelegate
+{
+    func didAddCard(cards: NSArray)
+    {
+        SingletonClass.sharedInstance.CardsVCHaveAryData.removeAll()
+        self.getAllCards()
+    }
 }
 
 extension PaymentMethodsViewController : UITableViewDelegate, UITableViewDataSource
@@ -80,29 +103,39 @@ extension PaymentMethodsViewController : UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! SavedCardDetailsTableViewCell
-        
+        cell.btnSelectedMethod.isHidden = false
+
         if indexPath.section == 0
         {
-            if self.selectedCardIndexPath == nil
+            if let cardDetails = SingletonClass.getCurrentPaymentDetails(), cardDetails.count > 0
             {
-                cell.btnSelectedMethod.isHidden = false
+                cell.lblTitle.text = cardDetails["CardNum2"] as? String ?? ""
+                cell.lblDescriptions.text = "Expires \(cardDetails["Expiry"] as? String ?? "")"
+                cell.ImgViewIcon?.image = UIImage(named: UtilityClass.getCardImageNameFrom(type: cardDetails["Type"] as? String ?? ""))
+                
             }else
             {
-                cell.btnSelectedMethod.isHidden = true
+                cell.lblTitle.text = "Cash Payment".localized
+                cell.lblDescriptions.text = "Deafult method".localized
+                cell.ImgViewIcon.image = UIImage(named: "cash")
             }
-
-            cell.lblTitle.text = "Cash Payment"
-            cell.lblDescriptions.text = "Deafult method"
-            cell.ImgViewIcon.image = UIImage(named: "cash")
             
         }else
         {
             cell.btnSelectedMethod.isHidden = true
-
+            
             if let cardDetails = self.arrayCardList?[indexPath.row]
             {
                 cell.lblTitle.text = cardDetails["CardNum2"] as? String ?? ""
-                cell.lblDescriptions.text = "Expires \(cardDetails["Expiry"] as? String ?? "")"
+                
+                if let expiryDate = cardDetails["Expiry"] as? String
+                {
+                    cell.lblDescriptions.text = "Expires \(expiryDate)"
+                }else
+                {
+                    cell.lblDescriptions.text = "Deafult method".localized
+                }
+                
                 cell.ImgViewIcon?.image = UIImage(named: UtilityClass.getCardImageNameFrom(type: cardDetails["Type"] as? String ?? ""))
                 
                 if self.selectedCardIndexPath == indexPath
@@ -129,7 +162,13 @@ extension PaymentMethodsViewController : UITableViewDelegate, UITableViewDataSou
 
         }else
         {
-            view.lblTitle.applyCustomTheme(title: "Choose desired vehicle type. We offer cars suitable for most every day needs.".localized, textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
+            if self.arrayCardList?.count ?? 0 > 0
+            {
+                view.lblTitle.applyCustomTheme(title: "Choose desired vehicle type. We offer cars suitable for most every day needs.".localized, textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
+            }else
+            {
+                view.lblTitle.text = ""
+            }
         }
         return view
     }
@@ -156,6 +195,57 @@ extension PaymentMethodsViewController : UITableViewDelegate, UITableViewDataSou
         return UITableViewAutomaticDimension
     }
     
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+         
+        if indexPath.section == 0
+        {
+            if SingletonClass.getCurrentPaymentDetails()?.count ?? 0 == 0
+            {
+                return false
+
+            }else
+            {
+                return true
+            }
+        }else if let paymentMethodDetail = self.arrayCardList?[indexPath.row] as NSDictionary?, paymentMethodDetail.object(forKey: "Id") as? String == "-1"
+        {
+            return false
+        }
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        let alert = UIAlertController(title: "Remove".localized, message: "Are you sure you want to delete this card?".localized, preferredStyle: .alert)
+        
+        let OK = UIAlertAction(title: "Yes".localized, style: .default, handler: { ACTION in
+            
+            if indexPath.section == 0
+            {
+                if let paymentMethodDetail = SingletonClass.getCurrentPaymentDetails() as NSDictionary?, let cardID = paymentMethodDetail.object(forKey: "Id") as? String
+                {
+                    self.removeCardFromWallet(cardId: cardID, isCurrentMethod: true)
+                }
+                
+            }else
+            {
+                if let paymentMethodDetail = self.arrayCardList?[indexPath.row] as NSDictionary?, let cardID = paymentMethodDetail.object(forKey: "Id") as? String
+                {
+                   self.removeCardFromWallet(cardId: cardID)
+                }
+            }
+        })
+        
+        let Cancel = UIAlertAction(title: "No".localized, style: .destructive, handler: nil)
+        alert.addAction(OK)
+        alert.addAction(Cancel)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+        
+    }
 }
 
 // MARK: - Webservice Methods
@@ -164,41 +254,71 @@ extension PaymentMethodsViewController
 {
     func getAllCards() {
         
-        webserviceForCardList(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
+        if let cardList = SingletonClass.sharedInstance.CardsVCHaveAryData as [[String : AnyObject]]? , cardList.count > 0
+        {
+            self.filterData(arrayCardList: cardList)
             
-            if (status)
-            {
-                if let cardList = (result as? NSDictionary)?.object(forKey: "cards") as? [[String:AnyObject]], cardList.count > 0
+        }else
+        {
+            webserviceForCardList(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
+                
+                if (status)
                 {
-                    self.arrayCardList = cardList
-                    SingletonClass.sharedInstance.CardsVCHaveAryData = cardList
-                    SingletonClass.sharedInstance.isCardsVCFirstTimeLoad = false
-                    self.tableView.reloadData()
+                    if let cardList = (result as? NSDictionary)?.object(forKey: "cards") as? [[String:AnyObject]]
+                    {
+                        SingletonClass.sharedInstance.CardsVCHaveAryData = cardList
+                        self.filterData(arrayCardList: cardList)
+                    }
+                }
+                else
+                {
+                    if let res = result as? String
+                    {
+                        UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
+                        }
+                    }
+                    else if let resDict = result as? NSDictionary
+                    {
+                        UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
+                        }
+                    }
+                    else if let resAry = result as? NSArray
+                    {
+                        UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                        }
+                    }
                 }
             }
-            else
+            
+        }
+
+    }
+    
+    func filterData(arrayCardList : [[String : AnyObject]]) {
+     
+        if let dicCardDetails = SingletonClass.getCurrentPaymentDetails(), dicCardDetails.count > 0
+        {
+            if let resultsFilter = arrayCardList.filter({ $0["Id"] as? String != dicCardDetails.object(forKey: "Id") as? String}) as [[String:AnyObject]]?
             {
-                if let res = result as? String
-                {
-                    UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
-                    }
-                }
-                else if let resDict = result as? NSDictionary
-                {
-                    UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
-                else if let resAry = result as? NSArray
-                {
-                    UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
+                self.arrayCardList = resultsFilter
+                let cashPayment = NSMutableDictionary()
+                cashPayment.setValue("Cash Payment", forKey: "CardNum2")
+                cashPayment.setValue("cash", forKey: "Type")
+                cashPayment.setValue("-1", forKey: "Id")
+                self.arrayCardList?.insert(cashPayment as! [String : AnyObject], at: 0)
+                self.tableView.reloadData()
             }
+            
+        }else
+        {
+            self.arrayCardList = arrayCardList
+            self.tableView.reloadData()
         }
     }
     
-    func removeCardFromWallet(cardId : String) {
-        
+    
+    func removeCardFromWallet(cardId : String, isCurrentMethod : Bool = false)
+    {
         let params = "\(SingletonClass.sharedInstance.strPassengerID)/\(cardId)"
         webserviceForRemoveCard(params as AnyObject) { (result, status) in
             
@@ -206,11 +326,12 @@ extension PaymentMethodsViewController
             {
                 if let cardList = (result as? NSDictionary)?.object(forKey: "cards") as? [[String:AnyObject]]
                 {
-                    self.arrayCardList = cardList
+                    if isCurrentMethod
+                    {
+                        SingletonClass.removeCurrentPaymentDetails()
+                    }
                     SingletonClass.sharedInstance.CardsVCHaveAryData = cardList
-                    SingletonClass.sharedInstance.isCardsVCFirstTimeLoad = false
-                    self.tableView.reloadData()
-                    
+                    self.filterData(arrayCardList: cardList)
                     UtilityClass.setCustomAlert(title: "Removed", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                     }
                 }

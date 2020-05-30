@@ -32,6 +32,24 @@ class NotificationsViewController: BaseViewController {
         self.addCustomNavigationBar(title: kNotificationsPageTitle)
         self.getNotificationsList()
     }
+    
+    func getNotificationIconImageName(notificationType : String) -> String {
+    
+        if notificationType.lowercased() == "CompleteBooking".lowercased()
+        {
+            return "blueRightTick"
+       
+        }else if notificationType.lowercased() == "CancelBooking".lowercased()
+        {
+            return "redCross"
+            
+        }else
+        {
+            return "blueWallet"
+        }
+        
+    }
+    
 }
 
 // MARK: - TableView Delegate and DataSoruce Methods
@@ -52,6 +70,11 @@ extension NotificationsViewController : UITableViewDelegate, UITableViewDataSour
         {
             cell.lblTitle.text = notficationInfo["NotificationName"] as? String ?? ""
             cell.lblDescriptions.text = notficationInfo["Description"] as? String ?? ""
+            
+            if let notificationType = notficationInfo["NotificationType"] as? String
+            {
+                cell.imgIcon.image = UIImage(named: self.getNotificationIconImageName(notificationType: notificationType))
+            }
         }
         return cell
     }

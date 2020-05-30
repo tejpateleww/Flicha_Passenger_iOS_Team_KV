@@ -26,7 +26,6 @@ class UpCommingRidesVC: UIViewController {
             #selector(self.handleRefresh(_:)),
                                  for: UIControlEvents.valueChanged)
         refreshControl.tintColor = themeYellowColor
-        
         return refreshControl
     }()
     
@@ -39,19 +38,17 @@ class UpCommingRidesVC: UIViewController {
         self.tableView.estimatedRowHeight = 80
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView()
-        
         self.tableView.addSubview(self.refreshControl)
-        // Register to receive notification
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadDataTableView), name: NSNotification.Name(rawValue: NotificationCenterName.keyForUpCommingRides), object: nil)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        (self.parent as? MyBookingViewController)?.getRideBookingHistory()
+        aryUpcomingRidesData = NSArray()
+        self.tableView.reloadData()
+        self.getUpcomingRidesList()
     }
  
     @objc func reloadDataTableView() {
         refreshControl.endRefreshing()
-        self.aryUpcomingRidesData = SingletonClass.sharedInstance.aryUpCommingRides
         self.tableView.reloadData()
     }
     
@@ -113,9 +110,13 @@ extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
                 let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
                 cell.lblTime.text = datePickUp.relativeDateFormat()
             }
-           
+            
+            if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+                cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
+            }
+            
             cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
-            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.toCurrencyFormat() ?? ""
+            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
             cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
         }
         
@@ -147,5 +148,31 @@ extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+}
+
+
+extension UpCommingRidesVC {
+    
+    func getUpcomingRidesList()
+    {
+        webserviceForUpcomingRides(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
+            
+            if (status)
+            {
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        self.aryUpcomingRidesData = aryHistory as NSArray
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

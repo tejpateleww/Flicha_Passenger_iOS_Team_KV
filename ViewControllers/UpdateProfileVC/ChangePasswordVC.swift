@@ -54,8 +54,8 @@ class ChangePasswordVC: BaseViewController {
         
         if newPassword.count >= 8
         {
-            changePasswordService(newPassword: newPassword)
-
+            changePasswordService(oldPassword: oldPassword ,newPassword: newPassword)
+            
         }else
         {
             UtilityClass.setCustomAlert(title: "Missing", message: "New password must contain at least 8 characters".localized) { (index, title) in
@@ -72,13 +72,14 @@ class ChangePasswordVC: BaseViewController {
 
 extension ChangePasswordVC
 {
-    func changePasswordService(newPassword : String)
+    func changePasswordService(oldPassword: String,newPassword : String)
     {
         self.txtNewPassword.text = ""
         self.txtOldPassword.text = ""
        
         var dictData = [String:AnyObject]()
         dictData["PassengerId"] = SingletonClass.sharedInstance.strPassengerID as AnyObject
+        dictData["OldPassword"] = oldPassword as AnyObject
         dictData["Password"] = newPassword as AnyObject
         
         let activityData = ActivityData()

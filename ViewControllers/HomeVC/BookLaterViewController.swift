@@ -102,8 +102,6 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         mapView?.delegate = self
         selector.delegate = self
 
-       
-
         aryOfPaymentOptionsNames = [""]
         aryOfPaymentOptionsImages = [""]
         
@@ -130,7 +128,6 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         
         lblMobileNumTitle.applyCustomTheme(title: "Phone Number".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
         txtMobileNumber.text = strMobileNumber
-        checkMobileNumber()
         
         lblDateAndTimeTitle.applyCustomTheme(title: "Select Date & Time".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
         lblNotesTitle.applyCustomTheme(title: "Message Here (Optional)".localized, textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
@@ -172,99 +169,6 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         BoolCurrentLocation = isCurrentLocation
         present(acController, animated: true, completion: nil)
     }
-    
-    //-------------------------------------------------------------
-    // MARK: - Button Actions
-    //-------------------------------------------------------------
-    
-//    @IBAction func btnApply(_ sender: UIButton)
-//    {
-//        let strPromo = txtPromoCode.text
-//        //        let strFinalPromo = "\(strPromo!)/\(SingletonClass.sharedInstance.strEstimatedFare)"
-//        //        self.strAppliedPromoCode = strPromo!
-//
-//        var dictData = [String : AnyObject]()
-//        dictData["PromoCode"] = strPromo as AnyObject
-//        if !(UtilityClass.isEmpty(str: strPromo))
-//        {
-//            webserviceForValidPromocode(dictData as AnyObject, showHUD: true) { (result, status) in
-//                if status
-//                {
-//                    print(result)
-//
-//                    self.lblPromoCode.text = self.txtPromoCode.text
-//
-//                    self.viewProocode.isHidden = true
-//
-////                    let strNewAmount = result["new_estimate_fare"] as! String
-////                    let text = "Estimated Fare is $\(SingletonClass.sharedInstance.strEstimatedFare)   $\(strNewAmount)"
-////                    let range = (text as NSString).range(of: "$\(SingletonClass.sharedInstance.strEstimatedFare)")
-////                    let attributedString1 = NSMutableAttributedString(string:text)
-////                    attributedString1.addAttributes([NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue], range: range)
-////                    self.lblEstimatedFare.attributedText = attributedString1
-////
-////                    let dict =  result["promocode"] as! NSDictionary
-////
-////                    self.strPromoCodeDiscountType = dict.object(forKey: "DiscountType") as! String
-////                    self.strPromoCodeDiscountValue = "\((dict.object(forKey: "DiscountValue")!))"
-//
-//
-//
-//                }
-//                else
-//                {
-//                    print(result)
-//
-//                    if let res = result as? String
-//                    {
-//                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-//                            if SelectedLanguage == "en"
-//                            {
-//                                UtilityClass.showAlert("Error", message: res, vc: self)
-//
-//                            }
-//                            else if SelectedLanguage == "sw"
-//                            {
-//                                UtilityClass.showAlert("Error", message: res, vc: self)
-//                            }
-//                        }
-//                    }
-//                    else if let resDict = result as? NSDictionary
-//                    {
-//
-//
-//                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-//                            if SelectedLanguage == "en"
-//                            {
-//                                UtilityClass.showAlert("Error", message: resDict.object(forKey: "message") as! String, vc: self)
-//
-//                            }
-//                            else if SelectedLanguage == "sw"
-//                            {
-//                                UtilityClass.showAlert("Error", message: resDict.object(forKey: "swahili_message") as! String, vc: self)
-//                            }
-//                        }
-//                    }
-//                    else if let resAry = result as? NSArray
-//                    {
-//
-//                        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-//                            if SelectedLanguage == "en"
-//                            {
-//                               UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
-//
-//                            }
-//                            else if SelectedLanguage == "sw"
-//                            {
-//                                UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "swahili_message") as! String, vc: self)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
 
     func openDatePicker() {
        
@@ -299,7 +203,8 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
     
     @IBAction func btnSubmit(_ sender: ThemeButton) {
         
-        if txtFullName.text == "" || txtMobileNumber.text == "" || /*txtPickupLocation.text == "" || txtDropOffLocation.text == "" || */ txtDataAndTimeFromCalendar.text == "" || strPassengerType == "" || paymentType == ""  {
+        if txtFullName.text == "" || txtMobileNumber.text == "" || /*txtPickupLocation.text == "" || txtDropOffLocation.text == "" || */ txtDataAndTimeFromCalendar.text == "" || strPassengerType == "" || paymentType == ""
+        {
             
             UtilityClass.setCustomAlert(title: "Missing", message: "All fields are required...".localized) { (index, title) in
             }
@@ -310,18 +215,6 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         
     }
 
-    
-    func checkMobileNumber() {
-//        txtMobileNumber.inputType = .integer
-        //        var validation = Validation()
-//        validationsMobileNumber.maximumLength = 10
-//        validationsMobileNumber.minimumLength = 10
-//        validationsMobileNumber.characterSet = NSCharacterSet.decimalDigits
-//        let inputValidator = InputValidator(validation: validationsMobileNumber)
-//        txtMobileNumber.inputValidator = inputValidator
-        print("txtMobileNumber : \(txtMobileNumber.text!)")
-    }
-        
     func getPlaceFromLatLong()
     {
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
@@ -493,126 +386,6 @@ extension BookLaterViewController : WWCalendarTimeSelectorProtocol
     
 }
 
-//
-//// MARK: - PickerView Methods
-//
-//extension BookLaterViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-//
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return aryCards.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 60
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//
-//        let data = aryCards[row]
-//
-//        let myView = UIView(frame: CGRect(x:0, y:0, width: pickerView.bounds.width - 30, height: 60))
-//
-//        let centerOfmyView = myView.frame.size.height / 4
-//
-//
-//        let myImageView = UIImageView(frame: CGRect(x:0, y:centerOfmyView, width:40, height:26))
-//        myImageView.contentMode = .scaleAspectFit
-//
-//        var rowString = String()
-//
-//
-//        switch row {
-//
-//        case 0:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 1:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 2:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 3:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 4:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 5:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 6:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 7:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 8:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 9:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        case 10:
-//            rowString = data["CardNum2"] as! String
-//            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        default:
-//            rowString = "Error: too many rows"
-//            myImageView.image = nil
-//        }
-//        let myLabel = UILabel(frame: CGRect(x:60, y:0, width:pickerView.bounds.width - 90, height:60 ))
-//        //        myLabel.font = UIFont(name:some, font, size: 18)
-//        myLabel.text = rowString
-//
-//        myView.addSubview(myLabel)
-//        myView.addSubview(myImageView)
-//
-//        return myView
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//
-//        let data = aryCards[row]
-//
-//        //imgPaymentOption.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        // txtSelectPaymentMethod.text = data["CardNum2"] as? String
-//
-//        //        if data["CardNum"] as! String == "Add a Card" {
-//        //
-//        //            isAddCardSelected = true
-//        ////            self.addNewCard()
-//        //        }
-//        //
-//        let type = data["CardNum"] as! String
-//
-//        if type  == "wallet" {
-//            paymentType = "wallet"
-//        }
-//        else if type == "cash" {
-//            paymentType = "cash"
-//        }
-//        else {
-//            paymentType = "pesapal"
-//        }
-//
-//
-//        //        if paymentType == "card" {
-//        //
-//        //            if data["Id"] as? String != "" {
-//        //                CardID = data["Id"] as! String
-//        //            }
-//        //        }
-//
-//        // do something with selected row
-//    }
-//}
-
 // MARK: - GMSMapView Delegate
 
 extension BookLaterViewController : GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate {
@@ -691,116 +464,7 @@ extension BookLaterViewController: CLLocationManagerDelegate {
 
 extension BookLaterViewController {
     
-    func webserviceOfCardList()
-    {
-        webserviceForCardList(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
-            
-            if (status) {
-                print(result)
-                
-                //                if let res = result as? [String:AnyObject] {
-                //                    if let cards = res["cards"] as? [[String:AnyObject]] {
-                //                        self.aryCards = cards
-                //                    }
-                //                }
-                
-                var dict = [String:AnyObject]()
-                dict["CardNum"] = "cash" as AnyObject
-                dict["CardNum2"] = "cash" as AnyObject
-                dict["Type"] = "iconCashBlack" as AnyObject
-                
-                var dict2 = [String:AnyObject]()
-                dict2["CardNum"] = "wallet" as AnyObject
-                dict2["CardNum2"] = "wallet" as AnyObject
-                dict2["Type"] = "iconWalletBlack" as AnyObject
-                
-                var dict3 = [String:AnyObject]()
-                dict3["CardNum"] = "pesapal" as AnyObject
-                dict3["CardNum2"] = "pesapal" as AnyObject
-                dict3["Type"] = "icon_SelectedCard" as AnyObject
-                
-                self.aryCards.append(dict)
-                self.aryCards.append(dict2)
-                self.aryCards.append(dict3)
-                //
-                //                if self.aryCards.count == 2 {
-                //                    var dict3 = [String:AnyObject]()
-                //                    dict3["Id"] = "000" as AnyObject
-                //                    dict3["CardNum"] = "Add a Card" as AnyObject
-                //                    dict3["CardNum2"] = "Add a Card" as AnyObject
-                //                    dict3["Type"] = "iconPlusBlack" as AnyObject
-                //                    self.aryCards.append(dict3)
-                //
-                //                }
-                //
-                //                self.pickerView.selectedRow(inComponent: 0)
-                let data = self.aryCards[0]
-                //
-                //self.imgPaymentOption.image = UIImage(named: self.setCardIcon(str: data["Type"] as! String))
-                //self.txtSelectPaymentMethod.text = data["CardNum2"] as? String
-                
-                let type = data["CardNum"] as! String
-                
-                if type  == "wallet"
-                {
-                    self.paymentType = "wallet"
-                }
-                else if type == "cash"
-                {
-                    self.paymentType = "cash"
-                }
-                else
-                {
-                    self.paymentType = "pesapal"
-                }
-                //                if self.paymentType == "card" {
-                //
-                //                    if data["Id"] as? String != "" {
-                //                        self.CardID = data["Id"] as! String
-                //                    }
-                //                }
-                //                 self.paymentType = "cash"
-                self.pickerView.reloadAllComponents()
-                
-                /*
-                 {
-                 cards =     (
-                 {
-                 Alias = visa;
-                 CardNum = 4639251002213023;
-                 CardNum2 = "xxxx xxxx xxxx 3023";
-                 Id = 59;
-                 Type = visa;
-                 }
-                 );
-                 status = 1;
-                 }
-                 */
-                
-                
-            }else
-            {
-                print(result)
-                if let res = result as? String {
-                    UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
-                    }
-                }
-                else if let resDict = result as? NSDictionary {
-                    UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
-                else if let resAry = result as? NSArray {
-                    UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Webservice For Book Later
-    
-    //PassengerId,ModelId,PickupLocation,DropoffLocation,PassengerType(myself,other),PassengerName,PassengerContact,PickupDateTime,FlightNumber,
-    //PromoCode,Notes,PaymentType,CardId(If paymentType is card)
+    // MARK: - Book Later
     
     func webserviceOFBookLater()
     {
@@ -814,15 +478,27 @@ extension BookLaterViewController {
         dictData["PassengerName"] = txtFullName.text as AnyObject
         dictData["PassengerContact"] = txtMobileNumber.text as AnyObject
         dictData["PickupDateTime"] = convertDateToString as AnyObject
-        dictData["PromoCode"] = strPromoCode as AnyObject
-        //dictData["FlightNumber"] = "" as AnyObject
         dictData["PaymentType"] = paymentType as AnyObject
         dictData["Notes"] = txtDescription.text as AnyObject
-
+        
+        if let dicDefaultPaymentType = SingletonClass.getCurrentPaymentDetails(), dicDefaultPaymentType.count > 0
+        {
+            dictData["PaymentType"] = "card" as AnyObject
+            dictData["CardId"] = dicDefaultPaymentType.object(forKey: "Id") as AnyObject
+        }else
+        {
+            dictData["PaymentType"] = "cash" as AnyObject
+        }
+        
+        if strPromoCode.count > 0
+        {
+            dictData["PromoCode"] = strPromoCode as AnyObject
+        }
+        
         webserviceForBookLater(dictData as AnyObject) { (result, status) in
             
             print(result)
-
+            
             if (status)
             {
                 UtilityClass.setCustomAlert(title: "\(appName)", message: "Your ride has been booked.".localized, completionHandler: { (index, title) in
@@ -830,8 +506,8 @@ extension BookLaterViewController {
                     self.navigationController?.popViewController(animated: true)
                 })
                 
-            }else {
-                
+            }else
+            {
                 if let res = result as? String {
                     UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
                     }
@@ -844,7 +520,6 @@ extension BookLaterViewController {
                 }
             }
         }
-        
     }
     
 }

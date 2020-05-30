@@ -24,6 +24,43 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupView()
+    }
+    
+    func setupView()
+    {
+        self.lblTitle.text = "Create Account"
+        self.lblSubTitle.text = "Sign up to get started"
+        self.txtFirstName.placeholder = "First Name"
+        self.txtLastName.placeholder = "Last Name"
+        self.txtEmail.placeholder = "Email Id"
+        self.txtPhoneNumber.placeholder = "Phone Number"
+        self.txtPassword.placeholder = "Password"
+        self.txtConfirmPassword.placeholder = "Confirm Password"
+        self.btnSignUp.setTitle("Sign UP", for: .normal)
+        
+        self.lblAlreadyAccount.attributedText =  "\("Already Have an Account?".localized) SIGN IN".underLineWordsIn(highlightedWords: "SIGN IN", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignInClickAction(_:)))
+        self.lblAlreadyAccount.isUserInteractionEnabled = true
+        self.lblAlreadyAccount.addGestureRecognizer(tapGesture)
+        
+        if SingletonClass.sharedInstance.isFromSocilaLogin == true
+        {
+            var image = UIImage()
+
+            self.txtFirstName.text = SingletonClass.sharedInstance.strSocialFullName
+            let url = URL(string: SingletonClass.sharedInstance.strSocialImage)
+            let data = try? Data(contentsOf: url!)
+            
+            if let imageData = data {
+                image = UIImage(data: imageData)!
+            }else {
+                image = UIImage(named: "iconUser")!
+            }
+            
+            self.imgProfile.image = image
+        }
         
         if #available(iOS 13.0, *) {
             let app = UIApplication.shared
@@ -47,27 +84,6 @@ class SignUpViewController: UIViewController {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = themeBlueColor
         }
-        
-        self.setupView()
-    }
-    
-    func setupView()
-    {
-        self.lblTitle.text = "Create Account"
-        self.lblSubTitle.text = "Sign up to get started"
-        self.txtFirstName.placeholder = "First Name"
-        self.txtLastName.placeholder = "Last Name"
-        self.txtEmail.placeholder = "Email Id"
-        self.txtPhoneNumber.placeholder = "Phone Number"
-        self.txtPassword.placeholder = "Password"
-        self.txtConfirmPassword.placeholder = "Confirm Password"
-        self.btnSignUp.setTitle("Sign UP", for: .normal)
-        
-        self.lblAlreadyAccount.attributedText =  "\("Already Have an Account?".localized) SIGN IN".underLineWordsIn(highlightedWords: "SIGN IN", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignInClickAction(_:)))
-        self.lblAlreadyAccount.isUserInteractionEnabled = true
-        self.lblAlreadyAccount.addGestureRecognizer(tapGesture)
     }
     
     @objc func btnSignInClickAction(_ recognizer: UITapGestureRecognizer)

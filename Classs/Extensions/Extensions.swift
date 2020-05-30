@@ -215,18 +215,7 @@ extension String {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
-    
-    func toCurrencyFormat() -> String {
-      
-        if let intValue = Int(self){
-            let numberFormatter = NumberFormatter()
-            numberFormatter.locale = Locale(identifier: "kab_DZ")
-            numberFormatter.numberStyle = NumberFormatter.Style.currency
-            return numberFormatter.string(from: NSNumber(value: intValue)) ?? ""
-        }
-        return ""
-    }
-    
+        
     func convertStringToDate(dateFormat : String) -> Date{
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = dateFormat
@@ -236,6 +225,29 @@ extension String {
         return resultDate
     }
     
+    var localized: String {
+        //        if let _ = UserDefaults.standard.string(forKey: "i18n_language") {} else {
+        //            // we set a default, just in case
+        //
+        //
+        //
+        //        }
+        //        if  UserDefaults.standard.string(forKey: "i18n_language") == nil
+        //        {
+        //            UserDefaults.standard.set("en", forKey: "i18n_language")
+        //            UserDefaults.standard.synchronize()
+        //        }
+        
+        let lang = UserDefaults.standard.string(forKey: "i18n_language")
+        print(lang)
+        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        print(path ?? "")
+        print(bundle ?? "")
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
+    //i18n_language = sw
+    
 }
 
 extension Date{
@@ -243,6 +255,7 @@ extension Date{
     func relativeDateFormat() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale.current
         dateFormatter.doesRelativeDateFormatting = true
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
@@ -290,5 +303,15 @@ extension UIButton {
         self.setTitle(title, for: .normal)
         self.titleLabel?.textColor = textColor
         self.titleLabel?.font = fontStyle
+    }
+}
+
+
+extension UITextField {
+    
+    func applyCustomTheme(placeHolderTitle : String, placeHolderTextColor: UIColor, textColor : UIColor, fontStyle: UIFont) {
+        self.attributedPlaceholder = NSAttributedString(string: placeHolderTitle, attributes: [NSAttributedString.Key.foregroundColor: placeHolderTextColor])
+        self.textColor = textColor
+        self.font = fontStyle
     }
 }

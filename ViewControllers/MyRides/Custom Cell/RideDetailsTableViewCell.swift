@@ -47,6 +47,8 @@ class RideDetailsTableViewCell: UITableViewCell {
         lblAddress.text = ""
         lblAddress.font = UIFont.regular(ofSize: 10)
         lblAddress.textColor = themeBlackColor
+        
+        imageViewRideRoute.contentMode = .scaleToFill
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

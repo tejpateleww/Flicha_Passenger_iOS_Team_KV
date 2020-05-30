@@ -9,7 +9,7 @@
 import UIKit
 
 class SingletonClass: NSObject {
-   
+    
     var dictProfile = NSMutableDictionary()
     var strPassengerID = String()
     var isUserLoggedIN = Bool()
@@ -23,28 +23,20 @@ class SingletonClass: NSObject {
     
     var currentLatitude = String()
     var currentLongitude = String()
-    
-    var aryCompletedRides = NSArray()
-    var aryUpCommingRides = NSArray()
-    var aryCancelRides = NSArray()
-    
     var boolIsFromPrevious = Bool()
     
     var bookingId = String()
     
     var dictIsFromPrevious = NSDictionary()
     
-    
-    var isCardsVCFirstTimeLoad: Bool = true
     var CardsVCHaveAryData = [[String:AnyObject]]()
-    
     var strCurrentBalance = Double()
     var walletHistoryData = [[String:AnyObject]]()
     
     var strQRCodeForSendMoney = String()
     var isSendMoneySuccessFully = Bool()
     var isFromSocilaLogin = Bool()
-
+    
     var latitude : Double!
     var longitude : Double!
     
@@ -68,7 +60,7 @@ class SingletonClass: NSObject {
     
     var isRequestAccepted = Bool()
     var isTripContinue = false
-
+    
     var floatBearing:Float = 0.0
     
     var deviceToken = String()
@@ -101,4 +93,22 @@ class SingletonClass: NSObject {
     var strSocialEmail = String()
     var strSocialFullName = String()
     var strSocialImage = String()
+    
+    
+    static func setCurrentPaymentDetails(details : NSDictionary) {
+        UserDefaults.standard.set(details, forKey: "CurrentPaymentMethod")
+    }
+    
+    static func getCurrentPaymentDetails() -> NSDictionary? {
+        
+        if let details = UserDefaults.standard.object(forKey: "CurrentPaymentMethod") as? NSDictionary
+        {
+            return details
+        }
+        return nil
+    }
+    
+    static func removeCurrentPaymentDetails() {
+        UserDefaults.standard.set(nil, forKey: "CurrentPaymentMethod")
+    }
 }

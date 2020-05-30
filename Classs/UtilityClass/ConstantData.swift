@@ -116,8 +116,12 @@ struct WebserviceURLs {
     static let kTrackRunningTrip                        = "TrackRunningTrip/"
     static let kUpdateNotificationSetting               = "UpdateNotificationSetting"
     static let kNotificationList                        = "NotificationList/"
+    static let kCancelTripByPassenger                   = "CancelTripByPassenger"
+   
+    static let kUpcomingBooking_get                     = "UpcomingBooking/"
+    static let kOngoingBooking_get                      = "OngoingBooking/"
+    static let kPastBooking_get                         = "PastBooking/"
 
-    
 
 //    https://pickngolk.info/web/Passenger_Api/OtpForRegister
 }
@@ -170,7 +174,6 @@ struct SubmitBookingRequest {
 // PassengerId,ModelId,PickupLocation,DropoffLocation,PickupLat,PickupLng,DropOffLat,DropOffLon
 // PassengerId,ModelId,PickupLocation,DropoffLocation,PickupLat,PickupLng,DropOffLat,DropOffLon,PromoCode,Notes,PaymentType,CardId(If paymentType is card)
     
-    
     static let kModelId                 = "ModelId"
     static let kPickupLocation          = "PickupLocation"
     static let kDropoffLocation         = "DropoffLocation"
@@ -187,16 +190,8 @@ struct SubmitBookingRequest {
     
     static let kShareRide               = "ShareRide"
     static let kNoOfPassenger           = "NoOfPassenger"
-    
-    
 }
 
-struct NotificationCenterName {
-    // Define identifier
-    static let keyForCompletedRides  = "keyForCompletedRides"
-    static let keyForUpCommingRides = "keyForUpCommingRides"
-    static let keyForCanceledRides = "keyForCanceled"
-}
 
 struct PassengerDataKeys {
     static let kPassengerID = "PassengerId"

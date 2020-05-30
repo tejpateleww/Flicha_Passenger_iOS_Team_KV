@@ -54,18 +54,19 @@ let OTPVerify = WebserviceURLs.kOtpForRegister
 let TrackRunningTrip = WebserviceURLs.kTrackRunningTrip
 let notificationsForPassanger = WebserviceURLs.kUpdateNotificationSetting
 let notificationList = WebserviceURLs.kNotificationList
+let cancelTripByPassenger = WebserviceURLs.kCancelTripByPassenger
 
-
+let UpcomingBookingGet = WebserviceURLs.kUpcomingBooking_get
+let OngoingBookingGet = WebserviceURLs.kOngoingBooking_get
+let PastBookingGet = WebserviceURLs.kPastBooking_get
 
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
 //-------------------------------------------------------------
-
 func webserviceForRegistrationForUser(_ dictParams: AnyObject, image1: UIImage, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
 {
     let url = Registration
     sendImage(dictParams as! [String : AnyObject], image1: image1, nsURL: url, completion: completion)
-    
 }
 
 //-------------------------------------------------------------
@@ -77,8 +78,6 @@ func webserviceForDriverLogin(_ dictParams: AnyObject, completion: @escaping(_ r
     let url = DriverLogin
     postData(dictParams, nsURL: url, completion: completion)
 }
-
-
 
 func webserviceForValidPromocode(_ dictParams: AnyObject,showHUD : Bool, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
 {
@@ -503,4 +502,30 @@ func webserviceForNotificationList(_ dictParams: AnyObject, completion: @escapin
     let url = notificationList + "\(dictParams)"
     getData("" as AnyObject, nsURL: url, completion: completion)
 }
+
+func webserviceForCancelRideByRider(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = cancelTripByPassenger
+    postData(dictParams, nsURL: url, completion: completion)
+}
+
+func webserviceForUpcomingRides(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = UpcomingBookingGet + "\(dictParams)"
+    getData("" as AnyObject, nsURL: url, completion: completion)
+}
+
+func webserviceForOngoingRides(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = OngoingBookingGet + "\(dictParams)"
+    getData("" as AnyObject, nsURL: url, completion: completion)
+}
+
+func webserviceForPastBookingRides(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = PastBookingGet + "\(dictParams)"
+    getData("" as AnyObject, nsURL: url, completion: completion)
+}
+
+
 

@@ -10,15 +10,15 @@ import UIKit
 import SDWebImage
 
 class CompletedRidesVC: UIViewController {
-
+    
     // MARK: - Outlets
-   @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     private var isDataLoading:Bool = false
     private var pageNo:Int = 0
     private var didEndReached:Bool = false
     private let CellID = "RideDetailsTableViewCell"
     var aryCompletedRidesData : NSArray?
-
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -27,33 +27,28 @@ class CompletedRidesVC: UIViewController {
         refreshControl.tintColor = themeYellowColor
         return refreshControl
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "RideDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: CellID)
         self.tableView.estimatedRowHeight = 80
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView()
         self.tableView.addSubview(self.refreshControl)
-        
-        // Register to receive notification
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadDataOfTableView), name: NSNotification.Name(rawValue: NotificationCenterName.keyForCompletedRides), object: nil)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        (self.parent as? MyBookingViewController)?.getRideBookingHistory()
-    }
-   
-    @objc func reloadDataOfTableView() {
-        refreshControl.endRefreshing()
-        self.aryCompletedRidesData = SingletonClass.sharedInstance.aryCompletedRides
+        aryCompletedRidesData = NSArray()
         self.tableView.reloadData()
+        self.getCompletedRidesList()
     }
     
+    @objc func reloadDataOfTableView() {
+        refreshControl.endRefreshing()
+        self.tableView.reloadData()
+    }
 }
-
 
 // MARK: - Table View Methods
 extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
@@ -74,8 +69,12 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
                 cell.lblTime.text = datePickUp.relativeDateFormat()
             }
            
+            if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+                cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
+            }
+            
             cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
-            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.toCurrencyFormat() ?? ""
+            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
             cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
         }
         
@@ -108,5 +107,31 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return UITableViewAutomaticDimension
+    }
+}
+
+extension CompletedRidesVC {
+    
+    func getCompletedRidesList()
+    {
+        webserviceForOngoingRides(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
+            
+            if (status)
+            {
+                if let dictData = result as? [String:AnyObject]
+                {
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    {
+                        self.aryCompletedRidesData = aryHistory as NSArray
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+        }
+        
     }
 }

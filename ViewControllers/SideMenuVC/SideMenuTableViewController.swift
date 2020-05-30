@@ -83,15 +83,13 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     func getMenuCellDetails() -> [(String,String,String)]
     {
         var titleAndImages = [(String,String,String)]()
-        
         titleAndImages.append(("Home", "homeSelect", "homeUnSelect"))
         titleAndImages.append(("My Ride", "my-ride-unselect", "my-ride-select"))
         titleAndImages.append(("Payment Method", "payment-unselect", "payment-select"))
-        titleAndImages.append(("Notification", "noification-select", "noification-select"))
+        titleAndImages.append(("Notification", "notification-unselect", "notification-select"))
         titleAndImages.append(("Settings", "setting-unselect", "setting-select"))
         titleAndImages.append(("Help", "help-unselect", "help-select"))
         titleAndImages.append(("Logout", "logout-unselect", "logout-select"))
-        
         return titleAndImages
     }
     
@@ -258,7 +256,6 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
             {
                 let notificationVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "NotificationsViewController")
                 self.navigationController?.pushViewController(notificationVC, animated: true)
-                
             }
             else if menuDetails.0 == "Wallet"
             {
