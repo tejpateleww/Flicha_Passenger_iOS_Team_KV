@@ -12,13 +12,14 @@ class UpCommingRidesVC: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoDataFound: UILabel!
     
     private var bookinType = String()
     private let CellID = "RideDetailsTableViewCell"
     private var isDataLoading:Bool = false
     private var pageNo:Int = 0
     private var didEndReached:Bool = false
-    var aryUpcomingRidesData : NSArray?
+    var aryUpcomingRidesData : [[String:Any]] = []
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -32,7 +33,7 @@ class UpCommingRidesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.lblNoDataFound.isHidden = true
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "RideDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: CellID)
         self.tableView.estimatedRowHeight = 80
@@ -42,7 +43,8 @@ class UpCommingRidesVC: UIViewController {
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        aryUpcomingRidesData = NSArray()
+        refreshControl.endRefreshing()
+        aryUpcomingRidesData.removeAll()
         self.tableView.reloadData()
         self.getUpcomingRidesList()
     }
@@ -96,15 +98,14 @@ class UpCommingRidesVC: UIViewController {
 extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return aryUpcomingRidesData?.count ?? 0
+        return aryUpcomingRidesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! RideDetailsTableViewCell
         
-        if let rideDetails = self.aryUpcomingRidesData?[indexPath.row] as? [String : Any]
-        {
+         let rideDetails = self.aryUpcomingRidesData[indexPath.row]
             if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
             {
                 let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
@@ -118,7 +119,7 @@ extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
             cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
             cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
             cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
-        }
+        
         
         return cell
     }
@@ -135,16 +136,16 @@ extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
         }
     }
        
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == ((self.aryUpcomingRidesData?.count ?? 0) - 5) {
-            if !isDataLoading{
-                isDataLoading = true
-                self.pageNo = self.pageNo + 1
-                //webserviceOfPastbookingpagination(index: self.pageNo)
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if indexPath.row == (self.aryUpcomingRidesData.count - 5) {
+//            if !isDataLoading{
+//                isDataLoading = true
+//                self.pageNo = self.pageNo + 1
+//                //webserviceOfPastbookingpagination(index: self.pageNo)
+//            }
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -164,7 +165,8 @@ extension UpCommingRidesVC {
                 {
                     if let aryHistory = dictData["history"] as? [[String:AnyObject]]
                     {
-                        self.aryUpcomingRidesData = aryHistory as NSArray
+                        self.aryUpcomingRidesData = aryHistory
+                        self.lblNoDataFound.isHidden = self.aryUpcomingRidesData.count > 0
                         self.tableView.reloadData()
                     }
                 }

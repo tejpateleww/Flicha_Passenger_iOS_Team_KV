@@ -283,6 +283,7 @@ class VerifyPasswordViewController: UIViewController {
         let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(OK)
         alert.addAction(Cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
         
     }

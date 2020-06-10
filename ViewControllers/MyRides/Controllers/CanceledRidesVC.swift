@@ -12,10 +12,13 @@ class CanceledRidesVC: UIViewController
 {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoDataFound: UILabel!
+    
     private var isDataLoading:Bool = false
     private var pageNo:Int = 1
     private var didEndReached:Bool = false
-    var aryCanceledRidesHistory : NSMutableArray?
+    
+    var aryCanceledRidesHistory : [[String:Any]] = []
     private let CellID = "RideDetailsTableViewCell"
 
     lazy var refreshControl: UIRefreshControl = {
@@ -30,7 +33,7 @@ class CanceledRidesVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        self.lblNoDataFound.isHidden = true
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "RideDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: CellID)
         self.tableView.estimatedRowHeight = 80
@@ -42,11 +45,9 @@ class CanceledRidesVC: UIViewController
     @objc func handleRefresh(_ refreshControl: UIRefreshControl)
     {
         refreshControl.endRefreshing()
-        self.pageNo = 1
-        self.didEndReached = false
-        self.aryCanceledRidesHistory?.removeAllObjects()
+        self.aryCanceledRidesHistory.removeAll()
         self.tableView.reloadData()
-        self.getCanceledRidesList(pageIndex: pageNo)
+        self.getCanceledRidesList()
     }
 
     @objc func reloadTableView()
@@ -78,58 +79,56 @@ class CanceledRidesVC: UIViewController
 extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return aryCanceledRidesHistory?.count ?? 0
+        return aryCanceledRidesHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! RideDetailsTableViewCell
-        
-        if let rideDetails = self.aryCanceledRidesHistory?[indexPath.row] as? [String : Any]
+        cell.PriceStack.isHidden = true
+        let rideDetails = self.aryCanceledRidesHistory[indexPath.row]
+        if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
         {
-            if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
-            {
-                let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
-                cell.lblTime.text = datePickUp.relativeDateFormat()
-            }
-           
-            if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
-                cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
-            }
-            
-            cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
-            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
-            cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
+            let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
+            cell.lblTime.text = datePickUp.relativeDateFormat()
         }
+        if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
+        }
+        
+        cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
+        cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
+        cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
+        
         
         return cell
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("scrollViewWillBeginDragging")
-        isDataLoading = false
-    }
-    
-    //Pagination
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
-    {
-        print("scrollViewDidEndDragging")
-        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
-        {
-        }
-    }
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        print("scrollViewWillBeginDragging")
+//        isDataLoading = false
+//    }
+//
+//    //Pagination
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
+//    {
+//        print("scrollViewDidEndDragging")
+//        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
+//        {
+//        }
+//    }
        
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if self.aryCanceledRidesHistory?.count ?? 0 > 0 && indexPath.row == ((self.aryCanceledRidesHistory?.count ?? 0) - 1) && self.didEndReached == false
-        {
-            if !isDataLoading
-            {
-                isDataLoading = true
-                getCanceledRidesList(pageIndex: self.pageNo + 1)
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if (self.aryCanceledRidesHistory.count > 0) && indexPath.row == (self.aryCanceledRidesHistory.count - 1) && self.didEndReached == false
+//        {
+//            if !isDataLoading
+//            {
+//                isDataLoading = true
+//                getCanceledRidesList()
+//            }
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -141,38 +140,21 @@ extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
 
 extension CanceledRidesVC
 {
-    func getCanceledRidesList(pageIndex : Int)
+    func getCanceledRidesList()
     {
-        webserviceForPastBookingRides("\(SingletonClass.sharedInstance.strPassengerID)/\(pageIndex)" as AnyObject) { (result, status) in
-            
+        webserviceForCanceledBookingList("\(SingletonClass.sharedInstance.strPassengerID)") { (result, status) in
             if (status)
             {
-                self.pageNo = pageIndex
+//                self.pageNo = pageIndex
                 
-                if let dictData = result as? [String:AnyObject]
+                if let dictData = result as? [String:Any]
                 {
+                    
                     if let aryHistory = dictData["history"] as? [[String:AnyObject]], aryHistory.count > 0
                     {
-                        //  Canceled
-                        //if let resultsPastRides = aryHistory.filter({ ($0["HistoryType"]?.lowercased == "Past".lowercased()) && ($0["Status"]?.lowercased == "canceled".lowercased())}) as [[String:AnyObject]]?
-                        //{
-                        
-                        if self.aryCanceledRidesHistory == nil || self.aryCanceledRidesHistory?.count == 0
-                        {
-                            self.aryCanceledRidesHistory = NSMutableArray.init(array: aryHistory, copyItems: true)
-                            self.tableView.reloadData()
-                            
-                        }else
-                        {
-                            self.aryCanceledRidesHistory?.addObjects(from: aryHistory)
-                            self.tableView.reloadData()
-                        }
-                        
-                        self.isDataLoading = false
-                        
-                    }else
-                    {
-                        self.didEndReached = true
+                        self.aryCanceledRidesHistory = aryHistory
+                        self.lblNoDataFound.isHidden = self.aryCanceledRidesHistory.count > 0
+                        self.tableView.reloadData()
                     }
                 }
             }

@@ -22,7 +22,8 @@ let GetEstimateFare =  WebserviceURLs.kGetEstimateFare
 let ChangePassword = WebserviceURLs.kChangePassword
 let UpdateProfile = WebserviceURLs.kUpdateProfile
 let PastBooking = WebserviceURLs.kPastBooking
-let FeedbackList              = WebserviceURLs.kFeedbackList
+let CancelledBooking = WebserviceURLs.kCanceledBooking
+let FeedbackList = WebserviceURLs.kFeedbackList
 let cardsList = WebserviceURLs.kCardsList
 let bookPackage = WebserviceURLs.kBookPackage
 let packageHistory = WebserviceURLs.kPackageBookingHistory
@@ -159,11 +160,24 @@ func webserviceForBookingHistory(_ dictParams: AnyObject, completion: @escaping(
 // MARK: - Webservice For PastBooking
 //-------------------------------------------------------------
 
-func webserviceForPastBookingList(_ dictParams: AnyObject,PageNumber : AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+func webserviceForPastBookingList(_ passengerID: String,PageNumber : String, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
 {
-    let url = "\(PastBooking)/\(dictParams)/\(PageNumber)"
-    getData(dictParams as AnyObject, nsURL: url, completion: completion)
+    let url = "\(PastBooking)/\(passengerID)/\(PageNumber)"
+    getData([:] as AnyObject, nsURL: url, completion: completion)
 }
+
+
+//-------------------------------------------------------------
+// MARK: - Webservice For CancelledBooking
+//-------------------------------------------------------------
+
+func webserviceForCanceledBookingList(_ passengerID: String, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = "\(CancelledBooking)/\(passengerID)"
+    getData([:] as AnyObject, nsURL: url, completion: completion)
+}
+
+
 //-------------------------------------------------------------
 // MARK: - Webservice For Feedback List
 //-------------------------------------------------------------
@@ -173,6 +187,7 @@ func webserviceForFeedbackList(_ passengerID : AnyObject, completion: @escaping(
     let url = "\(FeedbackList)\(passengerID)"
     getData("" as AnyObject, nsURL: url, completion: completion)
 }
+
 //-------------------------------------------------------------
 // MARK: - Webservice For Get Estimate Fare
 //-------------------------------------------------------------
@@ -526,6 +541,5 @@ func webserviceForPastBookingRides(_ dictParams: AnyObject, completion: @escapin
     let url = PastBookingGet + "\(dictParams)"
     getData("" as AnyObject, nsURL: url, completion: completion)
 }
-
 
 

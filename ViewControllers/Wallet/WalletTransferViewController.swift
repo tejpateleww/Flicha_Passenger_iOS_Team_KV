@@ -176,11 +176,12 @@ extension String {
         amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
         
         let double = (amountWithPrefix as NSString).doubleValue
-        number = NSNumber(value: (double / 100))
-        
+//        number = NSNumber(value: (double / 100))
+        let FinalNumber = NSNumber(value: (String(format: "%.2f", double) as NSString).doubleValue)
         // if first number is 0 or all numbers were deleted
-        print("Amount : \(number)")
-        return formatter.string(from: number)!
+//        print("Amount : \(number)")
+        return formatter.string(from: FinalNumber)!
+//            formatter.string(from: number)!
     }
 }
 // ----------------------------------------------------------------------

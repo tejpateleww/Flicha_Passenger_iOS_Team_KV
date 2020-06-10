@@ -14,6 +14,7 @@ let kExpires = "Expires";
 let kCVV = "Credit Card Number";
 let kPaymentMethodsPageTitle = "Payment methods"
 let kNotificationsPageTitle = "Notification"
+let kSettingsPageTitle = "Settings"
 let kAddCard = "Add Card"
 let kMyRidePageTitle = "My Ride"
 let kPriceTitle = "Price"

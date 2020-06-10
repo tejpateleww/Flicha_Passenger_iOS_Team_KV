@@ -298,8 +298,13 @@ class WalletAddCardsViewController: BaseViewController {
     }
     
     func ValidationForAddPaymentMethod() -> Bool {
-        
         if (txtCardNumber.text!.count == 0) {
+            
+            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Card holder name") { (index, title) in
+            }
+            return false
+        }
+        else if (txtCardNumber.text!.count == 0) {
             
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter Card Number") { (index, title) in
             }
@@ -533,6 +538,7 @@ extension WalletAddCardsViewController
                 })
                 
                 alert.addAction(OK)
+                alert.modalPresentationStyle  = .overCurrentContext
                 self.present(alert, animated: true, completion: nil)
                 
             }

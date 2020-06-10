@@ -495,6 +495,7 @@ extension LoginViewController : GIDSignInDelegate,GIDSignInUIDelegate
     func sign(_ signIn: GIDSignIn!,
               present viewController: UIViewController!) {
         UIApplication.shared.statusBarStyle = .default
+        viewController.modalPresentationStyle  = .overCurrentContext
         self.present(viewController, animated: true, completion: nil)
     }
     
@@ -738,6 +739,7 @@ extension LoginViewController
                     })
                     alert.addAction(UPDATE)
                     alert.addAction(Cancel)
+                    alert.modalPresentationStyle  = .overCurrentContext
                     self.present(alert, animated: true, completion: nil)
                 }
                 else {

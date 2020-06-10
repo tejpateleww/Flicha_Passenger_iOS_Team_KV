@@ -84,6 +84,7 @@ struct WebserviceURLs {
     static let kBookingHistory                          = "BookingHistory"
     
     static let kPastBooking                             = "PastBooking"
+    static let kCanceledBooking                         = "CancelledBooking"
     static let kGetEstimateFare                         = "GetEstimateFare"
     static let kImageBaseURL                            = "http://3.6.224.0/"//"https://www.tantaxitanzania.com/" // "https://pickngolk.info/web/" "http://54.169.67.226/web/" //
     static let kFeedbackList                            = "FeedbackList/"
@@ -121,6 +122,7 @@ struct WebserviceURLs {
     static let kUpcomingBooking_get                     = "UpcomingBooking/"
     static let kOngoingBooking_get                      = "OngoingBooking/"
     static let kPastBooking_get                         = "PastBooking/"
+    static let kCancelledBooking_get                    = "CancelTripByPassenger/"
 
 
 //    https://pickngolk.info/web/Passenger_Api/OtpForRegister

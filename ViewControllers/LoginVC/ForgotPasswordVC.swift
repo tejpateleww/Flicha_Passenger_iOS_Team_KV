@@ -30,8 +30,8 @@ class ForgotPasswordVC: BaseViewController {
     
     func setLocalization()
     {
-        lblTitle.text = "Change Password".localized
-        lblSubTitle.text = "Enter you new password".localized
+        lblTitle.text = "Forgot Password".localized
+        lblSubTitle.text = "Enter you email address you use to sign to.".localized
         txtEmail.placeholder = "Email Address".localized
         btnSend.setTitle("Send".localized, for: .normal)
     }

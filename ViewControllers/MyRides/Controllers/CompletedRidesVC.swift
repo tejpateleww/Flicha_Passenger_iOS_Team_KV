@@ -13,11 +13,13 @@ class CompletedRidesVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoDataFound: UILabel!
+    
     private var isDataLoading:Bool = false
     private var pageNo:Int = 0
     private var didEndReached:Bool = false
     private let CellID = "RideDetailsTableViewCell"
-    var aryCompletedRidesData : NSArray?
+    var aryCompletedRidesData : [[String:Any]] = []
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -30,6 +32,7 @@ class CompletedRidesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblNoDataFound.isHidden = true
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "RideDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: CellID)
         self.tableView.estimatedRowHeight = 80
@@ -39,9 +42,13 @@ class CompletedRidesVC: UIViewController {
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        aryCompletedRidesData = NSArray()
+        refreshControl.endRefreshing()
+        self.pageNo = 1
+        self.didEndReached = false
+        self.aryCompletedRidesData.removeAll()
         self.tableView.reloadData()
-        self.getCompletedRidesList()
+        self.getCompletedRidesList(pageIndex: pageNo)
+        
     }
     
     @objc func reloadDataOfTableView() {
@@ -54,29 +61,27 @@ class CompletedRidesVC: UIViewController {
 extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return aryCompletedRidesData?.count ?? 0
+        return aryCompletedRidesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! RideDetailsTableViewCell
         
-        if let rideDetails = self.aryCompletedRidesData?[indexPath.row] as? [String : Any]
+        let rideDetails = self.aryCompletedRidesData[indexPath.row]
+        if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
         {
-            if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
-            {
-                let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
-                cell.lblTime.text = datePickUp.relativeDateFormat()
-            }
-           
-            if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
-                cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
-            }
-            
-            cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
-            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
-            cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
+            let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
+            cell.lblTime.text = datePickUp.relativeDateFormat()
         }
+        
+        if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
+        }
+        
+        cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
+        cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
+        cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
         
         return cell
     }
@@ -95,15 +100,15 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
        
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if indexPath.row == ((self.aryCompletedRidesData?.count ?? 0) - 5) {
+        if indexPath.row == (self.aryCompletedRidesData.count - 5) {
             if !isDataLoading{
                 isDataLoading = true
-                self.pageNo = self.pageNo + 1
+                self.getCompletedRidesList(pageIndex: self.pageNo + 1)
                 //webserviceOfPastbookingpagination(index: self.pageNo)
             }
         }
     }
-    
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return UITableViewAutomaticDimension
@@ -112,26 +117,42 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
 
 extension CompletedRidesVC {
     
-    func getCompletedRidesList()
+    func getCompletedRidesList(pageIndex : Int)
     {
-        webserviceForOngoingRides(SingletonClass.sharedInstance.strPassengerID as AnyObject) { (result, status) in
-            
-            if (status)
-            {
-                if let dictData = result as? [String:AnyObject]
+        webserviceForPastBookingList("\(SingletonClass.sharedInstance.strPassengerID)", PageNumber: "\(pageIndex)") { (result, status) in
+            if (status) {
+                self.pageNo = pageIndex
+                
+                if let dictData = result as? [String:Any]
                 {
-                    if let aryHistory = dictData["history"] as? [[String:AnyObject]]
+                    if let aryHistory = dictData["history"] as? [[String:AnyObject]], aryHistory.count > 0
                     {
-                        self.aryCompletedRidesData = aryHistory as NSArray
-                        self.tableView.reloadData()
+                        //  Canceled
+                        //if let resultsPastRides = aryHistory.filter({ ($0["HistoryType"]?.lowercased == "Past".lowercased()) && ($0["Status"]?.lowercased == "canceled".lowercased())}) as [[String:AnyObject]]?
+                        //{
+//                         let arrResults = aryHistory.filter({ ($0["Status"] as? String) == "completed" })
+                        
+                        if self.aryCompletedRidesData.count == 0
+                        {
+                            self.aryCompletedRidesData =  aryHistory
+                            self.tableView.reloadData()
+                            
+                        }else
+                        {
+                            self.aryCompletedRidesData.append(contentsOf: aryHistory)
+                            self.tableView.reloadData()
+                        }
+                        
+                        self.isDataLoading = false
+                        
+                    }else
+                    {
+                        self.didEndReached = true
                     }
+                    
+                    self.lblNoDataFound.isHidden = self.aryCompletedRidesData.count > 0
                 }
             }
-            else
-            {
-                
-            }
         }
-        
     }
 }

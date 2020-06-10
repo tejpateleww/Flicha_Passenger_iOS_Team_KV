@@ -474,6 +474,7 @@ class PackageViewController: UIViewController,UICollectionViewDelegate, UICollec
             
             let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(OK)
+            alert.modalPresentationStyle  = .overCurrentContext
             self.present(alert, animated: true, completion: nil)
 
         }
@@ -501,6 +502,7 @@ class PackageViewController: UIViewController,UICollectionViewDelegate, UICollec
             DetailsVC.doublePickupLat = doublePickupLat
             DetailsVC.doublePickupLng = doublePickupLng
             let navController = UINavigationController(rootViewController: DetailsVC)
+            navController.modalPresentationStyle  = .overCurrentContext
             self.present(navController, animated:true, completion: nil)
         }
     }

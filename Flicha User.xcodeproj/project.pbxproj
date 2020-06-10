@@ -171,6 +171,8 @@
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
+		7AB5EEFD2490E0C2003BC6C6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */; };
+		7AB5EEFF24910B54003BC6C6 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5EEFE24910B54003BC6C6 /* TripDetailViewController.swift */; };
 		81091D1D2447162E00F07A2B /* NotificationsAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81091D1B2447162E00F07A2B /* NotificationsAlertTableViewCell.swift */; };
 		81091D1E2447162E00F07A2B /* NotificationsAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81091D1C2447162E00F07A2B /* NotificationsAlertTableViewCell.xib */; };
 		817D19C82454708800F351DA /* AvailablesCarsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D19C62454708800F351DA /* AvailablesCarsListCollectionViewCell.swift */; };
@@ -378,6 +380,8 @@
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
 		7A1D8A742434AD2800ABCC6E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7AB5EEFE24910B54003BC6C6 /* TripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
 		81091D1B2447162E00F07A2B /* NotificationsAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAlertTableViewCell.swift; sourceTree = "<group>"; };
 		81091D1C2447162E00F07A2B /* NotificationsAlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAlertTableViewCell.xib; sourceTree = "<group>"; };
 		817D19C62454708800F351DA /* AvailablesCarsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailablesCarsListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -507,6 +511,7 @@
 		3A4072DC21B512270015C494 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7AB5EEFB2490E08E003BC6C6 /* Setting */,
 				3A4072F221B512270015C494 /* MyRides */,
 				8187B7BA24463E6B003C7431 /* Notification */,
 				8187B7B12444D0B0003C7431 /* PaymentMethod */,
@@ -959,6 +964,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7AB5EEFB2490E08E003BC6C6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		81091D19244715E300F07A2B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,6 +1043,7 @@
 				3A4072F921B512270015C494 /* UpCommingRidesVC.swift */,
 				3A4072F521B512270015C494 /* CompletedRidesVC.swift */,
 				3A4072F721B512270015C494 /* CanceledRidesVC.swift */,
+				7AB5EEFE24910B54003BC6C6 /* TripDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1340,6 +1354,7 @@
 				3A4073E921B512280015C494 /* WalletTransferToBankVC.swift in Sources */,
 				3A84BC9B21C23CFC00EDA3A2 /* RadioButton.m in Sources */,
 				3A4073E321B512280015C494 /* WalletAddCardsViewController.swift in Sources */,
+				7AB5EEFD2490E0C2003BC6C6 /* SettingViewController.swift in Sources */,
 				3A4073E221B512280015C494 /* UpdateProfileViewController.swift in Sources */,
 				3A4073E621B512280015C494 /* WalletCollectionViewCell.swift in Sources */,
 				3A40739D21B512280015C494 /* SideMenuCollectionViewCell.swift in Sources */,
@@ -1366,6 +1381,7 @@
 				3A4073A621B512280015C494 /* CarsCollectionViewCell.swift in Sources */,
 				3A4073E521B512280015C494 /* WalletCardsVC.swift in Sources */,
 				3A4073D421B512280015C494 /* BarsAndClubsTableViewCell.swift in Sources */,
+				7AB5EEFF24910B54003BC6C6 /* TripDetailViewController.swift in Sources */,
 				3A4073C321B512280015C494 /* FavoriteViewController.swift in Sources */,
 				3A4073AC21B512280015C494 /* OnGoingTableViewCell.swift in Sources */,
 				3A4073AB21B512280015C494 /* MyBookingViewController.swift in Sources */,
@@ -1541,6 +1557,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1591,6 +1608,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

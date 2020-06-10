@@ -347,6 +347,7 @@ class PackageDetailViewController: UIViewController,UIPickerViewDelegate, UIPick
                     self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
 
                 }))
+                alert.modalPresentationStyle  = .overCurrentContext
                 self.present(alert, animated: true, completion: nil)
                 
                 //                                if let res = result as? [String:AnyObject] {
@@ -425,6 +426,7 @@ class PackageDetailViewController: UIViewController,UIPickerViewDelegate, UIPick
                 
                 let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OK)
+                alert.modalPresentationStyle  = .overCurrentContext
                 self.present(alert, animated: true, completion: nil)
                 //                if let res = result as? String {
                 //                    UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in

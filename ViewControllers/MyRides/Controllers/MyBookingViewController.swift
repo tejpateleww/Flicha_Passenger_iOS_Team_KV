@@ -221,7 +221,7 @@ extension MyBookingViewController
         {
             if let upcomingRidesVC = self.childViewControllers[0] as? UpCommingRidesVC
             {
-                if upcomingRidesVC.aryUpcomingRidesData == nil || upcomingRidesVC.aryUpcomingRidesData?.count == 0
+                if upcomingRidesVC.aryUpcomingRidesData.count == 0
                 {
                     upcomingRidesVC.getUpcomingRidesList()
                 }
@@ -231,9 +231,9 @@ extension MyBookingViewController
         {
             if let completedRidesVC = self.childViewControllers[1] as? CompletedRidesVC
             {
-                if completedRidesVC.aryCompletedRidesData == nil || completedRidesVC.aryCompletedRidesData?.count == 0
+                if completedRidesVC.aryCompletedRidesData.count == 0
                 {
-                    completedRidesVC.getCompletedRidesList()
+                    completedRidesVC.getCompletedRidesList(pageIndex: 1)
                 }
             }
             
@@ -241,9 +241,9 @@ extension MyBookingViewController
         {
             if let cancelVC = self.childViewControllers[2] as? CanceledRidesVC
             {
-                if cancelVC.aryCanceledRidesHistory == nil || cancelVC.aryCanceledRidesHistory?.count == 0
+                if cancelVC.aryCanceledRidesHistory.count == 0
                 {
-                    cancelVC.getCanceledRidesList(pageIndex: 1)
+                    cancelVC.getCanceledRidesList()
                 }
             }
         }

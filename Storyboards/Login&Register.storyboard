@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdu-Mf-Nt2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="698"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-UA-o6t" userLabel="HeaderView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
@@ -113,7 +113,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Q-0D-ebS">
-                                                <rect key="frame" x="271" y="469" width="123" height="20"/>
+                                                <rect key="frame" x="276" y="469" width="118" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="sMv-wS-zO2"/>
                                                 </constraints>
@@ -143,7 +143,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXI-Cx-6wN">
-                                                <rect key="frame" x="20" y="652" width="374" height="19"/>
+                                                <rect key="frame" x="20" y="652" width="374" height="16"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
@@ -252,13 +252,6 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_UserImage" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-yG-U0H">
                                                         <rect key="frame" x="3" y="3" width="97.5" height="97.5"/>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Plus" translatesAutoresizingMaskIntoConstraints="NO" id="LuS-YB-5dJ">
-                                                        <rect key="frame" x="78.5" y="78.5" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="25" id="8Bb-lV-9yn"/>
-                                                            <constraint firstAttribute="height" constant="25" id="Ced-Na-U0t"/>
-                                                        </constraints>
-                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovb-sT-VlN">
                                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
                                                         <connections>
@@ -274,15 +267,20 @@
                                                     <constraint firstItem="Ovb-sT-VlN" firstAttribute="leading" secondItem="Uyf-5k-RVn" secondAttribute="leading" id="SB8-AU-3h6"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ovb-sT-VlN" secondAttribute="trailing" id="Xdd-2o-zLB"/>
                                                     <constraint firstAttribute="width" secondItem="Uyf-5k-RVn" secondAttribute="height" multiplier="1:1" id="Zrf-dK-fwK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="LuS-YB-5dJ" secondAttribute="trailing" id="aSY-HA-k1x"/>
                                                     <constraint firstItem="Ovb-sT-VlN" firstAttribute="top" secondItem="Uyf-5k-RVn" secondAttribute="top" id="cGX-DE-l6P"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LuS-YB-5dJ" secondAttribute="bottom" id="clz-BR-xmL"/>
                                                     <constraint firstAttribute="height" constant="103.5" id="jOK-2X-wk1"/>
                                                     <constraint firstAttribute="width" constant="103.5" id="ljQ-sX-Gbo"/>
                                                     <constraint firstItem="o1w-yG-U0H" firstAttribute="top" secondItem="Uyf-5k-RVn" secondAttribute="top" constant="3" id="qgT-m7-uRh"/>
                                                     <constraint firstItem="o1w-yG-U0H" firstAttribute="leading" secondItem="Uyf-5k-RVn" secondAttribute="leading" constant="3" id="vEK-fw-f7h"/>
                                                 </constraints>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Plus" translatesAutoresizingMaskIntoConstraints="NO" id="LuS-YB-5dJ">
+                                                <rect key="frame" x="233.5" y="367" width="25" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="8Bb-lV-9yn"/>
+                                                    <constraint firstAttribute="height" constant="25" id="Ced-Na-U0t"/>
+                                                </constraints>
+                                            </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-YN-Hvq" userLabel="HeaderView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
                                                 <subviews>
@@ -436,6 +434,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="LuS-YB-5dJ" firstAttribute="leading" secondItem="Uyf-5k-RVn" secondAttribute="leading" constant="78" id="0ib-2B-WXE"/>
                                             <constraint firstAttribute="trailing" secondItem="kJr-pp-Ddm" secondAttribute="trailing" constant="20" id="0nB-s9-ZaP"/>
                                             <constraint firstItem="Dtn-wz-d7x" firstAttribute="width" secondItem="Phv-Fm-Sdt" secondAttribute="width" multiplier="0.9" id="2EG-9v-KhT"/>
                                             <constraint firstItem="kJr-pp-Ddm" firstAttribute="top" secondItem="Dtn-wz-d7x" secondAttribute="bottom" constant="8" id="4Xu-kd-JaI"/>
@@ -443,6 +442,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Iez-YN-Hvq" secondAttribute="trailing" id="8V6-zn-gY5"/>
                                             <constraint firstItem="Iez-YN-Hvq" firstAttribute="leading" secondItem="aKo-Ga-aJz" secondAttribute="leading" id="Eh2-F5-aAr"/>
                                             <constraint firstItem="Mbg-yj-547" firstAttribute="leading" secondItem="aKo-Ga-aJz" secondAttribute="leading" constant="20" id="Il4-1p-2U3"/>
+                                            <constraint firstItem="LuS-YB-5dJ" firstAttribute="top" secondItem="Uyf-5k-RVn" secondAttribute="top" constant="78" id="KDe-Gv-rDX"/>
                                             <constraint firstAttribute="bottom" secondItem="kJr-pp-Ddm" secondAttribute="bottom" constant="30" id="Rrl-ec-DuP"/>
                                             <constraint firstAttribute="trailing" secondItem="Mbg-yj-547" secondAttribute="trailing" constant="20" id="bBo-U5-8To"/>
                                             <constraint firstItem="Mbg-yj-547" firstAttribute="top" secondItem="Uyf-5k-RVn" secondAttribute="bottom" constant="30" id="dGf-u2-9jH"/>
@@ -475,6 +475,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ProfileImageView" destination="Uyf-5k-RVn" id="bIP-p9-e1N"/>
                         <outlet property="btnSignUp" destination="Dtn-wz-d7x" id="4ST-w0-EwN"/>
                         <outlet property="imgProfile" destination="o1w-yG-U0H" id="Ncf-um-qbz"/>
                         <outlet property="lblAlreadyAccount" destination="kJr-pp-Ddm" id="Fku-ow-5eN"/>

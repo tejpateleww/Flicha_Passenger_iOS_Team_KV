@@ -103,6 +103,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         alert.addAction(Camera)
         alert.addAction(Gallery)
         alert.addAction(Cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -115,6 +116,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         
         // picker.stopVideoCapture()
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.modalPresentationStyle  = .overCurrentContext
         present(picker, animated: true, completion: nil)
     }
     
@@ -124,6 +126,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         picker.allowsEditing = true
         picker.sourceType = .camera
         picker.cameraCaptureMode = .photo
+        picker.modalPresentationStyle  = .overCurrentContext
         present(picker, animated: true, completion: nil)
     }
     

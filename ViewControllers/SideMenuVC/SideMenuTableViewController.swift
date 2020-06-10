@@ -85,7 +85,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
         var titleAndImages = [(String,String,String)]()
         titleAndImages.append(("Home", "homeSelect", "homeUnSelect"))
         titleAndImages.append(("My Ride", "my-ride-unselect", "my-ride-select"))
-        titleAndImages.append(("Payment Method", "payment-unselect", "payment-select"))
+//        titleAndImages.append(("Payment Method", "payment-unselect", "payment-select"))
         titleAndImages.append(("Notification", "notification-unselect", "notification-select"))
         titleAndImages.append(("Settings", "setting-unselect", "setting-select"))
         titleAndImages.append(("Help", "help-unselect", "help-select"))
@@ -277,7 +277,7 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
             {
                 NotificationCenter.default.post(name: OpenFavourite, object: nil)
             }
-            else if menuDetails.0 == "Legal"
+            else if menuDetails.0 == "Settings"
             {
                 NotificationCenter.default.post(name: OpenSetting, object: nil)
             }

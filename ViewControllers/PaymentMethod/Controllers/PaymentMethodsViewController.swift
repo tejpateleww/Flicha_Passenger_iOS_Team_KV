@@ -241,6 +241,7 @@ extension PaymentMethodsViewController : UITableViewDelegate, UITableViewDataSou
         let Cancel = UIAlertAction(title: "No".localized, style: .destructive, handler: nil)
         alert.addAction(OK)
         alert.addAction(Cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
         
         

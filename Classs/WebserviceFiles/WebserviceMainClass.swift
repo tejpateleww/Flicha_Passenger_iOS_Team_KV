@@ -61,6 +61,9 @@ func getData(_ dictParams: AnyObject, nsURL: String,  completion: @escaping (_ r
     
     Alamofire.request(url, method: .get, parameters: dictParams as? [String : AnyObject], encoding: URLEncoding.default, headers: header)
         .validate()
+        .responseString(completionHandler: { (ResponseString:DataResponse<String>) in
+            print(ResponseString)
+        })
         .responseJSON
         { (response) in
             
@@ -84,7 +87,7 @@ func getData(_ dictParams: AnyObject, nsURL: String,  completion: @escaping (_ r
                 print("Data not Found")
                 UtilityClass.hideACProgressHUD()
             }
-    }
+        }
 }
 
 //-------------------------------------------------------------

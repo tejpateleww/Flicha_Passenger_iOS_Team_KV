@@ -125,6 +125,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         
         let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
     }
    
@@ -156,6 +157,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
 
 //        var fbController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
@@ -206,6 +208,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
         
 
@@ -277,6 +280,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
 
 //        commingSoon()
@@ -301,6 +305,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
         
         
@@ -322,6 +327,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.modalPresentationStyle  = .overCurrentContext
         self.present(activityViewController, animated: true, completion: nil)
         
 //        commingSoon()

@@ -17,6 +17,7 @@ class RideDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPriceTitle: UILabel!
     @IBOutlet weak var lblPriceValue: UILabel!
+    @IBOutlet weak var PriceStack: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,6 +12,7 @@ class SplashVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.GoFurther()
         self.webserviceOfAppSetting()
     }
     
@@ -65,6 +66,7 @@ class SplashVC: UIViewController {
                     })
                     alert.addAction(UPDATE)
                     alert.addAction(Cancel)
+                    alert.modalPresentationStyle  = .overCurrentContext
                     self.present(alert, animated: true, completion: nil)
                 }
                 else

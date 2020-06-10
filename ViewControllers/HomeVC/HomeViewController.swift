@@ -188,7 +188,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        self.arrTotalNumberOfCars = NSMutableArray(array: SingletonClass.sharedInstance.arrCarLists)
         self.viewBookNowLater.isHidden = true
         self.setupView()
         webserviceOfCardList()
@@ -222,10 +222,13 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         mapView.delegate = self
         
         mapView.isHidden = true
-        self.perform(#selector(btnCurrentLocation(_:)), with: nil, afterDelay: 2.0)
+        
         self.setupGoogleMap()
         sortCarListFirstTime()
         webserviceOfCurrentBooking()
+        
+        // this method should call if no any current booking available
+        //self.perform(#selector(btnCurrentLocation(_:)), with: nil, afterDelay: 2.0)
         
         btnCurrentLocation.layer.cornerRadius = 5
         btnCurrentLocation.layer.masksToBounds = true
@@ -320,7 +323,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
 
         btnBookRideNow.setTitle("Book Now".localized, for: .normal)
         btnBookRideLater.setImage(UIImage.init(named: "material-date-range"), for: .normal)
-        
         btnDriverPhoto.imageView?.contentMode = .scaleToFill
         self.lblDriverName.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
         self.lblDriverRatings.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
@@ -411,7 +413,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.arrTotalNumberOfCars = NSMutableArray(array: SingletonClass.sharedInstance.arrCarLists)
         //        self.setupGoogleMap()
     }
 
@@ -1147,6 +1148,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         })
         alert.addAction(OK)
         alert.addAction(cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -1306,6 +1308,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         alert.addAction(OK)
         alert.addAction(Cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -1758,7 +1761,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     }
     
     @objc func GotoSettingPage() {
-        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "SettingPasscodeVC") as! SettingPasscodeVC
+        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         self.navigationController?.pushViewController(NextPage, animated: true)
     }
     
@@ -1943,6 +1946,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             }))
             
             // 4. Present the alert.
+            self.alertForTip.modalPresentationStyle  = .overCurrentContext
             self.present(self.alertForTip, animated: true, completion: nil)
         })
     }
@@ -2362,6 +2366,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         NotificationCenter.default.post(name: NotificationForAddNewBooingOnSideMenu, object: nil)
         
+        
     }
     
     //MARK:- Show Driver Information
@@ -2395,18 +2400,11 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         let vehicleModel = carInfo.object(forKey: "VehicleModelName") as? String ?? ""
         self.lblCarDescriptions.text = "\(vehicleNumber) - \(vehicleModel)"
         
-        if let distance = details.object(forKey: "Distance") as? Int{
-            //let kilometers = Measurement(value: Double(distance), unit: UnitLength.meters).converted(to: .kilometers)
-            self.lblDistanceValue.text = "\(distance)"
-        }
-        
-        if let time = details.object(forKey: "TripDuration") as? Int{
-            self.lblTimeValue.text = "\(time)"
-        }
-        
-        if let price = details.object(forKey: "EstimateFare") as? String{
-            self.lblPriceValue.text = "\(price)".currencyInputFormatting()
-        }
+        let PickLoc = bookingInfo.object(forKey: "PickupLocation") as? String ?? ""
+        let DropLoc = bookingInfo.object(forKey: "DropoffLocation") as? String ?? ""
+        let PickLat = bookingInfo.object(forKey: "PickupLat") as? String ?? ""
+        let PickLng = bookingInfo.object(forKey: "PickupLng") as? String ?? ""
+        self.WebServiceGetEstimate(StartLocation: PickLoc, EndLocation: DropLoc, PickupLat: PickLat, PickupLng: PickLng)
     }
     
     func showDriverInfo(bookingInfo : NSDictionary, DriverInfo: NSDictionary, carInfo : NSDictionary)
@@ -2536,6 +2534,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                         
                         self.viewActivity.stopAnimating()
                         self.viewMainActivityIndicator.isHidden = true
+                        self.stopTimer()
                         self.clearDataAfteCompleteTrip()
                         self.currentLocationAction()
                         self.getPlaceFromLatLong()
@@ -2564,7 +2563,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                 {
                     self.viewActivity.stopAnimating()
                     self.viewMainActivityIndicator.isHidden = true
-                    self.currentLocationAction()
+//                    self.currentLocationAction()
                     self.getPlaceFromLatLong()
                     self.clearDataAfteCompleteTrip()
                     self.currentLocationAction()
@@ -2864,6 +2863,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         })
         
         alert.addAction(OK)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -3104,7 +3104,32 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             }
             
             var DriverCordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
+            let DriverCoordinate = CLLocationCoordinate2DMake(DoubleLat, DoubleLng)
+            let CarMovement = ARCarMovement()
+            if self.destinationCordinate == nil {
+                self.destinationCordinate = DriverCoordinate
+            }
             
+            if self.driverMarker == nil
+            {
+                self.driverMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
+                self.driverMarker.icon = UIImage(named: "dummyCar")
+                self.driverMarker.map = self.mapView
+            }
+            else
+            {
+                self.driverMarker.icon = UIImage.init(named: "dummyCar")
+            }
+            
+//            let degrees =
+//                .bearin .bearing(to: DriverCoordinate)
+            CarMovement.ARCarMovement(marker: self.driverMarker, oldCoordinate: self.driverMarker.position, newCoordinate: DriverCoordinate, mapView: self.mapView, bearing: Float(SingletonClass.sharedInstance.floatBearing))
+            self.destinationCordinate = DriverCoordinate
+            let camera = GMSCameraPosition.camera(withLatitude: DoubleLat, longitude: DoubleLng, zoom: self.zoomLevel)
+//            let camera = GMSCameraPosition.camera(withLatitude: Lat,longitude: Lng,zoom: zoomLevel)
+            self.mapView.camera = camera
+            
+            /*
             //            var DriverCordinate = CLLocationCoordinate2D(latitude: Double("23.076701577176262")! , longitude: Double("72.51612203357585")!)
             
             DriverCordinate = CLLocationCoordinate2DMake(DriverCordinate.latitude, DriverCordinate.longitude)
@@ -3132,6 +3157,34 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             self.driverMarker.icon = UIImage(named: "dummyCar")
             self.destinationCordinate = DriverCordinate
             self.MarkerCurrntLocation.isHidden = true
+            
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(0.5)
+            CATransaction.setValue(Int(2.0), forKey: kCATransactionAnimationDuration)
+            CATransaction.setCompletionBlock({() -> Void in
+                self.driverMarker.groundAnchor = CGPoint(x: CGFloat(0.5), y: CGFloat(0.5))
+                
+                //New bearing value from backend after car movement is done
+            })
+            
+             UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                self.driverMarker.position = newCordinate
+                self.driverMarker.map = self.mapView
+                
+//                self.updatePolyLineToMapFromDriverLocation()
+             })
+            
+            CATransaction.commit()
+            
+            
+            let camera = GMSCameraPosition.camera(withLatitude: newCordinate.latitude,
+                                                  longitude: newCordinate.longitude,
+                                                  zoom: 17)
+            
+            self.mapView.camera = camera
+            self.mapView.animate(to: camera)
+            */
+            
             // ----------------------------------------------------------------------
             
 //            CATransaction.begin()
@@ -3346,6 +3399,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         acController.delegate = self
         acController.autocompleteBounds = bounds
         BoolCurrentLocation = isCurrentLocation
+        acController.modalPresentationStyle = .overCurrentContext
         present(acController, animated: true, completion: nil)
     }
     
@@ -4450,6 +4504,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
                 let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
                 alert.addAction(OK)
+                alert.modalPresentationStyle  = .overCurrentContext
                 self.present(alert, animated: true, completion: nil)
                 
             }
@@ -4728,7 +4783,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                 //let cell = collectionView.cellForItem(at: indexPath) as! CarsCollectionViewCell
                 //cell.viewOfImage.layer.borderColor = themeGrayColor.cgColor
                 
-                selectedIndexPath = nil
+                selectedIndexPath = indexPath
                 
                 let imageURL = dictOnlineCarData.object(forKey: "Image") as! String
                 
@@ -4980,6 +5035,10 @@ extension HomeViewController : GMSAutocompleteViewControllerDelegate
             mapView.animate(to: camera)
         }
         
+        if self.lblUserFromAddress.text?.count != 0 && self.lblUserToAddress.text?.count != 0 {
+            setupBothCurrentAndDestinationMarkerAndPolylineOnMap()
+        }
+        
         if lblUserFromAddress.text?.count != 0 && lblUserToAddress.text?.count != 0 && aryOfOnlineCarsIds.count != 0 {
             postPickupAndDropLocationForEstimateFare()
         }
@@ -5112,6 +5171,7 @@ extension HomeViewController {
                         }) { _ in }
                     })
                     alert.addAction(OK)
+                    alert.modalPresentationStyle  = .overCurrentContext
                     self.present(alert, animated: true, completion: nil)
                     
                 }
@@ -5212,6 +5272,7 @@ extension HomeViewController {
             }
             else
             {
+                self.currentLocationAction()
                 if let resultData = result as? NSDictionary
                 {
                     SingletonClass.sharedInstance.passengerRating = resultData.object(forKey: "rating") as? String ?? ""
@@ -5346,7 +5407,7 @@ extension HomeViewController {
                         if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                            
                             if SelectedLanguage == "en"
-                            {FL
+                            {
                                 UtilityClass.showAlert("Applied", message: res.object(forKey: "message") as? String ?? "", vc: self)
                                 
                             }
@@ -5499,4 +5560,66 @@ extension HomeViewController {
         }
     }
     
+    
+    func WebServiceGetEstimate(StartLocation:String, EndLocation:String ,PickupLat:String , PickupLng:String) {
+        
+        var dictParam = [String:AnyObject]()
+        dictParam["PickupLocation"] = StartLocation as AnyObject
+        dictParam["DropoffLocation"] = EndLocation as AnyObject
+        dictParam["PickupLat"] = PickupLat as AnyObject
+        dictParam["PickupLong"] = PickupLng as AnyObject
+        
+        webserviceForGetEstimateFare(dictParam as AnyObject) { (result, status) in
+            if status {
+                print(result)
+                var bookingInfo = [String:Any]()
+                var SelectId:Int = 0
+                
+                if let dicBookingsDetails = (self.aryRequestAcceptedData.object(at: 0) as? NSDictionary)?.object(forKey: "BookingInfo") as? [String:Any]
+                {
+                    bookingInfo = dicBookingsDetails
+                    
+                }else if let arrayBookingsDetails = (self.aryRequestAcceptedData.object(at: 0) as? NSDictionary)?.object(forKey: "BookingInfo") as? NSArray, arrayBookingsDetails.count > 0
+                {
+                    if let dicBookingsDetails = arrayBookingsDetails[0] as? [String:Any]
+                    {
+                        bookingInfo = dicBookingsDetails
+                    }
+                }
+                if let SelectModelId = bookingInfo["ModelId"] as? String {
+                    SelectId = Int(SelectModelId)!
+                }
+                else if let SelectModelId = bookingInfo["ModelId"] as? Int {
+                    SelectId = SelectModelId
+                }
+                
+//                 let Response = result as? [String:Any] ,
+                
+                if let arrData = result["estimate_fare"] as? [[String:Any]] {
+//
+                    for SingleModel in arrData {
+                        if let ModelId = SingleModel["id"] as? Int , ModelId == SelectId {
+                            if let distance = SingleModel["km"] as? Double{
+                                self.lblDistanceValue.text = "\(distance) km"
+                            }
+                            
+                            if let time = SingleModel["est_duration"] as? Int{
+                                self.lblTimeValue.text = "\(time) min"
+                            }
+                            
+                            if let price = SingleModel[ "trip_fare"] as? String{
+                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                            } else if let price = SingleModel[ "trip_fare"] as? Double{
+                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                            } else if let price = SingleModel[ "trip_fare"] as? Int{
+                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
 }

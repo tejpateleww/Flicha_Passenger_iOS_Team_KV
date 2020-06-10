@@ -21,6 +21,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var btnSignUp: ThemeButton!
     @IBOutlet weak var lblAlreadyAccount: UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var ProfileImageView: UIView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,10 @@ class SignUpViewController: UIViewController {
         self.txtPassword.placeholder = "Password"
         self.txtConfirmPassword.placeholder = "Confirm Password"
         self.btnSignUp.setTitle("Sign UP", for: .normal)
-        
+        self.imgProfile.layer.cornerRadius = self.imgProfile.frame.size.width / 2
+        self.imgProfile.layer.masksToBounds = true
+        self.ProfileImageView.layer.cornerRadius = self.ProfileImageView.frame.size.width / 2
+        self.ProfileImageView.layer.masksToBounds = true
         self.lblAlreadyAccount.attributedText =  "\("Already Have an Account?".localized) SIGN IN".underLineWordsIn(highlightedWords: "SIGN IN", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignInClickAction(_:)))
@@ -121,7 +127,7 @@ extension SignUpViewController
             }
             return false
         }
-        else if (txtFirstName.text?.count == 0)
+        else if (txtLastName.text?.count == 0)
         {
             UtilityClass.setCustomAlert(title: "Missing", message: "Enter last name") { (index, title) in
             }
@@ -183,6 +189,7 @@ extension SignUpViewController
             picker.allowsEditing = false
             picker.sourceType = .photoLibrary
             picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            picker.modalPresentationStyle  = .overCurrentContext
             self.present(picker, animated: true, completion: nil)
         })
         
@@ -192,6 +199,7 @@ extension SignUpViewController
             picker.allowsEditing = false
             picker.sourceType = .camera
             picker.cameraCaptureMode = .photo
+            picker.modalPresentationStyle  = .overCurrentContext
             self.present(picker, animated: true, completion: nil)
         })
         
@@ -200,6 +208,7 @@ extension SignUpViewController
         alert.addAction(Gallery)
         alert.addAction(Camera)
         alert.addAction(cancel)
+        alert.modalPresentationStyle  = .overCurrentContext
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -167,6 +167,7 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         let acController = GMSAutocompleteViewController()
         acController.delegate = self
         BoolCurrentLocation = isCurrentLocation
+        acController.modalPresentationStyle = .overCurrentContext
         present(acController, animated: true, completion: nil)
     }
 
@@ -196,7 +197,7 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         selector.optionIdentifier = "Time" as AnyObject
         let dateCurrent = Date()
         selector.optionCurrentDate = dateCurrent.addingTimeInterval(30 * 60)
-        
+        selector.modalPresentationStyle  = .overCurrentContext
         // 3. Then you simply present it from your view controller when necessary!
         self.present(selector, animated: true, completion: nil)
     }
@@ -473,7 +474,7 @@ extension BookLaterViewController {
         dictData["PassengerId"] = SingletonClass.sharedInstance.strPassengerID as AnyObject
         dictData["ModelId"] = strModelId as AnyObject
         dictData["PickupLocation"] = lblUserFromAddress.text as AnyObject
-        dictData["DropoffLocation"] = lblUserFromAddress.text as AnyObject
+        dictData["DropoffLocation"] = lblUserToAddress.text as AnyObject
         dictData["PassengerType"] = strPassengerType as AnyObject
         dictData["PassengerName"] = txtFullName.text as AnyObject
         dictData["PassengerContact"] = txtMobileNumber.text as AnyObject

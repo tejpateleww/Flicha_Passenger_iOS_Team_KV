@@ -107,6 +107,7 @@ class PayViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             next.strBtnNo = "OK"
             next.strMessage = "Payment Receipt sent successfully!"
             next.isBtnYesVisible = true
+            next.modalPresentationStyle  = .overCurrentContext
             self.present(next, animated: true, completion: nil)
             
         }
