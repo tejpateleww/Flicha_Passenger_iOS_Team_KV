@@ -61,6 +61,8 @@ let UpcomingBookingGet = WebserviceURLs.kUpcomingBooking_get
 let OngoingBookingGet = WebserviceURLs.kOngoingBooking_get
 let PastBookingGet = WebserviceURLs.kPastBooking_get
 
+let UpdateNotificationSetting = WebserviceURLs.kUpdateNotificationSetting
+
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
 //-------------------------------------------------------------
@@ -543,3 +545,14 @@ func webserviceForPastBookingRides(_ dictParams: AnyObject, completion: @escapin
 }
 
 
+
+
+// ------------------------------------------------------------
+// MARK:- Webservice For Update Notification Setting
+// ------------------------------------------------------------
+
+func WebserviceForUpdateNotificationSetting(_ dictParams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = UpdateNotificationSetting
+    postData(dictParams, nsURL: url, completion: completion)
+}

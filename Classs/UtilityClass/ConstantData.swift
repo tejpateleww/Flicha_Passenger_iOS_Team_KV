@@ -123,6 +123,7 @@ struct WebserviceURLs {
     static let kOngoingBooking_get                      = "OngoingBooking/"
     static let kPastBooking_get                         = "PastBooking/"
     static let kCancelledBooking_get                    = "CancelTripByPassenger/"
+    
 
 
 //    https://pickngolk.info/web/Passenger_Api/OtpForRegister

@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class SettingViewController: BaseViewController {
     
     var arrSettings:[String] = []
@@ -17,23 +15,32 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         self.addCustomNavigationBar(title: kSettingsPageTitle)
         self.arrSettings = ["Push Notification"]
-        
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK:- Functions / Api calls :
+    
+    func webserviceCallForUpdateNotificationSetting(notification: Int) {
+        
+        
+        var dictParam = [String:AnyObject]()
+        dictParam["PassengerId"] = "1" as AnyObject
+        dictParam["Notification"] = "\(notification)" as AnyObject
+        dictParam["InternetAds"] = "\(notification)" as AnyObject
+        
+        WebserviceForUpdateNotificationSetting(dictParam as AnyObject) { (result, status) in
+            
+            
+            print(result)
+            
+            if status == true {
+                // Display an alert
+                
+            } else {
+                // display an alert with error msg.
+            }
+        }
     }
-    */
-
 }
-
 
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -49,13 +56,18 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         tblCell.containerView.layer.cornerRadius = 15.0
         tblCell.containerView.layer.masksToBounds = true
         tblCell.selectionStyle = .none
+        
+        tblCell.SwitchAction = {
+            if tblCell.btnSwitch.isOn {
+                self.webserviceCallForUpdateNotificationSetting(notification: 1)
+            } else {
+                self.webserviceCallForUpdateNotificationSetting(notification: 0)
+            }
+        }
+        
         return tblCell
     }
 }
-
-
-
-
 
 class TblSettingCell:UITableViewCell {
     
