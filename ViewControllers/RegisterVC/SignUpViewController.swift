@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var lblTitle: ThemeTitleLabel!
@@ -23,11 +24,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var ProfileImageView: UIView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        txtFirstName.text = ""
+        txtLastName.text = ""
+        txtEmail.text = ""
+        txtPhoneNumber.text = ""
+        txtPassword.text = ""
+        txtConfirmPassword.text = ""
     }
     
     func setupView()
@@ -107,7 +118,37 @@ class SignUpViewController: UIViewController {
     
     @IBAction func btnSignUpClickAction(_ sender: Any)
     {
-        self.webServiceCallForRegister()
+//        self.webServiceCallForRegister()
+        
+        if checkValidation() {
+            let verifyVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVerificationViewController") as! SignUpVerificationViewController
+            
+            verifyVC.mobile = self.txtPhoneNumber.text!
+            verifyVC.email = self.txtEmail.text!
+            
+            let dictParams = NSMutableDictionary()
+            dictParams.setObject(txtFirstName.text ?? "", forKey: "Firstname" as NSCopying)
+            dictParams.setObject(txtLastName.text ?? "", forKey: "Lastname" as NSCopying)
+            dictParams.setObject("", forKey: "ReferralCode" as NSCopying)
+            dictParams.setObject("", forKey: "ZipCode" as NSCopying)
+            dictParams.setObject("", forKey: "Address" as NSCopying)
+            dictParams.setObject(txtPhoneNumber.text ?? "", forKey: "MobileNo" as NSCopying)
+            dictParams.setObject(txtEmail.text ?? "", forKey: "Email" as NSCopying)
+            dictParams.setObject(txtPassword.text ?? "", forKey: "Password" as NSCopying)
+            dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
+            dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
+            dictParams.setObject("", forKey: "Gender" as NSCopying)
+            dictParams.setObject("12376152367", forKey: "Lat" as NSCopying)
+            dictParams.setObject("2348273489", forKey: "Lng" as NSCopying)
+            dictParams.setObject("", forKey: "DOB" as NSCopying)
+            verifyVC.dict = dictParams
+            
+            verifyVC.userImg = imgProfile.image!
+            
+            
+            self.navigationController?.pushViewController(verifyVC, animated: true)
+        }
+        
     }
     
     @IBAction func btnChooseImage(_ sender: Any)
@@ -121,45 +162,59 @@ extension SignUpViewController
 {
     func checkValidation() -> Bool
     {
-        if (txtFirstName.text?.count == 0)
+        
+        if (txtFirstName.text?.count == 0) && (txtLastName.text?.count == 0) && (txtEmail.text?.count == 0) && (txtPhoneNumber.text?.count == 0) && (txtPassword.text?.count == 0) && (txtConfirmPassword.text?.count == 0) {
+            
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all details") { (index, title) in
+            }
+            return false
+        }
+        else if (txtFirstName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter first name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter first name") { (index, title) in
             }
             return false
         }
         else if (txtLastName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter last name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter last name") { (index, title) in
             }
             return false
         
         }else if (txtEmail.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter your email address") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter email") { (index, title) in
             }
             return false
         
         }else if (!(txtEmail.text?.isValidEmail() ?? false))
         {
-            UtilityClass.setCustomAlert(title: "Incorrect", message: "Enter valid email address.") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Incorrect", message: "Please Enter a valid email") { (index, title) in
             }
             return false
         }
         else if (txtPhoneNumber.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter your phone number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter phone number") { (index, title) in
             }
             return false
        
         }else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter password") { (index, title) in
             }
             return false
        
-        }else if (txtConfirmPassword.text?.count == 0)
+        }else if (txtPassword.text?.count ?? 0 < 6)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter confirm password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Password must contain atleast 6 characters") { (index, title) in
+            }
+            return false
+            
+        }
+        else if (txtConfirmPassword.text?.count == 0)
+        {
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter confirm password") { (index, title) in
             }
             return false
       
@@ -236,30 +291,30 @@ extension SignUpViewController : UIImagePickerControllerDelegate, UINavigationCo
 
 extension SignUpViewController
 {
-    func webServiceCallForRegister()
+    func webServiceCallForRegister(params: NSMutableDictionary, img: UIImage)
     {
-        if checkValidation()
-        {
+//        if checkValidation()
+//        {
             UtilityClass.showACProgressHUD()
             
-            let dictParams = NSMutableDictionary()
-            
-            dictParams.setObject(txtFirstName.text ?? "", forKey: "Firstname" as NSCopying)
-            dictParams.setObject(txtLastName.text ?? "", forKey: "Lastname" as NSCopying)
-            dictParams.setObject("", forKey: "ReferralCode" as NSCopying)
-            dictParams.setObject("", forKey: "ZipCode" as NSCopying)
-            dictParams.setObject("", forKey: "Address" as NSCopying)
-            dictParams.setObject(txtPhoneNumber.text ?? "", forKey: "MobileNo" as NSCopying)
-            dictParams.setObject(txtEmail.text ?? "", forKey: "Email" as NSCopying)
-            dictParams.setObject(txtPassword.text ?? "", forKey: "Password" as NSCopying)
-            dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
-            dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
-            dictParams.setObject("", forKey: "Gender" as NSCopying)
-            dictParams.setObject("12376152367", forKey: "Lat" as NSCopying)
-            dictParams.setObject("2348273489", forKey: "Lng" as NSCopying)
-            dictParams.setObject("", forKey: "DOB" as NSCopying)
-            
-            webserviceForRegistrationForUser(dictParams, image1: imgProfile.image!) { (result, status) in
+//            let dictParams = NSMutableDictionary()
+//
+//            dictParams.setObject(txtFirstName.text ?? "", forKey: "Firstname" as NSCopying)
+//            dictParams.setObject(txtLastName.text ?? "", forKey: "Lastname" as NSCopying)
+//            dictParams.setObject("", forKey: "ReferralCode" as NSCopying)
+//            dictParams.setObject("", forKey: "ZipCode" as NSCopying)
+//            dictParams.setObject("", forKey: "Address" as NSCopying)
+//            dictParams.setObject(txtPhoneNumber.text ?? "", forKey: "MobileNo" as NSCopying)
+//            dictParams.setObject(txtEmail.text ?? "", forKey: "Email" as NSCopying)
+//            dictParams.setObject(txtPassword.text ?? "", forKey: "Password" as NSCopying)
+//            dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
+//            dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
+//            dictParams.setObject("", forKey: "Gender" as NSCopying)
+//            dictParams.setObject("12376152367", forKey: "Lat" as NSCopying)
+//            dictParams.setObject("2348273489", forKey: "Lng" as NSCopying)
+//            dictParams.setObject("", forKey: "DOB" as NSCopying)
+        
+            webserviceForRegistrationForUser(params, image1: img) { (result, status) in
                 
                 print(result)
                 
@@ -268,7 +323,13 @@ extension SignUpViewController
                     DispatchQueue.main.async(execute: { () -> Void in
                         
                         UtilityClass.hideACProgressHUD()
-                        self.navigationController?.popViewController(animated: true)
+//                        self.navigationController?.popViewController(animated: true)
+                        
+                        // msg
+                        UtilityClass.setCustomAlert(title: "Alert!", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+//                            print(index)
+                        }
+                        
                     })
                 }
                 else
@@ -278,8 +339,16 @@ extension SignUpViewController
                     }
                 }
             }
-        }
+//        }
         
     }
+    
+}
+
+extension SignUpViewController : SignupRemotely {
+    func signInAfterOTP(_ data: NSMutableDictionary, img: UIImage) {
+        webServiceCallForRegister(params: data, img: img)
+    }
+    
     
 }

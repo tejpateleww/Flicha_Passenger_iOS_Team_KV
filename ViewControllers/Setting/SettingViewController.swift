@@ -33,10 +33,10 @@ class SettingViewController: BaseViewController {
             print(result)
             
             if status == true {
-                // Display an alert
+                // Do nothing
                 
             } else {
-                // display an alert with error msg.
+                // Do nothing for now
             }
         }
     }

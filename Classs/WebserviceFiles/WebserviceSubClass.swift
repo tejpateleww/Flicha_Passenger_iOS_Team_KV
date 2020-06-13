@@ -53,7 +53,6 @@ let UpdateBankAccountDetails = WebserviceURLs.kUpdateBankAccountDetails
 
 let OTPVerify = WebserviceURLs.kOtpForRegister
 let TrackRunningTrip = WebserviceURLs.kTrackRunningTrip
-let notificationsForPassanger = WebserviceURLs.kUpdateNotificationSetting
 let notificationList = WebserviceURLs.kNotificationList
 let cancelTripByPassenger = WebserviceURLs.kCancelTripByPassenger
 
@@ -62,6 +61,7 @@ let OngoingBookingGet = WebserviceURLs.kOngoingBooking_get
 let PastBookingGet = WebserviceURLs.kPastBooking_get
 
 let UpdateNotificationSetting = WebserviceURLs.kUpdateNotificationSetting
+
 
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
@@ -556,3 +556,4 @@ func WebserviceForUpdateNotificationSetting(_ dictParams: AnyObject, completion:
     let url = UpdateNotificationSetting
     postData(dictParams, nsURL: url, completion: completion)
 }
+

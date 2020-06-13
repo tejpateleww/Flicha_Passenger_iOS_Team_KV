@@ -22,7 +22,7 @@ class AvailablesCarsListCollectionViewCell: UICollectionViewCell {
 
     func setupView() {
         self.lblCategoryType.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 11))
-        self.lblRate.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
+        self.lblRate.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 10))
     }
 
     override func layoutSubviews() {

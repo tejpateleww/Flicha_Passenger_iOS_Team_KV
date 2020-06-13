@@ -61,7 +61,8 @@ extension ForgotPasswordVC
     func webserviceCallForForgotPassword(strEmail : String)
     {
         let dictparam = NSMutableDictionary()
-        dictparam.setObject(strEmail, forKey: "MobileNo" as NSCopying)
+        dictparam.setObject(strEmail, forKey: "Email" as NSCopying)
+        dictparam.setObject("", forKey: "MobileNo" as NSCopying)
         let activityData = ActivityData()
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         webserviceForForgotPassword(dictparam) { (result, status) in
@@ -70,11 +71,15 @@ extension ForgotPasswordVC
             if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
             {
                 UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+
+                    self.navigationController?.popViewController(animated: true)
+
                 }
+                
+//                UtilityClass.showAlert("Success", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self)
             }
             else
             {
-                
                 UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                 }
             }

@@ -169,9 +169,16 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     
     func checkValidation() -> Bool
     {
-        if (txtMobile.text?.count == 0)
+        
+        if (txtMobile.text?.count == 0) && (txtPassword.text?.count == 0) {
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all the details") { (index, title) in
+            }
+            
+            // txtMobile.showErrorWithText(errorText: "Enter Email")
+            return false
+        } else if (txtMobile.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Mobile Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter your Mobile Number") { (index, title) in
             }
             
             // txtMobile.showErrorWithText(errorText: "Enter Email")
@@ -179,7 +186,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         }
         else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Enter Password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter your Password") { (index, title) in
             }
             
             return false

@@ -208,6 +208,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoInviteFriendPage), name: OpenInviteFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSettingPage), name: OpenSetting, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSupportPage), name: OpenSupport, object: nil)
+        
+        
                 
         
         self.btnDoneForLocationSelected.isHidden = true
@@ -258,7 +260,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             
             if strCarModelID == ""
             {
-                UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
                 }
             }
             else if strDestinationLocationForBookLater != ""
@@ -985,7 +987,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         self.socket.on(SocketData.kReceiveGetEstimateFare, callback: { (data, ack) in
             //print("onGetEstimateFare() is \(data)")
-            
 
             if (((data as NSArray).firstObject as? NSDictionary) != nil) {
                 var estimateData = (data as! [[String:AnyObject]])
@@ -1094,6 +1095,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.mapView.settings.rotateGestures = false
         self.mapView.settings.tiltGestures = false
         
+        
         //        let position = CLLocationCoordinate2D(latitude: defaultLocation.coordinate.latitude, longitude: defaultLocation.coordinate.longitude)
         //        let marker = GMSMarker(position: position)
         //        marker.map = self.mapView
@@ -1189,7 +1191,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                 }
                 else if strModelId == ""
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
                     }
                 }
                 else
@@ -1221,7 +1223,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             {
                 if strCarModelID == ""
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
                     }
                 }
                 else
@@ -1252,7 +1254,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             {
                 if strCarModelID == "" && strCarModelIDIfZero == ""
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "No Driver Available Right Now.".localized) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
                     }
                 }
                 else
@@ -4618,9 +4620,26 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         {
             
             cell.lblCategoryType.text = dictOnlineCarData["Name"] as? String ?? ""
-            let price = dictOnlineCarData["estimate_fare_range"] as? String ?? ""
-            let time = dictOnlineCarData["duration"]  as? String ?? ""
-            cell.lblRate.text = "\(currencySign)\(price)/\(time)"
+            
+            var price = 0
+            var time = 0
+            
+            //SJ Edit Started
+            if aryEstimateFareData.count > indexPath.row {
+                let dict = self.aryEstimateFareData[indexPath.row] as? [String: AnyObject]
+                
+                if let total = dict!["total"] as? Int {
+                    price = total
+                }
+                
+                if let timeDuration = dict!["duration"] as? Int {
+                    time = timeDuration
+                }
+            }
+            //SJ Edit Ended
+            
+            
+            cell.lblRate.text = "\(currencySign)\(price) / \(time) min"
             
             if let imageURL = dictOnlineCarData["Image"] as? String
             {
@@ -5036,6 +5055,7 @@ extension HomeViewController : GMSAutocompleteViewControllerDelegate
         }
         
         if self.lblUserFromAddress.text?.count != 0 && self.lblUserToAddress.text?.count != 0 {
+            mapView.clear()
             setupBothCurrentAndDestinationMarkerAndPolylineOnMap()
         }
         
