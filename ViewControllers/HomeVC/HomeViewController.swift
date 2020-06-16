@@ -209,8 +209,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSettingPage), name: OpenSetting, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSupportPage), name: OpenSupport, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoHelpPage), name: OpenHelp, object: nil)
         
-                
         
         self.btnDoneForLocationSelected.isHidden = true
                 
@@ -291,6 +291,14 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         }
         
         locationManager.startUpdatingLocation()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
     }
     
     func setupView()
@@ -996,7 +1004,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                     estimateData =  estimateData[0]["estimate_fare"] as! [[String:AnyObject]]
                 
                 let sortedArray = estimateData.sorted {($0["sort"] as! Int) < ($1["sort"] as! Int)}
-                
                 
                 if self.aryEstimateFareData == self.aryEstimateFareData {
 
@@ -1775,6 +1782,11 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.navigationController?.pushViewController(next, animated: true)
     }
     
+    @objc func GotoHelpPage()
+    {
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "HelpVC") as! HelpVC
+        self.navigationController?.pushViewController(next, animated: true)
+    }
     
     func BookingConfirmed(dictData : NSDictionary)
     {
@@ -5193,9 +5205,7 @@ extension HomeViewController {
                     alert.addAction(OK)
                     alert.modalPresentationStyle  = .overCurrentContext
                     self.present(alert, animated: true, completion: nil)
-                    
                 }
-                
             }
             else {
                 //     print(result)

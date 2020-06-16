@@ -170,6 +170,10 @@
 		64BD5ABB247579D300C17B4D /* UniversalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */; };
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
 		6E25B17E2494C51F00A60132 /* SignUpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */; };
+		6EB460052498D03D007F9D10 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460042498D03D007F9D10 /* HelpVC.swift */; };
+		6EB460072498D2FA007F9D10 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */; };
+		6EB460092498DEBD007F9D10 /* FaqVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460082498DEBD007F9D10 /* FaqVC.swift */; };
+		6EB4600B2498DED6007F9D10 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB4600A2498DED6007F9D10 /* FaqTableViewCell.swift */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
 		7AB5EEFD2490E0C2003BC6C6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */; };
@@ -380,6 +384,10 @@
 		64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVerificationViewController.swift; sourceTree = "<group>"; };
+		6EB460042498D03D007F9D10 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
+		6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		6EB460082498DEBD007F9D10 /* FaqVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqVC.swift; sourceTree = "<group>"; };
+		6EB4600A2498DED6007F9D10 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
 		7A1D8A742434AD2800ABCC6E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -627,6 +635,7 @@
 		3A40730621B512270015C494 /* SideMenuVC */ = {
 			isa = PBXGroup;
 			children = (
+				6EB460032498D023007F9D10 /* Help */,
 				3A40730721B512270015C494 /* BarsAndClubsViewController.swift */,
 				3A40730821B512270015C494 /* BookTableSelectedDataViewController.swift */,
 				3A40730921B512270015C494 /* BookTableViewController.swift */,
@@ -965,6 +974,17 @@
 				0DD67F74FA4535C8BF89DF86 /* Pods-Flicha User.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6EB460032498D023007F9D10 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				6EB460042498D03D007F9D10 /* HelpVC.swift */,
+				6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */,
+				6EB460082498DEBD007F9D10 /* FaqVC.swift */,
+				6EB4600A2498DED6007F9D10 /* FaqTableViewCell.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		7AB5EEFB2490E08E003BC6C6 /* Setting */ = {
@@ -1334,6 +1354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB4600B2498DED6007F9D10 /* FaqTableViewCell.swift in Sources */,
 				3A4073C121B512280015C494 /* EditAccountViewController.swift in Sources */,
 				3A4073CF21B512280015C494 /* InVoiceReceiptViewController.swift in Sources */,
 				3A4073B021B512280015C494 /* UpCommingTableViewCell.swift in Sources */,
@@ -1380,11 +1401,13 @@
 				3A84BC9721C22B2E00EDA3A2 /* UIAlertView+Blocks.m in Sources */,
 				3A84BCA021C264E900EDA3A2 /* MyRatingViewController.swift in Sources */,
 				3A84BC9F21C264E900EDA3A2 /* MyRatingViewCell.swift in Sources */,
+				6EB460072498D2FA007F9D10 /* HelpTableViewCell.swift in Sources */,
 				3A40741321B512280015C494 /* WebserviceSubClass.swift in Sources */,
 				3A4073A621B512280015C494 /* CarsCollectionViewCell.swift in Sources */,
 				3A4073E521B512280015C494 /* WalletCardsVC.swift in Sources */,
 				3A4073D421B512280015C494 /* BarsAndClubsTableViewCell.swift in Sources */,
 				7AB5EEFF24910B54003BC6C6 /* TripDetailViewController.swift in Sources */,
+				6EB460052498D03D007F9D10 /* HelpVC.swift in Sources */,
 				3A4073C321B512280015C494 /* FavoriteViewController.swift in Sources */,
 				3A4073AC21B512280015C494 /* OnGoingTableViewCell.swift in Sources */,
 				3A4073AB21B512280015C494 /* MyBookingViewController.swift in Sources */,
@@ -1457,6 +1480,7 @@
 				3A40741221B512280015C494 /* WebserviceMainClass.swift in Sources */,
 				3A4073F821B512280015C494 /* CreditCardValidator.swift in Sources */,
 				3A5DDCA721BA5C9200F9B5A3 /* TripInfoViewController.swift in Sources */,
+				6EB460092498DEBD007F9D10 /* FaqVC.swift in Sources */,
 				3A4073DD21B512280015C494 /* TempData.swift in Sources */,
 				3A4073D121B512280015C494 /* TickPayAlertViewController.swift in Sources */,
 				64BD5AB9247579C100C17B4D /* UniversalHeaderView.swift in Sources */,
@@ -1626,7 +1650,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = K68A4B5TS6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1655,7 +1679,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = K68A4B5TS6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -41,7 +41,7 @@ class SignUpVerificationViewController: UIViewController {
         delegate = SignUpViewController()
         
         setupView()
-        WebserviceOtpForRegister()
+        WebserviceOtpForRegister(msg: false)
 
         // Do any additional setup after loading the view.
     }
@@ -54,14 +54,14 @@ class SignUpVerificationViewController: UIViewController {
     }
     
     @IBAction func btnAction_ResendOTP(_ sender: Any) {
-        WebserviceOtpForRegister()
+        WebserviceOtpForRegister(msg: true)
     }
     
     
     @IBAction func btnAction_VerifyOTP(_ sender: Any) {
         
         guard let enteredOTP = txtField_OTP.text, enteredOTP.count > 0 else {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter OTP received on your email") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "OTP can not be blank") { (index, title) in
             }
             return
         }
@@ -69,10 +69,11 @@ class SignUpVerificationViewController: UIViewController {
         let valid_otp : String = "\(validOTP_FromWebService)"
         if enteredOTP == valid_otp {
             // Delegate method to notify signup vc to call webservice for signup
+            
             delegate?.signInAfterOTP(dict, img: userImg)
-            print("delegate and redirection")
+            
         } else {
-            UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Invalid OTP!! Please enter a valid OTP") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Please Enter Correct OTP") { (index, title) in
             }
         }
         
@@ -113,7 +114,7 @@ class SignUpVerificationViewController: UIViewController {
     
     }
     
-    func WebserviceOtpForRegister() {
+    func WebserviceOtpForRegister(msg: Bool) {
         
         //Validations :
         
@@ -130,6 +131,15 @@ class SignUpVerificationViewController: UIViewController {
                 let otp = dict["otp"] as? Int
                 
                 self.validOTP_FromWebService = otp ?? 0
+                
+                if msg {
+                    // Make a Toast or Display an alert..
+//                    UtilityClass.setCustomAlert(title: "Success", message: "OTP has been sent successfully", completionHandler:
+                        
+                    UtilityClass.setCustomAlert(title: "Success", message: "OTP has been sent successfully") { (index, title) in
+                        //
+                    }
+                }
                 
             } else {
 //                print((result as! [String:AnyObject])["message"] as? String)

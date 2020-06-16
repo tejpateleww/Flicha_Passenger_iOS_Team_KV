@@ -291,6 +291,10 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
             {
                 self.logoutUser()
             }
+            else if menuDetails.0 == "Help"
+            {
+                NotificationCenter.default.post(name: OpenHelp, object: nil)
+            }
             
             sideMenuController?.toggle()
         }

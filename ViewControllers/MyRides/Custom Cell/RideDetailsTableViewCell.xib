@@ -21,19 +21,19 @@
                         <rect key="frame" x="16" y="16" width="288" height="311"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-Uc-Id2">
-                                <rect key="frame" x="16" y="16" width="256" height="20.5"/>
+                                <rect key="frame" x="16" y="16" width="178" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9AX-5S-8vs">
-                                <rect key="frame" x="16" y="44.5" width="256" height="128"/>
+                                <rect key="frame" x="16" y="54" width="256" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9AX-5S-8vs" secondAttribute="height" multiplier="6:3" id="GnB-fB-1uV"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ru6-cB-wSt">
-                                <rect key="frame" x="16" y="180.5" width="256" height="46"/>
+                                <rect key="frame" x="16" y="190" width="256" height="46"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gvT-8G-XgG">
                                         <rect key="frame" x="0.0" y="0.0" width="123" height="46"/>
@@ -83,16 +83,33 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-TR-br9">
+                                <rect key="frame" x="202" y="16" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.30588235289999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="0L8-BS-VNU"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g8G-yQ-ZqH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="RbE-TR-br9" firstAttribute="leading" secondItem="jIK-Uc-Id2" secondAttribute="trailing" constant="8" id="1T7-tq-wwD"/>
                             <constraint firstItem="9AX-5S-8vs" firstAttribute="leading" secondItem="GWk-q8-RWD" secondAttribute="leading" constant="16" id="DwN-Ph-8aW"/>
                             <constraint firstAttribute="trailing" secondItem="9AX-5S-8vs" secondAttribute="trailing" constant="16" id="Itj-ZM-qFI"/>
+                            <constraint firstItem="9AX-5S-8vs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jIK-Uc-Id2" secondAttribute="bottom" constant="8" id="LKk-Ft-p59"/>
+                            <constraint firstItem="RbE-TR-br9" firstAttribute="top" secondItem="GWk-q8-RWD" secondAttribute="top" constant="16" id="Lu2-Vh-Hoc"/>
                             <constraint firstItem="ru6-cB-wSt" firstAttribute="leading" secondItem="GWk-q8-RWD" secondAttribute="leading" constant="16" id="Oja-nm-Aqu"/>
-                            <constraint firstItem="9AX-5S-8vs" firstAttribute="top" secondItem="jIK-Uc-Id2" secondAttribute="bottom" constant="8" id="WFi-ul-giN"/>
+                            <constraint firstItem="9AX-5S-8vs" firstAttribute="top" secondItem="RbE-TR-br9" secondAttribute="bottom" constant="8" id="WFi-ul-giN"/>
+                            <constraint firstAttribute="trailing" secondItem="RbE-TR-br9" secondAttribute="trailing" constant="16" id="cNJ-f3-BHK"/>
+                            <constraint firstItem="RbE-TR-br9" firstAttribute="height" secondItem="jIK-Uc-Id2" secondAttribute="height" multiplier="1.46341" id="h7n-Ey-uyX"/>
                             <constraint firstAttribute="trailing" secondItem="ru6-cB-wSt" secondAttribute="trailing" constant="16" id="i0h-6Z-WSW"/>
                             <constraint firstItem="jIK-Uc-Id2" firstAttribute="leading" secondItem="GWk-q8-RWD" secondAttribute="leading" constant="16" id="m6b-3n-Uzh"/>
-                            <constraint firstAttribute="trailing" secondItem="jIK-Uc-Id2" secondAttribute="trailing" constant="16" id="oHI-57-oNX"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ru6-cB-wSt" secondAttribute="bottom" constant="8" id="vBf-6k-R6L"/>
                             <constraint firstItem="jIK-Uc-Id2" firstAttribute="top" secondItem="GWk-q8-RWD" secondAttribute="top" constant="16" id="xmp-mL-zKa"/>
                             <constraint firstItem="ru6-cB-wSt" firstAttribute="top" secondItem="9AX-5S-8vs" secondAttribute="bottom" constant="8" id="y5i-fF-TKQ"/>
@@ -109,6 +126,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="PriceStack" destination="CsM-VA-j3g" id="X78-Zb-12S"/>
+                <outlet property="btnCancelTrip" destination="RbE-TR-br9" id="IO9-vT-KQd"/>
                 <outlet property="containerView" destination="GWk-q8-RWD" id="Dxn-qI-FUD"/>
                 <outlet property="imageViewRideRoute" destination="9AX-5S-8vs" id="xEf-fi-jAU"/>
                 <outlet property="lblAddress" destination="1ly-eE-ZIQ" id="JOS-gA-uTC"/>

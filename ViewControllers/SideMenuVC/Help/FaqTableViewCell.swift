@@ -10,6 +10,11 @@ import UIKit
 
 class FaqTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var lbl_Question: UILabel!
+    @IBOutlet weak var lbl_Answer: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

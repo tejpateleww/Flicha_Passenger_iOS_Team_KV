@@ -22,7 +22,6 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = themeYellowColor;
         self.navigationController?.navigationBar.tintColor = UIColor.white;
         
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -200,6 +199,9 @@ class BaseViewController: UIViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.roundCorners(with: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 25)
         
+        
+        containerView.tag = 27
+        
         let leftView = UIView()
         //leftView.backgroundColor = .red
         leftView.translatesAutoresizingMaskIntoConstraints = false
@@ -231,6 +233,7 @@ class BaseViewController: UIViewController {
         let rightView = UIView()
         rightView.translatesAutoresizingMaskIntoConstraints = false
         rightView.addSubview(rightBarButton)
+        rightView.tag = 27
         
         let stackView = UIStackView(arrangedSubviews: [leftView,centerView,rightView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -289,6 +292,10 @@ class BaseViewController: UIViewController {
     @objc func btnBackAction()
     {
         self.navigationController?.popViewController(animated: true)
+        
+        if self.navigationController == nil {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func btnCallAction()

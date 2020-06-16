@@ -324,6 +324,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         GIDSignIn.sharedInstance().uiDelegate = self as GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
     }
+    
+    
+    
+    
 
     
     //MARK: - IBActions

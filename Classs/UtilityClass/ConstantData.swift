@@ -231,6 +231,7 @@ let OpenInviteFriend = NSNotification.Name("OpenInviteFriend")
 let OpenSetting = NSNotification.Name("OpenSetting")
 let OpenSupport = NSNotification.Name("OpenSupport")
 let OpenHome = NSNotification.Name("OpenHome")
+let OpenHelp = NSNotification.Name("OpenHelp")
 
 
 

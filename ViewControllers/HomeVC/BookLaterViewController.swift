@@ -210,6 +210,10 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
             UtilityClass.setCustomAlert(title: "Missing", message: "All fields are required...".localized) { (index, title) in
             }
         }
+        else if txtMobileNumber.text!.count < 10 {
+            UtilityClass.setCustomAlert(title: "Invalid Mobile!", message: "Enter correct mobile number") { (index, title) in
+            }
+        }
         else {
             webserviceOFBookLater()
         }
