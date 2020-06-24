@@ -201,7 +201,7 @@ extension UpCommingRidesVC {
                 self.lblNoDataFound.isHidden = self.aryUpcomingRidesData.count > 0
                 self.tableView.reloadData()
                 
-                UtilityClass.setCustomAlert(title: "Success", message: "Your trip cancelled successfully") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Success", message: "Your trip cancelled successfully".localized) { (index, title) in
                 }
                 
             } else {

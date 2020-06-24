@@ -120,7 +120,7 @@ class WalletTopUpVC: BaseViewController, SelectCardDelegate,delegatePesapalWebVi
 //        else
         if txtAmount.text == "" {
      
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Amount") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter amount") { (index, title) in
             }
         }
         else {

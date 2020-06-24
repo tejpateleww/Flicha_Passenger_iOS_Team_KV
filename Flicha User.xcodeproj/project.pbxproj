@@ -155,7 +155,6 @@
 		3A40741321B512280015C494 /* WebserviceSubClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40737721B512280015C494 /* WebserviceSubClass.swift */; };
 		3A5DDCA721BA5C9200F9B5A3 /* TripInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DDCA621BA5C9200F9B5A3 /* TripInfoViewController.swift */; };
 		3A5F1BD221CE21AD000007AE /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5F1BD121CE21AD000007AE /* Credentials.plist */; };
-		3A5F1BD421CE2272000007AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5F1BD321CE2272000007AE /* GoogleService-Info.plist */; };
 		3A84BC9321C22B2E00EDA3A2 /* RMPopoverPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC8A21C22B2E00EDA3A2 /* RMPopoverPresentationController.m */; };
 		3A84BC9421C22B2E00EDA3A2 /* RMUniversalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC8C21C22B2E00EDA3A2 /* RMUniversalAlert.m */; };
 		3A84BC9521C22B2E00EDA3A2 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84BC8E21C22B2E00EDA3A2 /* UIActionSheet+Blocks.m */; };
@@ -170,6 +169,7 @@
 		64BD5ABB247579D300C17B4D /* UniversalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */; };
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
 		6E25B17E2494C51F00A60132 /* SignUpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */; };
+		6EA496FF249A2189000443EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EA496FE249A2189000443EB /* GoogleService-Info.plist */; };
 		6EB460052498D03D007F9D10 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460042498D03D007F9D10 /* HelpVC.swift */; };
 		6EB460072498D2FA007F9D10 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */; };
 		6EB460092498DEBD007F9D10 /* FaqVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460082498DEBD007F9D10 /* FaqVC.swift */; };
@@ -357,7 +357,6 @@
 		3A40737721B512280015C494 /* WebserviceSubClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebserviceSubClass.swift; sourceTree = "<group>"; };
 		3A5DDCA621BA5C9200F9B5A3 /* TripInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoViewController.swift; sourceTree = "<group>"; };
 		3A5F1BD121CE21AD000007AE /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
-		3A5F1BD321CE2272000007AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A84BC8921C22B2E00EDA3A2 /* RMPopoverPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPopoverPresentationController.h; sourceTree = "<group>"; };
 		3A84BC8A21C22B2E00EDA3A2 /* RMPopoverPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPopoverPresentationController.m; sourceTree = "<group>"; };
 		3A84BC8B21C22B2E00EDA3A2 /* RMUniversalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUniversalAlert.h; sourceTree = "<group>"; };
@@ -384,6 +383,7 @@
 		64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVerificationViewController.swift; sourceTree = "<group>"; };
+		6EA496FE249A2189000443EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/Sj Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EB460042498D03D007F9D10 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		6EB460082498DEBD007F9D10 /* FaqVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqVC.swift; sourceTree = "<group>"; };
@@ -471,7 +471,7 @@
 		3A4072B321B512270015C494 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3A5F1BD321CE2272000007AE /* GoogleService-Info.plist */,
+				6EA496FE249A2189000443EB /* GoogleService-Info.plist */,
 				3A5F1BD121CE21AD000007AE /* Credentials.plist */,
 				3A4072B421B512270015C494 /* Assets.xcassets */,
 				3A4072BA21B512270015C494 /* Fonts */,
@@ -1177,7 +1177,6 @@
 				3A40738821B512280015C494 /* proxima-nova-regular-italic.otf in Resources */,
 				3A4073F521B512280015C494 /* AJAlertController.xib in Resources */,
 				3A4073A221B512280015C494 /* HeaderView.xib in Resources */,
-				3A5F1BD421CE2272000007AE /* GoogleService-Info.plist in Resources */,
 				819C1807244B22BC00730552 /* RideDetailsTableViewCell.xib in Resources */,
 				3A40739021B512280015C494 /* costcoWholesale.png in Resources */,
 				3A40738021B512280015C494 /* proxima-nova-condensed-light.otf in Resources */,
@@ -1216,6 +1215,7 @@
 				3A4073FC21B512280015C494 /* circle1.png in Resources */,
 				3A40737F21B512280015C494 /* proxima-nova-condensed-light-italic.otf in Resources */,
 				3A40740221B512280015C494 /* round50.png in Resources */,
+				6EA496FF249A2189000443EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,7 +1647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Flicha User.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68A4B5TS6;
@@ -1676,7 +1676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Flicha User.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K68A4B5TS6;

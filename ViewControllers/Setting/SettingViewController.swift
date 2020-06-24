@@ -21,15 +21,13 @@ class SettingViewController: BaseViewController {
     
     func webserviceCallForUpdateNotificationSetting(notification: Int) {
         
-        
         var dictParam = [String:AnyObject]()
         dictParam["PassengerId"] = "1" as AnyObject
         dictParam["Notification"] = "\(notification)" as AnyObject
         dictParam["InternetAds"] = "\(notification)" as AnyObject
         
         WebserviceForUpdateNotificationSetting(dictParam as AnyObject) { (result, status) in
-            
-            
+                
             print(result)
             
             if status == true {
@@ -37,6 +35,7 @@ class SettingViewController: BaseViewController {
                 
             } else {
                 // Do nothing for now
+                
             }
         }
     }
@@ -51,10 +50,10 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tblCell = tableView.dequeueReusableCell(withIdentifier: "TblSettingCell") as! TblSettingCell
         tblCell.lblTitle.text = self.arrSettings[indexPath.row]
-        tblCell.lblDesc.text = "This is test Wording, Allow Push Notifications"
-        tblCell.containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.50)
-        tblCell.containerView.layer.cornerRadius = 15.0
-        tblCell.containerView.layer.masksToBounds = true
+        tblCell.lblDesc.text = "Allow Push Notifications?"
+        tblCell.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.50)
+        tblCell.contentView.layer.cornerRadius = 15.0
+        tblCell.contentView.layer.masksToBounds = true
         tblCell.selectionStyle = .none
         
         tblCell.SwitchAction = {
@@ -66,6 +65,10 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return tblCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
 

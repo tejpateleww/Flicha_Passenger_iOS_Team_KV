@@ -39,6 +39,8 @@ class CompletedRidesVC: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView()
         self.tableView.addSubview(self.refreshControl)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -95,6 +97,14 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+            let vc = MyRidesStoryBoard.instantiateViewController(withIdentifier: "TripDetailsViewController") as! TripDetailsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    
+    
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
         isDataLoading = false
@@ -117,6 +127,8 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
             }
         }
     }
+    
+   
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {

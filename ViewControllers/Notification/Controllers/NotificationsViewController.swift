@@ -106,7 +106,7 @@ extension NotificationsViewController
             {
                 if let res = result as? String
                 {
-                    UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Error", message: res.firstCharacterUpperCase()) { (index, title) in
                     }
                 }
                 else if let resDict = result as? NSDictionary

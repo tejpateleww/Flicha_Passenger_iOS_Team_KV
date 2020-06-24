@@ -62,6 +62,8 @@ let PastBookingGet = WebserviceURLs.kPastBooking_get
 
 let UpdateNotificationSetting = WebserviceURLs.kUpdateNotificationSetting
 
+let AppleLogin = WebserviceURLs.kAppleLogin
+
 
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
@@ -557,3 +559,14 @@ func WebserviceForUpdateNotificationSetting(_ dictParams: AnyObject, completion:
     postData(dictParams, nsURL: url, completion: completion)
 }
 
+
+
+// ------------------------------------------------------------
+// MARK:- Webservice For Apple Login
+// ------------------------------------------------------------
+
+func WebserviceForAppleLogin(_ dictPArams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = AppleLogin
+    postData(dictPArams, nsURL: url, completion: completion)
+}

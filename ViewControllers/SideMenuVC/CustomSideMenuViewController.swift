@@ -15,7 +15,6 @@ class CustomSideMenuViewController: SideMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         performSegue(withIdentifier: "embedInitialCenterController", sender: nil)
         performSegue(withIdentifier: "embedSideController", sender: nil)
      

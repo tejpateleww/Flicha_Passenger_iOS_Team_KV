@@ -54,7 +54,15 @@ class SignUpVerificationViewController: UIViewController {
     }
     
     @IBAction func btnAction_ResendOTP(_ sender: Any) {
-        WebserviceOtpForRegister(msg: true)
+        
+        if Connectivity.isConnectedToInternet() {
+            WebserviceOtpForRegister(msg: true)
+        } else {
+            UtilityClass.setCustomAlert(title: appName, message: "No Internet connection") { (index, title) in
+                //
+            }
+        }
+        
     }
     
     
@@ -66,16 +74,31 @@ class SignUpVerificationViewController: UIViewController {
             return
         }
         
-        let valid_otp : String = "\(validOTP_FromWebService)"
-        if enteredOTP == valid_otp {
-            // Delegate method to notify signup vc to call webservice for signup
+        if Connectivity.isConnectedToInternet() {
             
-            delegate?.signInAfterOTP(dict, img: userImg)
+            let valid_otp : String = "\(validOTP_FromWebService)"
+            if enteredOTP == valid_otp {
+                // Delegate method to notify signup vc to call webservice for signup
+                
+                delegate?.signInAfterOTP(dict, img: userImg)
+                
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } else {
+                UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Please enter a valid OTP") { (index, title) in
+                }
+            }
             
         } else {
-            UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Please Enter Correct OTP") { (index, title) in
+            
+            UtilityClass.setCustomAlert(title: appName, message: "No internet connection") { (index, title) in
+                //
             }
+            
         }
+         
+        
+       
         
     }
     
@@ -127,8 +150,10 @@ class SignUpVerificationViewController: UIViewController {
             
             if status {
                 
-                let dict = result as! [String: AnyObject]
-                let otp = dict["otp"] as? Int
+                let dictResult = result as! [String: AnyObject]
+                let otp = dictResult["otp"] as? Int
+                
+                print(otp)
                 
                 self.validOTP_FromWebService = otp ?? 0
                 
@@ -136,7 +161,7 @@ class SignUpVerificationViewController: UIViewController {
                     // Make a Toast or Display an alert..
 //                    UtilityClass.setCustomAlert(title: "Success", message: "OTP has been sent successfully", completionHandler:
                         
-                    UtilityClass.setCustomAlert(title: "Success", message: "OTP has been sent successfully") { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                         //
                     }
                 }
@@ -144,6 +169,11 @@ class SignUpVerificationViewController: UIViewController {
             } else {
 //                print((result as! [String:AnyObject])["message"] as? String)
                 //may be an alert saying something went wrong please check back later.
+                
+                UtilityClass.setCustomAlert(title: "Invalid!", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                    //
+                }
+                
             }
             
         }

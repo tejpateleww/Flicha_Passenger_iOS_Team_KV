@@ -32,13 +32,6 @@ class SignUpViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        txtFirstName.text = ""
-        txtLastName.text = ""
-        txtEmail.text = ""
-        txtPhoneNumber.text = ""
-        txtPassword.text = ""
-        txtConfirmPassword.text = ""
     }
     
     func setupView()
@@ -51,7 +44,7 @@ class SignUpViewController: UIViewController {
         self.txtPhoneNumber.placeholder = "Phone Number"
         self.txtPassword.placeholder = "Password"
         self.txtConfirmPassword.placeholder = "Confirm Password"
-        self.btnSignUp.setTitle("Sign UP", for: .normal)
+        self.btnSignUp.setTitle("Sign Up", for: .normal)
         self.imgProfile.layer.cornerRadius = self.imgProfile.frame.size.width / 2
         self.imgProfile.layer.masksToBounds = true
         self.ProfileImageView.layer.cornerRadius = self.ProfileImageView.frame.size.width / 2
@@ -165,31 +158,31 @@ extension SignUpViewController
         
         if (txtFirstName.text?.count == 0) && (txtLastName.text?.count == 0) && (txtEmail.text?.count == 0) && (txtPhoneNumber.text?.count == 0) && (txtPassword.text?.count == 0) && (txtConfirmPassword.text?.count == 0) {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all details") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all details".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         }
         else if (txtFirstName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter first name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: ("Please enter first name")){ (index, title) in
             }
             return false
         }
         else if (txtLastName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter last name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter last name".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         
         }else if (txtEmail.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter email") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter email".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         
         }else if (!(txtEmail.text?.isValidEmail() ?? false))
         {
-            UtilityClass.setCustomAlert(title: "Incorrect", message: "Please Enter a valid email") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Incorrect", message: "Please enter a valid email") { (index, title) in
             }
             return false
         }
@@ -201,7 +194,7 @@ extension SignUpViewController
        
         }else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter password") { (index, title) in
             }
             return false
        
@@ -214,7 +207,7 @@ extension SignUpViewController
         }
         else if (txtConfirmPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter confirm password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please confirm the password") { (index, title) in
             }
             return false
       
@@ -308,7 +301,7 @@ extension SignUpViewController
 //            dictParams.setObject(txtEmail.text ?? "", forKey: "Email" as NSCopying)
 //            dictParams.setObject(txtPassword.text ?? "", forKey: "Password" as NSCopying)
 //            dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
-//            dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
+//             dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
 //            dictParams.setObject("", forKey: "Gender" as NSCopying)
 //            dictParams.setObject("12376152367", forKey: "Lat" as NSCopying)
 //            dictParams.setObject("2348273489", forKey: "Lng" as NSCopying)
@@ -323,7 +316,7 @@ extension SignUpViewController
                     DispatchQueue.main.async(execute: { () -> Void in
                         
                         UtilityClass.hideACProgressHUD()
-//                        self.navigationController?.popViewController(animated: true)
+                       
                         
                         // msg
                         UtilityClass.setCustomAlert(title: "Alert!", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
@@ -348,6 +341,7 @@ extension SignUpViewController
 extension SignUpViewController : SignupRemotely {
     func signInAfterOTP(_ data: NSMutableDictionary, img: UIImage) {
         webServiceCallForRegister(params: data, img: img)
+        
     }
     
     

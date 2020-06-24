@@ -17,6 +17,8 @@ import GoogleSignIn
 import NVActivityIndicatorView
 import CoreLocation
 
+import AuthenticationServices
+
 class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegate, alertViewMethodsDelegates
 {
     //-------------------------------------------------------------
@@ -31,7 +33,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     @IBOutlet weak var btnForgotPass: UIButton!
     @IBOutlet weak var lblDontAc: UILabel!
     @IBOutlet weak var btnFB: UIButton!
-   
+    @IBOutlet weak var btnGoogle: UIButton!
+    @IBOutlet weak var loginProviderStackView: UIStackView!
+    
+    
     var manager = CLLocationManager()
     var strURLForSocialImage = String()
     var aryAllDrivers = NSArray()
@@ -136,11 +141,20 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
 //        lblLaungageName.backgroundColor = themeYellowColor
 //        lblLaungageName.layer.borderColor = UIColor.black.cgColor
 //        lblLaungageName.layer.borderWidth = 0.5
+        
+          self.setupSOAppleSignIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
             self.setLocalization()
+    }
+    
+    override func viewDidLayoutSubviews() {
+//         Singleton.sharedSingleton.setCornerRadius(view: loginProviderStackView, radius: btnFB.frame.height / 2)
+        
+//        loginProviderStackView.layer.cornerRadius = loginProviderStackView.frame.height / 2
+        
     }
     
    func setLocalization()
@@ -178,7 +192,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             return false
         } else if (txtMobile.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter your Mobile Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your Mobile Number") { (index, title) in
             }
             
             // txtMobile.showErrorWithText(errorText: "Enter Email")
@@ -186,7 +200,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         }
         else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter your Password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your Password") { (index, title) in
             }
             
             return false
@@ -326,9 +340,6 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     }
     
     
-    
-    
-
     
     //MARK: - IBActions
     
@@ -536,7 +547,7 @@ extension LoginViewController : GIDSignInDelegate,GIDSignInUIDelegate
                 let imgUrl: String = (pic?.absoluteString)!
                 print(imgUrl)
                 self.strURLForSocialImage = imgUrl
-                let url = URL(string: imgUrl as! String)
+                let url = URL(string: imgUrl )
                 let data = try? Data(contentsOf: url!)
                 
                 if let imageData = data {
@@ -587,6 +598,94 @@ extension LoginViewController : GIDSignInDelegate,GIDSignInUIDelegate
     }
     
 }
+
+
+//MARK: - APPLE LOGIN
+
+extension LoginViewController {
+    
+    // apple sign in
+      func setupSOAppleSignIn() {
+            if #available(iOS 13.0, *) {
+//                let authorizationButton = ASAuthorizationAppleIDButton()
+                let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+                
+                authorizationButton.layer.cornerRadius = authorizationButton.frame.height / 2
+                
+//                let maskView = UIView(frame: CGRect(x: 0, y: 0, width: loginProviderStackView.frame.width, height: loginProviderStackView.frame.height))
+//                maskView.backgroundColor = .black
+//                maskView.layer.cornerRadius = loginProviderStackView.frame.width / 2
+//                authorizationButton.mask = maskView
+                
+              
+                
+                authorizationButton.addTarget(self, action: #selector(actionHandleAppleSignin), for: .touchUpInside)
+                self.loginProviderStackView.addArrangedSubview(authorizationButton)
+                
+                //SJ Edit Started
+                
+               
+                
+            } else {
+                // Fallback on earlier versions
+                loginProviderStackView.isHidden = true
+            }
+        }
+        
+        // Perform acton on click of Sign in with Apple button
+        @objc func actionHandleAppleSignin() {
+            if #available(iOS 13.0, *) {
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                let request = appleIDProvider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.delegate = self
+                authorizationController.presentationContextProvider = self
+                authorizationController.performRequests()
+            }
+        }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    // ASAuthorizationControllerDelegate function for authorization failed
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    @available(iOS 13.0, *)
+    // ASAuthorizationControllerDelegate function for successful authorization
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let appleId = appleIDCredential.user
+            let appleUserFirstName = appleIDCredential.fullName?.givenName
+            let appleUserLastName = appleIDCredential.fullName?.familyName
+            let appleUserEmail = appleIDCredential.email
+            print(appleId, appleUserFirstName ?? "", appleUserLastName ?? "", appleUserEmail ?? "")
+            
+            
+            self.appleLogIn(credentials: appleIDCredential, email: appleUserEmail ?? "", firstName: appleUserFirstName ?? "", lastName: appleUserLastName ?? "")
+        }
+        else if let passwordCredential = authorization.credential as? ASPasswordCredential {
+            let appleUsername = passwordCredential.user
+            let applePassword = passwordCredential.password
+            
+            print(appleUsername, applePassword)
+        }
+    }
+}
+
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    //For present window
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+}
+
+
 
 //MARK: - Webservices Section
 
@@ -700,7 +799,7 @@ extension LoginViewController
                 (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                 
                 //                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                //                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
+                                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
                 //                let navController = UINavigationController(rootViewController: viewHomeController!)
                 //                self.sideMenuController?.embed(centerViewController: navController)
             }
@@ -793,3 +892,82 @@ extension LoginViewController
         }
     }
 }
+
+
+
+
+
+
+
+extension LoginViewController {
+    
+    @available(iOS 13.0, *)
+    func checkAppleId(credentials : ASAuthorizationAppleIDCredential) {
+        //user.isAbove18 = true //FOR TEMP USER ONLY
+        var  paramer: [String: Any] = [:]
+        
+        let appleId = credentials.user
+        
+        paramer["email"] = ""
+        paramer["facebook_id"] = ""
+        paramer["google_id"] = ""
+        paramer["twitter_id"] = ""
+        paramer["apple_id"] = appleId
+
+//        AFAPIMaster.sharedAPIMaster.postCheckEmail_Completion(params: paramer, showLoader: true, enableInteraction: false, viewObj: (Global.appDelegate.navController?.view)!, onSuccess: { (result) in
+//            print(result)
+//            let Dict = JSON(result)
+//
+//            if  Dict["FLAG"].bool == true {
+//                let strEmailAddress = "\(Dict["DATA"])"
+//                let strFName = "\(Dict["DATAFNAME"])"
+//                let strLName = "\(Dict["DATALNAME"])"
+//
+//                self.appleLogIn(credentials: credentials, email: strEmailAddress, firstName: strFName, lastName: strLName)
+//            }
+//            else {
+//                self.appleLogIn(credentials: credentials, email: "", firstName: "", lastName: "")
+//            }
+//
+//        }) {
+//
+//        }
+        
+        
+        
+        
+    }
+
+    
+    @available(iOS 13.0, *)
+    func appleLogIn(credentials : ASAuthorizationAppleIDCredential, email : String , firstName : String , lastName : String)  {
+        
+        let appleId = credentials.user
+        let appleUserFirstName = credentials.fullName?.givenName
+        let appleUserLastName = credentials.fullName?.familyName
+        let appleUserEmail = credentials.email
+        
+        var  paramer: [String: Any] = [:]
+        
+        paramer["first_name"] =  appleUserFirstName ?? firstName
+        paramer["last_name"] = appleUserLastName ?? lastName
+        paramer["email"] = appleUserEmail ?? email
+        paramer["apple_id"] = appleId
+
+        print("apple login dict\(paramer)")
+
+        WebserviceForAppleLogin(paramer as AnyObject) { (result, status) in
+            print(result)
+            
+            if status {
+                // save user to user defaults ?
+                let data = result["data"] as! [String: AnyObject]
+                SingletonClass.sharedInstance.dictProfile = data as! NSMutableDictionary
+            } else {
+                //
+            }
+        }
+        
+    }
+}
+

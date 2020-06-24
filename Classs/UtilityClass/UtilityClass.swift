@@ -147,7 +147,7 @@ class UtilityClass: NSObject, alertViewMethodsDelegates {
     
     class func setCustomAlert(title: String, message: String,completionHandler: alertCompletionBlockAJ) -> Void {
        
-        AJAlertController.initialization().showAlertWithOkButton(aStrTitle: appName, aStrMessage: message) { (index,title) in
+        AJAlertController.initialization().showAlertWithOkButton(aStrTitle: appName, aStrMessage: message.firstCharacterUpperCase()!.localized) { (index,title) in
             
             if index == 0 {
                 completionHandler!(0,title)
@@ -330,4 +330,20 @@ extension UIViewController {
     }
     
     
+}
+
+
+//extension String {
+//func firstCharacterUpperCase() -> String? {
+//    let lowercaseString = self.lowercaseString
+//
+//    return lowercaseString.stringByReplacingCharactersInRange(lowercaseString.startIndex...lowercaseString.startIndex, withString: String(lowercaseString[lowercaseString.startIndex]).uppercaseString)
+//}
+
+extension String {
+    func firstCharacterUpperCase() -> String! {
+        guard !isEmpty else { return nil }
+        let lowerCasedString = self.lowercased()
+        return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
+    }
 }

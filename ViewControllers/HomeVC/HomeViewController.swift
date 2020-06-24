@@ -48,6 +48,9 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     @IBOutlet weak var toLocationView: UIStackView!
     @IBOutlet weak var txtPromodeCode: UITextField!
     @IBOutlet weak var btnApplyPromoCode: UIButton!
+    
+    @IBOutlet weak var btnApplyPromoCode_WidthConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var btnBookRideNow: ThemeButton!
     @IBOutlet weak var btnBookRideLater: UIButton!
     @IBOutlet weak var readyToBookRideView: UIView!
@@ -61,6 +64,16 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     @IBOutlet weak var lblDistanceTitle: UILabel!
     @IBOutlet weak var lblDistanceValue: UILabel!
     @IBOutlet weak var imageViewCarType: UIImageView!
+    
+    @IBOutlet weak var btnToggle_vwTripActions: UIButton!
+    
+    @IBOutlet weak var heightConstraint_vwTripActions: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var driverInfoStack: UIStackView!
+    @IBOutlet weak var vwSeparator: UIView!
+    
+    
     
     @IBOutlet weak var lblTimeValue: UILabel!
     @IBOutlet weak var lblTimeTitle: UILabel!
@@ -174,6 +187,10 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     var dropOffLatForBookLater = Double()
     var dropOffLngForBookLater = Double()
     
+    
+    
+    
+    
     @IBOutlet weak var btnCurrentLocation: UIButton!
     var currentLocationMarker = GMSMarker()
     var destinationLocationMarker = GMSMarker()
@@ -201,15 +218,20 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         //Menu Navigation Observer
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoProfilePage), name: OpenEditProfile, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoMyBookingPage), name: OpenMyBooking, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoPaymentPage), name: OpenPaymentOption, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoWalletPage), name: OpenWallet, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoMyReceiptPage), name: OpenMyReceipt, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoFavouritePage), name: OpenFavourite, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoInviteFriendPage), name: OpenInviteFriend, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoPaymentPage), name: OpenPaymentOption, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoWalletPage), name: OpenWallet, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoMyReceiptPage), name: OpenMyReceipt, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoFavouritePage), name: OpenFavourite, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoInviteFriendPage), name: OpenInviteFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSettingPage), name: OpenSetting, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSupportPage), name: OpenSupport, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoHelpPage), name: OpenHelp, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoNotificationPage), name: OpenNotification, object: nil)
+        
+        
+        
         
         
         self.btnDoneForLocationSelected.isHidden = true
@@ -252,6 +274,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
         self.setLocalization()
         self.btnDoneForLocationSelected.isHidden = true
         
@@ -260,7 +283,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             
             if strCarModelID == ""
             {
-                UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! no car available".localized) { (index, title) in
                 }
             }
             else if strDestinationLocationForBookLater != ""
@@ -285,12 +308,15 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             }
             else
             {
-                UtilityClass.setCustomAlert(title: "Missing", message: "We did not get proper address") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "We did not get proper address".localized) { (index, title) in
                 }
             }
         }
         
+//        self.socketMethods()
+        
         locationManager.startUpdatingLocation()
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -634,7 +660,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     func mapView(_ mapView: GMSMapView, idleAt cameraPosition: GMSCameraPosition) {
         print("idleAt cameraPosition : \(cameraPosition)")
         
-        if Connectivity.isConnectedToInternet() {
+	        if Connectivity.isConnectedToInternet() {
             
             if MarkerCurrntLocation.isHidden == false
             {
@@ -781,8 +807,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             
             do {
                 
-                let json = try! JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-                if let result = json["results"] as? [[String:AnyObject]] {
+                let json = try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+                if let result = json!["results"] as? [[String:AnyObject]] {
                     if result.count > 0 {
                         if let address = result[0]["address_components"] as? [[String:AnyObject]] {
                             
@@ -837,10 +863,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                         }
                     }
                 }
-            }
-            catch
-            {
-                print("Not Geting Address")
             }
         }else if markerType == destinationLocationMarkerText
         {
@@ -1188,26 +1210,30 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             {
                 if self.lblUserFromAddress.text?.count == 0
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your pickup location again") { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your pickup location again".localized) { (index, title) in
                     }
                 }
                 else if self.lblUserToAddress.text?.count == 0 {
                     
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your destination again") { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your destination again".localized) { (index, title) in
                     }
                 }
                 else if strModelId == ""
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Sorry! No Car Available".localized) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Please select a vehicle".localized) { (index, title) in
                     }
                 }
-                else
-                {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Locations or select available car") { (index, title) in
-                    }
-                }
+//                else
+//                {
+//                    UtilityClass.setCustomAlert(title: "Missing", message: "Please select an available car") { (index, title) in
+//                    }
+//                }
                 
             }
+//            else if strModelId == "0" {
+//                UtilityClass.setCustomAlert(title: "Missing", message: "No cars available") { (index, title) in
+//                }
+//            }
             else
             {
                 strSpecialRequest = "0"
@@ -1216,7 +1242,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         }
         else
         {
-            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+            UtilityClass.showAlert("", message: "Internet connection not available".localized, vc: self)
         }
     }
     
@@ -1346,6 +1372,42 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         print("Hello World")
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
+    
+    @IBAction func hideShow_TripActionsView(_ sender: UIButton) {
+        
+        if heightConstraint_vwTripActions.constant == 333.5 {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.heightConstraint_vwTripActions.constant = 70
+                self.imageViewCarType.isHidden = true
+                self.lblCarDescriptions.isHidden = true
+                self.vwSeparator.isHidden = true
+                self.driverInfoStack.isHidden = true
+                self.btnCancelBooking.isHidden = true
+                self.view.layoutIfNeeded()
+            })
+            
+            btnToggle_vwTripActions.setImage(UIImage(named: "up-arrow"), for: .normal)
+            
+        } else {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.heightConstraint_vwTripActions.constant = 333.5
+                self.view.layoutIfNeeded()
+            }) { (true) in
+                self.imageViewCarType.isHidden = false
+                self.lblCarDescriptions.isHidden = false
+                self.vwSeparator.isHidden = false
+                self.driverInfoStack.isHidden = false
+                self.btnCancelBooking.isHidden = false
+            }
+
+            btnToggle_vwTripActions.setImage(UIImage(named: "down-arrow"), for: .normal)
+        }
+        
+    }
+    
+    
     
     //-------------------------------------------------------------
     // MARK: - Favourite Delegate Methods
@@ -1788,6 +1850,11 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.navigationController?.pushViewController(next, animated: true)
     }
     
+    @objc func GotoNotificationPage() {
+        let next = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "NotificationsViewController") as! NotificationsViewController
+        self.navigationController?.pushViewController(next, animated: true)
+    }
+    
     func BookingConfirmed(dictData : NSDictionary)
     {
         
@@ -1846,6 +1913,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                     self.onAdvanceTripInfoBeforeStartTrip()                         // Start Later Req
                     self.onReceiveNotificationWhenDriverAcceptRequest()
                     self.onGetEstimateFare()
+                    
                 }
                 
                 // Get Estimate
@@ -2082,6 +2150,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.socket.on(SocketData.kAcceptBookingRequestNotification, callback: { (data, ack) in
             print("AcceptBooking data is \(data)")
             
+            self.handleMenuIcon(isSelected: false)
             self.locationManager.startUpdatingLocation()
             
             if let getInfoFromData = data as? [[String:AnyObject]] {
@@ -2138,7 +2207,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.viewTripActions.isHidden = false
         self.readyToBookRideView.isHidden = true
         self.defaultModeView.isHidden = true
-        self.handleMenuIcon(isSelected: true)
+//        self.handleMenuIcon(isSelected: true)
         
         self.viewActivity.stopAnimating()
         self.viewMainActivityIndicator.isHidden = true
@@ -4651,7 +4720,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             //SJ Edit Ended
             
             
-            cell.lblRate.text = "\(currencySign)\(price) / \(time) min"
+            cell.lblRate.text = "\(price) \(currencySign) / \(time) min"
             
             if let imageURL = dictOnlineCarData["Image"] as? String
             {
@@ -4831,7 +4900,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                 }
                 else
                 {
-                    strModelId = ""
+                    strModelId = "0"
                 }
                 
             }
@@ -4955,8 +5024,10 @@ extension HomeViewController: CLLocationManagerDelegate {
         {
             mapView.isHidden = false
             self.getPlaceFromLatLong()
+
+          
             self.socketMethods()
-            
+    
             mapView.delegate = self
             MarkerCurrntLocation.isHidden = false
             let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude, zoom: 17)
@@ -5104,9 +5175,22 @@ extension HomeViewController : CompleterTripInfoDelegate
 extension HomeViewController : UITextFieldDelegate{
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == txtPromodeCode{
+        if textField == txtPromodeCode {
             self.strValidPromoCode = ""
             self.txtPromodeCode.text = ""
+            
+            btnApplyPromoCode.setImage(nil, for: .normal)
+            btnApplyPromoCode.setTitle("Apply", for: .normal)
+            btnApplyPromoCode_WidthConstraint.constant = 80
+            
+            btnApplyPromoCode.layer.borderWidth = 1
+            if #available(iOS 13.0, *) {
+                btnApplyPromoCode.layer.borderColor = UIColor.opaqueSeparator.cgColor
+            } else {
+                 btnApplyPromoCode.layer.borderColor = UIColor.black.cgColor
+            }
+            
+            
         }
         return true
     }
@@ -5436,6 +5520,14 @@ extension HomeViewController {
                     {
                         if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                            
+                            //Change Apply promocode btn
+                            //SJ Edit Started
+                            self.btnApplyPromoCode.setTitle("", for: .normal)
+                            self.btnApplyPromoCode.setImage(UIImage(named: "ic_tick_mark"), for: .normal)
+                            self.btnApplyPromoCode_WidthConstraint.constant = 40
+                            
+                            self.btnApplyPromoCode.layer.borderWidth = 0
+                            
                             if SelectedLanguage == "en"
                             {
                                 UtilityClass.showAlert("Applied", message: res.object(forKey: "message") as? String ?? "", vc: self)
@@ -5638,11 +5730,11 @@ extension HomeViewController {
                             }
                             
                             if let price = SingleModel[ "trip_fare"] as? String{
-                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                                self.lblPriceValue.text = "\(price)" //.currencyInputFormatting()
                             } else if let price = SingleModel[ "trip_fare"] as? Double{
-                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                                self.lblPriceValue.text = "\(price)" //.currencyInputFormatting()
                             } else if let price = SingleModel[ "trip_fare"] as? Int{
-                                self.lblPriceValue.text = "\(price)".currencyInputFormatting()
+                                self.lblPriceValue.text = "\(price)" //.currencyInputFormatting()
                             }
                             
                         }

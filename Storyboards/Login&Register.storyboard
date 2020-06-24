@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdu-Mf-Nt2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-UA-o6t" userLabel="HeaderView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
@@ -126,7 +126,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRo-TR-N6H" customClass="ThemeButton" customModule="Flicha_User" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="519" width="324" height="50"/>
+                                                <rect key="frame" x="40" y="509" width="324" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="pfv-g3-QpT"/>
                                                 </constraints>
@@ -142,25 +142,35 @@
                                                     <action selector="btnLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhj-74-hf7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqh-VL-Vzc">
-                                                <rect key="frame" x="110" y="589" width="194" height="53"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 227" translatesAutoresizingMaskIntoConstraints="NO" id="CgY-yL-BaL">
+                                                <rect key="frame" x="110" y="579" width="194" height="53"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqh-VL-Vzc">
+                                                <rect key="frame" x="110" y="579" width="194" height="53"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="53" id="nWI-HS-g20"/>
                                                 </constraints>
-                                                <state key="normal" image="fb-button"/>
                                                 <connections>
                                                     <action selector="btnFBClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SKw-v2-tSa"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C69-bl-tzZ">
-                                                <rect key="frame" x="110" y="650" width="194" height="53"/>
-                                                <state key="normal" title="Button" image="google.png"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 254" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Lw-hPB">
+                                                <rect key="frame" x="110" y="647" width="194" height="53"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C69-bl-tzZ">
+                                                <rect key="frame" x="110" y="647" width="194" height="53"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.13179343939999999" green="0.16200941799999999" blue="0.27814918760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="btnGoogleClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CSl-RD-d5c"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqs-a8-aUH">
+                                                <rect key="frame" x="107" y="720" width="200" height="30"/>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXI-Cx-6wN">
-                                                <rect key="frame" x="20" y="711" width="374" height="16"/>
+                                                <rect key="frame" x="20" y="770" width="374" height="16"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
@@ -168,26 +178,38 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="aXI-Cx-6wN" firstAttribute="top" secondItem="zqs-a8-aUH" secondAttribute="bottom" constant="20" id="2HT-21-PVU"/>
                                             <constraint firstItem="zRo-TR-N6H" firstAttribute="leading" secondItem="uSY-u8-4s9" secondAttribute="leading" constant="20" id="5LB-Vb-5wP"/>
                                             <constraint firstItem="C69-bl-tzZ" firstAttribute="width" secondItem="hqh-VL-Vzc" secondAttribute="width" id="5j8-XI-GtL"/>
                                             <constraint firstItem="cqp-UA-o6t" firstAttribute="top" secondItem="xdu-Mf-Nt2" secondAttribute="top" id="5o7-wQ-7Bk"/>
                                             <constraint firstItem="Z5Q-0D-ebS" firstAttribute="top" secondItem="uSY-u8-4s9" secondAttribute="bottom" constant="20" id="8GA-vt-TXj"/>
-                                            <constraint firstItem="aXI-Cx-6wN" firstAttribute="top" secondItem="C69-bl-tzZ" secondAttribute="bottom" constant="8" id="BkS-D0-8c5"/>
+                                            <constraint firstItem="zqs-a8-aUH" firstAttribute="width" secondItem="C69-bl-tzZ" secondAttribute="width" multiplier="1.03093" id="E26-bo-ycf"/>
+                                            <constraint firstItem="CgY-yL-BaL" firstAttribute="height" secondItem="hqh-VL-Vzc" secondAttribute="height" id="JSU-DE-hFh"/>
                                             <constraint firstItem="Z5Q-0D-ebS" firstAttribute="trailing" secondItem="uSY-u8-4s9" secondAttribute="trailing" id="KI9-Vb-dut"/>
                                             <constraint firstItem="hqh-VL-Vzc" firstAttribute="centerX" secondItem="xdu-Mf-Nt2" secondAttribute="centerX" id="Nq0-J2-HqC"/>
+                                            <constraint firstItem="CgY-yL-BaL" firstAttribute="width" secondItem="hqh-VL-Vzc" secondAttribute="width" id="PPJ-lV-fQ1"/>
                                             <constraint firstAttribute="trailing" secondItem="cqp-UA-o6t" secondAttribute="trailing" id="QSF-Mt-D5K"/>
+                                            <constraint firstItem="CgY-yL-BaL" firstAttribute="centerX" secondItem="hqh-VL-Vzc" secondAttribute="centerX" id="SPg-Qa-gE3"/>
                                             <constraint firstItem="hqh-VL-Vzc" firstAttribute="top" secondItem="zRo-TR-N6H" secondAttribute="bottom" constant="20" id="Sp2-Jx-PPH"/>
                                             <constraint firstItem="aXI-Cx-6wN" firstAttribute="leading" secondItem="xdu-Mf-Nt2" secondAttribute="leading" constant="20" id="XDG-Ra-HaL"/>
                                             <constraint firstItem="C69-bl-tzZ" firstAttribute="height" secondItem="hqh-VL-Vzc" secondAttribute="height" id="c2F-n5-0k8"/>
-                                            <constraint firstItem="zRo-TR-N6H" firstAttribute="top" secondItem="Z5Q-0D-ebS" secondAttribute="bottom" constant="30" id="lDQ-48-EdN"/>
-                                            <constraint firstItem="C69-bl-tzZ" firstAttribute="top" secondItem="hqh-VL-Vzc" secondAttribute="bottom" constant="8" id="mbw-bu-9ul"/>
+                                            <constraint firstItem="1hV-Lw-hPB" firstAttribute="centerY" secondItem="C69-bl-tzZ" secondAttribute="centerY" id="dDL-Ud-r7S"/>
+                                            <constraint firstItem="1hV-Lw-hPB" firstAttribute="width" secondItem="C69-bl-tzZ" secondAttribute="width" id="emp-4w-UK5"/>
+                                            <constraint firstItem="zqs-a8-aUH" firstAttribute="height" secondItem="C69-bl-tzZ" secondAttribute="height" multiplier="0.566038" id="gCi-v9-tSa"/>
+                                            <constraint firstItem="zRo-TR-N6H" firstAttribute="top" secondItem="Z5Q-0D-ebS" secondAttribute="bottom" constant="20" id="lDQ-48-EdN"/>
+                                            <constraint firstItem="C69-bl-tzZ" firstAttribute="top" secondItem="hqh-VL-Vzc" secondAttribute="bottom" constant="15" id="mbw-bu-9ul"/>
+                                            <constraint firstItem="CgY-yL-BaL" firstAttribute="centerY" secondItem="hqh-VL-Vzc" secondAttribute="centerY" id="nTb-Wg-DMs"/>
                                             <constraint firstItem="hqh-VL-Vzc" firstAttribute="width" secondItem="zRo-TR-N6H" secondAttribute="width" multiplier="0.6" id="nhy-hI-sLj"/>
                                             <constraint firstItem="C69-bl-tzZ" firstAttribute="centerX" secondItem="hqh-VL-Vzc" secondAttribute="centerX" id="nrj-AH-0kF"/>
+                                            <constraint firstItem="1hV-Lw-hPB" firstAttribute="centerX" secondItem="C69-bl-tzZ" secondAttribute="centerX" id="oRI-FV-vQd"/>
                                             <constraint firstItem="zRo-TR-N6H" firstAttribute="trailing" secondItem="uSY-u8-4s9" secondAttribute="trailing" constant="-30" id="ozA-1p-XFJ"/>
                                             <constraint firstAttribute="bottom" secondItem="aXI-Cx-6wN" secondAttribute="bottom" constant="30" id="qil-fq-SG9"/>
                                             <constraint firstItem="cqp-UA-o6t" firstAttribute="leading" secondItem="xdu-Mf-Nt2" secondAttribute="leading" id="sju-MR-Bzo"/>
                                             <constraint firstAttribute="trailing" secondItem="uSY-u8-4s9" secondAttribute="trailing" constant="20" id="tPz-ha-1Ax"/>
                                             <constraint firstAttribute="trailing" secondItem="aXI-Cx-6wN" secondAttribute="trailing" constant="20" id="tsv-RY-Znd"/>
+                                            <constraint firstItem="1hV-Lw-hPB" firstAttribute="height" secondItem="C69-bl-tzZ" secondAttribute="height" id="uK7-mK-8RY"/>
+                                            <constraint firstItem="zqs-a8-aUH" firstAttribute="top" secondItem="C69-bl-tzZ" secondAttribute="bottom" constant="20" id="vqf-7M-0LW"/>
+                                            <constraint firstItem="zqs-a8-aUH" firstAttribute="centerX" secondItem="C69-bl-tzZ" secondAttribute="centerX" id="vzU-Y9-iWI"/>
                                             <constraint firstItem="uSY-u8-4s9" firstAttribute="leading" secondItem="xdu-Mf-Nt2" secondAttribute="leading" constant="20" id="vzg-pJ-yLb"/>
                                             <constraint firstItem="uSY-u8-4s9" firstAttribute="top" secondItem="cqp-UA-o6t" secondAttribute="bottom" constant="30" id="wMs-fy-Ssn"/>
                                         </constraints>
@@ -216,10 +238,12 @@
                     <connections>
                         <outlet property="btnFB" destination="hqh-VL-Vzc" id="r9s-Zu-HsK"/>
                         <outlet property="btnForgotPass" destination="Z5Q-0D-ebS" id="21Y-vv-0hi"/>
+                        <outlet property="btnGoogle" destination="C69-bl-tzZ" id="0RM-Uu-FV4"/>
                         <outlet property="btnLogin" destination="zRo-TR-N6H" id="vPR-tt-oXv"/>
                         <outlet property="lblDontAc" destination="aXI-Cx-6wN" id="uBA-f6-0RZ"/>
                         <outlet property="lblSubTitle" destination="ck1-WE-D86" id="xRT-0U-69g"/>
                         <outlet property="lblTitle" destination="zlT-Dv-K8S" id="mq6-QX-qwW"/>
+                        <outlet property="loginProviderStackView" destination="zqs-a8-aUH" id="UaK-bA-q5q"/>
                         <outlet property="txtMobile" destination="aNj-VZ-geJ" id="jh3-sI-lkV"/>
                         <outlet property="txtPassword" destination="1vE-Mx-ge8" id="EAr-V5-iz0"/>
                         <outlet property="viewMain" destination="xdu-Mf-Nt2" id="ftT-Y5-Bmu"/>
@@ -343,7 +367,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNC-Hf-INK" customClass="ThemeTextField" customModule="Flicha_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -356,7 +380,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="crG-xj-RXs" customClass="ThemeTextField" customModule="Flicha_User" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -1268,8 +1292,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fb-button" width="164.5" height="54"/>
-        <image name="google.png" width="18" height="18"/>
+        <image name="Group 227" width="246.5" height="78"/>
+        <image name="Group 254" width="246.5" height="78"/>
         <image name="iconBack" width="20" height="20"/>
         <image name="icon_Plus" width="31" height="31"/>
         <image name="icon_UserImage" width="85" height="85"/>

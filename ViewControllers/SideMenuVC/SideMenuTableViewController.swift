@@ -12,8 +12,7 @@ protocol delegateForTiCKPayVerifyStatus {
     func didRegisterCompleted()
 }
 
-
-class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifyStatus {
+class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifyStatus, UpdateProfileVCDelegate  {
     
 //    @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +28,8 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     var ProfileData = NSDictionary()
     var strSelectedLaungage = String()
     
+    
+    
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -37,6 +38,25 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     {
         super.viewDidLoad()
         self.setupView()
+        
+        let updatevc = LoginAndRegisterStoryboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
+        updatevc.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SideMenuTableViewController.updateImgView), name: UpdateProPic, object: nil)
+        
+    }
+    
+    @objc func updateImgView() {
+        let data = SingletonClass.sharedInstance.dictProfile
+        self.imgProfile.sd_setImage(with: URL(string: data.object(forKey: "Image") as! String), completed: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        print("test")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("test")
     }
     
     func setupView()
@@ -176,6 +196,12 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
         webserviceOfTickPayStatus()
     }
     
+    func didProfileUpdate(_ str: String) {
+        print("It works")
+        // Cant assign image to imageview here.
+//        self.imgProfile.sd_setImage(with: URL(string: str), completed: nil)
+    }
+    
     //-------------------------------------------------------------
     // MARK: - Custom Methods
     //-------------------------------------------------------------
@@ -229,6 +255,7 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
         {
             customCell.lblTitle.text = menuDetails.0
             customCell.imgDetail?.image = UIImage.init(named:  menuDetails.1)
+            
             customCell.imgDetail.contentMode = .scaleAspectFit
         }
         
@@ -254,8 +281,10 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
                 
             }else if menuDetails.0 == "Notification"
             {
-                let notificationVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "NotificationsViewController")
-                self.navigationController?.pushViewController(notificationVC, animated: true)
+//                let notificationVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "NotificationsViewController")
+//                self.navigationController?.pushViewController(notificationVC, animated: true)
+                
+                NotificationCenter.default.post(name: OpenNotification, object: nil)
             }
             else if menuDetails.0 == "Wallet"
             {
