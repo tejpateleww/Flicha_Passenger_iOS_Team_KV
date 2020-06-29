@@ -10,9 +10,14 @@ import UIKit
 
 class HelpTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lbl_Question: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

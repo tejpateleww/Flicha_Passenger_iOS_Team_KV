@@ -39,6 +39,8 @@ class CompletedRidesVC: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView()
         self.tableView.addSubview(self.refreshControl)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -75,6 +77,15 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
             cell.lblTime.text = datePickUp.relativeDateFormat()
         }
         
+        //SJ Edit Started
+        if let pickupDateAndTimee = rideDetails["PickupTime"] as? String {
+            let timeStamp = Double(pickupDateAndTimee)
+            let date = Date(timeIntervalSince1970: timeStamp!)
+            let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
+            cell.lblTime.text = dateStr
+        }
+        //SJ Edit Ended
+        
         if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
         }
@@ -85,6 +96,14 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+            let vc = MyRidesStoryBoard.instantiateViewController(withIdentifier: "TripDetailsViewController") as! TripDetailsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    
+    
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
@@ -108,6 +127,8 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
             }
         }
     }
+    
+   
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -155,4 +176,17 @@ extension CompletedRidesVC {
             }
         }
     }
+}
+
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = self.timeZone as TimeZone
+        return dateFormatter.string(from: self)
+    }
+
 }

@@ -105,21 +105,30 @@ extension UpCommingRidesVC : UITableViewDataSource, UITableViewDelegate
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! RideDetailsTableViewCell
         
-         let rideDetails = self.aryUpcomingRidesData[indexPath.row]
-            if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
-            {
-                let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
-                cell.lblTime.text = datePickUp.relativeDateFormat()
-            }
-            
-            if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
-                cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
-            }
-            
-            cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
-            cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
-            cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
+        //SJ single line change:
+        cell.btnCancelTrip.isHidden = false
         
+        let rideDetails = self.aryUpcomingRidesData[indexPath.row]
+        if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
+        {
+            let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
+            cell.lblTime.text = datePickUp.relativeDateFormat()
+        }
+        
+        if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
+        }
+        
+        cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
+        cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
+        cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
+        
+        //SJ Edit Started
+        cell.cancleAction = {
+            let id = rideDetails["Id"] as? String
+            self.cancelUpcomingRideVC(bookingId: id!, indexpath: indexPath)
+        }
+        //SJ Edit Ended
         
         return cell
     }
@@ -174,6 +183,29 @@ extension UpCommingRidesVC {
             else
             {
                 
+            }
+        }
+    }
+    
+    func cancelUpcomingRideVC(bookingId: String, indexpath: IndexPath) {
+        
+        let strBookingType =  "BookLater"
+        var dictParam = [String:AnyObject]()
+        dictParam["BookingId"] = bookingId as AnyObject
+        dictParam["BookingType"] = strBookingType as AnyObject
+        
+        webserviceForCancelRideByRider(dictParam as AnyObject) { (result, status) in
+            
+            if status {
+                self.aryUpcomingRidesData.remove(at: indexpath.row)
+                self.lblNoDataFound.isHidden = self.aryUpcomingRidesData.count > 0
+                self.tableView.reloadData()
+                
+                UtilityClass.setCustomAlert(title: "Success", message: "Your trip cancelled successfully".localized) { (index, title) in
+                }
+                
+            } else {
+                print("Debug Error")
             }
         }
     }

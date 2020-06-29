@@ -18,7 +18,10 @@ class RideDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPriceTitle: UILabel!
     @IBOutlet weak var lblPriceValue: UILabel!
     @IBOutlet weak var PriceStack: UIStackView!
+    @IBOutlet weak var btnCancelTrip: UIButton!
     
+    var cancleAction: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupView()
@@ -50,10 +53,22 @@ class RideDetailsTableViewCell: UITableViewCell {
         lblAddress.textColor = themeBlackColor
         
         imageViewRideRoute.contentMode = .scaleToFill
+        
+        btnCancelTrip.layer.cornerRadius = btnCancelTrip.frame.height / 2
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    @IBAction func cancelAction(_ sender: UIButton) {
+        cancleAction!()
+    }
+    
+    
+    
+    
+    
+    
     
 }

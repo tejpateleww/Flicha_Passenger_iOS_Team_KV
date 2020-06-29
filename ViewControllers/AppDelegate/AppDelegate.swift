@@ -24,6 +24,11 @@ let googlApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8"//"AIzaSyB7GS-O76Vp0j
 let googlPlacesApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
 
 
+// AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8
+
+//sent by rahul bhai - AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8
+
+
 
 let kGoogle_Client_ID : String = "1048315388776-2f8m0mndip79ae6jem9doe0uq0k25i7b.apps.googleusercontent.com"//"787787696945-nllfi2i6j9ts7m28immgteuo897u9vrl.apps.googleusercontent.com"
 let kDeviceType : String = "1"
@@ -290,8 +295,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             self.pushAfterReceiveNotification(typeKey: key as! String)
         }
-        
-        
         
         // Let FCM know about the message for analytics etc.
         Messaging.messaging().appDidReceiveMessage(userInfo)

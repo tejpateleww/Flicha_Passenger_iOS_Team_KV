@@ -18,6 +18,7 @@ let kSettingsPageTitle = "Settings"
 let kAddCard = "Add Card"
 let kMyRidePageTitle = "My Ride"
 let kPriceTitle = "Price"
+let kHelpTitle = "Frequently Asked Questions"
 
 let kSegmentUpcomingTitle = "UPCOMING"
 let kSegmentCompletedTitle = "COMPLETE"

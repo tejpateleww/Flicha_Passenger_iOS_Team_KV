@@ -41,7 +41,7 @@ class SignUpVerificationViewController: UIViewController {
         delegate = SignUpViewController()
         
         setupView()
-        WebserviceOtpForRegister()
+        WebserviceOtpForRegister(msg: false)
 
         // Do any additional setup after loading the view.
     }
@@ -54,27 +54,51 @@ class SignUpVerificationViewController: UIViewController {
     }
     
     @IBAction func btnAction_ResendOTP(_ sender: Any) {
-        WebserviceOtpForRegister()
+        
+        if Connectivity.isConnectedToInternet() {
+            WebserviceOtpForRegister(msg: true)
+        } else {
+            UtilityClass.setCustomAlert(title: appName, message: "No Internet connection") { (index, title) in
+                //
+            }
+        }
+        
     }
     
     
     @IBAction func btnAction_VerifyOTP(_ sender: Any) {
         
         guard let enteredOTP = txtField_OTP.text, enteredOTP.count > 0 else {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter OTP received on your email") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "OTP can not be blank") { (index, title) in
             }
             return
         }
         
-        let valid_otp : String = "\(validOTP_FromWebService)"
-        if enteredOTP == valid_otp {
-            // Delegate method to notify signup vc to call webservice for signup
-            delegate?.signInAfterOTP(dict, img: userImg)
-            print("delegate and redirection")
-        } else {
-            UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Invalid OTP!! Please enter a valid OTP") { (index, title) in
+        if Connectivity.isConnectedToInternet() {
+            
+            let valid_otp : String = "\(validOTP_FromWebService)"
+            if enteredOTP == valid_otp {
+                // Delegate method to notify signup vc to call webservice for signup
+                
+                delegate?.signInAfterOTP(dict, img: userImg)
+                
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } else {
+                UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Please enter a valid OTP") { (index, title) in
+                }
             }
+            
+        } else {
+            
+            UtilityClass.setCustomAlert(title: appName, message: "No internet connection") { (index, title) in
+                //
+            }
+            
         }
+         
+        
+       
         
     }
     
@@ -113,7 +137,7 @@ class SignUpVerificationViewController: UIViewController {
     
     }
     
-    func WebserviceOtpForRegister() {
+    func WebserviceOtpForRegister(msg: Bool) {
         
         //Validations :
         
@@ -126,14 +150,30 @@ class SignUpVerificationViewController: UIViewController {
             
             if status {
                 
-                let dict = result as! [String: AnyObject]
-                let otp = dict["otp"] as? Int
+                let dictResult = result as! [String: AnyObject]
+                let otp = dictResult["otp"] as? Int
+                
+                print(otp)
                 
                 self.validOTP_FromWebService = otp ?? 0
+                
+                if msg {
+                    // Make a Toast or Display an alert..
+//                    UtilityClass.setCustomAlert(title: "Success", message: "OTP has been sent successfully", completionHandler:
+                        
+                    UtilityClass.setCustomAlert(title: "Success", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                        //
+                    }
+                }
                 
             } else {
 //                print((result as! [String:AnyObject])["message"] as? String)
                 //may be an alert saying something went wrong please check back later.
+                
+                UtilityClass.setCustomAlert(title: "Invalid!", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                    //
+                }
+                
             }
             
         }

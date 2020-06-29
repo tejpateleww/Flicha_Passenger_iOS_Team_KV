@@ -12,6 +12,9 @@ import M13Checkbox
 import NVActivityIndicatorView
 import IQDropDownTextField
 
+protocol UpdateProfileVCDelegate : AnyObject {
+    func didProfileUpdate(_ str: String)
+}
 
 class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegate {
     
@@ -29,12 +32,18 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
     @IBOutlet var btnProfile: UIButton!
     var isEditMode : Bool = false
     var updatedProfileImage = UIImage()
-        
+    
+    var delegate : UpdateProfileVCDelegate?
+    
     // MARK: - Base Methods
 
     override func viewDidLoad(){
         super.viewDidLoad()
         self.setupView()
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SideMenuTableViewController") as! SideMenuTableViewController
+        self.delegate = vc
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +66,10 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         lblPhoneNumber.text = "Phone Number".localized
         btnChangePassword.setTitle("Change Password".localized, for: .normal)
         btnProfile.addTarget(self, action: #selector(editProfilePicture), for: .touchUpInside)
+        
+        txtEmail.isUserInteractionEnabled = false
+        txtPhoneNumber.isUserInteractionEnabled = false
+        btnProfile.isUserInteractionEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,6 +91,18 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         }else
         {
             isEditMode = true
+            
+            //SJ Edit Started    Given the tag 27 to container and right view..
+            let containerView = self.view.subviews.first(where: {$0.tag == 27})
+            let stackView = containerView!.subviews.first!
+            let rightView = stackView.subviews.first(where: {$0.tag == 27})
+            let btn = rightView!.subviews.first as? UIButton
+            btn?.setImage(nil, for: .normal)
+            btn?.setTitle("save", for: .normal)
+            //SJ Edit Ended
+            
+            
+            
             setInputMode(enable: true)
         }
     }
@@ -133,8 +158,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
     func setInputMode(enable : Bool){
         self.txtFirstName.isUserInteractionEnabled = enable
         self.txtLastName.isUserInteractionEnabled = enable
-        self.txtEmail.isUserInteractionEnabled = enable
-        self.txtPhoneNumber.isUserInteractionEnabled = enable
+        self.btnProfile.isUserInteractionEnabled = enable
     }
 
     func setProfileData(){
@@ -195,6 +219,9 @@ extension UpdateProfileViewController
         dictData["Fullname"] = txtFirstName.text! + " " + txtLastName.text! as AnyObject
         dictData["Email"] = txtEmail.text! as AnyObject
         dictData["MobileNo"] = txtPhoneNumber.text! as AnyObject
+        
+        dictData["Firstname"] = txtFirstName.text! as AnyObject
+        dictData["Lastname"] = txtLastName.text! as AnyObject
 
 //        let activityData = ActivityData()
 //        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
@@ -211,6 +238,15 @@ extension UpdateProfileViewController
                 
                 UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
                 
+                 NotificationCenter.default.post(name: UpdateProPic, object: nil)
+                
+                let data = SingletonClass.sharedInstance.dictProfile
+                
+                let imgstr = data.object(forKey: "Image") as! String
+                
+                
+                self.delegate?.didProfileUpdate(imgstr)
+               
                 UtilityClass.setCustomAlert(title: "Done", message: "Your profile updated successfully".localized) { (index, title) in
                     self.navigationController?.popViewController(animated: true)
                 }

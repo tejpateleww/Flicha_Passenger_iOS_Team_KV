@@ -216,20 +216,20 @@ class TickPayRegistrationViewController: UIViewController,UIImagePickerControlle
         if(txtCompanysName.text?.count == 0)
         {
 
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Insert Company Name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please insert company name") { (index, title) in
             }
             return false
         }
         //iconCamera
         else if(btnImgCameras.imageView?.image == nil && btnImgCameras.imageView?.image == UIImage(named: "iconCamera"))
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Upload Driving Licence Image") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please upload driving licence image") { (index, title) in
             }
             return false
         }
         else if(btnimgCameraForPassport.imageView?.image == nil && btnimgCameraForPassport.imageView?.image == UIImage(named: "iconCamera"))
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Upload Passport Image") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please upload passport image") { (index, title) in
             }
             return false
         }
@@ -241,25 +241,25 @@ class TickPayRegistrationViewController: UIViewController,UIImagePickerControlle
         
         if(txtCardNumbers.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Card Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter card number") { (index, title) in
             }
             return false
         }
         else if(txtExpireyDate.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Expiry Date") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter expiry date") { (index, title) in
             }
             return false
         }
         else if(txtCvv.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter CVV Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter CVV number") { (index, title) in
             }
             return false
         }
         else if(txtAliasbank.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Bank Name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter bank name") { (index, title) in
             }
             return false
         }

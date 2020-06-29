@@ -293,7 +293,7 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
         }
         else if txtAccountHolderName.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Account Holder Name".localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter account holder name".localized) { (index, title) in
             }
             return false
         }
@@ -305,12 +305,12 @@ class WalletTransferToBankVC: BaseViewController, SelectBankCardDelegate {
             
         else if txtBankName.text!.count == 0 {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Bank Name".localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter bank name".localized) { (index, title) in
             }
             return false
         }
         else if txtBankAccountNo.text!.count == 0 {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Bank Account Number".localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter bank account number".localized) { (index, title) in
             }
             return false
         }

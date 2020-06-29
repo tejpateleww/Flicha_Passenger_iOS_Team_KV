@@ -109,7 +109,7 @@
 "Password must contain at least 8 characters" = "Password Iwe Na Herufi Angalau 8";
 "Passcode Required" = "Nambari ya Pasipoti Inahitajika";
 "Enter Passcode" = "Ingiza Msimbo wa Pasipoti";
-"Please enter confirm password" = "Tafadhali Ingiza Na Indinisha Password Yako";
+"Please confirm password" = "Tafadhali Ingiza Na Indinisha Password Yako";
 "Password and confirm password must be same" = "Password Zote Lazima Zifanane";
 "GET RECEIPT" = "Tuma Risiti";
 "Please try again later" = "Tafadhali Jaribu Tena Baadae";
@@ -126,7 +126,7 @@
 "Please select date of birth" = "Tafadha Chagua Tarehe Ya Kuzaliwa";
 "Please enter address" = "Tafadhali Ingiza Anuani Yako";
 "Please first complete your trip" = "Tafadhali Kwanza Maliza Safari";
-"Please enter confirm password" = "Tafadhali Ingiza";
+"Please confirm password" = "Tafadhali Ingiza";
 "Next" = "Mbele";
 "Sign In" = "Ingia";
 "Trip Status :" = "Hali ya Safari:";

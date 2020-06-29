@@ -124,6 +124,8 @@ struct WebserviceURLs {
     static let kPastBooking_get                         = "PastBooking/"
     static let kCancelledBooking_get                    = "CancelTripByPassenger/"
     
+    static let kAppleLogin                              = "AppleLogin"
+    
     
 
 
@@ -231,6 +233,10 @@ let OpenInviteFriend = NSNotification.Name("OpenInviteFriend")
 let OpenSetting = NSNotification.Name("OpenSetting")
 let OpenSupport = NSNotification.Name("OpenSupport")
 let OpenHome = NSNotification.Name("OpenHome")
+let OpenHelp = NSNotification.Name("OpenHelp")
+let OpenNotification = NSNotification.Name("OpenNotification")
+
+let UpdateProPic = NSNotification.Name("UpdateProPic")
 
 
 

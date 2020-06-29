@@ -42,7 +42,7 @@ class RatingAndReviewViewController: BaseViewController {
         self.lblTitle.text = "HOW IS YOUR TRIP?"
         self.lblTitle.font = UIFont.regular(ofSize: 17)
         
-        self.lblDescriptions.text = "Your Feedback will help us improve driving experience better."
+        self.lblDescriptions.text = "Your Feedback will help us to improve driving experience better."
         self.lblDescriptions.font = UIFont.regular(ofSize: 15)
         self.lblDescriptions.textColor = themeGrayTextColor
         

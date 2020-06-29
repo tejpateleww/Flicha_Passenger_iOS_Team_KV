@@ -322,7 +322,7 @@ class PayViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
 
         if txtCardNumber.text == "" {
 //            UtilityClass.showAlert("Missing", message: "Please Enter Card Number", vc: self)
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Card Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter card number") { (index, title) in
             }
         }
 //        else if isCreditCardValid == false {
@@ -337,29 +337,29 @@ class PayViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         else if txtCompanyName.text == ""
         {
 //            UtilityClass.showAlert("Missing", message: "Please Enter Company Name / Name", vc: self)
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Company Name / Name") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter company name") { (index, title) in
             }
         }
         else if txtAmount.text == "" {
 //            UtilityClass.showAlert("Missing", message: "Please Enter Amount", vc: self)
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Amount") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter amount") { (index, title) in
             }
         }
         else if txtExpiryDate.text == "" {
 //            UtilityClass.showAlert("Missing", message: "Please Enter Expiry Date", vc: self)
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Expiry Date") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter expiry date") { (index, title) in
             }
         }
         else if txtCVV.isHidden == false {
             
             if txtCVV.text == "" {
 //                UtilityClass.showAlert("Missing", message: "Please enter CVV Number", vc: self)
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter CVV Number") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter CVV number") { (index, title) in
                 }
             }
             else if txtCVV.text!.count != 3 {
 //                UtilityClass.showAlert("", message: "Please enter valid CVV Number", vc: self)
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter valid CVV Number") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter a valid CVV number") { (index, title) in
                 }
             }
         }

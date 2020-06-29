@@ -211,14 +211,14 @@ class InVoiceReceiptViewController: BaseViewController, UIPickerViewDelegate, UI
         {
             if txtEmailId.text!.count == 0
             {
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Email Id") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Email Id") { (index, title) in
                 }
                 return false
             }
             else if (!isEmailAddressValid)
             {
 
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Valid Email ID") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Valid Email ID") { (index, title) in
                 }
                 
                 return false
@@ -229,7 +229,7 @@ class InVoiceReceiptViewController: BaseViewController, UIPickerViewDelegate, UI
             if txtPhoneNumber.text!.count == 0
             {
   
-                UtilityClass.setCustomAlert(title: "Missing", message: "Please Enter Phone number") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Missing", message: "Please enter Phone number") { (index, title) in
                 }
                 
                 return false

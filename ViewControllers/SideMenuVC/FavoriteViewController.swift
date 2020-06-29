@@ -43,7 +43,7 @@ class FavoriteViewController: BaseViewController, UITableViewDataSource, UITable
     
     func setLocalization()
     {
-        lblSwipeRightToLeftForRemoveAddress.text = "Please Swape Right To Left for remove address.".localized
+        lblSwipeRightToLeftForRemoveAddress.text = "Please swipe right To left for remove address.".localized
     }
     //-------------------------------------------------------------
     // MARK: - Outlets
