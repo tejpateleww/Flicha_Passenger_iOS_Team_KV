@@ -1626,7 +1626,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = K68A4B5TS6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1655,7 +1655,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PICK AND GO PRIVATE LIMITED (HS8349WC4W)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = K68A4B5TS6;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
