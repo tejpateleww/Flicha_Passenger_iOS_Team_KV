@@ -97,11 +97,16 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-            let vc = MyRidesStoryBoard.instantiateViewController(withIdentifier: "TripDetailsViewController") as! TripDetailsViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = MyRidesStoryBoard.instantiateViewController(withIdentifier: "TripDetailViewController") as! TripDetailViewController
+        
+        let dict = self.aryCompletedRidesData[indexPath.row]
+        
+        vc.arr_TripDescriptions = dict
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     
@@ -117,16 +122,16 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
         }
     }
        
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == (self.aryCompletedRidesData.count - 5) {
-            if !isDataLoading{
-                isDataLoading = true
-                self.getCompletedRidesList(pageIndex: self.pageNo + 1)
-                //webserviceOfPastbookingpagination(index: self.pageNo)
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if indexPath.row == (self.aryCompletedRidesData.count - 5) {
+//            if !isDataLoading{
+//                isDataLoading = true
+//                self.getCompletedRidesList(pageIndex: self.pageNo + 1)
+//                //webserviceOfPastbookingpagination(index: self.pageNo)
+//            }
+//        }
+//    }
     
    
    

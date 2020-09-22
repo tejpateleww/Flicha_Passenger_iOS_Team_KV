@@ -68,7 +68,7 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
     var aryOfPaymentOptionsImages = [String]()
     var CardID = String()
     var paymentType = String()
-    var selector = WWCalendarTimeSelector.instantiate()
+    var d_selector = WWCalendarTimeSelector.instantiate()
     
     var strPickupLocation = String()
     var strDropoffLocation = String()
@@ -100,7 +100,8 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
         
         mapView = GMSMapView()
         mapView?.delegate = self
-        selector.delegate = self
+        d_selector = WWCalendarTimeSelector.instantiate()
+        d_selector.delegate = self
 
         aryOfPaymentOptionsNames = [""]
         aryOfPaymentOptionsImages = [""]
@@ -173,33 +174,33 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
 
     func openDatePicker() {
        
-        selector.optionCalendarFontColorPastDates = UIColor.gray
-        selector.optionButtonFontColorDone = themeYellowColor
-        selector.optionSelectorPanelBackgroundColor = themeYellowColor
-        selector.optionCalendarBackgroundColorTodayHighlight = themeYellowColor
-        selector.optionTopPanelBackgroundColor = themeYellowColor
-        selector.optionClockBackgroundColorMinuteHighlightNeedle = themeYellowColor
-        selector.optionClockBackgroundColorHourHighlight = themeYellowColor
-        selector.optionClockBackgroundColorAMPMHighlight = themeYellowColor
-        selector.optionCalendarBackgroundColorPastDatesHighlight = themeYellowColor
-        selector.optionCalendarBackgroundColorFutureDatesHighlight = themeYellowColor
-        selector.optionClockBackgroundColorMinuteHighlight = themeYellowColor
+        d_selector.optionCalendarFontColorPastDates = UIColor.gray
+        d_selector.optionButtonFontColorDone = themeYellowColor
+        d_selector.optionSelectorPanelBackgroundColor = themeYellowColor
+        d_selector.optionCalendarBackgroundColorTodayHighlight = themeYellowColor
+        d_selector.optionTopPanelBackgroundColor = themeYellowColor
+        d_selector.optionClockBackgroundColorMinuteHighlightNeedle = themeYellowColor
+        d_selector.optionClockBackgroundColorHourHighlight = themeYellowColor
+        d_selector.optionClockBackgroundColorAMPMHighlight = themeYellowColor
+        d_selector.optionCalendarBackgroundColorPastDatesHighlight = themeYellowColor
+        d_selector.optionCalendarBackgroundColorFutureDatesHighlight = themeYellowColor
+        d_selector.optionClockBackgroundColorMinuteHighlight = themeYellowColor
         
         //        selector.optionStyles.showDateMonth(true)
-        selector.optionStyles.showYear(false)
+        d_selector.optionStyles.showYear(false)
         //        selector.optionStyles.showMonth(true)
         
-        selector.optionStyles.showTime(true)
+        d_selector.optionStyles.showTime(true)
         
         // 2. You can then set delegate, and any customization options
         
-        selector.optionTopPanelTitle = "Please choose date"
-        selector.optionIdentifier = "Time" as AnyObject
+        d_selector.optionTopPanelTitle = "Please choose date"
+        d_selector.optionIdentifier = "Time" as AnyObject
         let dateCurrent = Date()
-        selector.optionCurrentDate = dateCurrent.addingTimeInterval(30 * 60)
-        selector.modalPresentationStyle  = .overCurrentContext
+        d_selector.optionCurrentDate = dateCurrent.addingTimeInterval(30 * 60)
+        d_selector.modalPresentationStyle  = .overCurrentContext
         // 3. Then you simply present it from your view controller when necessary!
-        self.present(selector, animated: true, completion: nil)
+        self.present(d_selector, animated: true, completion: nil)
     }
     
     @IBAction func btnSubmit(_ sender: ThemeButton) {
@@ -507,9 +508,12 @@ extension BookLaterViewController {
             if (status)
             {
                 UtilityClass.setCustomAlert(title: "\(appName)", message: "Your ride has been booked.".localized, completionHandler: { (index, title) in
-                    self.delegateBookLater.btnRequestLater()
-                    self.navigationController?.popViewController(animated: true)
+//                    self.delegateBookLater.btnRequestLater()
+//                    self.navigationController?.popViewController(animated: true)
                 })
+                // because a new alert / notification may arrive from sockets... 
+                self.delegateBookLater.btnRequestLater()
+                self.navigationController?.popViewController(animated: true)
                 
             }else
             {

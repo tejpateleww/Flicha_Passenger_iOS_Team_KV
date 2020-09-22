@@ -689,7 +689,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                         self.strLocationType = ""
                     }
                 }
-                //                getAddressForLatLng(latitude: "\(cameraPosition.target.latitude)", longitude: "\(cameraPosition.target.longitude)", markerType: strLocationType) // currentLocationMarkerText
+//                                getAddressForLatLng(latitude: "\(cameraPosition.target.latitude)", longitude: "\(cameraPosition.target.longitude)", markerType: strLocationType) // currentLocationMarkerText
             }
         }
         else {
@@ -2947,7 +2947,30 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         alert.addAction(OK)
         alert.modalPresentationStyle  = .overCurrentContext
-        self.present(alert, animated: true, completion: nil)
+//        self.present(alert, animated: true, completion: nil)
+        
+        
+        UtilityClass.setCustomAlert(title: appName, message: "Your trip has been completed") { (index, str) in
+            self.setHideAndShowTopViewWhenRequestAcceptedAndTripStarted(status: false)
+             self.arrDataAfterCompletetionOfTrip = NSMutableArray(array: (self.aryCompleterTripData[0] as! NSDictionary).object(forKey: "Info") as! NSArray)
+             
+             self.viewTripActions.isHidden = true
+             SingletonClass.sharedInstance.passengerTypeOther = false
+             self.currentLocationAction()
+             self.getPlaceFromLatLong()
+             self.getRaringNotification()
+             self.clearDataAfteCompleteTrip()
+            
+             let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TripInfoViewController") as! TripInfoViewController
+             viewController.dictData = self.arrDataAfterCompletetionOfTrip[0] as! NSDictionary
+             viewController.delegate = self
+             self.btnCurrentLocation(self.btnCurrentLocation)
+             UIApplication.shared.windows.first?.rootViewController?.present(viewController, animated: true, completion: nil)
+        }
+        
+        
+        
+        
     }
     
     func clearSetupMapForNewBooking() {
@@ -3075,10 +3098,17 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                     if SingletonClass.sharedInstance.bookingId == bookingId
                     {
                         self.strBookingType = "BookLater"
-                        let alert = UIAlertController(title: nil, message: "Your trip has now started.".localized, preferredStyle: .alert)
-                        let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
-                        alert.addAction(OK)
-                        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+                        
+                        
+                        UtilityClass.setCustomAlert(title: appName, message: "Your trip has now started.", completionHandler: nil)
+                        
+                        
+                        
+                        
+//                        let alert = UIAlertController(title: nil, message: "Your trip has now started.".localized, preferredStyle: .alert)
+//                        let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+//                        alert.addAction(OK)
+//                        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
                         
                         self.btnCancelBooking.isHidden = true
                         self.btnCancelBooking.heightAnchor.constraint(equalToConstant: 0).isActive = true
@@ -3433,10 +3463,13 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                             message = (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String
                         }
                         
-                        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                        let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
-                        alert.addAction(OK)
-                        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+                        
+                        UtilityClass.setCustomAlert(title: appName, message: message, completionHandler: nil)
+                        
+//                        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+//                        let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+//                        alert.addAction(OK)
+//                        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
                     }
                 }
                 else {
@@ -3447,10 +3480,12 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                         message = (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String
                     }
                     
-                    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                    let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
-                    alert.addAction(OK)
-                    (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+                    UtilityClass.setCustomAlert(title: appName, message: message, completionHandler: nil)
+                    
+//                    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+//                    let OK = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+//                    alert.addAction(OK)
+//                    (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
                 }
             }
             

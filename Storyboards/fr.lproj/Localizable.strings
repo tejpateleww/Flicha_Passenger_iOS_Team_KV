@@ -1,0 +1,538 @@
+/* 
+  Localizable.strings
+  TanTaxi User
+
+  Created by EWW-iMac Old on 09/02/19.
+  Copyright © 2019 Excellent Webworld. All rights reserved.
+*/
+
+"Please check your internet connection" = "veuillez vérifier votre connexion internet";
+"No internet connection" = "pas de connexion internet";
+"Please try again later" = "veuillez réessayer plus tard";
+"Something went wrong please try again later" = "une erreur s'est produite veuillez réessayer plus tard";
+"Error Message" = "message d'erreur";
+"Success Message" = "message de réussite";
+"Update" = "mettre à jour";
+"OK" = "OK";
+"Welcome" = "Bienvenue";
+"Sign in to Continue!" = "connectez-vous pour continuez !";
+"Email Id / Phone Number" = "ID e-mail / numéro de téléphone";
+"Password" = "mot de passe";
+"Forgot Password?" = "mot de passe oublié ?";
+"Sign In" = "s'inscrire";
+"OR" = "OU";
+"Don't have an account?" = "vous n'avez pas de compte ?";
+"Sign Up" = "se connecter";
+"Please enter a valid email" = "veuillez entrer une adresse email valide";
+"Please enter email" = "veuillez entrer l'adresse email";
+"Please enter email or phone number" = "veuillez entrer votre adresse email ou numéro de téléphone";
+"Please enter valid email or phone number" = "veuillez entrer une adresse email ou numéro de téléphone valide";
+"Please enter password" = "veuillez entrer le mot de passe";
+"Permission Denied, You cannot access location data." = "permission refusée, vous ne pouvez pas accéder aux données de localisation";
+"GPS is not enabled. Do you want to go to settings menu?" = "le GPS n'est pas activé, voulez vous aller aux paramètres ?";
+"Settings" = "paramètres";
+"Cancel" = "annuler";
+"Forgot Password" = "mot de passe oublié ";
+"Email" = "adresse email";
+"Send" = "envoyer";
+"Create Account" = "créer compte";
+"First Name"  = "prénom";
+"Last Name" = "nom de famille";
+"Email Id" = "ID e-mail ";
+"Phone Number" = "numéro de téléphone";
+"Confirm Password"  = "confirmer le mot de passe";
+"Already Have an Account?" = "vous avez déjà un compte ?";
+"Please enter first name" = "veuillez saisir le prénom";
+"Please enter last name" = "veuillez saisir le nom de famille";
+"Please enter phone number" = "veuillez saisir le numéro de téléphone";
+"Please enter valid phone number" = "veuillez saisir un numéro de téléphne valide";
+"Password must contain at least 8 characters" = "le mot de passe doit contenir au moins 8 caractères";
+"Please confirm password" = "veuillez saisir le mot de passe de confirmation ";
+"Password and confirm password must be same" = "le mot de passe et le mot de passe de confirmation doivent etre identiques";
+"Info Message" = "message Info";
+"Choose Image" = "choisir une image";
+"Open Camera" = "ouvrir la caméra";
+"Choose From Gallery" = "choisir de la galerie";
+"Done" = "terminé";
+"Change Password" = "changer le mot de passe";
+"Profile" = "profil";
+"Hey" = "salut!";
+"Your profile updated successfully" = "votre profil a été mis à jour avec succés";
+"Need Camera Permission" = "besoin de l'autorisation de la caméra ";
+"This app needs camera permission." = "cette application nécessite l'autorisation de la caméra";
+"Grant" = "subvention";
+"Enter your new password" = "entrez votre nouveau mot de passe";
+"Current Password" = "mot de passe actuel";
+"New Password" = "nouveau mot de passe";
+"Confirm Password" = "confirmer le mot de passe";
+"Save" = "sauvegarder";
+"Please enter current password" = "veuillez saisir le mot de passe actuel";
+"Please enter new password" = "veuillez saisir le nouveau mot de passe";
+"My Ride" = "ma course";
+"No data Found" = "aucune donée trouvée";
+"Please first complete your trip" = "veuillez d'abord terminer votre voyage";
+"Cancel Request" = "annuler la demande";
+"Are you sure you want to cancel the trip?" = "etes-vous sur de vouloir annuler la course";
+"NO" = "NON";
+"YES" = "OUI";
+"Your request canceled successfully" = "votre demande a été annulée avec succés";
+"Current Method" = "méthode actuelle";
+"Payment Method" = "mode de paiement";
+"Are you sure you want to delete card?" = "etes-vous sur de vouloir supprimer la carte";
+"Delete" = "supprimer";
+"Name"  = "nom";
+"Bank Name" = "nom de banque";
+"Notification" = "notification";
+"Push Notification" = "notification Push";
+"Help" = "aide";
+"Pickup Location" = "point de départ";
+"Dropoff Location" = "destination";
+"Full Name"  = "nom complet";
+"Select Date & Time" = "sélectionner la date et l'heure";
+"Message Here (Optional)" = "message ici ( optionnelle )";
+"Type here" = "écrivez ici";
+"Book Later" = "réserver plus tard";
+"Please select 30 minutes greater time from current time" = "veuillez sélectionner 30 minutes de temps supérieur à partir de l'heure actuelle";
+"Please enter a valid pickup location" = "veuillez entrer un point de départ valide";
+"Please enter a valid drop off location" = "veuillez etrer une destination valide";
+"Please enter Name" = "veuillez saisir le nom ";
+"Please select date and time" = "veuillez sélectionner la date et l'heure";
+"Car model not found" = "modèle de voiture introuvable";
+"Your ride has been booked." = "votre course a été réservé";
+"Booking Successful" = "réservation réussie ";
+"Your booking request has been confirmed. Driver will pick you shortly." = "votre demande de réservation a été confirmée. Le chauffeur viendra vous chercher dans pas longtemps";
+"Driver Info" = "information sur le conducteur";
+"Please enter promocode!" = "veuillez entrer le code promo";
+"Your trip has been completed successfully!" = "votre voyage s'est effectué avec succès ";
+"Home" = "accueil";
+"logout" = "déconnexion";
+"Please select vehicle type" = "veuillez sélectionner le type de véhicule";
+"min" = "min"
+"No Routes Found Please Try again later" = "aucun itinéraire trouvé, veuillez réessayer plus tard";
+"Message" = "message";
+"You can send request after 30 second." = "vous pouvez envoyer la demande après 30 secondes";
+"Vehicle not available!" = "véhicule non disponible";
+"Applied" = "appliquée";
+"Please enter your pickup location again" = "veuillez saisir à nouveau votre position";
+"Please enter your destination again." = "veuillez saisir à nouveau votre destination";
+"How was your trip?" = "comment était votre trajet ?";
+"Enter your promotion code" = "entrez votre code promo";
+"Distance" = "distance";
+"Time" = "temps";
+"Price" = "prix";
+"Cancel booking" = "annuler la réservation";
+"Grand Total\n(Tax Included)" = "Grand total/ ( taxe inclut )";
+"Trip Detail" = "details du voyage";
+"select" = "sélectionner ";
+"Booking Confirmed" = "réservation confirmée";
+"jan" = "janv";
+"feb" = "févr";
+"mar" = "mars";
+"apr" = "avr";
+"may" = "mai";
+"jun" = "juin";
+"jul" = "juill";
+"aug" = "aout";
+"sep" = "sept";
+"oct" = "oct";
+"nov" = "nov";
+"dec" = "déc";
+
+"Server under maintenance, please try again after some time" = "Serveur sous maintenance, veuillez réessayer après un certain temps";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"TanTaxi" = "TanTaxi";
+"Flight Number"  = "Flight Number";
+"Flight Number (If applicable)" = "Flight Number (If applicable)";
+"Notes"  = "Notes";
+"Click calendar icon to select pickup time" = "Click calendar icon to select pickup time" ;"Bonyeza kalenda icon kuchagua muda Pickup";
+
+
+"MissingTranslationitle"  = "MissingTranslationitle";
+"Address"  = "Address";
+"Toll Fee" = "Toll Fee";
+"Sub Total" =  "Sub Total";
+"Last Name"  = "Last Name";
+"Invite Code"  = "Invite Code";
+"TZS"  = "TZS";
+"Car not available!" = "Car not available!";
+"Book Car Now" = "Book Car Now";
+"Not Available" = "Not Available";
+"Book Car Later" = "Book Car Later";
+"Please Swape Right To Left or Touch for Book Bars and Clubs" = "Please Swape Right To Left or Touch for Book Bars and Clubs";
+"Please Swape Right To Left or Touch for Shopping Center" = "Please Swape Right To Left or Touch for Shopping Center";
+"Please Swape Right To Left or Touch for Book Restaurants" = "Please Swape Right To Left or Touch for Book Restaurants";
+"Please Swape Right To Left or Touch for Book Hotels" = "Please Swape Right To Left or Touch for Book Hotels";
+"Please Swape Right To Left for remove address." = "Please Swape Right To Left for remove address.";
+"MissingTranslationopen_drawer" = "MissingTranslationopen_drawer";
+"MissingTranslationaclose_drawer" = "MissingTranslationclose_drawer";
+
+"MY RECEIPTS" = "MY RECEIPTS";
+"INVITE FRIENDS" =  "INVITE FRIENDS";
+"PROFILE"= "PROFILE";
+"ACCOUNT" = "ACCOUNT";
+"My Bookings" = "My Bookings";
+"GPS is settings" = "GPS is settings";
+
+
+"Request Cancelled" = "Request Cancelled";
+
+"If you were to will be chanxceed package limites you will be charged as follows" = "If you were to will be chanxceed package limites you will be charged as follows";
+"If you cancel the trip then you will be partially charged.\nAre you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged.\nAre you sure you want to cancel the trip?";
+"Please select payment method." = "Please select payment method.";
+"Need NFC Permission" = "Need NFC Permission";
+"This app needs nfc permission." = "This app needs nfc permission.";
+"Please select another image" = "Please select another image";
+"Permission Granted" = "Permission Granted";
+"Permission not Granted" = "Permission not Granted";
+
+"Storage Permission" = "Storage Permission";
+"This app needs storage permission." = "This app needs storage permission.";
+"All Notifications" = "All Notifications";
+"Balance" = "Balance";
+"Transfer" = "Transfer";
+"Add Card" = "Add Card";
+"Utilities" = "Utilities";
+"Water" = "Water";
+"Gas" = "Gas";
+"Electricity" = "Salio Lililopo";
+"Myki" = "Myki";
+"Movies" = "Movies";
+"Travel" = "Travel";
+"Available Funds" = "Available Funds";
+"Top Up" = "Top Up";
+"Transfer To Bank" = "Transfer To Bank";
+"Transfer To Bank Account" = "Transfer To Bank Account";
+"History" = "History";
+"Upcoming" = "Upcoming";
+"Send Money" = "Send Money";
+"Receive Money" = "Receive Money";
+"Set Amount" = "Set Amount";
+"Amount" = "Amount";
+"QRCode Scanner" = "QRCode Scanner";
+"Current Balance" = "Current Balance";
+"Add a Card" = "Add a Card";
+"Add New Card" = "Add New Card";
+
+"Make Payment" = "Make Payment";
+"Not Available" = "Not Available";
+"Card Number" = "Card Number";
+"Expiry Date" = "Expiry Date";
+"MissingTranslationCVV" = "MissingTranslationCVV";
+"Alias" = "Alias";
+"CVV" = "CVV";
+"Add Payment Method" = "Add Payment Method";
+"Please ensure you have entered your payment detail correctly." = "Please ensure you have entered your payment detail correctly.";
+"Card is not valid." = "Card is not valid.";
+"Invalid card number." = "Invalid card number.";
+"MissingTranslation0" = "MissingTranslation0";
+"Avail\u0020" = "Avail\u0020";
+"MissingTranslation20" = "MissingTranslation20";
+"Have a promocode?" = "Have a promocode?";
+"%1$s Applied" = "%1$s Applied";
+"Card Number" = "Card Number";
+"Please enter a valid phone number" = "Please enter a valid phone number";
+"Enter Passcode" = "Enter Passcode";
+"Passcode Required" = "Passcode Required";
+
+
+
+
+"Please enter OTP" = "Please enter OTP";
+"Please enter correct OTP" = "Please enter correct OTP";
+"Please select profile image" = "Please select profile image";
+"Please select date of birth" = "Please select date of birth";
+"Please enter address" = "Please enter address";
+"MissingTranslation" = "MissingTranslation";
+"https://play.google.com/store/apps/details?id=com.tantaxi" = "https://play.google.com/store/apps/details?id=com.tantaxi";
+"https://play.google.com/store/apps/details?id=com.tantaxi" = "https://play.google.com/store/apps/details?id=com.tantaxi";
+"Next" = "Next";
+"fonts/proxima-nova-586c8e081cb01.otf" = "fonts/proxima-nova-586c8e081cb01.otf";
+"Enter OTP" = "Enter OTP";
+"How was your experience with Driver" = "How was your experience with Driver";
+"Verify" = "Verify";
+"BALANCE" = "BALANCE";
+"HISTORY" = "HISTORY";
+"Card List" = "Card List";
+"Resend OTP" = "Resend OTP";
+"EDIT PROFILE" = "EDIT PROFILE";
+"ADD CARD" = "ADD CARD";
+"Image" = "Image";
+"Date Of Birth" = "Date Of Birth";
+"Post Code" = "Post Code";
+"Submit" = "Submit";
+"Home" = "Home";
+"MissingTranslationStandard" = "MissingTranslationStandard";
+"MissingTranslationPremium" = "MissingTranslationPremium";
+"MissingTranslationVan" = "MissingTranslationVan";
+"Legal" = "Legal";
+"Package Type" = "Package Type";
+"Driver Rating" = "Driver Rating";
+"Support" = "Support";
+"Select Payment Method" = "Select Payment Method";
+"Cash" = "Cash";
+"Booking Fee:" = "Booking Fee:";
+"Trip Fare:" = "Trip Fare:";
+"Pickup Time:" = "Pickup Time:";
+"Pickup Time" = "Pickup Time";
+"Dropoff Time:" = "Dropoff Time:";
+"Vehicle Type:" = "Vehicle Type:";
+"Distance Travelled:" = "Distance Travelled:";
+"Distance Fare:" = "Distance Fare:";
+"Tax:" = "Tax:";
+"Total Amount :" = "Total Amount :";
+"(incl tax)" = "(incl tax)";
+"Night Fare:" = "Night Fare:";
+"Promo Applied:" = "Promo Applied:";
+"Payment Type:" = "Payment Type:";
+"Total Amount:\n(incl tax)" = "Total Amount:\n(incl tax)";
+"Trip Status:" = "Trip Status:";
+"Image" = "Image";
+"Cards" = "Cards";
+"Card" = "Card";
+"pesapal" = "pesapal";
+"Card :" = "Card :";
+"Transfer" = "Transfer";
+"Balance" = "Balance";
+"fonts/proxima-nova-586c8e081cb01.otf" = "fonts/proxima-nova-586c8e081cb01.otf";
+"fonts/proxima-nova-bold-586c8dd29c851.otf" = "fonts/proxima-nova-bold-586c8dd29c851.otf";
+"&#160;&#160;&#160;&#160;&#160;TZS0.00&#160;&#160;&#160;&#160;&#160;" = "&#160;&#160;&#160;&#160;&#160;TZS0.00&#160;&#160;&#160;&#160;&#160;";
+"Current Balance" = "Current Balance";
+"Send Money" = "Send Money";
+"When a friend register with your code, you will recieve referal amount." = "When a friend register with your code, you will recieve referal amount.";
+"Share Receipt" = "Share Receipt";
+"Account" = "Account";
+"Edit Profile" = "Edit Profile";
+"Gender" = "Gender";
+"Male" = "Male";
+"Female" = "Female";
+"Save" = "Save";
+"Confirm" = "Confirm";
+"My Bookings" = "My Bookings";
+"Payment Options" = "Payment Options";
+"Wallet" = "Wallet";
+"My Receipts" = "My Receipts";
+"Invite Friends" = "Invite Friends";
+"My Ratings" = "My Ratings";
+"Comment" = "Comment";
+"Car Model:" = "Car Model:";
+"Notes (Optional)" = "Notes (Optional)";
+"Flight Number (If applicable)" = "Flight Number (If applicable)";
+"Select Payment Method" = "Select Payment Method";
+"You will be notified with your driver detail after your request is submited." = "You will be notified with your driver detail after your request is submited.";
+"Submit" = "Submit";
+"Save" = "Save";
+"Signout" = "Signout";
+"PickupDate" = "Pickup Date";
+"SHARE" = "SHARE";
+"Track Your Trip" = "Track Your Trip";
+"Please select car model" = "Please select car model";
+"No Driver Available Right Now." = "No Driver Available Right Now.";
+"Select your pickup Date and Time" = "Select your pickup Date and Time";
+"Please select payment method" = "Please select payment method";
+"Please enter flight number" = "Please enter flight number";
+"Please enter Account Holder Name" = "Please enter Account Holder Name";
+"Please enter Bank Name" = "Please enter Bank Name";
+"Please enter Branch Code" = "Please enter Branch Code";
+"Please enter Bank Account Number" = "Please enter Bank Account Number";
+"GET RECEIPT" = "GET RECEIPT";
+"Please select Gender" = "Please select Gender";
+"Please select card" = "Please select card";
+"Please enter amount" = "Please enter amount";
+
+
+"Okay" = "Okay";
+"Bank details updated successfully" = "Bank details updated successfully";
+"Sim card not available" = "Sim card not available";
+"Sim state PIN required" = "Sim state PIN required";
+"Sim state network locked" = "Sim state network locked";
+"Sim state PUK required" = "Sim state PUK required";
+"Sim state unknown" = "Sim state unknown";
+"Your wallet balance is low" = "Your wallet balance is low";
+"Please try again, QR code not found." = "Please try again, QR code not found.";
+"Myself" = "Myself";
+"Others" = "Others";
+"Book Now" = "Book Now";
+"Done" = "Done";
+"Start Trip" = "Start Trip";
+//"Cancel Request" = "Cancel Request";
+"OnGoing" = "OnGoing";
+"UpComing" = "UpComing";
+"Past Booking" = "Past Booking";
+"Packages can be made after 2 hours from now. Sri Lankan time is"  = "Packages can be made after 2 hours from now. Sri Lankan time is 2018-03-06 11:16 AM";
+"Account" = "Account";
+"Transaction Failed" = "Transaction Failed";
+"Transaction Pending" = "Transaction Pending";
+"Card saved successfully" = "Card saved successfully";
+"How was your experience with %1$s?" = "How was your experience with %1$s?";
+"Tap to activate Scanner" = "Tap to activate Scanner";
+"First Description" = "Maelezo ya Kwanza";
+"Second Description" = "Maelezo ya Pili";
+"Discount" = "Discount";
+//"Payment Type:" = "Payment Type:";
+"Promo Applied:" = "Promo Applied:";
+"Pickup Time" = "Pickup Time";
+"Connection Error" = "Connection Error";
+"Internet connection not available" = "Internet connection not available";
+"MY RATING" = "MY RATING";
+"Booking Charge" = "Booking Charge";
+"Additional Charges" = "Additional Charges";
+"Delete card" = "Delete card";
+"Booking Id :" = "Booking Id :";
+"Your request status is pending..." = "Your request status is pending...";
+"Apply Promocode" = "Apply Promocode";
+"Enter promocode" = "Enter promocode";
+"Apply" = "Apply";
+"Request Now" = "Request Now";
+"Remind Later" = "Remind Later";
+"Your booking request has been confirmed" = "Your booking request has been confirmed";
+"MissingTranslation01" = "MissingTranslation01";
+"MissingTranslation02" = "MissingTranslation02";
+"Booking Id" = "Booking Id";
+"Select a card" = "Select a card";
+"Old Password" = "Old Password";
+"Share Your Invite Code" = "Share Your Invite Code";
+"Account Holder Name" = "Account Holder Name";
+"Bank Account Name" = "Bank Account Name";
+"Branch Code" = "Branch Code";
+"Bank Account No." = "Bank Account No.";
+"Any other feedback(Optional)" = "Any other feedback(Optional)";
+"Description" = "Description";
+"Tip" = "Tip";
+"Please enter tip amount" = "Please enter tip amount";
+"Waiting Cost" = "Waiting Cost";
+"Waiting Time" = "Waiting Time";
+"Less" = "Less";
+"Grand Total" = "Grand Total";
+"Promo Code"  = "Promo Code";
+"SHARE YOUR INVITE CODE" = "SHARE YOUR INVITE CODE";
+"Please enter promocode" = "Please enter promocode";
+"MissingTranslation" = "MissingTranslation";
+"MissingTranslation" = "MissingTranslation";
+"Camera" = "Camera";
+"MissingTranslation" = "MissingTranslation";
+"MissingTranslation" = "MissingTranslation";
+"You need to grant access to&#160;" = "You need to grant access to&#160;";
+"Money added  successfully" = "Money added  successfully";
+"Transfer Success check your history" = "Transfer Success check your history";
+"Money sent successfully" = "Money sent successfully";
+"Problem in sending money please try again later" = "Problem in sending money please try again later";
+"termsAndCondition" = "Terms & Conditions";
+//"" = "Privacy Policy";
+"condition" = "Conditions";
+"privacyPolicy" = "Privacy Policy";
+"linkTerms" = "https://www.tantaxitanzania.com/page/terms-conditions-passengers";
+//"" = "https://www.tantaxitanzania.com/page/privacy-policy";
+"linkPrivcyPolicy" = "https://www.tantaxitanzania.com/page/privacy-policy";
+
+"addTip" = "Add Tip";
+"no" = "No";
+"yes" = "Yes";
+
+"confirmLogout" = "Confirm Logout?";
+"logoutmsg" = "Are you sure you want to logout?";
+"invitedYoubeComeATantaxiPassenger" = "&#160;has invited you to become a TanTaxi Passenger.\n\n";
+"yourInviteCode" = "\n\n Your invite code is:&#160";
+"scanCard" = "Scan Card";
+"TrackYourTrip:" = "TrackYourTrip:";
+"PICK UP TIME:" = "PICK UP TIME:";
+"DROPOFF TIME:" = "DROPOFF TIME :";
+"VEHICLE TYPE:" = "VEHICLE TYPE :";
+"DISTANCE TRAVELLED:" = "DISTANCE TRAVELLED :";
+"TRIP FARE:" = "TRIP FARE :";
+"TRANSFER TO BANK" = "TRANSFER TO BANK";
+"NIGHT FARE:" = "NIGHT FARE :";
+"Transfer Status" = "Transfer Status";
+"TOLL FEE:" = "TOLL FEE :";
+"WAITING COST:" = "WAITING COST  :";
+"BOOKING CHAGE:" = "BOOKING CHAGE :";
+"TAX:" = "TAX :";
+"DISCOUNT:" = "DISCOUNT :";
+"PAYMENT TYPE:" = "PAYMENT TYPE :";
+"TOTAL COST:" = "TOTAL COST :";
+"DROP LOCATION:" = "DROP LOCATION :";
+"TRANSFER" = "TRANSFER";
+"WALLET" = "WALLET";
+"Terms & Conditions" = "Terms & Conditions";
+"Privacy Policy" = "Privacy Policy";
+"Comments:" = "Comments:";
+
+
+//HOME
+
+"HOME" = "HOME";
+"Done" = "Done";
+"Dropoff Location" = "Dropoff Location";
+"Pickup Location" = "Pickup Location";
+"Book Now" = "Book Now";
+"Book Later" = "Book Later";
+"Have a promocode?" = "Have a promocode?";
+"REQUEST NOW" = "REQUEST NOW";
+"Your request status pending..." = "Your request status pending...";
+"Driver Info" = "Driver Info";
+"Your Email Id is not configured from settings. Please configure it from Settings -> Mail" = "Your Email Id is not configured from settings. Please configure it from Settings -> Mail";
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
+"NO" = "NO";
+"YES" = "YES";
+"Your trip has been completed" = "Your trip has been completed";
+"Your request has been rejected." = "Your request has been rejected.";
+"Your trip has now started." = "Your trip has now started.";
+"Trip Status" = "Trip Status";
+"Thanks for feedback" = "Thanks for feedback";
+"Add Tip" = "Add Tip";
+"Any other feedback(Optional)" = "Any other feedback(Optional)";
+"Tip Alert" = "Tip Alert";
+"DropoffTime" = "DropoffTime";
+"Are you sure you want to logout?" = "Are you sure you want to logout?";
+"Please enter drop off location" = "Please enter drop off location";
+"Please enter pick up location" = "Please enter pick up location";
+"Please fill all details" = "Please fill all details";
+"All fields are required..." = "All fields are required...";
+"Please Select Car" = "Please Select Car";
+"Enter Promocode" = "Enter Promocode";
+"Apply Promocode" = "Apply Promocode";
+
+
+"BSB" = "BSB";
+"Bank Account Name" = "Bank Account Name";
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
+"Tap to activate scanner" = "Tap to activate scanner";
+"Send Money" = "Send Money";
+"TOP UP" = "TOP UP";
+"Account Updated Successfully." = "Account Updated Successfully.";
+"has invited you to become a TanTaxi Passenger" = "has invited you to become a TanTaxi Passenger";
+"Your invite code is:" = "Your invite code is:";
+
+
+//Sj's Addition :
+
+
+"Contact number is not available" = "Contact number is not available";
+"Your trip cancelled successfully" = "Your trip cancelled successfully";
+
+"Sorry! no car available" = "Sorry! no car available";
+"We did not get proper address" = "We did not get proper address";
+"Please enter your destination again" = "Please enter your destination again";
+"Please select vehicle" = "Please select vehicle";

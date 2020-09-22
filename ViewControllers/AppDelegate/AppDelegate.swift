@@ -20,13 +20,16 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 
-let googlApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8"//"AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" //"AIzaSyBpHWct2Dal71hBjPis6R1CU0OHZNfMgCw"         // AIzaSyB08IH_NbumyQIAUCxbpgPCuZtFzIT5WQo
-let googlPlacesApiKey = "AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
+let googlApiKey = "AIzaSyB8BAH4CgnptmVp50tevNwjytJnSqkVcEI"//"AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" //"AIzaSyBpHWct2Dal71hBjPis6R1CU0OHZNfMgCw"         // AIzaSyB08IH_NbumyQIAUCxbpgPCuZtFzIT5WQo
+let googlPlacesApiKey = "AIzaSyB8BAH4CgnptmVp50tevNwjytJnSqkVcEI" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
 
 
 // AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8
 
 //sent by rahul bhai - AIzaSyD3CaZD78zWTvHix-7bdW-R6hndr8FonO8
+
+//sent by Mayur bhai on 15th july -
+// AIzaSyB8BAH4CgnptmVp50tevNwjytJnSqkVcEI
 
 
 

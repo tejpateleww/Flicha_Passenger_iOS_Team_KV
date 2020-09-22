@@ -15,7 +15,7 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
     
     //MARK:- Properties
     var arr_TripDetails : [String] = ["Pickup Time","DropOff Time","Vehicle type","Payment Type","Booking Fee","Trip Fare","Distance Fare","Tax"]
-//    var arr_TripDetailss
+    var arr_TripDescriptions : [String: Any] = [:]
     
     //MARKL- Life Cycle
     override func viewDidLoad() {
@@ -50,9 +50,13 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        print(arr_TripDescriptions)
+        
         if indexPath.row == 0 {
             let topCell = tableView.dequeueReusableCell(withIdentifier: "TripDetailTopCell", for: indexPath) as! TripDetailTopCell
-            topCell.lbl_SourceAddress.text = "Address"
+            topCell.lbl_SourceAddress.text = arr_TripDescriptions["PickupLocation"] as? String
+            topCell.lbl_DestinationAddress.text = arr_TripDescriptions["DropoffLocation"] as? String
             topCell.imgView_SeperatorLinePAth.clipsToBounds = false
             
             topCell.preservesSuperviewLayoutMargins = false
@@ -61,16 +65,58 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
             
         } else if indexPath.row == arr_TripDetails.count + 1 {
             let bottomCell = tableView.dequeueReusableCell(withIdentifier: "TripDetailBottomCell", for: indexPath) as! TripDetailBottomCell
-            bottomCell.lbl_GrandTotal.text = "DA2000"
+            bottomCell.lbl_GrandTotal.text = "\(arr_TripDescriptions["GrandTotal"] as? String ?? "") DA"
             bottomCell.OkAction = {
                 self.navigationController?.popViewController(animated: true)
             }
             return bottomCell
             
         } else {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripDetailCell", for: indexPath) as! TripDetailCell
             cell.lbl_TripDetail.text = arr_TripDetails[indexPath.row-1]
-            cell.lbl_TripDescription.text = "Description"
+            let field = cell.lbl_TripDetail.text!
+            
+            switch field {
+            case "Pickup Time":
+                if let pickupDateAndTimee = arr_TripDescriptions["PickupTime"] as? String {
+                    let timeStamp = Double(pickupDateAndTimee)
+                    let date = Date(timeIntervalSince1970: timeStamp!)
+                    let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
+                    cell.lbl_TripDescription.text = dateStr
+                }
+                
+            case "DropOff Time":
+                if let pickupDateAndTimee = arr_TripDescriptions["DropTime"] as? String {
+                    let timeStamp = Double(pickupDateAndTimee)
+                    let date = Date(timeIntervalSince1970: timeStamp!)
+                    let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
+                    cell.lbl_TripDescription.text = dateStr
+                }
+                
+            case "Vehicle type":
+                cell.lbl_TripDescription.text = arr_TripDescriptions["Model"] as? String
+                
+            case "Payment Type":
+                cell.lbl_TripDescription.text = arr_TripDescriptions["PaymentType"] as? String
+                
+            case "Booking Fee":
+                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["BookingCharge"] as? String ?? "") DA"
+                
+            case "Trip Fare":
+                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["TripFare"] as? String ?? "") DA"
+                
+            case "Distance Fare":
+                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["DistanceFare"] as? String ?? "") DA"
+                
+            case "Tax":
+                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["Tax"] as? String ?? "") DA"
+                
+            
+            default:
+                cell.lbl_TripDescription.text = "-"
+            }
+            
             return cell
         }
     }
