@@ -107,7 +107,7 @@
 "Home" = "accueil";
 "logout" = "déconnexion";
 "Please select vehicle type" = "veuillez sélectionner le type de véhicule";
-"min" = "min"
+"min" = "min";
 "No Routes Found Please Try again later" = "aucun itinéraire trouvé, veuillez réessayer plus tard";
 "Message" = "message";
 "You can send request after 30 second." = "vous pouvez envoyer la demande après 30 secondes";
@@ -121,7 +121,7 @@
 "Time" = "temps";
 "Price" = "prix";
 "Cancel booking" = "annuler la réservation";
-"Grand Total\n(Tax Included)" = "Grand total/ ( taxe inclut )";
+
 "Trip Detail" = "details du voyage";
 "select" = "sélectionner ";
 "Booking Confirmed" = "réservation confirmée";
@@ -137,24 +137,6 @@
 "oct" = "oct";
 "nov" = "nov";
 "dec" = "déc";
-
-"Server under maintenance, please try again after some time" = "Serveur sous maintenance, veuillez réessayer après un certain temps";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
