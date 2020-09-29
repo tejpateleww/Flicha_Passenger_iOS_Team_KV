@@ -55,7 +55,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         rightButton.setImage(UIImage.init(named: "edit-icon"), for: .normal)
         rightButton.contentMode = .scaleAspectFit
         rightButton.addTarget(self, action: #selector(self.handleSaveProfile), for: .touchUpInside)
-        self.addCustomNavigationBarWithRightButton(title: "My Profile", rightBarButton: rightButton)
+        self.addCustomNavigationBarWithRightButton(title: "Profile".localized, rightBarButton: rightButton)
     }
     
     func setupView() {
@@ -173,13 +173,15 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
         {
             txtFirstName.text = fullNameArr[0]
             txtLastName.text = fullNameArr[1]
-            lblHeaderTitle.text = "Hey \(fullNameArr[0]) !"
+            let hey = "Hey".localized
+            lblHeaderTitle.text = hey + " " + (fullNameArr[0])
             
         }else
         {
             txtFirstName.text = fullName
             txtLastName.text = fullName
-            lblHeaderTitle.text = "Hey \(fullName) !"
+            let hey = "Hey".localized
+            lblHeaderTitle.text = hey + " " + fullName
         }
         txtEmail.text = dicProfileData.object(forKey: "Email") as? String ?? ""
         txtPhoneNumber.text = dicProfileData.object(forKey: "MobileNo") as? String ?? ""

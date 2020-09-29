@@ -16,7 +16,7 @@ class HelpVC: BaseViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = false
-        self.addCustomNavigationBar(title: "Help")
+        self.addCustomNavigationBar(title: "Help".localized)
     }
 
 }

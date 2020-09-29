@@ -14,15 +14,22 @@
 "Success Message" = "message de réussite";
 "Update" = "mettre à jour";
 "OK" = "OK";
+"From" = "de";
+"To" = "à";
+"Missing" = "manquant"
 "Welcome" = "Bienvenue";
-"Sign in to Continue!" = "connectez-vous pour continuez !";
+"Sign in to Continue!" = "connectez-vous pour continuez!";
 "Email Id / Phone Number" = "ID e-mail / numéro de téléphone";
 "Password" = "mot de passe";
 "Forgot Password?" = "mot de passe oublié ?";
 "Sign In" = "s'inscrire";
+"SIGN IN" = "S'INSCRIRE";
 "OR" = "OU";
 "Don't have an account?" = "vous n'avez pas de compte ?";
+"SIGN UP" = "SE CONNECTER";
 "Sign Up" = "se connecter";
+//"Sign up to get started" = "";
+"Please enter your registered email address" = "veuillez entrer l'adresse email";
 "Please enter a valid email" = "veuillez entrer une adresse email valide";
 "Please enter email" = "veuillez entrer l'adresse email";
 "Please enter email or phone number" = "veuillez entrer votre adresse email ou numéro de téléphone";
@@ -33,7 +40,7 @@
 "Settings" = "paramètres";
 "Cancel" = "annuler";
 "Forgot Password" = "mot de passe oublié ";
-"Email" = "adresse email";
+"Email Address" = "adresse email";
 "Send" = "envoyer";
 "Create Account" = "créer compte";
 "First Name"  = "prénom";
@@ -55,7 +62,8 @@
 "Choose From Gallery" = "choisir de la galerie";
 "Done" = "terminé";
 "Change Password" = "changer le mot de passe";
-"Profile" = "profil";
+"Enter you email address you use to sign to." = "Enter you email address you use to sign to.";
+//"Profile" = "profil";
 "Hey" = "salut!";
 "Your profile updated successfully" = "votre profil a été mis à jour avec succés";
 "Need Camera Permission" = "besoin de l'autorisation de la caméra ";
@@ -82,7 +90,7 @@
 "Delete" = "supprimer";
 "Name"  = "nom";
 "Bank Name" = "nom de banque";
-"Notification" = "notification";
+"Notifications" = "notifications";
 "Push Notification" = "notification Push";
 "Help" = "aide";
 "Pickup Location" = "point de départ";
@@ -105,7 +113,8 @@
 "Please enter promocode!" = "veuillez entrer le code promo";
 "Your trip has been completed successfully!" = "votre voyage s'est effectué avec succès ";
 "Home" = "accueil";
-"logout" = "déconnexion";
+"Profile" = "profil";
+"Logout" = "déconnexion";
 "Please select vehicle type" = "veuillez sélectionner le type de véhicule";
 "min" = "min";
 "No Routes Found Please Try again later" = "aucun itinéraire trouvé, veuillez réessayer plus tard";
@@ -156,7 +165,7 @@
 "Address"  = "Address";
 "Toll Fee" = "Toll Fee";
 "Sub Total" =  "Sub Total";
-"Last Name"  = "Last Name";
+//"Last Name"  = "Last Name";
 "Invite Code"  = "Invite Code";
 "TZS"  = "TZS";
 "Car not available!" = "Car not available!";
@@ -173,7 +182,7 @@
 
 "MY RECEIPTS" = "MY RECEIPTS";
 "INVITE FRIENDS" =  "INVITE FRIENDS";
-"PROFILE"= "PROFILE";
+//"PROFILE"= "PROFILE";
 "ACCOUNT" = "ACCOUNT";
 "My Bookings" = "My Bookings";
 "GPS is settings" = "GPS is settings";
@@ -265,7 +274,7 @@
 "Date Of Birth" = "Date Of Birth";
 "Post Code" = "Post Code";
 "Submit" = "Submit";
-"Home" = "Home";
+//"Home" = "Home";
 "MissingTranslationStandard" = "MissingTranslationStandard";
 "MissingTranslationPremium" = "MissingTranslationPremium";
 "MissingTranslationVan" = "MissingTranslationVan";
@@ -277,8 +286,8 @@
 "Cash" = "Cash";
 "Booking Fee:" = "Booking Fee:";
 "Trip Fare:" = "Trip Fare:";
-"Pickup Time:" = "Pickup Time:";
-"Pickup Time" = "Pickup Time";
+//"Pickup Time:" = "Pickup Time:";
+//"Pickup Time" = "Pickup Time";
 "Dropoff Time:" = "Dropoff Time:";
 "Vehicle Type:" = "Vehicle Type:";
 "Distance Travelled:" = "Distance Travelled:";
@@ -356,7 +365,6 @@
 "Please try again, QR code not found." = "Please try again, QR code not found.";
 "Myself" = "Myself";
 "Others" = "Others";
-"Book Now" = "Book Now";
 "Done" = "Done";
 "Start Trip" = "Start Trip";
 //"Cancel Request" = "Cancel Request";
@@ -464,12 +472,12 @@
 
 //HOME
 
-"HOME" = "HOME";
+//"HOME" = "HOME";
 "Done" = "Done";
 "Dropoff Location" = "Dropoff Location";
 "Pickup Location" = "Pickup Location";
-"Book Now" = "Book Now";
-"Book Later" = "Book Later";
+"Book Now" = "Réserver maintenant";
+"Book Later" = "Réserver plus tard";
 "Have a promocode?" = "Have a promocode?";
 "REQUEST NOW" = "REQUEST NOW";
 "Your request status pending..." = "Your request status pending...";
@@ -512,9 +520,11 @@
 
 
 "Contact number is not available" = "Contact number is not available";
-"Your trip cancelled successfully" = "Your trip cancelled successfully";
+"Your trip cancelled successfully" = "Votre course a été annulé avec succès";
 
 "Sorry! no car available" = "Sorry! no car available";
 "We did not get proper address" = "We did not get proper address";
-"Please enter your destination again" = "Please enter your destination again";
+"Please enter your destination again" = "veuillez saisir à nouveau votre destination";
 "Please select vehicle" = "Please select vehicle";
+
+appliquée

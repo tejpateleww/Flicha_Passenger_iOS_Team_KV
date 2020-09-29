@@ -36,20 +36,21 @@ class SignUpViewController: UIViewController {
     
     func setupView()
     {
-        self.lblTitle.text = "Create Account"
-        self.lblSubTitle.text = "Sign up to get started"
-        self.txtFirstName.placeholder = "First Name"
-        self.txtLastName.placeholder = "Last Name"
-        self.txtEmail.placeholder = "Email Id"
-        self.txtPhoneNumber.placeholder = "Phone Number"
-        self.txtPassword.placeholder = "Password"
-        self.txtConfirmPassword.placeholder = "Confirm Password"
-        self.btnSignUp.setTitle("Sign Up", for: .normal)
+        self.lblTitle.text = "Create Account".localized
+        self.lblSubTitle.text = "Sign up to get started".localized
+        self.txtFirstName.placeholder = "First Name".localized
+        self.txtLastName.placeholder = "Last Name".localized
+        self.txtEmail.placeholder = "Email Id".localized
+        self.txtPhoneNumber.placeholder = "Phone Number".localized
+        self.txtPassword.placeholder = "Password".localized
+        self.txtConfirmPassword.placeholder = "Confirm Password".localized
+        self.btnSignUp.setTitle("Sign Up".localized, for: .normal)
         self.imgProfile.layer.cornerRadius = self.imgProfile.frame.size.width / 2
         self.imgProfile.layer.masksToBounds = true
         self.ProfileImageView.layer.cornerRadius = self.ProfileImageView.frame.size.width / 2
         self.ProfileImageView.layer.masksToBounds = true
-        self.lblAlreadyAccount.attributedText =  "\("Already Have an Account?".localized) SIGN IN".underLineWordsIn(highlightedWords: "SIGN IN", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+        let signin = "SIGN IN".localized
+        self.lblAlreadyAccount.attributedText =  "\("Already Have an Account?".localized) \(signin)".underLineWordsIn(highlightedWords: signin, fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignInClickAction(_:)))
         self.lblAlreadyAccount.isUserInteractionEnabled = true
@@ -102,7 +103,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        if let range = text.range(of: "SIGN IN"),
+        if let range = text.range(of: "SIGN IN".localized),
             recognizer.didTapAttributedTextInLabel(label: self.lblAlreadyAccount, inRange: NSRange(range, in: text))
         {
             self.navigationController?.popViewController(animated: true)

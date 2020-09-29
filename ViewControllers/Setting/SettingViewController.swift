@@ -13,8 +13,8 @@ class SettingViewController: BaseViewController {
     var arrSettings:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addCustomNavigationBar(title: kSettingsPageTitle)
-        self.arrSettings = ["Push Notification"]
+        self.addCustomNavigationBar(title: kSettingsPageTitle.localized)
+        self.arrSettings = ["Push Notification".localized]
     }
     
     //MARK:- Functions / Api calls :

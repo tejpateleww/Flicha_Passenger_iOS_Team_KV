@@ -168,12 +168,12 @@
 		64BD5AB9247579C100C17B4D /* UniversalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD5AB8247579C100C17B4D /* UniversalHeaderView.swift */; };
 		64BD5ABB247579D300C17B4D /* UniversalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */; };
 		64ED2A0D245D6607004623BF /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */; };
+		686DC2962521E02A00834F08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 686DC2952521E02A00834F08 /* GoogleService-Info.plist */; };
 		6E25B17E2494C51F00A60132 /* SignUpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */; };
 		6EB460052498D03D007F9D10 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460042498D03D007F9D10 /* HelpVC.swift */; };
 		6EB460072498D2FA007F9D10 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460062498D2FA007F9D10 /* HelpTableViewCell.swift */; };
 		6EB460092498DEBD007F9D10 /* FaqVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB460082498DEBD007F9D10 /* FaqVC.swift */; };
 		6EB4600B2498DED6007F9D10 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB4600A2498DED6007F9D10 /* FaqTableViewCell.swift */; };
-		6EFD266A2518C1A900021D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EFD26692518C1A900021D31 /* GoogleService-Info.plist */; };
 		7A1A48032435ACA500D63155 /* ThemeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */; };
 		7A1D8A752434AD2800ABCC6E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D8A742434AD2800ABCC6E /* SplashVC.swift */; };
 		7AB5EEFD2490E0C2003BC6C6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */; };
@@ -381,6 +381,7 @@
 		64BD5AB8247579C100C17B4D /* UniversalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalHeaderView.swift; sourceTree = "<group>"; };
 		64BD5ABA247579D300C17B4D /* UniversalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UniversalHeaderView.xib; sourceTree = "<group>"; };
 		64ED2A0C245D6607004623BF /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
+		686DC2952521E02A00834F08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C5BB4D02F5DAB560A69DD39 /* Pods_PickNGo_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickNGo_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E25B17D2494C51F00A60132 /* SignUpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVerificationViewController.swift; sourceTree = "<group>"; };
 		6EB460042498D03D007F9D10 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
@@ -390,7 +391,6 @@
 		6EFD26662518B08100021D31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		6EFD26672518B08100021D31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6EFD26682518B08100021D31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Storyboards/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6EFD26692518C1A900021D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/Satyajit/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A1A48022435ACA500D63155 /* ThemeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegisterViewController.swift; sourceTree = "<group>"; };
 		7A1D8A742434AD2800ABCC6E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		7AB5EEFC2490E0C2003BC6C6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -474,12 +474,12 @@
 		3A4072B321B512270015C494 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				686DC2952521E02A00834F08 /* GoogleService-Info.plist */,
 				3A5F1BD121CE21AD000007AE /* Credentials.plist */,
 				3A4072B421B512270015C494 /* Assets.xcassets */,
 				3A4072BA21B512270015C494 /* Fonts */,
 				3A4072CC21B512270015C494 /* iCons */,
 				3A4072D421B512270015C494 /* Info.plist */,
-				6EFD26692518C1A900021D31 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1219,7 +1219,7 @@
 				3A4073FC21B512280015C494 /* circle1.png in Resources */,
 				3A40737F21B512280015C494 /* proxima-nova-condensed-light-italic.otf in Resources */,
 				3A40740221B512280015C494 /* round50.png in Resources */,
-				6EFD266A2518C1A900021D31 /* GoogleService-Info.plist in Resources */,
+				686DC2962521E02A00834F08 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

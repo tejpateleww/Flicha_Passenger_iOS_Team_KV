@@ -46,13 +46,13 @@ class MyBookingViewController: BaseViewController {
     
     func setupView()
     {
-        self.addCustomNavigationBar(title: kMyRidePageTitle)
+        self.addCustomNavigationBar(title: kMyRidePageTitle.localized)
 
         lbltitile.text = kMyRidePageTitle
         
-        btnUpComming.setTitle(kSegmentUpcomingTitle, for: .normal)
-        btnComplete.setTitle(kSegmentCompletedTitle, for: .normal)
-        btnCanceled.setTitle(kSegmentCanceledTitle, for: .normal)
+        btnUpComming.setTitle(kSegmentUpcomingTitle.localized, for: .normal)
+        btnComplete.setTitle(kSegmentCompletedTitle.localized, for: .normal)
+        btnCanceled.setTitle(kSegmentCanceledTitle.localized, for: .normal)
         
         scrollObject.isUserInteractionEnabled = true
         scrollObject.delegate = self
@@ -72,11 +72,11 @@ class MyBookingViewController: BaseViewController {
         
         if (isFromPushNotification)
         {
-            if bookingType == "accept"
+            if bookingType == "accept".localized
             {
                 self.handleSelectedSegment(tabIndex: .Upcoming)
             }
-            else if bookingType == "reject"
+            else if bookingType == "reject".localized
             {
                 self.handleSelectedSegment(tabIndex: .Canceled)
             }

@@ -103,13 +103,13 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     func getMenuCellDetails() -> [(String,String,String)]
     {
         var titleAndImages = [(String,String,String)]()
-        titleAndImages.append(("Home", "homeSelect", "homeUnSelect"))
-        titleAndImages.append(("My Ride", "my-ride-unselect", "my-ride-select"))
+        titleAndImages.append(("Home".localized, "homeSelect", "homeUnSelect"))
+        titleAndImages.append(("My Ride".localized, "my-ride-unselect", "my-ride-select"))
 //        titleAndImages.append(("Payment Method", "payment-unselect", "payment-select"))
-        titleAndImages.append(("Notification", "notification-unselect", "notification-select"))
-        titleAndImages.append(("Settings", "setting-unselect", "setting-select"))
-        titleAndImages.append(("Help", "help-unselect", "help-select"))
-        titleAndImages.append(("Logout", "logout-unselect", "logout-select"))
+        titleAndImages.append(("Notifications".localized, "notification-unselect", "notification-select"))
+        titleAndImages.append(("Settings".localized, "setting-unselect", "setting-select"))
+        titleAndImages.append(("Help".localized, "help-unselect", "help-select"))
+        titleAndImages.append(("Logout".localized, "logout-unselect", "logout-select"))
         return titleAndImages
     }
     
@@ -267,60 +267,60 @@ extension SideMenuTableViewController : UICollectionViewDataSource, UICollection
          if let menuDetails = self.getMenuCellDetails()[indexPath.row] as (String, String,String)?
          {
 
-            if menuDetails.0 == "Home"
+            if menuDetails.0 == "Home".localized
             {
                 NotificationCenter.default.post(name: OpenHome, object: nil)
                 
-            }else if menuDetails.0 == "My Ride"
+            }else if menuDetails.0 == "My Ride".localized
             {
                 NotificationCenter.default.post(name: OpenMyBooking, object: nil)
                 
-            }else if menuDetails.0 == "Payment Method"
+            }else if menuDetails.0 == "Payment Method".localized
             {
                 NotificationCenter.default.post(name: OpenPaymentOption, object: nil)
                 
-            }else if menuDetails.0 == "Notification"
+            }else if menuDetails.0 == "Notifications".localized
             {
 //                let notificationVC = PaymentMethodStoryBoard.instantiateViewController(withIdentifier: "NotificationsViewController")
 //                self.navigationController?.pushViewController(notificationVC, animated: true)
                 
                 NotificationCenter.default.post(name: OpenNotification, object: nil)
             }
-            else if menuDetails.0 == "Wallet"
+            else if menuDetails.0 == "Wallet".localized
             {
                 NotificationCenter.default.post(name: OpenWallet, object: nil)
                 
-            }else if menuDetails.0 == "Favourites"
+            }else if menuDetails.0 == "Favourites".localized
             {
                 NotificationCenter.default.post(name: OpenFavourite, object: nil)
             }
-            else if menuDetails.0 == "My Receipts"
+            else if menuDetails.0 == "My Receipts".localized
             {
                 NotificationCenter.default.post(name: OpenMyReceipt, object: nil)
             }
-            else if menuDetails.0 == "Invite Friends"
+            else if menuDetails.0 == "Invite Friends".localized
             {
                 NotificationCenter.default.post(name: OpenInviteFriend, object: nil)
             }
-            else if menuDetails.0 == "My Ratings"
+            else if menuDetails.0 == "My Ratings".localized
             {
                 NotificationCenter.default.post(name: OpenFavourite, object: nil)
             }
-            else if menuDetails.0 == "Settings"
+            else if menuDetails.0 == "Settings".localized
             {
                 NotificationCenter.default.post(name: OpenSetting, object: nil)
             }
-            else if menuDetails.0 == "Support"
+            else if menuDetails.0 == "Support".localized
             {
                 UtilityClass.setCustomAlert(title: "Info Message".localized, message: "This feature is coming soon") { (index, title) in
                 }
                 return
             
-            }else if menuDetails.0 == "Logout"
+            }else if menuDetails.0 == "Logout".localized
             {
                 self.logoutUser()
             }
-            else if menuDetails.0 == "Help"
+            else if menuDetails.0 == "Help".localized
             {
                 NotificationCenter.default.post(name: OpenHelp, object: nil)
             }

@@ -161,9 +161,13 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
    {
         txtMobile.placeholder = "Phone Number".localized
         txtPassword.placeholder = "Password".localized
-    
+        lblTitle.text = "Welcome".localized
+    lblSubTitle.text = "Sign in to Continue!".localized
         lblDontAc.textColor = .black
-        lblDontAc.attributedText =  "OR \n\n \("Don't have an account?".localized) SIGN UP".underLineWordsIn(highlightedWords: "SIGN UP", fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+    let signup = "SIGN UP".localized
+    let or = "OR".localized
+    lblDontAc.attributedText =  "\(or) \n\n \("Don't have an account?".localized) \(signup)".underLineWordsIn(highlightedWords: signup, fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+
     
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignupClickAction(_:)))
         lblDontAc.isUserInteractionEnabled = true
@@ -192,7 +196,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             return false
         } else if (txtMobile.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your Mobile Number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter email or phone numbe".localized) { (index, title) in
             }
             
             // txtMobile.showErrorWithText(errorText: "Enter Email")
@@ -200,7 +204,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         }
         else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter your Password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter password".localized) { (index, title) in
             }
             
             return false
@@ -355,7 +359,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
             return
         }
         
-        if let range = text.range(of: "SIGN UP"),
+        if let range = text.range(of: "SIGN UP".localized),
             recognizer.didTapAttributedTextInLabel(label: self.lblDontAc, inRange: NSRange(range, in: text))
         {
             print("Sign up click")

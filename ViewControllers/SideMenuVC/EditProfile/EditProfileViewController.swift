@@ -20,7 +20,7 @@ class EditProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setNavBarWithBack(Title: "PROFILE".localized, IsNeedRightButton: true)
+//        self.setNavBarWithBack(Title: "PROFILE".localized, IsNeedRightButton: true)
         
         viewEditProfile.layer.cornerRadius = 10
         viewEditProfile.layer.masksToBounds = true
@@ -50,7 +50,7 @@ class EditProfileViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLocalization()
-        self.setNavBarWithBack(Title: "Profile".localized, IsNeedRightButton: true)
+        self.setNavBarWithBack(Title: "My Profile".localized, IsNeedRightButton: true)
 //        ConstraintEditProfileX.constant = -(self.view.frame.size.width)
 //        constraintAccountTailing.constant = -(self.view.frame.size.width)
         

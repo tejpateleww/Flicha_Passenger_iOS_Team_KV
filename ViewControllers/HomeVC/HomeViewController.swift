@@ -4557,6 +4557,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                 self.aryCurrentBookingData.add(resultData)
                 self.aryRequestAcceptedData = self.aryCurrentBookingData
                 
+                
                 let bookingType = (self.aryCurrentBookingData.object(at: 0) as! NSDictionary).object(forKey: "BookingType") as! String
                 
                 if bookingType != "" {

@@ -29,7 +29,7 @@ class NotificationsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addCustomNavigationBar(title: kNotificationsPageTitle)
+        self.addCustomNavigationBar(title: kNotificationsPageTitle.localized)
         self.getNotificationsList()
     }
     
