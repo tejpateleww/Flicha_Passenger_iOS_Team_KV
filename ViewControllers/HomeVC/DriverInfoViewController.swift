@@ -110,7 +110,7 @@ class DriverInfoViewController: UIViewController {
         
         if contactNumber == "" {
             
-            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
+            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available".localized) { (index, title) in
             }
         }
         else {
@@ -158,7 +158,7 @@ class DriverInfoViewController: UIViewController {
         
         if contactNumber == "" {
     
-            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
+            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available".localized) { (index, title) in
             }
         }
         else {

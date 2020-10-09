@@ -40,8 +40,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMh-B2-b78">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMh-B2-b78">
                         <rect key="frame" x="8" y="90" width="224" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-fe-jpV">
+                        <rect key="frame" x="8" y="112" width="224" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,13 +55,16 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="bCa-fe-jpV" firstAttribute="trailing" secondItem="tMh-B2-b78" secondAttribute="trailing" id="2ok-sH-8D9"/>
                 <constraint firstItem="Oyo-gF-PRt" firstAttribute="top" secondItem="hbo-np-aRC" secondAttribute="bottom" constant="8" id="5WJ-UD-wXx"/>
                 <constraint firstItem="hbo-np-aRC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6xq-h1-8WO"/>
                 <constraint firstItem="tMh-B2-b78" firstAttribute="trailing" secondItem="Oyo-gF-PRt" secondAttribute="trailing" id="9IR-nW-NCO"/>
                 <constraint firstAttribute="trailing" secondItem="hbo-np-aRC" secondAttribute="trailing" id="BoK-2R-OsM"/>
                 <constraint firstItem="tMh-B2-b78" firstAttribute="top" secondItem="Oyo-gF-PRt" secondAttribute="bottom" constant="4" id="EFX-29-jjV"/>
+                <constraint firstItem="bCa-fe-jpV" firstAttribute="leading" secondItem="tMh-B2-b78" secondAttribute="leading" id="Ibt-Ea-Fqy"/>
                 <constraint firstItem="tMh-B2-b78" firstAttribute="leading" secondItem="Oyo-gF-PRt" secondAttribute="leading" id="Ket-ds-56c"/>
                 <constraint firstItem="hbo-np-aRC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qxu-KD-J34"/>
+                <constraint firstItem="bCa-fe-jpV" firstAttribute="top" secondItem="tMh-B2-b78" secondAttribute="bottom" constant="4" id="VAH-UU-5Yk"/>
                 <constraint firstAttribute="trailing" secondItem="Oyo-gF-PRt" secondAttribute="trailing" constant="8" id="aDx-U0-1xB"/>
                 <constraint firstItem="Oyo-gF-PRt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="xd5-gX-xpj"/>
             </constraints>
@@ -65,6 +74,7 @@
                 <outlet property="containerView" destination="hbo-np-aRC" id="BJU-2u-WT0"/>
                 <outlet property="imageViewCar" destination="LZx-wX-GCW" id="wk6-sc-L04"/>
                 <outlet property="lblCategoryType" destination="Oyo-gF-PRt" id="c4Y-io-mjm"/>
+                <outlet property="lblDistance" destination="bCa-fe-jpV" id="Dpd-SN-eMd"/>
                 <outlet property="lblRate" destination="tMh-B2-b78" id="PJP-1D-6NK"/>
             </connections>
             <point key="canvasLocation" x="275.36231884057975" y="117.52232142857142"/>

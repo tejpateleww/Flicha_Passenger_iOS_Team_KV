@@ -210,6 +210,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.setupView()
         webserviceOfCardList()
         
+        self.mapView.isTrafficEnabled = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.setLocationFromBarAndClub(_:)), name: NotificationBookNow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.setBookLaterDestinationAddress(_:)), name: NotificationBookLater, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.webserviceOfRunningTripTrack), name: NotificationTrackRunningTrip, object: nil)
@@ -225,6 +227,8 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
 //        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoInviteFriendPage), name: OpenInviteFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSettingPage), name: OpenSetting, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoSupportPage), name: OpenSupport, object: nil)
+        
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.GotoHelpPage), name: OpenHelp, object: nil)
         
@@ -346,7 +350,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.handleMenuIcon(isSelected: false)
         self.lblFromTitleFromDefaultView.applyCustomTheme(title: "From".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
         self.lblCurrentLocationForDefaultView.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.bold(ofSize: 14))
-        self.btnAddToLocationFromDefaultView.applyCustomTheme(title: "Where are you going ?".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 14))
+        self.btnAddToLocationFromDefaultView.applyCustomTheme(title: "Dropoff Location".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 14))
 
         self.lblToTitleFromBookRideView.applyCustomTheme(title: "To".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 12))
         self.lblUserToAddress.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.bold(ofSize: 12))
@@ -354,6 +358,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.lblUserFromAddress.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.bold(ofSize: 12))
         
         self.btnApplyPromoCode.applyCustomTheme(title: "Apply".localized, textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 14))
+        self.btnApplyPromoCode.titleLabel?.adjustsFontSizeToFitWidth = true
         self.txtPromodeCode.delegate = self
         self.txtPromodeCode.applyCustomTheme(placeHolderTitle: "Enter your promotion code".localized, placeHolderTextColor: themeGrayTextColor, textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 12))
 
@@ -693,7 +698,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             }
         }
         else {
-            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+                UtilityClass.showAlert("", message: "Internet connection not available".localized, vc: self)
         }
     }
     
@@ -1123,6 +1128,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         mapView.camera = camera
         self.mapView.settings.rotateGestures = false
         self.mapView.settings.tiltGestures = false
+        self.mapView.isTrafficEnabled = true
         
         
         //        let position = CLLocationCoordinate2D(latitude: defaultLocation.coordinate.latitude, longitude: defaultLocation.coordinate.longitude)
@@ -1174,7 +1180,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         let OK = UIAlertAction(title: "OK".localized, style: .default, handler: { ACTION in
             self.clearSetupMapForNewBooking()
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .default, handler: { ACTION in
            
         })
         alert.addAction(OK)
@@ -1315,7 +1321,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         }
         else
         {
-            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+            UtilityClass.showAlert("", message: "Internet connection not available".localized, vc: self)
         }
     }
     
@@ -1323,7 +1329,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     {
         if lblUserFromAddress.text == "" || lblUserToAddress.text == ""
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter both address.") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please enter both address.") { (index, title) in
             }
         }
         else
@@ -1846,7 +1852,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     
     @objc func GotoHelpPage()
     {
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "HelpVC") as! HelpVC
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "FaqVC") as! FaqVC
         self.navigationController?.pushViewController(next, animated: true)
     }
     
@@ -2950,7 +2956,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
 //        self.present(alert, animated: true, completion: nil)
         
         
-        UtilityClass.setCustomAlert(title: appName, message: "Your trip has been completed") { (index, str) in
+        UtilityClass.setCustomAlert(title: appName, message: "Your trip has been completed".localized) { (index, str) in
             self.setHideAndShowTopViewWhenRequestAcceptedAndTripStarted(status: false)
              self.arrDataAfterCompletetionOfTrip = NSMutableArray(array: (self.aryCompleterTripData[0] as! NSDictionary).object(forKey: "Info") as! NSArray)
              
@@ -4740,6 +4746,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
             var price = 0
             var time = 0
+            var distance = 0.0
             
             //SJ Edit Started
             if aryEstimateFareData.count > indexPath.row {
@@ -4752,11 +4759,17 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                 if let timeDuration = dict!["duration"] as? Int {
                     time = timeDuration
                 }
+                
+                if let dista = dict!["driver_distance"] as? Double {
+                    distance = dista
+                }
+                
             }
             //SJ Edit Ended
             
             
             cell.lblRate.text = "\(price) \(currencySign) / \(time) min"
+            cell.lblDistance.text = "\(distance) KM"
             
             if let imageURL = dictOnlineCarData["Image"] as? String
             {
@@ -5057,7 +5070,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         }
         
         if mapView.isHidden
-        {
+        {   
             mapView.isHidden = false
             self.getPlaceFromLatLong()
 
@@ -5216,7 +5229,8 @@ extension HomeViewController : UITextFieldDelegate{
             self.txtPromodeCode.text = ""
             
             btnApplyPromoCode.setImage(nil, for: .normal)
-            btnApplyPromoCode.setTitle("Apply", for: .normal)
+            btnApplyPromoCode.setTitle("Apply".localized, for: .normal)
+            btnApplyPromoCode.titleLabel?.adjustsFontSizeToFitWidth = true
             btnApplyPromoCode_WidthConstraint.constant = 80
             
             btnApplyPromoCode.layer.borderWidth = 1
@@ -5598,7 +5612,7 @@ extension HomeViewController {
                     {
                         
                         if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-                            if SelectedLanguage == "en"
+                            if SelectedLanguage == "fr"
                             {
                                 UtilityClass.showAlert("Error", message: resDict.object(forKey: "message") as! String, vc: self)
                                 

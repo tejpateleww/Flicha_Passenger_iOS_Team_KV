@@ -43,6 +43,10 @@ class CompletedRidesVC: UIViewController {
         self.tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.lblNoDataFound.text = "No data Found".localized
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         self.pageNo = 1
@@ -83,6 +87,8 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
             let date = Date(timeIntervalSince1970: timeStamp!)
             let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
             cell.lblTime.text = dateStr
+            
+            cell.layoutIfNeeded()
         }
         //SJ Edit Ended
         

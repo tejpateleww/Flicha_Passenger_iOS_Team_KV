@@ -40,6 +40,8 @@ class CanceledRidesVC: UIViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView()
         self.tableView.addSubview(self.refreshControl)
+        
+//        self.tableView.reloadData()
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl)
@@ -55,6 +57,10 @@ class CanceledRidesVC: UIViewController
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.lblNoDataFound.text = "No data Found".localized
     }
 
 //    @IBAction func btnCellPaymentReceiptClicked(_ sender: UIButton)
@@ -86,12 +92,27 @@ extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! RideDetailsTableViewCell
         cell.PriceStack.isHidden = true
+        
         let rideDetails = self.aryCanceledRidesHistory[indexPath.row]
+        
+        
         if let pickUpDateAndTime = rideDetails["PickupDateTime"] as? String
         {
             let datePickUp = pickUpDateAndTime.convertStringToDate(dateFormat: "yyyy-MM-dd HH:mm")
             cell.lblTime.text = datePickUp.relativeDateFormat()
         }
+        
+        cell.lblTime.layoutIfNeeded()
+        
+        //SJ Edit Started
+//        if let pickupDateAndTimee = rideDetails["PickupTime"] as? String {
+//            let timeStamp = Double(pickupDateAndTimee)
+//            let date = Date(timeIntervalSince1970: timeStamp!)
+//            let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
+//            cell.lblTime.text = dateStr
+//        }
+        //SJ Edit Ended
+        
         if let mapURL = rideDetails["MapUrl"] as? String, let encodedStr = mapURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             cell.imageViewRideRoute.sd_setImage(with: URL.init(string: encodedStr), completed: nil)
         }
@@ -99,7 +120,6 @@ extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
         cell.lblCategoryType.text = rideDetails["Model"] as? String ?? ""
         cell.lblPriceValue.text = (rideDetails["TripFare"] as? String)?.currencyInputFormatting() ?? ""
         cell.lblAddress.text = rideDetails["DropoffLocation"] as? String ?? ""
-        
         
         return cell
     }
@@ -129,6 +149,7 @@ extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
 //            }
 //        }
 //    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {

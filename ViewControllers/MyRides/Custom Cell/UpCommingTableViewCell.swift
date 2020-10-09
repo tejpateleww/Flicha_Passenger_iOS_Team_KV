@@ -12,6 +12,8 @@ class UpCommingTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        btnCancelRequest.setTitle("Cancel".localized, for: .normal)
         // Initialization code
     }
 

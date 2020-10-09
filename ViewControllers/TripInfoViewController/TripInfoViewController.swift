@@ -44,7 +44,7 @@ class TripInfoViewController: BaseViewController,delegatePesapalWebView//,delega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addCustomNavigationBar(title: "Trip Detail")
+        self.addCustomNavigationBar(title: "Trip Detail".localized)
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -187,7 +187,7 @@ class TripInfoViewController: BaseViewController,delegatePesapalWebView//,delega
         }
         else
         {
-            self.btnOK.setTitle("Make Payment", for: .normal)
+            self.btnOK.setTitle("Make Payment".localized, for: .normal)
         }
     }
 }

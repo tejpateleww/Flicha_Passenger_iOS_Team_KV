@@ -35,14 +35,14 @@ class RatingAndReviewViewController: BaseViewController {
     }
     
     func setupView() {
-        self.addCustomNavigationBar(title: "Ratings & Review")
+        self.addCustomNavigationBar(title: "Ratings & Review".localized)
         
         self.giveRating.delegate = self
         
-        self.lblTitle.text = "HOW IS YOUR TRIP?"
+        self.lblTitle.text = "HOW IS YOUR TRIP?".localized
         self.lblTitle.font = UIFont.regular(ofSize: 17)
         
-        self.lblDescriptions.text = "Your Feedback will help us to improve driving experience better."
+        self.lblDescriptions.text = "Your Feedback will help us to improve driving experience better.".localized
         self.lblDescriptions.font = UIFont.regular(ofSize: 15)
         self.lblDescriptions.textColor = themeGrayTextColor
         
@@ -54,7 +54,7 @@ class RatingAndReviewViewController: BaseViewController {
         self.textViewCommentBox.borderColor = UIColor.lightGray
         self.textViewCommentBox.borderWidth = 1
         
-        self.btnSubmit.setTitle("Submit Review", for: .normal)
+        self.btnSubmit.setTitle("Submit Review".localized, for: .normal)
     }
     
     override func viewDidLayoutSubviews() {

@@ -14,7 +14,7 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var containerView: UIView!
     
     //MARK:- Properties
-    var arr_TripDetails : [String] = ["Pickup Time","DropOff Time","Vehicle type","Payment Type","Booking Fee","Trip Fare","Distance Fare","Tax"]
+    var arr_TripDetails : [String] = ["Pickup Time","DropOff Time","Vehicle Type","Payment Type","Booking Fare","Trip Fare","Distance Fare","Tax"]
     var arr_TripDescriptions : [String: Any] = [:]
     
     //MARKL- Life Cycle
@@ -24,7 +24,7 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
        // clearLbls()
-        self.addCustomNavigationBar(title: "Trip Detail")
+        self.addCustomNavigationBar(title: "Trip Detail".localized)
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,6 +55,10 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
         
         if indexPath.row == 0 {
             let topCell = tableView.dequeueReusableCell(withIdentifier: "TripDetailTopCell", for: indexPath) as! TripDetailTopCell
+            
+            topCell.lbl_From.text = "From".localized
+            topCell.lbl_To.text = "To".localized
+            
             topCell.lbl_SourceAddress.text = arr_TripDescriptions["PickupLocation"] as? String
             topCell.lbl_DestinationAddress.text = arr_TripDescriptions["DropoffLocation"] as? String
             topCell.imgView_SeperatorLinePAth.clipsToBounds = false
@@ -65,6 +69,9 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
             
         } else if indexPath.row == arr_TripDetails.count + 1 {
             let bottomCell = tableView.dequeueReusableCell(withIdentifier: "TripDetailBottomCell", for: indexPath) as! TripDetailBottomCell
+            
+            bottomCell.lbl_textGrandTotal.text = "Grand Total (Tax Included)".localized
+            
             bottomCell.lbl_GrandTotal.text = "\(arr_TripDescriptions["GrandTotal"] as? String ?? "") DA"
             bottomCell.OkAction = {
                 self.navigationController?.popViewController(animated: true)
@@ -74,9 +81,10 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripDetailCell", for: indexPath) as! TripDetailCell
-            cell.lbl_TripDetail.text = arr_TripDetails[indexPath.row-1]
-            let field = cell.lbl_TripDetail.text!
-            
+            let text = (arr_TripDetails[indexPath.row-1])
+            cell.lbl_TripDetail.text = text.localized
+            let field = text
+        
             switch field {
             case "Pickup Time":
                 if let pickupDateAndTimee = arr_TripDescriptions["PickupTime"] as? String {
@@ -94,23 +102,23 @@ class TripDetailViewController: BaseViewController, UITableViewDelegate, UITable
                     cell.lbl_TripDescription.text = dateStr
                 }
                 
-            case "Vehicle type":
+            case "Vehicle Type":
                 cell.lbl_TripDescription.text = arr_TripDescriptions["Model"] as? String
                 
             case "Payment Type":
                 cell.lbl_TripDescription.text = arr_TripDescriptions["PaymentType"] as? String
                 
-            case "Booking Fee":
-                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["BookingCharge"] as? String ?? "") DA"
+            case "Booking Fare":
+                cell.lbl_TripDescription.text = "DA \(arr_TripDescriptions["BookingCharge"] as? String ?? "")"
                 
             case "Trip Fare":
-                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["TripFare"] as? String ?? "") DA"
+                cell.lbl_TripDescription.text = "DA \(arr_TripDescriptions["TripFare"] as? String ?? "")"
                 
             case "Distance Fare":
-                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["DistanceFare"] as? String ?? "") DA"
+                cell.lbl_TripDescription.text = "DA \(arr_TripDescriptions["DistanceFare"] as? String ?? "")"
                 
             case "Tax":
-                cell.lbl_TripDescription.text = "\(arr_TripDescriptions["Tax"] as? String ?? "") DA"
+                cell.lbl_TripDescription.text = "DA \(arr_TripDescriptions["Tax"] as? String ?? "")"
                 
             
             default:
@@ -145,11 +153,13 @@ class TripDetailTopCell : UITableViewCell {
     @IBOutlet weak var lbl_SourceAddress: UILabel!
     @IBOutlet weak var lbl_DestinationAddress: UILabel!
     @IBOutlet weak var imgView_SeperatorLinePAth: UIImageView!
+    @IBOutlet weak var lbl_From: UILabel!
+    @IBOutlet weak var lbl_To: UILabel!
     
     override class func awakeFromNib() {
            super.awakeFromNib()
         
-        
+       
         
        }
 }
@@ -172,6 +182,10 @@ class TripDetailCell : UITableViewCell {
 class TripDetailBottomCell : UITableViewCell {
 
     //Properties:
+    
+    @IBOutlet weak var lbl_textGrandTotal: UILabel!
+    
+    
     @IBOutlet weak var lbl_GrandTotal: UILabel!
     @IBOutlet weak var btn_Ok: ThemeButton!
     

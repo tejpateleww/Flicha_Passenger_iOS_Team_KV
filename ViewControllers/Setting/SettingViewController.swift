@@ -50,7 +50,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tblCell = tableView.dequeueReusableCell(withIdentifier: "TblSettingCell") as! TblSettingCell
         tblCell.lblTitle.text = self.arrSettings[indexPath.row]
-        tblCell.lblDesc.text = "Allow Push Notifications?"
+        tblCell.lblDesc.text = "Allow Push Notifications?".localized
         tblCell.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.50)
         tblCell.contentView.layer.cornerRadius = 15.0
         tblCell.contentView.layer.masksToBounds = true

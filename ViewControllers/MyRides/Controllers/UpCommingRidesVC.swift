@@ -42,6 +42,10 @@ class UpCommingRidesVC: UIViewController {
         self.tableView.addSubview(self.refreshControl)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.lblNoDataFound.text = "No data Found".localized
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         aryUpcomingRidesData.removeAll()

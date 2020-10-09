@@ -132,7 +132,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
   
     func logoutUser()
     {
-        RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Sign out".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
+        RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Sign Out".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
             if (buttonIndex == 2) {
                 
                 let socket = (UIApplication.shared.delegate as! AppDelegate).SocketManager

@@ -64,6 +64,8 @@ let UpdateNotificationSetting = WebserviceURLs.kUpdateNotificationSetting
 
 let AppleLogin = WebserviceURLs.kAppleLogin
 
+let FAQList = WebserviceURLs.kFAQList
+
 
 //-------------------------------------------------------------
 // MARK: - Webservice For Registration
@@ -569,4 +571,17 @@ func WebserviceForAppleLogin(_ dictPArams: AnyObject, completion: @escaping(_ re
 {
     let url = AppleLogin
     postData(dictPArams, nsURL: url, completion: completion)
+}
+
+
+// ------------------------------------------------------------
+// MARK:- Webservice For FAQ List
+// ------------------------------------------------------------
+
+func WebserviceForFAQList(_ dictPArams: AnyObject, completion: @escaping(_ result: AnyObject, _ success: Bool) -> Void)
+{
+    let url = FAQList
+    getData(dictPArams, nsURL: url, completion: completion)
+    
+    
 }
