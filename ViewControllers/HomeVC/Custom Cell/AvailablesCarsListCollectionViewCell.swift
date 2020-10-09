@@ -13,6 +13,8 @@ class AvailablesCarsListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lblCategoryType: UILabel!
     @IBOutlet weak var lblRate: UILabel!
+    @IBOutlet weak var lblDistance: UILabel!
+    
     @IBOutlet weak var imageViewCar: UIImageView!
 
     override func awakeFromNib() {
@@ -23,6 +25,8 @@ class AvailablesCarsListCollectionViewCell: UICollectionViewCell {
     func setupView() {
         self.lblCategoryType.applyCustomTheme(title: "", textColor: themeBlackColor, fontStyle: UIFont.regular(ofSize: 11))
         self.lblRate.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 10))
+        self.lblDistance.applyCustomTheme(title: "", textColor: themeGrayTextColor, fontStyle: UIFont.regular(ofSize: 10))
+        
     }
 
     override func layoutSubviews() {

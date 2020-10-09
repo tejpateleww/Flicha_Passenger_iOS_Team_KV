@@ -58,7 +58,7 @@ class SignUpVerificationViewController: UIViewController {
         if Connectivity.isConnectedToInternet() {
             WebserviceOtpForRegister(msg: true)
         } else {
-            UtilityClass.setCustomAlert(title: appName, message: "No Internet connection") { (index, title) in
+            UtilityClass.setCustomAlert(title: appName, message: "No Internet connection".localized) { (index, title) in
                 //
             }
         }
@@ -69,7 +69,7 @@ class SignUpVerificationViewController: UIViewController {
     @IBAction func btnAction_VerifyOTP(_ sender: Any) {
         
         guard let enteredOTP = txtField_OTP.text, enteredOTP.count > 0 else {
-            UtilityClass.setCustomAlert(title: "Missing", message: "OTP can not be blank") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "OTP can not be blank".localized) { (index, title) in
             }
             return
         }
@@ -85,13 +85,13 @@ class SignUpVerificationViewController: UIViewController {
                 self.navigationController?.popToRootViewController(animated: true)
                 
             } else {
-                UtilityClass.setCustomAlert(title: "Invalid OTP!!", message: "Please enter a valid OTP") { (index, title) in
+                UtilityClass.setCustomAlert(title: "Invalid OTP!!".localized, message: "Please enter a valid OTP".localized) { (index, title) in
                 }
             }
             
         } else {
             
-            UtilityClass.setCustomAlert(title: appName, message: "No internet connection") { (index, title) in
+            UtilityClass.setCustomAlert(title: appName, message: "No internet connection".localized) { (index, title) in
                 //
             }
             
@@ -108,8 +108,8 @@ class SignUpVerificationViewController: UIViewController {
         
         // set lbl header one and two msgs:
         
-        lbl_HeaderOne.text = "Verify Phone"
-        lbl_HeaderTwo.text = "Please enter OTP"
+        lbl_HeaderOne.text = "Verify Phone".localized
+        lbl_HeaderTwo.text = "Please enter OTP".localized
         
         
         if #available(iOS 13.0, *) {

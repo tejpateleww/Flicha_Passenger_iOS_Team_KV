@@ -61,9 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         // Set Stored Language from Local Database
 
         if UserDefaults.standard.value(forKey: "i18n_language") == nil {
-            UserDefaults.standard.set("en", forKey: "i18n_language")
+            UserDefaults.standard.set("fr", forKey: "i18n_language")
             UserDefaults.standard.synchronize()
         }
+        
+        if Connectivity.isConnectedToInternet() {
+            
+        } else {
+            
+        }
+        
+        
 
         isAlreadyLaunched = false
         // Firebase
@@ -318,7 +326,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
          // 4
          completionHandler()
          */
-        
     }
     
     //-------------------------------------------------------------

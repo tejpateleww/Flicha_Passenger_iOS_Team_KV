@@ -72,6 +72,7 @@ class TripDetailsViewController: BaseViewController {
         lblBookingChargeTitle.text = "Booking Charge".localized
         lblTaxTitle.text = "Toll Fee".localized
         lblGrandTotalTitle.text = "Grand Total".localized
+        lblWaitingCostTitle.text = "Waiting Cost:".localized
         
     }
     
@@ -118,7 +119,7 @@ class TripDetailsViewController: BaseViewController {
         let contactNumber = helpLineNumber
         if contactNumber == ""
         {
-            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
+            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available".localized) { (index, title) in
            
             }
         }

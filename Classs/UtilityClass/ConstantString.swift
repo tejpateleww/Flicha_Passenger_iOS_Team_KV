@@ -12,18 +12,17 @@ let kName = "Name";
 let kCreditCard = "Credit Card Number";
 let kExpires = "Expires";
 let kCVV = "Credit Card Number";
-let kPaymentMethodsPageTitle = "Payment methods"
-let kNotificationsPageTitle = "Notifications"
-let kSettingsPageTitle = "Settings"
-let kAddCard = "Add Card"
+let kPaymentMethodsPageTitle = "Payment methods".localized
+let kNotificationsPageTitle = "Notifications".localized
+let kSettingsPageTitle = "Settings".localized
+let kAddCard = "Add Card".localized
 let kMyRidePageTitle = "My Ride"
-let kPriceTitle = "Price"
-let kHelpTitle = "Frequently Asked Questions"
+let kPriceTitle = "Price".localized
+let kHelpTitle = "Frequently Asked Questions".localized
 
-let kSegmentUpcomingTitle = "UPCOMING"
-let kSegmentCompletedTitle = "COMPLETE"
-let kSegmentCanceledTitle = "CANCELED"
-
+let kSegmentUpcomingTitle = "UPCOMING".localized
+let kSegmentCompletedTitle = "COMPLETE".localized
+let kSegmentCanceledTitle = "CANCELLED".localized
 
 let LoginAndRegisterStoryboard = UIStoryboard(name: "Login&Register", bundle: nil)
 let PaymentMethodStoryBoard = UIStoryboard(name: "PaymentMethod", bundle: nil)

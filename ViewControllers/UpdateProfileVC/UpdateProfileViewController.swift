@@ -124,7 +124,7 @@ class UpdateProfileViewController: BaseViewController,IQDropDownTextFieldDelegat
             self.PickingImageFromGallery()
         })
         
-        let Cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let Cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         alert.addAction(Camera)
         alert.addAction(Gallery)
         alert.addAction(Cancel)

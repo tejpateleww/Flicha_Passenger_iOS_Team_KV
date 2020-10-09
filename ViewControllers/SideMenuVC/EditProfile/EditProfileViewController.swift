@@ -126,7 +126,7 @@ class EditProfileViewController: BaseViewController {
     
     @IBAction func btnSignOutClicked(_ sender: UIButton)
     {
-        RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Signout".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
+        RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Sign Out".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
             if (buttonIndex == 2)
             {
 
@@ -182,7 +182,7 @@ class EditProfileViewController: BaseViewController {
         
         if contactNumber == "" {
             
-            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
+            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available".localized) { (index, title) in
             }
         }
         else

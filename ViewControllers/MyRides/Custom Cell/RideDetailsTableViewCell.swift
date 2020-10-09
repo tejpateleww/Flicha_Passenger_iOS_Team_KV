@@ -32,7 +32,7 @@ class RideDetailsTableViewCell: UITableViewCell {
         containerView.cornerRadius = 5
         containerView.dropShadow()
         
-        lblTime.text = ""
+//        lblTime.text = ""
         lblTime.font = UIFont.regular(ofSize: 12)
         lblTime.textColor = themeBlackColor
         
@@ -55,6 +55,8 @@ class RideDetailsTableViewCell: UITableViewCell {
         imageViewRideRoute.contentMode = .scaleToFill
         
         btnCancelTrip.layer.cornerRadius = btnCancelTrip.frame.height / 2
+        
+        btnCancelTrip.setTitle("Cancel".localized, for: .normal)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

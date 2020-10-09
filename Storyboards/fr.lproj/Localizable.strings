@@ -1,5 +1,16 @@
+/* 
+  Localizable.strings
+  TanTaxi User
+
+  Created by EWW-iMac Old on 09/02/19.
+  Copyright © 2019 Excellent Webworld. All rights reserved.
+*/
+
 "Please check your internet connection" = "veuillez vérifier votre connexion internet";
+"No Internet connection" = "pas de connexion internet";
 "No internet connection" = "pas de connexion internet";
+"Internet connection not available" = "pas de connexion internet";
+
 "Please try again later" = "veuillez réessayer plus tard";
 "Something went wrong please try again later" = "une erreur s'est produite veuillez réessayer plus tard";
 "Error Message" = "message d'erreur";
@@ -14,13 +25,14 @@
 "Email Id / Phone Number" = "ID e-mail / numéro de téléphone";
 "Password" = "mot de passe";
 "Forgot Password?" = "mot de passe oublié ?";
-"Sign In" = "s'inscrire";
-"SIGN IN" = "S'INSCRIRE";
+
+"Sign In" = "Se connecter";
+"SIGN IN" = "Se connecter";
+"SIGN UP" = "S'INSCRIRE";
+"Sign Up" = "S'INSCRIRE";
+
 "OR" = "OU";
 "Don't have an account?" = "vous n'avez pas de compte ?";
-"SIGN UP" = "SE CONNECTER";
-"Sign Up" = "se connecter";
-//"Sign up to get started" = "";
 "Please enter your registered email address" = "veuillez entrer l'adresse email";
 "Please enter a valid email" = "veuillez entrer une adresse email valide";
 "Please enter email" = "veuillez entrer l'adresse email";
@@ -29,13 +41,14 @@
 "Please enter password" = "veuillez entrer le mot de passe";
 "Permission Denied, You cannot access location data." = "permission refusée, vous ne pouvez pas accéder aux données de localisation";
 "GPS is not enabled. Do you want to go to settings menu?" = "le GPS n'est pas activé, voulez vous aller aux paramètres ?";
-"Settings" = "paramètres";
+"Settings" = "Paramètres";
 "Cancel" = "annuler";
 "Forgot Password" = "mot de passe oublié ";
 "Email Address" = "adresse email";
 "Send" = "envoyer";
 "Create Account" = "créer compte";
 "First Name"  = "prénom";
+
 "Last Name" = "nom de famille";
 "Email Id" = "ID e-mail ";
 "Phone Number" = "numéro de téléphone";
@@ -48,27 +61,39 @@
 "Password must contain at least 8 characters" = "le mot de passe doit contenir au moins 8 caractères";
 "Please confirm password" = "veuillez saisir le mot de passe de confirmation ";
 "Password and confirm password must be same" = "le mot de passe et le mot de passe de confirmation doivent etre identiques";
+"Please enter confirm password" = "veuillez saisir le mot de passe de confirmation";
 "Info Message" = "message Info";
 "Choose Image" = "choisir une image";
 "Open Camera" = "ouvrir la caméra";
 "Choose From Gallery" = "choisir de la galerie";
-"Done" = "terminé";
+"Done" = "Terminé";
+"COMPLETE" = "TERMINÉ";
 "Change Password" = "changer le mot de passe";
-"Enter you email address you use to sign to." = "Enter you email address you use to sign to.";
-//"Profile" = "profil";
+
+
 "Hey" = "salut!";
 "Your profile updated successfully" = "votre profil a été mis à jour avec succés";
+
+"Profile updated successfully." = "Profil mis à jour avec succès";
+"Profile Updated successfully." = "Profil mis à jour avec succès";
+"Profile updated successfully" = "Profil mis à jour avec succès";
+
 "Need Camera Permission" = "besoin de l'autorisation de la caméra ";
 "This app needs camera permission." = "cette application nécessite l'autorisation de la caméra";
 "Grant" = "subvention";
 "Enter your new password" = "entrez votre nouveau mot de passe";
+"Please enter your new password" = "entrez votre nouveau mot de passe";
+
 "Current Password" = "mot de passe actuel";
 "New Password" = "nouveau mot de passe";
 "Confirm Password" = "confirmer le mot de passe";
 "Save" = "sauvegarder";
 "Please enter current password" = "veuillez saisir le mot de passe actuel";
+"Please enter your current password" = "Veuillez entrer votre mot de passe actuel";
+
 "Please enter new password" = "veuillez saisir le nouveau mot de passe";
-"My Ride" = "ma course";
+"My Ride" = "Mes courses";
+"MY RIDE" = "Mes courses";
 "No data Found" = "aucune donée trouvée";
 "Please first complete your trip" = "veuillez d'abord terminer votre voyage";
 "Cancel Request" = "annuler la demande";
@@ -81,10 +106,12 @@
 "Are you sure you want to delete card?" = "etes-vous sur de vouloir supprimer la carte";
 "Delete" = "supprimer";
 "Name"  = "nom";
+
+
 "Bank Name" = "nom de banque";
-"Notifications" = "notifications";
+"Notifications" = "Notifications";
 "Push Notification" = "notification Push";
-"Help" = "aide";
+"Help" = "Aide";
 "Pickup Location" = "point de départ";
 "Dropoff Location" = "destination";
 "Full Name"  = "nom complet";
@@ -103,10 +130,13 @@
 "Your booking request has been confirmed. Driver will pick you shortly." = "votre demande de réservation a été confirmée. Le chauffeur viendra vous chercher dans pas longtemps";
 "Driver Info" = "information sur le conducteur";
 "Please enter promocode!" = "veuillez entrer le code promo";
+"Please enter promocode" = "veuillez entrer le code promo";
 "Your trip has been completed successfully!" = "votre voyage s'est effectué avec succès ";
-"Home" = "accueil";
+"Your trip has been completed" = "votre voyage s'est effectué avec succès ";
+"Home" = "Accueil";
 "Profile" = "profil";
-"Logout" = "déconnexion";
+"PROFILE" = "profil";
+"Logout" = "Déconnexion";
 "Please select vehicle type" = "veuillez sélectionner le type de véhicule";
 "min" = "min";
 "No Routes Found Please Try again later" = "aucun itinéraire trouvé, veuillez réessayer plus tard";
@@ -119,10 +149,13 @@
 "How was your trip?" = "comment était votre trajet ?";
 "Enter your promotion code" = "entrez votre code promo";
 "Distance" = "distance";
+"DISTANCE" = "distance";
 "Time" = "temps";
+"TIME" = "temps";
 "Price" = "prix";
+"PRICE" = "prix";
+"Cancel Booking" = "annuler la réservation";
 "Cancel booking" = "annuler la réservation";
-
 "Trip Detail" = "details du voyage";
 "select" = "sélectionner ";
 "Booking Confirmed" = "réservation confirmée";
@@ -138,6 +171,164 @@
 "oct" = "oct";
 "nov" = "nov";
 "dec" = "déc";
+"Booking Charge" = "frais de réservation";
+"Your trip cancelled successfully" = "Votre course a été annulé avec succès";
+"UpComing" = "A venir";
+"Upcoming" = "A venir";
+"UPCOMING" = "A VENIR";
+"Cancelled" = "Annulé";
+"CANCELLED" = "ANNULÉ";
+
+"Vehicle Type" = "type de véhicule";
+"VEHICLE TYPE:" = "type de véhicule :";
+"Booking Fare" = "frais de réservation :";
+"Trip Fare" = "tarif du voyage:";
+"TRIP FARE:" = "tarif du voyage:";
+"Distance Fare:" = "frais de distance:";
+"Distance Fare" = "frais de distance:";
+"Tax Included" = "taxe inclut";
+"Car Model:" = "modèle de voiture:";
+"Your booking request has been cancelled due to unavailable car." = "Votre demande de réservation a été annulée en raison d’un vehicule indisponible";
+
+"Signout" = "Signout";
+"Enter you email address you use to sign to." = "Enter you email address you use to sign to.";
+
+"Grand Total (Tax Included)" = "grand total ( taxes iclut ) :";
+
+"Pickup Time" = "heure de départ";
+"DropOff Time" = "heure de dépose";
+"Payment Type" = "mode de paiement";
+"Tax" = "taxe";
+"Enter Promocode" = "veuillez entrer le code promo";
+"Apply" = "demander";
+
+"Sorry! no car available" = "véhicule non disponible";
+
+
+
+"Please enter your destination again" = "veuillez saisir à nouveau votre destination";
+
+"Male" = "Homme";
+"Female" = "femelle";
+"MALE" = "Homme";
+"FEMALE" = "femelle";
+
+"Base Fare" = "frais de base";
+"Waiting Cost" = "cout d'attente";
+"WAITING COST:" = "cout d'attente  :";
+"Waiting Cost:" = "cout d'attente";
+
+"Toll Fee" = "taxes de péage";
+
+"Grand Total" = "grand total";
+
+"Ratings & Review" = "notes et avis";
+"HOW IS YOUR TRIP?" = "comment est votre voyage ?";
+"Your Feedback will help us to improve driving experience better." = "vos commentaires nous aideront à améliorer l'experience de conduite";
+"Your feedback will help us to improve driving experience better" = "vos commentaires nous aideront à améliorer l'expérience de conduite";
+"Your feedback will help us to improve driving experience better " = "vos commentaires nous aideront à améliorer l'expérience de conduite";
+
+"Submit Review" = "soumettre un commentaire";
+
+"Sign up to get started" = "inscrivez vous pour commencer ";
+
+"Booking Completed" = "réservation terminée";
+
+"Enter your email address you use to sign to" = "entrez votre adresse e-mail que vous utilisez pour vous connecter";
+
+"Please fill all the details" = "Veuillez remplir tout les details";
+
+"Contact number is not available" = "le numéro du contact n'est pas disponible";
+
+"We did not get proper address" = "nous n'avons pas obtenu la bonne adresse";
+
+"Please select vehicle" = "Veuillez sélectionner le véhicule ";
+
+"Something went wrong, please try again" = "Quelque chose c'est mal passé. Merci d'essayer plus tard";
+
+
+"New password must contain at least 8 characters" = "le nouveau mot de passe doit contenir au moins 8 caractères";
+
+"Password changed successfully" = "Le mot de passe a été changé avec succès";
+
+"logoutmsg" = "Êtes-vous sûr de vouloir vous déconnecter ?";
+
+"Are you sure you want to logout?" = "Êtes-vous sûr de vouloir vous déconnecter ?";
+
+"Allow Push Notifications?" = "Autoriser les notifications Push ?";
+
+"Are you sure you want to Signout?" = "Êtes-vous certain de vouloir vous déconnecter ?";
+"Are you sure you want to logout?" = "Êtes-vous certain de vouloir vous déconnecter ?";
+
+"All fields are required..." = "Tout les domaines sont requis...";
+
+"Call" = "Appeler";
+
+"Sign Out" = "Déconnexion ";
+"Signout" = "Déconnexion ";
+
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip ?" = "si vous annulez le voyage, vous serez partiellement facturé êtes-vous sûr de vouloir annuler le voyage";
+
+"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "si vous annulez le voyage, vous serez partiellement facturé êtes-vous sûr de vouloir annuler le voyage";
+
+"Make Payment" = "Effectuer le payement ";
+
+"Please Select Date" = "veuillez sélectionner la date";
+
+"Your request status is pending..." = "votre statut de demande est en attente";
+
+"Your request status pending..." = "votre statut de demande est en attente";
+
+"Old password" = "mot de passe actuel";
+
+"Click calendar icon to select pickup time" = "Bonyeza kalenda icon kuchagua muda Pickup";
+
+"Verify Phone" = "Vérifier le téléphone";
+
+"Please enter a valid OTP" = "veuillez entrer un otp valide";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,12 +341,12 @@
 "Flight Number"  = "Flight Number";
 "Flight Number (If applicable)" = "Flight Number (If applicable)";
 "Notes"  = "Notes";
-"Click calendar icon to select pickup time" = "Click calendar icon to select pickup time" ;"Bonyeza kalenda icon kuchagua muda Pickup";
+
 
 
 "MissingTranslationitle"  = "MissingTranslationitle";
 "Address"  = "Address";
-"Toll Fee" = "Toll Fee";
+
 "Sub Total" =  "Sub Total";
 //"Last Name"  = "Last Name";
 "Invite Code"  = "Invite Code";
@@ -174,11 +365,10 @@
 
 "MY RECEIPTS" = "MY RECEIPTS";
 "INVITE FRIENDS" =  "INVITE FRIENDS";
-//"PROFILE"= "PROFILE";
+
 "ACCOUNT" = "ACCOUNT";
 "My Bookings" = "My Bookings";
 "GPS is settings" = "GPS is settings";
-
 
 "Request Cancelled" = "Request Cancelled";
 
@@ -209,7 +399,7 @@
 "Transfer To Bank" = "Transfer To Bank";
 "Transfer To Bank Account" = "Transfer To Bank Account";
 "History" = "History";
-"Upcoming" = "Upcoming";
+
 "Send Money" = "Send Money";
 "Receive Money" = "Receive Money";
 "Set Amount" = "Set Amount";
@@ -219,7 +409,6 @@
 "Add a Card" = "Add a Card";
 "Add New Card" = "Add New Card";
 
-"Make Payment" = "Make Payment";
 "Not Available" = "Not Available";
 "Card Number" = "Card Number";
 "Expiry Date" = "Expiry Date";
@@ -236,12 +425,9 @@
 "Have a promocode?" = "Have a promocode?";
 "%1$s Applied" = "%1$s Applied";
 "Card Number" = "Card Number";
-"Please enter a valid phone number" = "Please enter a valid phone number";
+
 "Enter Passcode" = "Enter Passcode";
 "Passcode Required" = "Passcode Required";
-
-
-
 
 "Please enter OTP" = "Please enter OTP";
 "Please enter correct OTP" = "Please enter correct OTP";
@@ -261,6 +447,7 @@
 "Card List" = "Card List";
 "Resend OTP" = "Resend OTP";
 "EDIT PROFILE" = "EDIT PROFILE";
+"Edit Profile" = "Edit Profile";
 "ADD CARD" = "ADD CARD";
 "Image" = "Image";
 "Date Of Birth" = "Date Of Birth";
@@ -277,13 +464,10 @@
 "Select Payment Method" = "Select Payment Method";
 "Cash" = "Cash";
 "Booking Fee:" = "Booking Fee:";
-"Trip Fare:" = "Trip Fare:";
-//"Pickup Time:" = "Pickup Time:";
-//"Pickup Time" = "Pickup Time";
 "Dropoff Time:" = "Dropoff Time:";
-"Vehicle Type:" = "Vehicle Type:";
+
 "Distance Travelled:" = "Distance Travelled:";
-"Distance Fare:" = "Distance Fare:";
+
 "Tax:" = "Tax:";
 "Total Amount :" = "Total Amount :";
 "(incl tax)" = "(incl tax)";
@@ -307,11 +491,9 @@
 "When a friend register with your code, you will recieve referal amount." = "When a friend register with your code, you will recieve referal amount.";
 "Share Receipt" = "Share Receipt";
 "Account" = "Account";
-"Edit Profile" = "Edit Profile";
+
 "Gender" = "Gender";
-"Male" = "Male";
-"Female" = "Female";
-"Save" = "Save";
+
 "Confirm" = "Confirm";
 "My Bookings" = "My Bookings";
 "Payment Options" = "Payment Options";
@@ -320,14 +502,13 @@
 "Invite Friends" = "Invite Friends";
 "My Ratings" = "My Ratings";
 "Comment" = "Comment";
-"Car Model:" = "Car Model:";
+
 "Notes (Optional)" = "Notes (Optional)";
 "Flight Number (If applicable)" = "Flight Number (If applicable)";
 "Select Payment Method" = "Select Payment Method";
 "You will be notified with your driver detail after your request is submited." = "You will be notified with your driver detail after your request is submited.";
 "Submit" = "Submit";
-"Save" = "Save";
-"Signout" = "Signout";
+
 "PickupDate" = "Pickup Date";
 "SHARE" = "SHARE";
 "Track Your Trip" = "Track Your Trip";
@@ -361,7 +542,7 @@
 "Start Trip" = "Start Trip";
 //"Cancel Request" = "Cancel Request";
 "OnGoing" = "OnGoing";
-"UpComing" = "UpComing";
+
 "Past Booking" = "Past Booking";
 "Packages can be made after 2 hours from now. Sri Lankan time is"  = "Packages can be made after 2 hours from now. Sri Lankan time is 2018-03-06 11:16 AM";
 "Account" = "Account";
@@ -375,18 +556,18 @@
 "Discount" = "Discount";
 //"Payment Type:" = "Payment Type:";
 "Promo Applied:" = "Promo Applied:";
-"Pickup Time" = "Pickup Time";
+
 "Connection Error" = "Connection Error";
-"Internet connection not available" = "Internet connection not available";
+
 "MY RATING" = "MY RATING";
-"Booking Charge" = "Booking Charge";
+
 "Additional Charges" = "Additional Charges";
 "Delete card" = "Delete card";
 "Booking Id :" = "Booking Id :";
-"Your request status is pending..." = "Your request status is pending...";
+
 "Apply Promocode" = "Apply Promocode";
 "Enter promocode" = "Enter promocode";
-"Apply" = "Apply";
+
 "Request Now" = "Request Now";
 "Remind Later" = "Remind Later";
 "Your booking request has been confirmed" = "Your booking request has been confirmed";
@@ -394,7 +575,6 @@
 "MissingTranslation02" = "MissingTranslation02";
 "Booking Id" = "Booking Id";
 "Select a card" = "Select a card";
-"Old Password" = "Old Password";
 "Share Your Invite Code" = "Share Your Invite Code";
 "Account Holder Name" = "Account Holder Name";
 "Bank Account Name" = "Bank Account Name";
@@ -404,13 +584,13 @@
 "Description" = "Description";
 "Tip" = "Tip";
 "Please enter tip amount" = "Please enter tip amount";
-"Waiting Cost" = "Waiting Cost";
+
 "Waiting Time" = "Waiting Time";
 "Less" = "Less";
-"Grand Total" = "Grand Total";
+
 "Promo Code"  = "Promo Code";
 "SHARE YOUR INVITE CODE" = "SHARE YOUR INVITE CODE";
-"Please enter promocode" = "Please enter promocode";
+
 "MissingTranslation" = "MissingTranslation";
 "MissingTranslation" = "MissingTranslation";
 "Camera" = "Camera";
@@ -434,21 +614,21 @@
 "yes" = "Yes";
 
 "confirmLogout" = "Confirm Logout?";
-"logoutmsg" = "Are you sure you want to logout?";
+
 "invitedYoubeComeATantaxiPassenger" = "&#160;has invited you to become a TanTaxi Passenger.\n\n";
 "yourInviteCode" = "\n\n Your invite code is:&#160";
 "scanCard" = "Scan Card";
 "TrackYourTrip:" = "TrackYourTrip:";
 "PICK UP TIME:" = "PICK UP TIME:";
 "DROPOFF TIME:" = "DROPOFF TIME :";
-"VEHICLE TYPE:" = "VEHICLE TYPE :";
+
 "DISTANCE TRAVELLED:" = "DISTANCE TRAVELLED :";
-"TRIP FARE:" = "TRIP FARE :";
+
 "TRANSFER TO BANK" = "TRANSFER TO BANK";
 "NIGHT FARE:" = "NIGHT FARE :";
 "Transfer Status" = "Transfer Status";
 "TOLL FEE:" = "TOLL FEE :";
-"WAITING COST:" = "WAITING COST  :";
+
 "BOOKING CHAGE:" = "BOOKING CHAGE :";
 "TAX:" = "TAX :";
 "DISCOUNT:" = "DISCOUNT :";
@@ -466,40 +646,33 @@
 
 //"HOME" = "HOME";
 "Done" = "Done";
-"Dropoff Location" = "Dropoff Location";
-"Pickup Location" = "Pickup Location";
 "Book Now" = "Réserver maintenant";
 "Book Later" = "Réserver plus tard";
 "Have a promocode?" = "Have a promocode?";
 "REQUEST NOW" = "REQUEST NOW";
-"Your request status pending..." = "Your request status pending...";
 "Driver Info" = "Driver Info";
 "Your Email Id is not configured from settings. Please configure it from Settings -> Mail" = "Your Email Id is not configured from settings. Please configure it from Settings -> Mail";
-"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
 "NO" = "NO";
 "YES" = "YES";
-"Your trip has been completed" = "Your trip has been completed";
 "Your request has been rejected." = "Your request has been rejected.";
 "Your trip has now started." = "Your trip has now started.";
 "Trip Status" = "Trip Status";
-"Thanks for feedback" = "Thanks for feedback";
+"Thanks for feedback" = "Merci pour vos commentaires";
 "Add Tip" = "Add Tip";
 "Any other feedback(Optional)" = "Any other feedback(Optional)";
 "Tip Alert" = "Tip Alert";
 "DropoffTime" = "DropoffTime";
-"Are you sure you want to logout?" = "Are you sure you want to logout?";
+
 "Please enter drop off location" = "Please enter drop off location";
 "Please enter pick up location" = "Please enter pick up location";
 "Please fill all details" = "Please fill all details";
 "All fields are required..." = "All fields are required...";
 "Please Select Car" = "Please Select Car";
-"Enter Promocode" = "Enter Promocode";
-"Apply Promocode" = "Apply Promocode";
 
+"Apply Promocode" = "Apply Promocode";
 
 "BSB" = "BSB";
 "Bank Account Name" = "Bank Account Name";
-"If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?" = "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?";
 "Tap to activate scanner" = "Tap to activate scanner";
 "Send Money" = "Send Money";
 "TOP UP" = "TOP UP";
@@ -507,16 +680,6 @@
 "has invited you to become a TanTaxi Passenger" = "has invited you to become a TanTaxi Passenger";
 "Your invite code is:" = "Your invite code is:";
 
-
 //Sj's Addition :
-
-
-"Contact number is not available" = "Contact number is not available";
-"Your trip cancelled successfully" = "Votre course a été annulé avec succès";
-
-"Sorry! no car available" = "Sorry! no car available";
-"We did not get proper address" = "We did not get proper address";
-"Please enter your destination again" = "veuillez saisir à nouveau votre destination";
-"Please select vehicle" = "Please select vehicle";
 
 

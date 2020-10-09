@@ -280,7 +280,7 @@ class VerifyPasswordViewController: UIViewController {
 
             self.performSegue(withIdentifier: "signOuyFromPasscode", sender: nil)
         })
-        let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let Cancel = UIAlertAction(title: "Cancel".localized, style: .default, handler: nil)
         alert.addAction(OK)
         alert.addAction(Cancel)
         alert.modalPresentationStyle  = .overCurrentContext

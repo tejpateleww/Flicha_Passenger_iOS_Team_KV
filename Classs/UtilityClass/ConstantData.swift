@@ -126,6 +126,8 @@ struct WebserviceURLs {
     
     static let kAppleLogin                              = "AppleLogin"
     
+    static let kFAQList                                 = "FaqList"
+    
     
 
 

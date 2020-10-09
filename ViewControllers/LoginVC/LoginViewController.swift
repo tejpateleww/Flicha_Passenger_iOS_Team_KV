@@ -126,7 +126,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
 //        txtMobile.lineColor = UIColor.white
 //        txtPassword.lineColor = UIColor.white
 //        lblLaungageName.text = "SW"
-        UserDefaults.standard.set("en", forKey: "i18n_language")
+        UserDefaults.standard.set("fr", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
         
 //        if UIDevice.current.name == "Bhavesh iPhone" || UIDevice.current.name == "Excellent Web's iPhone 5s" || UIDevice.current.name == "Rahul's iPhone" {
@@ -166,7 +166,9 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         lblDontAc.textColor = .black
     let signup = "SIGN UP".localized
     let or = "OR".localized
-    lblDontAc.attributedText =  "\(or) \n\n \("Don't have an account?".localized) \(signup)".underLineWordsIn(highlightedWords: signup, fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+//    lblDontAc.attributedText =  "\(or) \n\n \("Don't have an account?".localized) \(signup)".underLineWordsIn(highlightedWords: signup, fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
+    
+    lblDontAc.attributedText =  "\("Don't have an account?".localized) \(signup)".underLineWordsIn(highlightedWords: signup, fontStyle: UIFont.semiBold(ofSize: 12), textColor: themeYellowColor)
 
     
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnSignupClickAction(_:)))
@@ -189,14 +191,14 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     {
         
         if (txtMobile.text?.count == 0) && (txtPassword.text?.count == 0) {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all the details") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all the details".localized) { (index, title) in
             }
             
             // txtMobile.showErrorWithText(errorText: "Enter Email")
             return false
         } else if (txtMobile.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter email or phone numbe".localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter email or phone number".localized) { (index, title) in
             }
             
             // txtMobile.showErrorWithText(errorText: "Enter Email")
@@ -842,7 +844,7 @@ extension LoginViewController
                             
                         })
                     })
-                    let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
+                    let Cancel = UIAlertAction(title: "Cancel".localized, style: .default, handler: { ACTION in
                         
                         if(SingletonClass.sharedInstance.isUserLoggedIN)
                         {

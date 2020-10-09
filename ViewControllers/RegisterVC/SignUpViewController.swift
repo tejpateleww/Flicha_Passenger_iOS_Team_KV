@@ -159,62 +159,68 @@ extension SignUpViewController
         
         if (txtFirstName.text?.count == 0) && (txtLastName.text?.count == 0) && (txtEmail.text?.count == 0) && (txtPhoneNumber.text?.count == 0) && (txtPassword.text?.count == 0) && (txtConfirmPassword.text?.count == 0) {
             
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please fill all details".firstCharacterUpperCase().localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please fill all details".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         }
         else if (txtFirstName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: ("Please enter first name")){ (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: ("Please enter first name")){ (index, title) in
             }
             return false
         }
         else if (txtLastName.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter last name".firstCharacterUpperCase().localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please enter last name".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         
         }else if (txtEmail.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter email".firstCharacterUpperCase().localized) { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please enter email".firstCharacterUpperCase().localized) { (index, title) in
             }
             return false
         
         }else if (!(txtEmail.text?.isValidEmail() ?? false))
         {
-            UtilityClass.setCustomAlert(title: "Incorrect", message: "Please enter a valid email") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Incorrect".localized, message: "Please enter a valid email".localized) { (index, title) in
             }
             return false
         }
         else if (txtPhoneNumber.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter phone number") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please enter phone number".localized) { (index, title) in
             }
             return false
        
-        }else if (txtPassword.text?.count == 0)
+        }else if (txtPhoneNumber.text!.count < 10)
+         {
+             UtilityClass.setCustomAlert(title: "Invalid".localized, message: "Please enter valid email or phone number".localized) { (index, title) in
+             }
+             return false
+        
+         }else if (txtPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please enter password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please enter password".localized) { (index, title) in
             }
             return false
        
         }else if (txtPassword.text?.count ?? 0 < 6)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Password must contain atleast 6 characters") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Password must contain atleast 6 characters".localized) { (index, title) in
             }
             return false
             
         }
         else if (txtConfirmPassword.text?.count == 0)
         {
-            UtilityClass.setCustomAlert(title: "Missing", message: "Please confirm the password") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missing".localized, message: "Please confirm password".localized) { (index, title) in
             }
             return false
       
         }else if txtPassword.text != txtConfirmPassword.text
         {
-            UtilityClass.setCustomAlert(title: "Missmatch", message: "Password and confirm password must be same") { (index, title) in
+            UtilityClass.setCustomAlert(title: "Missmatch".localized, message: "Password and confirm password must be same".localized) { (index, title) in
             }
             return false
         }
@@ -252,7 +258,7 @@ extension SignUpViewController
             self.present(picker, animated: true, completion: nil)
         })
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         
         alert.addAction(Gallery)
         alert.addAction(Camera)

@@ -12,18 +12,23 @@ class HelpVC: BaseViewController {
 
     @IBOutlet weak var tblview: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         self.navigationController?.isNavigationBarHidden = false
         self.addCustomNavigationBar(title: "Help".localized)
     }
-
+    
+   
 }
 
 extension HelpVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,8 +41,7 @@ extension HelpVC : UITableViewDelegate, UITableViewDataSource {
         cell.containerView.shadowOffset = .zero
         cell.containerView.shadowOpacity = 0.3
         cell.containerView.shadowRadius = 3
-        
-//        cell.lbl_Question.text = somearr[indexpath.row]
+    
         
         return cell
     }
@@ -51,7 +55,10 @@ extension HelpVC : UITableViewDelegate, UITableViewDataSource {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FaqVC") as! FaqVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    
     
 }
+
+
+
+
+

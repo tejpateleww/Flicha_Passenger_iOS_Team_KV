@@ -61,7 +61,7 @@ class SplashVC: UIViewController {
                         }
                         
                     })
-                    let Cancel = UIAlertAction(title: "Cancel", style: .default, handler: { ACTION in
+                    let Cancel = UIAlertAction(title: "Cancel".localized, style: .default, handler: { ACTION in
                         self.GoFurther()
                     })
                     alert.addAction(UPDATE)

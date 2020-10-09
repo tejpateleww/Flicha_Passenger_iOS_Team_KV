@@ -119,7 +119,8 @@ class AJAlertController: UIViewController {
             case .unspecified: break
             case .tv: break
             case .carPlay: break
-         }
+//        case .mac: break
+        }
     }
     
     /// Create and Configure Alert Controller

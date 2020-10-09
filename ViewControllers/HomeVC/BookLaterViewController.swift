@@ -45,7 +45,10 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
     @IBOutlet weak var txtDescription: UITextView!
    
     @IBOutlet weak var btnSubmit: ThemeButton!
-
+    
+    @IBOutlet weak var lblStaticFrom: UILabel!
+    @IBOutlet weak var lblStaticTo: UILabel!
+    
     var BackView = UIView()
     
     var delegateBookLater : deleagateForBookTaxiLater!
@@ -149,6 +152,9 @@ class BookLaterViewController: BaseViewController, UINavigationControllerDelegat
       
         strPassengerType = "myself"
         paymentType = "cash"
+        
+        lblStaticFrom.text = "From".localized
+        lblStaticTo.text = "To".localized
 
     }
 

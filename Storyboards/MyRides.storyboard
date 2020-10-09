@@ -1030,7 +1030,9 @@
                                                 <connections>
                                                     <outlet property="imgView_SeperatorLinePAth" destination="dIU-GS-NY2" id="o7X-30-nEw"/>
                                                     <outlet property="lbl_DestinationAddress" destination="mCV-EY-rAP" id="b9M-ui-nBp"/>
+                                                    <outlet property="lbl_From" destination="95G-bt-IIB" id="qcd-W9-4G7"/>
                                                     <outlet property="lbl_SourceAddress" destination="Sun-5S-3WU" id="Mey-Xg-DRK"/>
+                                                    <outlet property="lbl_To" destination="Sah-gK-ps7" id="qVl-i4-1iY"/>
                                                     <outlet property="vw_AddressContainer" destination="dNc-Hh-hza" id="k4f-QT-rVJ"/>
                                                 </connections>
                                             </tableViewCell>
@@ -1134,6 +1136,7 @@
                                                 <connections>
                                                     <outlet property="btn_Ok" destination="3hJ-Un-eAi" id="ls4-wv-skS"/>
                                                     <outlet property="lbl_GrandTotal" destination="VOs-12-Hud" id="775-e9-zvC"/>
+                                                    <outlet property="lbl_textGrandTotal" destination="Lj4-EK-302" id="OVV-iH-d5T"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
