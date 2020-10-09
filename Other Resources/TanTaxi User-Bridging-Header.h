@@ -11,9 +11,9 @@
 
 #import "CardIO.h"
 
-#import <GoogleAnalytics/GAI.h>
-#import <GoogleAnalytics/GAIDictionaryBuilder.h>
-#import <GoogleAnalytics/GAIFields.h>
+//#import <GoogleAnalytics/GAI.h>
+//#import <GoogleAnalytics/GAIDictionaryBuilder.h>
+//#import <GoogleAnalytics/GAIFields.h>
 
 #import "RMPopoverPresentationController.h"
 #import "UIAlertView+Blocks.h"

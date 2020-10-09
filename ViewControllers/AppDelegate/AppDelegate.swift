@@ -10,8 +10,6 @@ import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
-import Fabric
-import Crashlytics
 import SideMenuController
 import SocketIO
 import UserNotifications
@@ -72,17 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         GMSServices.provideAPIKey(googlApiKey)
         GMSPlacesClient.provideAPIKey(googlApiKey)
         
         
         Fabric.with([Crashlytics.self])
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
         GIDSignIn.sharedInstance().delegate = self
-        googleAnalyticsTracking()
         
         // TODO: Move this to where you establish a user session
         //   self.logUser()
@@ -165,11 +162,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
     {
         
-        let isFBOpenUrl = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+        let isFBOpenUrl = ApplicationDelegate.shared.application(application, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
         
-        let isGoogleOpenUrl = GIDSignIn.sharedInstance().handle(url as URL?,
-                                                                sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                                annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let isGoogleOpenUrl = GIDSignIn.sharedInstance()?.handle(url) ?? false
         if isFBOpenUrl
         {
             return true
@@ -182,18 +177,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         return false
     }
     
-    func googleAnalyticsTracking() {
-        guard let gai = GAI.sharedInstance() else {
-            assert(false, "Google Analytics not configured correctly")
-        }
-        gai.tracker(withTrackingId: googleAnalyticsTrackId)
-        // Optional: automatically report uncaught exceptions.
-        gai.trackUncaughtExceptions = true
-        
-        // Optional: set Logger to VERBOSE for debug information.
-        // Remove before app release.
-        gai.logger.logLevel = .verbose
-    }
     
     //    func logUser() {
     //        // TODO: Use the current user's information

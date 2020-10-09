@@ -7,18 +7,28 @@
 //
 
 import UIKit
+import WebKit
 
-class webViewVC: BaseViewController, UIWebViewDelegate {
+class webViewVC: BaseViewController, WKNavigationDelegate {
 
     var strURL = String()
-    
+    var WebView:WKWebView!
     var headerName = String()
     
+    // MARK: - Outlets
+    @IBOutlet weak var webView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UtilityClass.showACProgressHUD()
         setNavBarWithBack(Title: headerName, IsNeedRightButton: true)
+        
+        
+        WebView = WKWebView()
+        WebView.navigationDelegate = self
+        webView = WebView
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,29 +42,21 @@ class webViewVC: BaseViewController, UIWebViewDelegate {
 //        if headerName != "" {
 //            headerView?.lblTitle.text = headerName
 //        }
-        
+               
         let url = strURL
-        
         let requestURL = URL(string: url)
         let request = URLRequest(url: requestURL! as URL)
-        webView.loadRequest(request)
-        
+        WebView.load(request)
+
     }
     
 
     
-    // MARK: - Outlets
-    @IBOutlet weak var webView: UIWebView!
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        
-    }
-    
-    // MARK: - web view delegate method
-    func webViewDidFinishLoad(_ webView: UIWebView)
-    {
-        UtilityClass.hideACProgressHUD()
-    }
+        /* Start the network activity indicator when the web view is loading */
+      func webView(_ webView: WKWebView,didStartProvisionalNavigation navigation: WKNavigation){
+          UtilityClass.hideACProgressHUD()
+          
+      }
     
 
 }

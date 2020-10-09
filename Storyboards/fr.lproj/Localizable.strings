@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  TanTaxi User
-
-  Created by EWW-iMac Old on 09/02/19.
-  Copyright © 2019 Excellent Webworld. All rights reserved.
-*/
-
 "Please check your internet connection" = "veuillez vérifier votre connexion internet";
 "No internet connection" = "pas de connexion internet";
 "Please try again later" = "veuillez réessayer plus tard";
@@ -16,7 +8,7 @@
 "OK" = "OK";
 "From" = "de";
 "To" = "à";
-"Missing" = "manquant"
+"Missing" = "manquant";
 "Welcome" = "Bienvenue";
 "Sign in to Continue!" = "connectez-vous pour continuez!";
 "Email Id / Phone Number" = "ID e-mail / numéro de téléphone";
@@ -527,4 +519,4 @@
 "Please enter your destination again" = "veuillez saisir à nouveau votre destination";
 "Please select vehicle" = "Please select vehicle";
 
-appliquée
+

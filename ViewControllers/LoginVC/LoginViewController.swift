@@ -220,12 +220,12 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //        {
         //            self.btnGoogle.isSelected = false
         //        }
-        let login = FBSDKLoginManager()
+        let login = LoginManager()
         
-        login.loginBehavior = FBSDKLoginBehavior.browser
+        login.loginBehavior = LoginBehavior.browser
         UIApplication.shared.statusBarStyle = .default
         login.logOut()
-        login.logIn(withReadPermissions: ["public_profile","email"], from: self) { (result, error) in
+        login.logIn(permissions: ["public_profile","email"], from: self) { (result, error) in
             
             if error != nil
             {
@@ -255,10 +255,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     {
         //        Utilities.showActivityIndicator()
         
-        var parameters = [AnyHashable: Any]()
+        var parameters = [String: Any]()
         parameters["fields"] = "first_name, last_name, picture, email,id"
         
-        FBSDKGraphRequest.init(graphPath: "me", parameters: parameters).start { (connection, result, error) in
+        GraphRequest.init(graphPath: "me", parameters: parameters).start { (connection, result, error) in
             if error == nil
             {
                 let dictData = result as! [String : AnyObject]
@@ -339,7 +339,6 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //        }
         
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self as GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -510,7 +509,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
 
 //MARK: - Google SignIn Delegate
 
-extension LoginViewController : GIDSignInDelegate,GIDSignInUIDelegate
+extension LoginViewController : GIDSignInDelegate
 {
     func signInWillDispatch(signIn: GIDSignIn!, error: Error!)
     {
@@ -756,7 +755,7 @@ extension LoginViewController
             
             if(status)
             {
-                let dictData = result as! [String : AnyObject]
+                _ = result as! [String : AnyObject]
                 UtilityClass.hideACProgressHUD()
                 SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
                 SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)//as! String
@@ -772,7 +771,7 @@ extension LoginViewController
                 {
                     UtilityClass.showAlert(appName, message: res, vc: self)
                 }
-                else if let resDict = result as? NSDictionary
+                else if result is NSDictionary
                 {
                     let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
                     SingletonClass.sharedInstance.strSocialEmail = dictData["Email"] as! String
@@ -803,7 +802,7 @@ extension LoginViewController
                 (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                 
                 //                self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-                                let viewHomeController = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
+                _ = self.storyboard?.instantiateViewController(withIdentifier: "CustomSideMenuViewController")as? CustomSideMenuViewController
                 //                let navController = UINavigationController(rootViewController: viewHomeController!)
                 //                self.sideMenuController?.embed(centerViewController: navController)
             }
