@@ -32,7 +32,7 @@ class ChangePasswordVC: BaseViewController {
     func setLocalization()
     {
         lblTitle.text = "Change Password".localized
-        lblSubTitle.text = "Enter you new password".localized
+        lblSubTitle.text = "Enter your new password".localized
         txtOldPassword.placeholder = "Old password".localized
         txtNewPassword.placeholder = "New password".localized
         btnSave.setTitle("Save".localized, for: .normal)
@@ -56,7 +56,8 @@ class ChangePasswordVC: BaseViewController {
         {
             changePasswordService(oldPassword: oldPassword ,newPassword: newPassword)
             
-        }else
+        }
+        else
         {
             UtilityClass.setCustomAlert(title: "Missing", message: "New password must contain at least 8 characters".localized) { (index, title) in
             }
@@ -92,6 +93,7 @@ extension ChangePasswordVC
                 print(result)
                 
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                
                 UtilityClass.setCustomAlert(title: appName, message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -99,6 +101,9 @@ extension ChangePasswordVC
             else
             {
                 print(result)
+                UtilityClass.setCustomAlert(title: appName, message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+                    //                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
         

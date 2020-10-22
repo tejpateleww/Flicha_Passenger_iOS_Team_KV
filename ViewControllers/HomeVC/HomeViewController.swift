@@ -2079,7 +2079,6 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             //            message = "Tesluxe driver Ask For Tips. Do you want to give tips?";
             //            }]
             
-            
             self.showTimerProgressViaInstance()
             
             
