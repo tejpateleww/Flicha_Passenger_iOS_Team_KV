@@ -273,8 +273,42 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         callToWebserviceOfCardListViewDidLoad()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+            self.setCurrentLocationAlert()
+        }
     }
     
+    func setCurrentLocationAlert () {
+       
+            //            UtilityClass.showAlert("Future Booking Request Arrived.", message: (msg.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
+            
+            let alert = UIAlertController(title: "Lieu de Départ",
+                                          message: "Voulez-vous mettre votre position actuelle comme lieu de départ ?",
+                                          preferredStyle: UIAlertController.Style.alert)
+            
+            let okAction = UIAlertAction(title: "Annuler", style: .default, handler: { (action) in
+                
+                self.btnEnterDestinationLocation(self.btnAddToLocationFromDefaultView)
+             
+            })
+            
+            
+            let cancelAction = UIAlertAction(title: "Confirmer",
+                                             style: .default, handler: nil)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            
+            if(self.presentedViewController != nil)
+            {
+                self.dismiss(animated: true, completion: nil)
+            }
+            //vc will be the view controller on which you will present your alert as you cannot use self because this method is static.
+            self.present(alert, animated: true, completion: nil)
+            
+       
+        
+    }
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)

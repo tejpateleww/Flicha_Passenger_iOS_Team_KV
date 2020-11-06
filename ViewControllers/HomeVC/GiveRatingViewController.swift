@@ -134,7 +134,7 @@ class GiveRatingViewController: UIViewController, FloatRatingViewDelegate {
                 //                }
                 //                                Utilities.showAlertWithCompletion(appName, message: "Thanks for feedback.", vc: (UIApplication.shared.keyWindow?.rootViewController)!) { (status) in
                 //                }
-                UtilityClass.showAlert(appName, message: "Thanks for feedback".localized, vc: (UIApplication.shared.keyWindow?.rootViewController)!)
+//                UtilityClass.showAlert(appName, message: "Thanks for feedback".localized, vc: (UIApplication.shared.keyWindow?.rootViewController)!)
                 
                 self.btnSubmit.isUserInteractionEnabled = true
                 

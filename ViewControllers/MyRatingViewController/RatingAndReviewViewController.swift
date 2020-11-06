@@ -126,7 +126,7 @@ extension RatingAndReviewViewController {
                 self.dismiss(animated: true, completion: nil)
                 self.ratingToDriver = 0
                 self.dismiss(animated: true, completion: nil)
-                UtilityClass.showAlert(appName, message: "Thanks for feedback".localized, vc: (UIApplication.shared.keyWindow?.rootViewController)!)
+//                UtilityClass.showAlert(appName, message: "Thanks for feedback".localized, vc: (UIApplication.shared.keyWindow?.rootViewController)!)
                 self.btnSubmit.isUserInteractionEnabled = true
             }
             else
