@@ -83,12 +83,16 @@ extension CompletedRidesVC : UITableViewDataSource, UITableViewDelegate
         
         //SJ Edit Started
         if let pickupDateAndTimee = rideDetails["PickupTime"] as? String {
-            let timeStamp = Double(pickupDateAndTimee)
-            let date = Date(timeIntervalSince1970: timeStamp!)
-            let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
-            cell.lblTime.text = dateStr
+            if pickupDateAndTimee != "" {
+                let timeStamp = Double(pickupDateAndTimee)
+                let date = Date(timeIntervalSince1970: timeStamp!)
+                let dateStr = date.toString(dateFormat: "dd MMM YYYY, hh:mm a")
+                cell.lblTime.text = dateStr
+                
+                cell.layoutIfNeeded()
+            }
             
-            cell.layoutIfNeeded()
+            
         }
         //SJ Edit Ended
         

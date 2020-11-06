@@ -20,8 +20,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWk-q8-RWD" userLabel="ContainerView">
                         <rect key="frame" x="16" y="16" width="288" height="311"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-Uc-Id2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-Uc-Id2">
                                 <rect key="frame" x="16" y="16" width="178" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="Mu1-bb-1mK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -107,7 +110,6 @@
                             <constraint firstItem="ru6-cB-wSt" firstAttribute="leading" secondItem="GWk-q8-RWD" secondAttribute="leading" constant="16" id="Oja-nm-Aqu"/>
                             <constraint firstItem="9AX-5S-8vs" firstAttribute="top" secondItem="RbE-TR-br9" secondAttribute="bottom" constant="8" id="WFi-ul-giN"/>
                             <constraint firstAttribute="trailing" secondItem="RbE-TR-br9" secondAttribute="trailing" constant="16" id="cNJ-f3-BHK"/>
-                            <constraint firstItem="RbE-TR-br9" firstAttribute="height" secondItem="jIK-Uc-Id2" secondAttribute="height" multiplier="1.46341" id="h7n-Ey-uyX"/>
                             <constraint firstAttribute="trailing" secondItem="ru6-cB-wSt" secondAttribute="trailing" constant="16" id="i0h-6Z-WSW"/>
                             <constraint firstItem="jIK-Uc-Id2" firstAttribute="leading" secondItem="GWk-q8-RWD" secondAttribute="leading" constant="16" id="m6b-3n-Uzh"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ru6-cB-wSt" secondAttribute="bottom" constant="8" id="vBf-6k-R6L"/>

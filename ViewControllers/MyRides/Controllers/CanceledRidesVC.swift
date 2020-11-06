@@ -102,8 +102,6 @@ extension CanceledRidesVC : UITableViewDataSource, UITableViewDelegate
             cell.lblTime.text = datePickUp.relativeDateFormat()
         }
         
-        cell.lblTime.layoutIfNeeded()
-        
         //SJ Edit Started
 //        if let pickupDateAndTimee = rideDetails["PickupTime"] as? String {
 //            let timeStamp = Double(pickupDateAndTimee)
@@ -167,10 +165,8 @@ extension CanceledRidesVC
             if (status)
             {
 //                self.pageNo = pageIndex
-                
                 if let dictData = result as? [String:Any]
                 {
-                    
                     if let aryHistory = dictData["history"] as? [[String:AnyObject]], aryHistory.count > 0
                     {
                         self.aryCanceledRidesHistory = aryHistory
