@@ -6,6 +6,7 @@
   Copyright © 2019 Excellent Webworld. All rights reserved.
 */
 
+"Please select a vehicle" = "Veuillez sélectionner un véhicule";
 "Please check your internet connection" = "veuillez vérifier votre connexion internet";
 "No Internet connection" = "pas de connexion internet";
 "No internet connection" = "pas de connexion internet";
@@ -219,7 +220,7 @@
 "WAITING COST:" = "cout d'attente  :";
 "Waiting Cost:" = "cout d'attente";
 
-"Toll Fee" = "taxes de péage";
+"Toll Fee" = "Frais de péage";
 
 "Grand Total" = "grand total";
 
@@ -630,7 +631,7 @@
 "TRANSFER TO BANK" = "TRANSFER TO BANK";
 "NIGHT FARE:" = "NIGHT FARE :";
 "Transfer Status" = "Transfer Status";
-"TOLL FEE:" = "TOLL FEE :";
+"TOLL FEE:" = "Frais de péage :";
 
 "BOOKING CHAGE:" = "BOOKING CHAGE :";
 "TAX:" = "TAX :";
