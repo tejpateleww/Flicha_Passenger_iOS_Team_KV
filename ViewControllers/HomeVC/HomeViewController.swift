@@ -1226,7 +1226,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                 }
                 else if strModelId == ""
                 {
-                    UtilityClass.setCustomAlert(title: "Missing", message: "Please select a vehicle".localized) { (index, title) in
+                    UtilityClass.setCustomAlert(title: "Missing", message: "Please select vehicle".localized) { (index, title) in
                     }
                 }
 //                else
@@ -1340,17 +1340,17 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
     
     @IBAction func btnCancelBookingClickAction(_ sender: ThemeButton)
     {
-        let alert = UIAlertController(title: nil, message: "If you cancel the trip then you will be partially charged. Are you sure you want to cancel the trip?".localized, preferredStyle: .alert)
-        let OK = UIAlertAction(title: "YES".localized, style: .default, handler: { ACTION in
+//        let alert = UIAlertController(title: nil, message: "Are you sure you want to cancel this trip?".localized, preferredStyle: .alert)
+//        let OK = UIAlertAction(title: "YES".localized, style: .default, handler: { ACTION in
             self.webserviceCallForCancelTrip()
-        })
-        let Cancel = UIAlertAction(title: "NO".localized, style: .destructive, handler: { ACTION in
-        })
-        
-        alert.addAction(OK)
-        alert.addAction(Cancel)
-        alert.modalPresentationStyle  = .overCurrentContext
-        self.present(alert, animated: true, completion: nil)
+//        })
+//        let Cancel = UIAlertAction(title: "NO".localized, style: .destructive, handler: { ACTION in
+//        })
+//
+//        alert.addAction(OK)
+//        alert.addAction(Cancel)
+//        alert.modalPresentationStyle  = .overCurrentContext
+//        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnDriverInfo(_ sender: ThemeButton) {
@@ -2181,7 +2181,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                                     
                                 })
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                                     
@@ -2533,12 +2533,12 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         self.socket.on(SocketData.kRejectBookingRequestNotification, callback: { (data, ack) in
             print("socketMethodForGettingBookingRejectNotification() is \(data)")
             
-            self.clearMap()
-            self.clearDataAfteCompleteTrip()
-            self.currentLocationAction()
-            self.getPlaceFromLatLong()
-            self.viewTripActions.isHidden = true
-            self.setHideAndShowTopViewWhenRequestAcceptedAndTripStarted(status: false)
+//            self.clearMap()
+//            self.clearDataAfteCompleteTrip()
+//            self.currentLocationAction()
+//            self.getPlaceFromLatLong()
+//            self.viewTripActions.isHidden = true
+//            self.setHideAndShowTopViewWhenRequestAcceptedAndTripStarted(status: false)
             
             var bookingId = String()
             
@@ -2564,7 +2564,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                                 UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["message"]! as! String, completionHandler: { (index, title) in
                                 })
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                                     
@@ -2588,7 +2588,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                                 
                             })
                         }
-                        else if SelectedLanguage == "sw"
+                        else if SelectedLanguage == "fr"
                         {
                             UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                                 
@@ -2638,7 +2638,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                                     
                                 })
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                                     
@@ -2668,7 +2668,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                                 
                             })
                         }
-                        else if SelectedLanguage == "sw"
+                        else if SelectedLanguage == "fr"
                         {
                             UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                                 
@@ -2714,7 +2714,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                         
                     })
                 }
-                else if SelectedLanguage == "sw"
+                else if SelectedLanguage == "fr"
                 {
                     UtilityClass.setCustomAlert(title: "\(appName)", message: (data as! [[String:AnyObject]])[0]["swahili_message"]! as! String, completionHandler: { (index, title) in
                         
@@ -3166,7 +3166,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
                     
                     
                 }
-                else if SelectedLanguage == "sw"
+                else if SelectedLanguage == "fr"
                 {
                     if let resAry = NSArray(array: data) as? NSArray {
                         message = (resAry.object(at: 0) as! NSDictionary).object(forKey: "swahili_message") as! String
@@ -5582,7 +5582,7 @@ extension HomeViewController {
                                 UtilityClass.showAlert("Applied", message: res.object(forKey: "message") as? String ?? "", vc: self)
                                 
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.showAlert("Applied", message: res.object(forKey: "swahili_message") as? String ?? "", vc: self)
                             }
@@ -5601,7 +5601,7 @@ extension HomeViewController {
                                 UtilityClass.showAlert("Error", message: res, vc: self)
                                 
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.showAlert("Error", message: res, vc: self)
                             }
@@ -5616,7 +5616,7 @@ extension HomeViewController {
                                 UtilityClass.showAlert("Error", message: resDict.object(forKey: "message") as! String, vc: self)
                                 
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.showAlert("Error", message: resDict.object(forKey: "swahili_message") as! String, vc: self)
                             }
@@ -5631,7 +5631,7 @@ extension HomeViewController {
                                 UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
                                 
                             }
-                            else if SelectedLanguage == "sw"
+                            else if SelectedLanguage == "fr"
                             {
                                 UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "swahili_message") as! String, vc: self)
                             }
@@ -5691,7 +5691,7 @@ extension HomeViewController {
                             UtilityClass.showAlert("Error", message: res, vc: self)
                             
                         }
-                        else if SelectedLanguage == "sw"
+                        else if SelectedLanguage == "fr"
                         {
                             UtilityClass.showAlert("Error", message: res, vc: self)
                         }
@@ -5706,7 +5706,7 @@ extension HomeViewController {
                             UtilityClass.showAlert("Error", message: resDict.object(forKey: "message") as! String, vc: self)
                             
                         }
-                        else if SelectedLanguage == "sw"
+                        else if SelectedLanguage == "fr"
                         {
                             UtilityClass.showAlert("Error", message: resDict.object(forKey: "swahili_message") as! String, vc: self)
                         }
@@ -5721,7 +5721,7 @@ extension HomeViewController {
                             UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String, vc: self)
                             
                         }
-                        else if SelectedLanguage == "sw"
+                        else if SelectedLanguage == "fr"
                         {
                             UtilityClass.showAlert("Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "swahili_message") as! String, vc: self)
                         }
@@ -5771,7 +5771,7 @@ extension HomeViewController {
                     for SingleModel in arrData {
                         if let ModelId = SingleModel["id"] as? Int , ModelId == SelectId {
                             if let distance = SingleModel["km"] as? Double{
-                                self.lblDistanceValue.text = "\(distance) km"
+                                self.lblDistanceValue.text = String(format: "%.2f", distance) + " km"//"\(distance) km"
                             }
                             
                             if let time = SingleModel["est_duration"] as? Int{

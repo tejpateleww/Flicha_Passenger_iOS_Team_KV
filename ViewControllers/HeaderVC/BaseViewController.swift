@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
         }
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
             if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-                if language == "sw" {
+                if language == "fr" {
                     //                    btnLeft.semanticContentAttribute = .forceLeftToRight
                     
                     //                    image = UIImage.init(named: "icon_BackWhite")?.imageFlippedForRightToLeftLayoutDirection()

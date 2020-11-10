@@ -62,18 +62,18 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     func setupView()
     {
         self.navigationController?.isNavigationBarHidden = false
-        webserviceOfTickPayStatus()
+//        webserviceOfTickPayStatus()
         
-        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String
-        {
-            if SelectedLanguage == "en"
-            {
-                // lblLaungageName.text = "SW"
-            } else if SelectedLanguage == "sw"
-            {
-                lblLaungageName.text = "EN"
-            }
-        }
+//        if let SelectedLanguage = UserDefaults.standard.value(forKey: "i18n_language") as? String
+//        {
+//            if SelectedLanguage == "en"
+//            {
+//                // lblLaungageName.text = "fr"
+//            } else if SelectedLanguage == "fr"
+//            {
+//                lblLaungageName.text = "EN"
+//            }
+//        }
         
         self.lblName.font = UIFont.bold(ofSize: 15)
         self.lblName.textColor = UIColor.white
@@ -115,7 +115,7 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
     
     func setLayoutForswahilLanguage()
     {
-        UserDefaults.standard.set("sw", forKey: "i18n_language")
+        UserDefaults.standard.set("fr", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
     }
     
@@ -177,10 +177,10 @@ class SideMenuTableViewController: UIViewController, delegateForTiCKPayVerifySta
             {
                 setLayoutForswahilLanguage()
                 lblLaungageName.text = "EN"
-            } else if SelectedLanguage == "sw"
+            } else if SelectedLanguage == "fr"
             {
                 setLayoutForenglishLanguage()
-                lblLaungageName.text = "SW"
+                lblLaungageName.text = "fr"
             }
             
             self.navigationController?.loadViewIfNeeded()

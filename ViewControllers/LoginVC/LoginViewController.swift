@@ -125,7 +125,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         
 //        txtMobile.lineColor = UIColor.white
 //        txtPassword.lineColor = UIColor.white
-//        lblLaungageName.text = "SW"
+//        lblLaungageName.text = "fr"
         UserDefaults.standard.set("fr", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
         
@@ -376,7 +376,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
     }
     func setLayoutForswahilLanguage()
     {
-        UserDefaults.standard.set("sw", forKey: "i18n_language")
+        UserDefaults.standard.set("fr", forKey: "i18n_language")
         UserDefaults.standard.synchronize()
         //            setLayoutForSwahilLanguage()
     }
@@ -396,10 +396,10 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
                 setLayoutForswahilLanguage()
                 //lblLaungageName.text = "EN"
                 
-            } else if SelectedLanguage == "sw"
+            } else if SelectedLanguage == "fr"
             {
                 setLayoutForenglishLanguage()
-                //lblLaungageName.text = "SW"
+                //lblLaungageName.text = "fr"
             }
             
             self.navigationController?.loadViewIfNeeded()
@@ -426,7 +426,7 @@ class LoginViewController: ThemeRegisterViewController, CLLocationManagerDelegat
         //            strSelectedLaungage = KEnglish
         //            if UserDefaults.standard.value(forKey: "i18n_language") != nil {
         //                if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
-        //                    if language == "sw" {
+        //                    if language == "fr" {
         ////                        setLayoutForEnglishLanguage()
         //                        setLayoutForenglishLanguage()
         //                        print("English")

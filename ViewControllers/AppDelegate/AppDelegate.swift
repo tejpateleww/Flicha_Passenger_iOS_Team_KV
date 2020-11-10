@@ -16,7 +16,8 @@ import UserNotifications
 import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
-
+import FirebaseInstanceID
+import FirebaseInstallations
 
 let googlApiKey = "AIzaSyB8BAH4CgnptmVp50tevNwjytJnSqkVcEI"//"AIzaSyB7GS-O76Vp0jkS2nU-eZ_jkxLXJaUHAjg" //"AIzaSyBpHWct2Dal71hBjPis6R1CU0OHZNfMgCw"         // AIzaSyB08IH_NbumyQIAUCxbpgPCuZtFzIT5WQo
 let googlPlacesApiKey = "AIzaSyB8BAH4CgnptmVp50tevNwjytJnSqkVcEI" // "AIzaSyCKEP5WGD7n5QWtCopu0QXOzM9Qec4vAfE"   //   AIzaSyBBQGfB0ca6oApMpqqemhx8-UV-gFls_Zk
@@ -44,22 +45,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     {
         
     }
-//    let SocketManager = SocketIOClient(socketURL: URL(string: SocketData.kBaseURL)!, config: [.log(false), .compress])
+    //    let SocketManager = SocketIOClient(socketURL: URL(string: SocketData.kBaseURL)!, config: [.log(false), .compress])
     
     let SocketManager = SocketIOClient(socketURL: URL(string: SocketData.kBaseURL)!)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-                
-//        UINavigationBar.appearance().barTintColor = themeYellowColor
-//        UINavigationBar.appearance().tintColor = UIColor.white
-//        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
-//        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: UIControlState.highlighted)
-//        
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font : UIFont.regular(ofSize: 14.0)]
-
+        
+        //        UINavigationBar.appearance().barTintColor = themeYellowColor
+        //        UINavigationBar.appearance().tintColor = UIColor.white
+        //        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
+        //        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: UIControlState.highlighted)
+        //
+        //        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font : UIFont.regular(ofSize: 14.0)]
+        
         // Set Stored Language from Local Database
-
+        
         if UserDefaults.standard.value(forKey: "i18n_language") == nil {
             UserDefaults.standard.set("fr", forKey: "i18n_language")
             UserDefaults.standard.synchronize()
@@ -72,19 +73,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         }
         
         
-
+        
         isAlreadyLaunched = false
         // Firebase
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-        
+ 
+       
+
         IQKeyboardManager.shared.enable = true
         
         GMSServices.provideAPIKey(googlApiKey)
         GMSPlacesClient.provideAPIKey(googlApiKey)
         
         
-//        Fabric.with([Crashlytics.self])
+        //        Fabric.with([Crashlytics.self])
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = kGoogle_Client_ID
         GIDSignIn.sharedInstance().delegate = self
@@ -102,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         // ------------------------------------------------------------
         
-
+        
         if let profileData = UserDefaults.standard.object(forKey: "profileData") as? NSDictionary, profileData.count > 0
         {
             SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: profileData)
@@ -115,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         {
             SingletonClass.sharedInstance.isUserLoggedIN = false
         }
-    
+        
         // For Passcode Set
         if UserDefaults.standard.object(forKey: "Passcode") as? String == nil || UserDefaults.standard.object(forKey: "Passcode") as? String == "" {
             SingletonClass.sharedInstance.setPasscode = ""
@@ -139,7 +140,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         // Push Notification Code
         registerForPushNotification()
-        
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary
         
         if remoteNotif != nil {
@@ -163,7 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
          //            (window?.rootViewController as? UITabBarController)?.selectedIndex = 0
          }
          */
-  
+        
         return true
     }
     
@@ -246,12 +248,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     // Push Notification Methods
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        let toketParts = deviceToken.map({ (data)-> String in
-            return String(format: "%0.2.2hhx", data)
-        })
-        
-        let token = toketParts.joined()
-        print("Device Token: \(token)")
+        //        let toketParts = deviceToken.map({ (data)-> String in
+        //            return String(format: "%0.2.2hhx", data)
+        //        })
+        //
+        //        let token = toketParts.joined()
+        //        print("Device Token: \(token)")
         
         
         Messaging.messaging().apnsToken = deviceToken as Data
@@ -261,15 +263,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         
         let fcmToken = Messaging.messaging().fcmToken
         print("FCM token: \(fcmToken ?? "")")
-        
+
         if fcmToken == nil {
-            
+            print("FCM token: is nil")
+
         }
         else {
             SingletonClass.sharedInstance.deviceToken = fcmToken!
             UserDefaults.standard.set(SingletonClass.sharedInstance.deviceToken, forKey: "Token")
         }
         
+        
+
         print("SingletonClass.sharedInstance.deviceToken : \(SingletonClass.sharedInstance.deviceToken)")
     }
     
@@ -366,6 +371,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
     // MARK: - FireBase Methods
     //-------------------------------------------------------------
     
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
@@ -373,9 +379,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         
         let token = Messaging.messaging().fcmToken
+        SingletonClass.sharedInstance.deviceToken = token!
+        UserDefaults.standard.set(SingletonClass.sharedInstance.deviceToken, forKey: "Token")
         print("FCM token: \(token ?? "")")
         
     }
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+//        print("Firebase registration token: \(fcmToken)")
+//
+//        // TODO: If necessary send token to application server.
+//        // Note: This callback is fired at each app startup and whenever a new token is generated.
+//
+//        let token = Messaging.messaging().fcmToken
+//        print("FCM token: \(token ?? "")")
+//
+//    }
     
     //-------------------------------------------------------------
     // MARK: - Actions On Push Notifications

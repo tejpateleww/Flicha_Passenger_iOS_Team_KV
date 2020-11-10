@@ -188,7 +188,7 @@ class MyReceiptsViewController: BaseViewController, UITableViewDataSource, UITab
                         cell.lblTripStatus.text = dictData.object(forKey: "Status") as? String
                         
                     }
-                    else if SelectedLanguage == "sw"
+                    else if SelectedLanguage == "fr"
                     {
                         cell.lblTripStatus.text = dictData.object(forKey: "swahili_BookingStatus") as? String
                     }
@@ -200,7 +200,7 @@ class MyReceiptsViewController: BaseViewController, UITableViewDataSource, UITab
                         cell.lblPaymentType.text = dictData.object(forKey: "PaymentType") as? String
                         
                     }
-                    else if SelectedLanguage == "sw"
+                    else if SelectedLanguage == "fr"
                     {
                         cell.lblPaymentType.text = dictData.object(forKey: "swahili_PaymentType") as? String
                     }
