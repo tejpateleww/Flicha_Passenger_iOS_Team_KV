@@ -273,9 +273,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
         
         callToWebserviceOfCardListViewDidLoad()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-            self.setCurrentLocationAlert()
-        }
+   
     }
     
     func setCurrentLocationAlert () {
@@ -288,7 +286,7 @@ class HomeViewController: BaseViewController, FavouriteLocationDelegate, NVActiv
             
             let okAction = UIAlertAction(title: "Annuler", style: .default, handler: { (action) in
                 
-                self.btnEnterDestinationLocation(self.btnAddToLocationFromDefaultView)
+                self.openGMSLocationPicker(isCurrentLocation: true)//btnEnterDestinationLocation(self.btnAddToLocationFromDefaultView)
              
             })
             
@@ -5469,6 +5467,11 @@ extension HomeViewController {
             }
             else
             {
+                
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+                       self.setCurrentLocationAlert()
+                   }
                 self.currentLocationAction()
                 if let resultData = result as? NSDictionary
                 {
