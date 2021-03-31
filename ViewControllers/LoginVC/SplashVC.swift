@@ -51,7 +51,7 @@ class SplashVC: UIViewController {
                     
                     let alert = UIAlertController(title: nil, message: (result as! NSDictionary).object(forKey: "message") as? String, preferredStyle: .alert)
                     let UPDATE = UIAlertAction(title: "UPDATE", style: .default, handler: { ACTION in
-                        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1445179460") else {
+                        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1518549633") else {
                             return //be safe
                         }
                         if #available(iOS 10.0, *) {

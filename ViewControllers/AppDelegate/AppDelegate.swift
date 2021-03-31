@@ -439,7 +439,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
                 notificationController.bookingType = "accept"
                 notificationController.isFromPushNotification = true
                 
-                navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
+                navController?.present(notificationController , animated: true, completion: {
                     
                 })
             }
@@ -451,7 +451,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
                 let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
-                navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
+                navController?.present(notificationController , animated: true, completion: {
                     
                 })
             }
@@ -463,7 +463,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
                 let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
                 notificationController.bookingType = "accept"
                 notificationController.isFromPushNotification = true
-                navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
+                navController?.present(notificationController , animated: true, completion: {
                     
                 })
             }
@@ -475,7 +475,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
                 let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
-                navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
+                navController?.present(notificationController , animated: true, completion: {
                     
                 })
             }
@@ -487,7 +487,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, GIDSig
                 let notificationController = MyRidesStoryBoard.instantiateViewController(withIdentifier: "MyBookingViewController")  as! MyBookingViewController
                 notificationController.bookingType = "reject"
                 notificationController.isFromPushNotification = true
-                navController?.present(notificationController ?? UIViewController(), animated: true, completion: {
+                navController?.present(notificationController , animated: true, completion: {
                     
                 })
             }

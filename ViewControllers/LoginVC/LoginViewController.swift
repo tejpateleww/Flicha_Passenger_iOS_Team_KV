@@ -840,7 +840,7 @@ extension LoginViewController
                     let alert = UIAlertController(title: nil, message: (result as! NSDictionary).object(forKey: "message") as? String, preferredStyle: .alert)
                     let UPDATE = UIAlertAction(title: "UPDATE", style: .default, handler: { ACTION in
                         
-                        UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                        UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1518549633")! as URL), options: [:], completionHandler: { (status) in
                             
                         })
                     })
@@ -874,7 +874,7 @@ extension LoginViewController
                         
                         UtilityClass.showAlertWithCompletion("", message: (result as! NSDictionary).object(forKey: "message") as! String, vc: self, completionHandler: { ACTION in
                             
-                            UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                            UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1518549633")! as URL), options: [:], completionHandler: { (status) in
                                 
                             })//openURL(NSURL(string: "https://itunes.apple.com/us/app/pick-n-go/id1320783092?mt=8")! as URL)
                         })
@@ -884,7 +884,7 @@ extension LoginViewController
                         UtilityClass.setCustomAlert(title: "Error", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
                             if (index == 0)
                             {
-                                UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1445179460")! as URL), options: [:], completionHandler: { (status) in
+                                UIApplication.shared.open((NSURL(string: "itms-apps://itunes.apple.com/app/id1518549633")! as URL), options: [:], completionHandler: { (status) in
                                     
                                 })
                             }

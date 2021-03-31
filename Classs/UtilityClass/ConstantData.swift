@@ -38,39 +38,9 @@ let screenHeightDeveloper : Double = 568
 let screenWidthDeveloper : Double = Double(UIScreen.main.bounds.size.width)
 let appDel = (UIApplication.shared.delegate as! AppDelegate)
 
-/* App Font Names
-
- Family : Proxima Nova Font Name : ProximaNova-Extrabld
- Family : Proxima Nova Font Name : ProximaNova-Light
- Family : Proxima Nova Font Name : ProximaNova-Black
- Family : Proxima Nova Font Name : ProximaNova-Semibold
- Family : Proxima Nova Font Name : ProximaNova-RegularIt
- Family : Proxima Nova Font Name : ProximaNova-BoldIt
- Family : Proxima Nova Font Name : ProximaNova-Bold
- Family : Proxima Nova Font Name : ProximaNova-SemiboldIt
- Family : Proxima Nova Font Name : ProximaNova-Regular
- Family : Proxima Nova Font Name : ProximaNova-LightIt
-
- */
-
-
-
-
-//func setLayoutForEnglishLanguage() {
-//    UIView.appearance().semanticContentAttribute = .forceLeftToRight
-//    UINavigationBar.appearance().semanticContentAttribute = .forceLeftToRight
-//}
-//func setLayoutForSwahilLanguage() {
-//    UIView.appearance().semanticContentAttribute = .forceLeftToRight
-//    UINavigationBar.appearance().semanticContentAttribute = .forceLeftToRight
-//}
-
-//let appCurrentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-
-//"https://www.tantaxitanzania.com/Passenger_Api/"
 struct WebserviceURLs {
     
-    static let kBaseURL                                  = "http://3.6.224.0/Passenger_Api/" //"https://www.tantaxitanzania.com/Passenger_Api/" // "http://54.169.67.226/web/Passenger_Api/" // "https://pickngolk.info/web/Passenger_Api/" "http://54.169.67.226/web/Passenger_Api/" //
+    static let kBaseURL                                 = "https://flicha.com/web/Passenger_Api/"
     static let kDriverRegister                          = "Register"
     static let kDriverLogin                             = "Login"
     static let kChangePassword                          = "ChangePassword"
@@ -86,7 +56,7 @@ struct WebserviceURLs {
     static let kPastBooking                             = "PastBooking"
     static let kCanceledBooking                         = "CancelledBooking"
     static let kGetEstimateFare                         = "GetEstimateFare"
-    static let kImageBaseURL                            = "http://3.6.224.0/"//"https://www.tantaxitanzania.com/" // "https://pickngolk.info/web/" "http://54.169.67.226/web/" //
+    static let kImageBaseURL                            = "https://flicha.com/web/"
     static let kFeedbackList                            = "FeedbackList/"
     static let kCardsList                               = "Cards/"
     static let kPackageBookingHistory                   = "PackageBookingHistory"
@@ -128,18 +98,13 @@ struct WebserviceURLs {
     
     static let kFAQList                                 = "FaqList"
     
-    
-
-
-//    https://pickngolk.info/web/Passenger_Api/OtpForRegister
 }
 
 
 
 struct SocketData {
     
-    static let kBaseURL                                     = "http://3.6.224.0:8080"//"https://www.tantaxitanzania.com:8081"//"http://3.120.161.225:8080"
-    // "http://54.255.222.125:8080/" // "https://pickngolk.info:8081" "http://54.169.67.226:8080" //
+    static let kBaseURL                                     = "https://flicha.com:8080"
     static let kNearByDriverList                            = "NearByDriverListIOS"
     static let kUpdatePassengerLatLong                      = "UpdatePassengerLatLong"
     static let kAcceptBookingRequestNotification            = "AcceptBookingRequestNotification"
@@ -164,11 +129,11 @@ struct SocketData {
     static let kInformPassengerForAdvancedTrip              = "InformPassengerForAdvancedTrip"
     static let kAcceptAdvancedBookingRequestNotify          = "AcceptAdvancedBookingRequestNotify"
     
-    static let kAskForTipsToPassenger = "AskForTipsToPassenger"
-    static let kAskForTipsToPassengerForBookLater = "AskForTipsToPassengerForBookLater"
+    static let kAskForTipsToPassenger                       = "AskForTipsToPassenger"
+    static let kAskForTipsToPassengerForBookLater           = "AskForTipsToPassengerForBookLater"
 
-    static let kReceiveTips = "ReceiveTips"
-    static let kReceiveTipsForBookLater = "ReceiveTipsForBookLater"
+    static let kReceiveTips                                 = "ReceiveTips"
+    static let kReceiveTipsForBookLater                     = "ReceiveTipsForBookLater"
 }
 
 struct SocketDataKeys {
@@ -179,9 +144,7 @@ struct SocketDataKeys {
 
 
 struct SubmitBookingRequest {
-// PassengerId,ModelId,PickupLocation,DropoffLocation,PickupLat,PickupLng,DropOffLat,DropOffLon
-// PassengerId,ModelId,PickupLocation,DropoffLocation,PickupLat,PickupLng,DropOffLat,DropOffLon,PromoCode,Notes,PaymentType,CardId(If paymentType is card)
-    
+
     static let kModelId                 = "ModelId"
     static let kPickupLocation          = "PickupLocation"
     static let kDropoffLocation         = "DropoffLocation"
@@ -239,58 +202,3 @@ let OpenHelp = NSNotification.Name("OpenHelp")
 let OpenNotification = NSNotification.Name("OpenNotification")
 
 let UpdateProPic = NSNotification.Name("UpdateProPic")
-
-
-
-
-//let NotificationHotelReservation = NSNotification.Name("NotificationHotelReservation")
-//let NotificationBookaTable = NSNotification.Name("NotificationBookaTable")
-//let NotificationShopping = NSNotification.Name("NotificationShopping")
-
-//struct iPhoneDevices {
-//    
-//    static func getiPhoneXDevice() -> String {
-//        
-//        var deviceName = String()
-//        
-//        if UIDevice().userInterfaceIdiom == .phone {
-//            switch UIScreen.main.nativeBounds.height {
-//            case 1136:
-//                print("iPhone 5 or 5S or 5C")
-//                return deviceName = "iPhone 5"
-//                
-//            case 1334:
-//                print("iPhone 6/6S/7/8")
-//                deviceName = "iPhone 6"
-//                
-//            case 2208:
-//                print("iPhone 6+/6S+/7+/8+")
-//                deviceName = "iPhone 6+"
-//                
-//            case 2436:
-//                print("iPhone X")
-//                deviceName = "iPhone X"
-//                
-//            default:
-//                print("unknown")
-//            }
-//        }
-//    }
-//}
-/*
-struct iPhoneDevices {
-    
-    let SCREEN_MAX_LENGTH = max(UIScreen.screenWidth, UIScreen.screenHeight)
-    let SCREEN_MIN_LENGTH = min(UIScreen.screenWidth, UIScreen.screenHeight)
-    
-    let IS_IPHONE_4_OR_LESS = UIDevice.current.userInterfaceIdiom == .phone && SCREEN_MAX_LENGTH < 568.0
-    let IS_IPHONE_5 = UIDevice.current.userInterfaceIdiom == .phone && SCREEN_MAX_LENGTH == 568.0
-    let IS_IPHONE_6 = UIDevice.current.userInterfaceIdiom == .phone && SCREEN_MAX_LENGTH == 667.0
-    let IS_IPHONE_6P = UIDevice.current.userInterfaceIdiom == .phone && SCREEN_MAX_LENGTH == 736.0
-    let IS_IPAD = UIDevice.current.userInterfaceIdiom == .pad && SCREEN_MAX_LENGTH == 1024.0
-    let IS_IPHONE_X = UIDevice.current.userInterfaceIdiom == .phone && SCREEN_MAX_LENGTH == 812.0
-
-}
-*/
-
-

@@ -3,4 +3,70 @@
    uuid = "268485A2-10D8-403B-BC4E-F64D064909C4"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD86EAA3-5DD1-48EC-954B-4960F10A00EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3432"
+            endingLineNumber = "3432"
+            landmarkName = "postPickupAndDropLocationForEstimateFare()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63441373-FDDB-4F6E-83DF-601FBBFBE436"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/HomeVC/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5767"
+            endingLineNumber = "5767"
+            landmarkName = "webserviceCallForCancelTrip()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "63441373-FDDB-4F6E-83DF-601FBBFBE436 - 3958ae769e67679e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Flicha_User.HomeViewController.webserviceCallForCancelTrip() -&gt; ()"
+                  moduleName = "Flicha User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Rahul/Projects/flicha-user/ViewControllers/HomeVC/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5765"
+                  endingLineNumber = "5765"
+                  offsetFromSymbolStart = "3824">
+               </Location>
+               <Location
+                  uuid = "63441373-FDDB-4F6E-83DF-601FBBFBE436 - 5bbeba5005df31aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.AnyObject, Swift.Bool) -&gt; () in Flicha_User.HomeViewController.webserviceCallForCancelTrip() -&gt; ()"
+                  moduleName = "Flicha User"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Rahul/Projects/flicha-user/ViewControllers/HomeVC/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5767"
+                  endingLineNumber = "5767"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

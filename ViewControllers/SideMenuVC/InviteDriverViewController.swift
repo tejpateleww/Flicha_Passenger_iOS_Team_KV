@@ -111,10 +111,10 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
             strName = (decodeResults.object(forKey: "Fullname") as? String)!
         }
         
-        let strInvitation1 = "has invited you to become a TanTaxi Passenger".localized
+        let strInvitation1 = "has invited you to become a Flicha Passenger".localized
         let strInvitation2 = "Your invite code is:".localized
         
-        let strContent = "\(strName) \(strInvitation1)\n \n click here \("https://itunes.apple.com/us/app/TanTaxi/id1445179460?ls=1&mt=8") \n\n \(strInvitation2) \(strReferralCode)"
+        let strContent = "\(strName) \(strInvitation1)\n \n click here \("itms-apps://itunes.apple.com/app/id1518549633") \n\n \(strInvitation2) \(strReferralCode)"
         // \n https://www.facebook.com/tesluxe \n https://www.instagram.com/teslux3 \n https://www.instagram.com/teslux3 \n https://twitter.com/TESLUX3"
         //        name + " has invited you to become a Tesluxe Passenger.\n" +
         //            "\n" +
